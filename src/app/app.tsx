@@ -1,5 +1,6 @@
 import Card from "components/card";
 import SwiperComponent from "components/SwiperComponent";
+import Navbar from '../components/Navbar';
 
 import {
   BeakerIcon,
@@ -71,17 +72,10 @@ const features = [
 
 function App() {
   return (
+
     <main>
-      <header className="pt-16 z-10 relative max-w-screen-lg xl:max-w-screen-xl mx-auto">
-        <h3 className="text-2xl sm:text-4xl leading-none font-bold tracking-tight text-purple-200">
-          Vite Template
-        </h3>
-
-        <p className="max-w-screen-lg text-lg sm:text-xl text-gray-300 font-medium mb-10 sm:mb-11">
-          Bootstrap your web projects faster than ever.
-        </p>
-      </header>
-
+      <Navbar />
+     
       <section>
         <SwiperComponent />
       </section>
