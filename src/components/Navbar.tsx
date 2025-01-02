@@ -1,50 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Navbar: React.FC = () => {
-  return (
-    <nav className="fixed top-0 left-0 w-full bg-grey-900 text-white  z-50">
-      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
-        <a href="/" className="text-xl font-bold text-purple-400">
-          MyBrand
-        </a>
+  const [account, setAccount] = useState<string | null>(null);
 
-        {/* Links */}
-        <div className="space-x-6 hidden sm:flex">
-          <a href="#home" className="hover:text-purple-300 transition">
-            Home
+  const connectWallet = async () => {
+    if (window.ethereum && typeof window.ethereum.request === 'function') {
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        setAccount(accounts[0]);
+      } catch (err) {
+        console.error('Error connecting wallet:', err);
+      }
+    } else {
+      alert('MetaMask is not installed or Ethereum provider is unavailable.');
+    }
+  };
+
+  const disconnectWallet = () => {
+    setAccount(null);
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white z-50">
+      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Left Section */}
+        <div className="flex space-x-6 items-center">
+          <a href="/" className="text-xl font-bold text-purple-400">
+            MyBrand
           </a>
           <a href="#features" className="hover:text-purple-300 transition">
             Features
           </a>
+          <a href="#jobs" className="hover:text-purple-300 transition">
+           Agent Jobs
+          </a>
+          <a href="#mining" className="hover:text-purple-300 transition">
+           Mining
+          </a>
           <a href="#about" className="hover:text-purple-300 transition">
             About
           </a>
-          <a href="#contact" className="hover:text-purple-300 transition">
-            Contact
-          </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="sm:hidden text-white hover:text-purple-300 transition"
-          aria-label="Toggle Menu"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
-        </button>
+        {/* Right Section */}
+        <div>
+          {account ? (
+            <button
+              onClick={disconnectWallet}
+              className="text-white font-bold px-4 py-2 bg-purple-500 rounded hover:bg-purple-400 transition"
+            >
+              Disconnect ({account.slice(0, 6)}...{account.slice(-4)})
+            </button>
+          ) : (
+            <button
+              onClick={connectWallet}
+              className="text-white font-bold px-4 py-2 bg-purple-500 rounded hover:bg-purple-400 transition"
+            >
+              Connect Wallet
+            </button>
+          )}
+        </div>
       </div>
     </nav>
   );

@@ -39,15 +39,17 @@ function App() {
             path="/"
             element={
               <>
+                                {/* Title and description */}
                 {/* Title and description */}
                 <section className="text-center max-w-screen-lg mx-auto py-2">
-                  <h1 className="text-2xl font-bold text-white mt-14">
-                    Welcome to Agent Dashboard
+                  <h1 className="text-3xl font-bold text-white mt-14">
+                    ISAI Agent Studio
                   </h1>
                   <p className="text-base text-gray-300 mt-1 -mb-14">
-                    Explore the agents and their features below.
+                    Craft, Evolve, and Interact with User made Intelligent NFTs.
                   </p>
                 </section>
+
 
                 {/* Swiper Component */}
                 <section className="mt-0">
