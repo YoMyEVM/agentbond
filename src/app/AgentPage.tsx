@@ -2,12 +2,16 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ProgressCard from "../components/ProgressCard"; // Ensure this file exists and is properly exported
 import FullWidthGrid from "../components/FullWidthGrid"; // Ensure this file exists and is properly exported
+import AgentProfileRow from "../components/AgentProfileRow"; // Import the AgentProfileRow component
 
 const AgentPage: React.FC = () => {
   const { name } = useParams<{ name: string }>(); // Get agent's name from the URL
 
   return (
     <div className="text-center max-w-screen-lg mx-auto py-10 space-y-8">
+      {/* Agent Profile Row */}
+      <AgentProfileRow />
+
       {/* Progress Card and Chat Side-by-Side */}
       <div className="flex flex-col md:flex-row gap-4">
         {/* Left Side: Progress Card */}

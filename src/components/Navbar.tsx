@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
         {/* Left Section */}
         <div className="flex space-x-6 items-center">
           <a href="/" className="text-xl font-bold text-purple-400">
-            MyBrand
+            ISAI
           </a>
           <a href="#features" className="hover:text-purple-300 transition">
             Features
