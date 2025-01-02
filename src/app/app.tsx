@@ -17,55 +17,55 @@ import CopyButton from "components/copy-button";
 
 const features = [
   {
-    name: "Vite",
+    name: "Agent1",
     description:
-      "Faster and leaner development experience for modern web projects.",
-    logo: CubeTransparentIcon,
+      "....",
+    pfp: CubeTransparentIcon,
     docs: "https://vitejs.dev/",
   },
   {
-    name: "React",
-    description: "JavaScript library for building user interfaces.",
-    logo: PencilIcon,
+    name: "Agent2",
+    description: "....",
+    pfp: PencilIcon,
     docs: "https://reactjs.org/",
   },
   {
-    name: "TypeScript",
+    name: "Agent3",
     description:
-      "Strongly typed programming language that builds on JavaScript.",
-    logo: BookmarkIcon,
+      "....",
+    pfp: BookmarkIcon,
     docs: "https://www.typescriptlang.org/",
   },
   {
-    name: "Tailwind",
-    description: "A utility-first CSS framework packed with classes.",
-    logo: PhotoIcon,
+    name: "Agent4",
+    description: "....",
+    pfp: PhotoIcon,
     docs: "https://tailwindcss.com/",
   },
   {
-    name: "ESLint",
-    description: "Find and fix problems in your JavaScript code.",
-    logo: BeakerIcon,
+    name: "Agent5",
+    description: "..",
+    pfp: BeakerIcon,
     docs: "https://eslint.org/",
   },
   {
-    name: "Prettier",
-    description: "An opinionated code formatter.",
-    logo: Bars3Icon,
+    name: "Agent6",
+    description: "....",
+    pfp: Bars3Icon,
     docs: "https://prettier.io/",
   },
   {
-    name: "Atomic design",
+    name: "Agent7",
     description:
-      "We’re not designing pages, we’re designing systems of components.",
-    logo: PhoneXMarkIcon,
+      "....",
+    pfp: PhoneXMarkIcon,
     docs: "https://bradfrost.com/blog/post/atomic-web-design/",
   },
   {
-    name: "Relative imports",
+    name: "Agent8",
     description:
-      "Import resource using its full path from the project’s src folder.",
-    logo: ChevronDownIcon,
+      "....",
+    pfp: ChevronDownIcon,
     docs: "https://github.com/vitejs/vite/issues/88#issuecomment-762415200",
   },
 ];
@@ -75,18 +75,25 @@ function App() {
 
     <main>
       <Navbar />
-     
-      <section>
-        <SwiperComponent />
+      {/* Title and description above the Swiper */}
+      <section className="text-center max-w-screen-lg mx-auto py-2">
+        <h1 className="text-2xl font-bold text-white mt-16">Welcome to Agent Dashboard</h1>
+        <p className="text-base text-gray-300 mt-1 -mb-14">
+          Explore the agents and their features below.
+        </p>
       </section>
 
+      {/* Swiper Component Section */}
+      <section className="mt-0">
+        <SwiperComponent />
+      </section>
       <section className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
         {features.map((props, index) => (
           <div key={index} className="col-span-10 sm:col-span-5">
             <Card
               title={props.name}
               description={props.description}
-              Icon={props.logo}
+              pfp={props.pfp}
               href={props.docs}
             />
           </div>

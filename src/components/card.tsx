@@ -10,7 +10,7 @@ export interface CardProps
   extends Omit<ComponentProps<"div">, "className" | "children"> {
   title: string;
   description: string;
-  Icon: ForwardRefExoticComponent<
+  pfp: ForwardRefExoticComponent<
     Omit<SVGProps<SVGSVGElement>, "ref"> & {
       title?: string | undefined;
       titleId?: string | undefined;
@@ -20,30 +20,37 @@ export interface CardProps
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, Icon, href, ...rest }, ref) => {
+  ({ title, description, pfp: Pfp, href, ...rest }, ref) => {
     return (
       <div
         ref={ref}
-        className="bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full"
+        className="bg-white bg-opacity-5 rounded-md shadow p-4 flex items-center h-full"
         {...rest}
       >
-        <div>
-          <span className="absolute right-3 bottom-3 flex items-center justify-center rounded-md opacity-10">
-            <Icon className="h-12 w-12 text-white" aria-hidden="true" />
-          </span>
+        {/* Left section: Profile Picture */}
+        <div className="mr-4">
+          <Pfp className="h-16 w-16 text-blue-500" aria-hidden="true" />
         </div>
-        <div className="flex flex-col h-full">
-          <h3 className="text-2xl font-bold text-blue-500">{title}</h3>
-          <p className="mt-2 text-base text-gray-300 flex-1">{description}</p>
-          <div className="pt-6">
-            <a
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-white font-bold transition tracking-wide hover:text-blue-400"
-            >
-              Visit documentation →
-            </a>
+
+        {/* Middle section: Title, Description, and Visit Link */}
+        <div className="flex flex-col flex-1">
+          <h3 className="text-xl font-bold text-blue-500">{title}</h3>
+          <p className="mt-1 text-sm text-gray-300">{description}</p>
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 text-white font-bold transition tracking-wide hover:text-blue-400"
+          >
+            Visit →
+          </a>
+        </div>
+
+        {/* Right section: Placeholder for Chart */}
+        <div className="ml-4 flex-shrink-0">
+          {/* Placeholder for Chart */}
+          <div className="h-16 w-16 bg-gray-700 rounded-md flex items-center justify-center">
+            <span className="text-gray-400 text-xs">Chart</span>
           </div>
         </div>
       </div>
