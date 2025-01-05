@@ -2,13 +2,13 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "./SwiperStyles.css"; // Ensure this is included
-import { EffectCoverflow, Keyboard, Mousewheel, Pagination } from "swiper/modules";
+import { EffectCoverflow, Keyboard, Pagination } from "swiper/modules";
 
 const agents = [
   { name: "Agent1", description: ".sfdj", location: "BaseChain", img: "/agents/1.png" },
-  { name: "Agent2", description: "sf.", location: "Abstract", img: "/agents/2.png" },
-  { name: "Agent3", description: "fsa.", location: "ApeChain", img: "/agents/3.png" },
-  { name: "Agent4", description: ".sfa", location: "Optimism", img: "/agents/4.png" },
+  { name: "Agent2", description: "sfsf.", location: "Abstract", img: "/agents/2.png" },
+  { name: "Agent3", description: "fsfsa.", location: "ApeChain", img: "/agents/3.png" },
+  { name: "Agent4", description: ".sfsfa", location: "Optimism", img: "/agents/4.png" },
   { name: "Agent5", description: ".sfaf", location: "Arbitrum", img: "/agents/5.png" },
   { name: "Agent6", description: ".afad", location: "Polygon", img: "/agents/6.png" },
 ];
@@ -17,7 +17,7 @@ const SwiperComponent: React.FC = () => {
   return (
     <div>
       <Swiper
-        modules={[EffectCoverflow, Keyboard, Mousewheel, Pagination]}
+        modules={[EffectCoverflow, Keyboard, Pagination]} // Removed Mousewheel module
         effect="coverflow"
         grabCursor
         centeredSlides={true} // Ensures the current slide is always centered
@@ -30,7 +30,6 @@ const SwiperComponent: React.FC = () => {
           slideShadows: true, // Optional, enables shadows
         }}
         keyboard={{ enabled: true }}
-        mousewheel={{ thresholdDelta: 70 }}
         spaceBetween={60}
         loop
         pagination={{ clickable: true }}

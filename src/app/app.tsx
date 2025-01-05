@@ -7,12 +7,12 @@ import Footer from "../components/Footer"; // Adjust the path as needed
 
 // Features array with agent information and share prices
 const features = [
-  { name: "Agent1", description: "....", pfp: "/agents/1.png", sharePrice: 12.34 },
-  { name: "Agent2", description: "....", pfp: "/agents/2.png", sharePrice: 45.67 },
-  { name: "Agent3", description: "....", pfp: "/agents/3.png", sharePrice: 89.01 },
-  { name: "Agent4", description: "....", pfp: "/agents/4.png", sharePrice: 23.45 },
-  { name: "Agent5", description: "....", pfp: "/agents/5.png", sharePrice: 67.89 },
-  { name: "Agent6", description: "....", pfp: "/agents/6.png", sharePrice: 34.56 },
+  { name: "Agent1", description: "sfsd", pfp: "/agents/1.png", sharePrice: 12.34 },
+  { name: "Agent2", description: "sfdsd", pfp: "/agents/2.png", sharePrice: 45.67 },
+  { name: "Agent3", description: "sfds", pfp: "/agents/3.png", sharePrice: 89.01 },
+  { name: "Agent4", description: "sfsd", pfp: "/agents/4.png", sharePrice: 23.45 },
+  { name: "Agent5", description: "dsfsd", pfp: "/agents/5.png", sharePrice: 67.89 },
+  { name: "Agent6", description: "sdfss.", pfp: "/agents/6.png", sharePrice: 34.56 },
 ];
 
 function App() {
