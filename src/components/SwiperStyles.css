@@ -23,21 +23,25 @@
   padding-bottom: 50px;
 }
 
+/* Remove the blur effect from all slides */
 .swiper-slide {
   width: 300px;
   height: 400px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-  filter: blur(1px);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: self-start;
+  filter: none; /* Removed the blur */
 }
 
+/* Optional: Make the active slide stand out more */
 .swiper-slide-active {
-  filter: blur(0px);
+  transform: scale(1.1); /* Optional: increase the size of the active slide */
+  filter: none; /* Ensure the active slide has no blur */
 }
+
 
 .swiper-pagination-bullet,
 .swiper-pagination-bullet-active {
