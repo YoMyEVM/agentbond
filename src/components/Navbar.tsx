@@ -33,15 +33,7 @@ const Navbar: React.FC = () => {
           <a href="#features" className="hover:text-purple-300 transition">
             Features
           </a>
-          <a href="#jobs" className="hover:text-purple-300 transition">
-           Agent Jobs
-          </a>
-          <a href="#mining" className="hover:text-purple-300 transition">
-           Mining
-          </a>
-          <a href="#about" className="hover:text-purple-300 transition">
-            About
-          </a>
+
         </div>
 
         {/* Right Section */}

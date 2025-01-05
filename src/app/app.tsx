@@ -26,6 +26,8 @@ const features = [
   { name: "Agent6", description: "....", pfp: Bars3Icon },
   { name: "Agent7", description: "....", pfp: PhoneXMarkIcon },
   { name: "Agent8", description: "....", pfp: ChevronDownIcon },
+  { name: "Agent9", description: "....", pfp: PhoneXMarkIcon },
+  { name: "Agent10", description: "....", pfp: ChevronDownIcon },
 ];
 
 function App() {
