@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProgressCard from "../components/ProgressCard";
 import EquipmentStore from "../components/EquipmentStore";
 import ChatBox from "../components/ChatBox"; // Import ChatBox component
+import BuySellShares from "components/BuySellShares";
 
 const agents = [
   { name: "Agent1", avatar: "/agents/1.png" },
@@ -12,6 +13,17 @@ const agents = [
   { name: "Agent5", avatar: "/agents/5.png" },
   { name: "Agent6", avatar: "/agents/6.png" },
 ];
+
+const handleBuy = () => {
+  console.log("Buy button clicked");
+  // Add logic to handle buying shares
+};
+
+const handleSell = () => {
+  console.log("Sell button clicked");
+  // Add logic to handle selling shares
+};
+
 
 const AgentPage: React.FC = () => {
   const { name } = useParams<{ name: string }>(); // Get agent's name from the URL
@@ -33,6 +45,11 @@ const AgentPage: React.FC = () => {
           xp={{ current: 429, max: 1337 }}
           walletBalance={walletBalance} // Pass the wallet balance here
         />
+      </div>
+
+      {/* Buy & Sell Shares Component */}
+      <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
+        <BuySellShares onBuy={handleBuy} onSell={handleSell} />
       </div>
 
       {/* Chat Box: Full width with conversation above the input */}

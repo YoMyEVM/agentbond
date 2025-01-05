@@ -6,7 +6,7 @@ interface ProgressCardProps {
   rank: number;
   level: number;
   xp: { current: number; max: number };
-  walletBalance: number; // Adding wallet balance as a prop
+  walletBalance: number;
 }
 
 const ProgressCard: React.FC<ProgressCardProps> = ({
@@ -18,42 +18,41 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
   walletBalance,
 }) => {
   return (
-    <div className="text-white space-y-4">
-      {/* Avatar Section: Make the image larger and center it */}
-      <div className="mb-4">
-        <img
-          src={avatar}
-          alt="Avatar"
-          className="w-32 h-32 rounded-full border-4 border-gray-600 mx-auto" // Larger and centered avatar
-        />
+    <div className="text-white flex flex-col items-center">
+      {/* Profile Info Row */}
+      <div className="flex items-center justify-between w-full px-6 mb-4">
+        {/* Avatar and Username */}
+        <div className="flex items-center gap-4">
+          <img
+            src={avatar}
+            alt="Avatar"
+            className="w-24 h-24 rounded-full border-4 border-gray-600"
+          />
+          <div>
+            <h2 className="text-xl font-bold">{username}</h2>
+            <p className="text-green-400 text-lg">Rank: #{rank}</p>
+          </div>
+        </div>
+        {/* Wallet Balance */}
+        <div className="text-lg font-semibold text-green-400">
+          Wallet: ${walletBalance.toFixed(2)}
+        </div>
       </div>
 
-      {/* Username Section */}
-      <h2 className="text-white text-2xl font-bold">{username}</h2>
-
-      {/* Level Section: Display level under the image */}
-      <div className="text-gray-300 mt-2">Level {level}</div>
-
-      {/* Rank Section */}
-      <div className="text-gray-400 mt-2">RANK {rank}</div>
-
-      {/* XP Progress Bar */}
-      <div className="mt-4">
-        <div className="relative w-full bg-gray-700 rounded-full h-4 mt-2">
+      {/* XP Progress */}
+      <div className="w-full px-6">
+        <div className="relative w-full bg-gray-700 rounded-full h-4">
           <div
             className="absolute top-0 left-0 h-4 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
             style={{ width: `${(xp.current / xp.max) * 100}%` }}
           ></div>
         </div>
-        <p className="text-right text-gray-300 mt-1">
-          {xp.current} / {xp.max} XP
-        </p>
-      </div>
-
-      {/* Wallet Balance Section: Display the wallet balance */}
-      <div className="mt-4">
-        <div className="text-white font-semibold">Wallet Balance</div>
-        <div className="text-green-400 text-xl">${walletBalance.toFixed(2)}</div>
+        <div className="flex justify-between text-gray-300 mt-1 text-sm">
+          <span>Level {level}</span>
+          <span>
+            {xp.current} / {xp.max} XP
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -28,10 +28,10 @@ function App() {
               <>
                 {/* Title and description */}
                 <section className="text-center max-w-screen-lg mx-auto py-2">
-                  <h1 className="text-3xl font-bold text-white mt-14">
-                    ISAI Agent Studio
+                  <h1 className="text-5xl font-bold text-white mt-14">
+                    ISAI Agent Studio Coming Soon
                   </h1>
-                  <p className="text-base text-gray-300 mt-1 -mb-14">
+                  <p className="text-3x1 text-gray-300 mt-1 -mb-14">
                     Craft, Evolve, and Interact with User-made Intelligent NFTs.
                   </p>
                 </section>
