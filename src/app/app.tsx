@@ -5,30 +5,15 @@ import Navbar from "../components/Navbar";
 import AgentPage from "./AgentPage"; // Personal page for each agent
 import Footer from "../components/Footer"; // Adjust the path as needed
 
-
-import {
-  BeakerIcon,
-  BookmarkIcon,
-  ChevronDownIcon,
-  CubeTransparentIcon,
-  PhoneXMarkIcon,
-  Bars3Icon,
-  PencilIcon,
-  PhotoIcon,
-} from "@heroicons/react/24/outline";
-
+// Icons are now replaced with image paths for actual profile pictures.
 const features = [
-  { name: "Agent1", description: "....", pfp: CubeTransparentIcon },
-  { name: "Agent2", description: "....", pfp: PencilIcon },
-  { name: "Agent3", description: "....", pfp: BookmarkIcon },
-  { name: "Agent4", description: "....", pfp: PhotoIcon },
-  { name: "Agent5", description: "....", pfp: BeakerIcon },
-  { name: "Agent6", description: "....", pfp: Bars3Icon },
-  { name: "Agent7", description: "....", pfp: PhoneXMarkIcon },
-  { name: "Agent8", description: "....", pfp: ChevronDownIcon },
-  { name: "Agent9", description: "....", pfp: PhoneXMarkIcon },
-  { name: "Agent10", description: "....", pfp: ChevronDownIcon },
-];
+    { name: "Agent1", description: "....", pfp: "/agents/1.png" },
+    { name: "Agent2", description: "....", pfp: "/agents/2.png" },
+    { name: "Agent3", description: "....", pfp: "/agents/3.png" },
+    { name: "Agent4", description: "....", pfp: "/agents/4.png" },
+    { name: "Agent5", description: "....", pfp: "/agents/5.png" },
+    { name: "Agent6", description: "....", pfp: "/agents/6.png" },
+];  
 
 function App() {
   return (
@@ -41,17 +26,15 @@ function App() {
             path="/"
             element={
               <>
-                                {/* Title and description */}
                 {/* Title and description */}
                 <section className="text-center max-w-screen-lg mx-auto py-2">
                   <h1 className="text-3xl font-bold text-white mt-14">
                     ISAI Agent Studio
                   </h1>
                   <p className="text-base text-gray-300 mt-1 -mb-14">
-                    Craft, Evolve, and Interact with User made Intelligent NFTs.
+                    Craft, Evolve, and Interact with User-made Intelligent NFTs.
                   </p>
                 </section>
-
 
                 {/* Swiper Component */}
                 <section className="mt-0">
@@ -65,7 +48,7 @@ function App() {
                       <Card
                         title={props.name}
                         description={props.description}
-                        pfp={props.pfp}
+                        pfp={props.pfp}  // Pass image path to Card component
                         href={`/agent/${props.name}`} // Link to personal page
                       />
                     </div>
@@ -79,7 +62,7 @@ function App() {
           <Route path="/agent/:name" element={<AgentPage />} />
         </Routes>
       </main>
-      <Footer /> 
+      <Footer />
     </Router>
   );
 }

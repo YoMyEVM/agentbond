@@ -4,8 +4,21 @@ import ProgressCard from "../components/ProgressCard"; // Ensure this file exist
 import FullWidthGrid from "../components/FullWidthGrid"; // Ensure this file exists and is properly exported
 import AgentProfileRow from "../components/AgentProfileRow"; // Import the AgentProfileRow component
 
+// Mock data for agents
+const agents = [
+  { name: "Agent1", avatar: "/agents/1.png" },
+  { name: "Agent2", avatar: "/agents/2.png" },
+  { name: "Agent3", avatar: "/agents/3.png" },
+  { name: "Agent4", avatar: "/agents/4.png" },
+  { name: "Agent5", avatar: "/agents/5.png" },
+  { name: "Agent6", avatar: "/agents/6.png" },
+];
+
 const AgentPage: React.FC = () => {
   const { name } = useParams<{ name: string }>(); // Get agent's name from the URL
+
+  // Find the agent's data based on the name from the URL
+  const agent = agents.find((agent) => agent.name === name);
 
   return (
     <div className="text-center max-w-screen-lg mx-auto py-10 space-y-8">
@@ -17,11 +30,11 @@ const AgentPage: React.FC = () => {
         {/* Left Side: Progress Card */}
         <div className="flex-1 bg-blue-900 p-6 rounded-lg shadow-lg">
           <ProgressCard
-            avatar="https://cdn.discordapp.com/avatars/127563346944851969/4793d22e3e53f6c8a239da7bc6b42fa6.png"
+            avatar={agent?.avatar || "/default-avatar.png"} // Fallback to a default avatar if not found
             username={name || "Agent"}
             rank={44}
             level={12}
-            xp={{ current: 429, max: 1337 }} 
+            xp={{ current: 429, max: 1337 }}
           />
         </div>
 

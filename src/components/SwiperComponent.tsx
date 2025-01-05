@@ -1,8 +1,17 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-import './SwiperStyles.css';
-import { EffectCoverflow, Keyboard, Mousewheel, Pagination } from 'swiper/modules';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import "./SwiperStyles.css";
+import { EffectCoverflow, Keyboard, Mousewheel, Pagination } from "swiper/modules";
+
+const agents = [
+  { name: "Agent1", description: "Enjoy the exotic of sunny Hawaii", location: "Maui, Hawaii", img: "/agents/1.png" },
+  { name: "Agent2", description: "The Island of Eternal Spring", location: "Lanzarote, Spain", img: "/agents/2.png" },
+  { name: "Agent3", description: "Awesome Eiffel Tower", location: "Paris, France", img: "/agents/3.png" },
+  { name: "Agent4", description: "One of the safest states in Mexico", location: "The Yucatan, Mexico", img: "/agents/4.png" },
+  { name: "Agent5", description: "The Island of Eternal Spring", location: "Lanzarote, Spain", img: "/agents/5.png" },
+  { name: "Agent6", description: "Awesome Eiffel Tower", location: "Paris, France", img: "/agents/6.png" },
+];
 
 const SwiperComponent: React.FC = () => {
   return (
@@ -27,98 +36,24 @@ const SwiperComponent: React.FC = () => {
         pagination={{ clickable: true }}
         className="swiper"
       >
-        {/* Slide 1 */}
-        <SwiperSlide className="swiper-slide swiper-slide--one">
-          <span>Agent1</span>
-          <div>
-            <h2>Enjoy the exotic of sunny Hawaii</h2>
-            <p>Maui, Hawaii</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 2 */}
-        <SwiperSlide className="swiper-slide swiper-slide--two">
-          <span>Agent2</span>
-          <div>
-            <h2>The Island of Eternal Spring</h2>
-            <p>Lanzarote, Spain</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 3 */}
-        <SwiperSlide className="swiper-slide swiper-slide--three">
-          <span>Agent3</span>
-          <div>
-            <h2>Awesome Eiffel Tower</h2>
-            <p>Paris, France</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 4 */}
-        <SwiperSlide className="swiper-slide swiper-slide--four">
-          <span>Agent4</span>
-          <div>
-            <h2>One of the safest states in Mexico</h2>
-            <p>The Yucatan, Mexico</p>
-          </div>
-        </SwiperSlide>
-                {/* Slide 2 */}
-                <SwiperSlide className="swiper-slide swiper-slide--two">
-          <span>Agent5</span>
-          <div>
-            <h2>The Island of Eternal Spring</h2>
-            <p>Lanzarote, Spain</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 3 */}
-        <SwiperSlide className="swiper-slide swiper-slide--three">
-          <span>Agent6</span>
-          <div>
-            <h2>Awesome Eiffel Tower</h2>
-            <p>Paris, France</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 4 */}
-        <SwiperSlide className="swiper-slide swiper-slide--four">
-          <span>Agent7</span>
-          <div>
-            <h2>One of the safest states in Mexico</h2>
-            <p>The Yucatan, Mexico</p>
-          </div>
-        </SwiperSlide>
-                {/* Slide 2 */}
-        <SwiperSlide className="swiper-slide swiper-slide--two">
-          <span>Agent8</span>
-          <div>
-            <h2>The Island of Eternal Spring</h2>
-            <p>Lanzarote, Spain</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 3 */}
-        <SwiperSlide className="swiper-slide swiper-slide--three">
-          <span>Agent9</span>
-          <div>
-            <h2>Awesome Eiffel Tower</h2>
-            <p>Paris, France</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Slide 4 */}
-        <SwiperSlide className="swiper-slide swiper-slide--four">
-          <span>Agent10</span>
-          <div>
-            <h2>One of the safest states in Mexico</h2>
-            <p>The Yucatan, Mexico</p>
-          </div>
-        </SwiperSlide>
-
-        {/* Add more slides as needed */}
+        {agents.map((agent, index) => (
+          <SwiperSlide key={index} className="swiper-slide">
+            <div className="text-center">
+              <img
+                src={agent.img}
+                alt={`${agent.name} profile`}
+                className="w-full h-auto rounded-md"
+              />
+              <span>{agent.name}</span>
+              <h2>{agent.description}</h2>
+              <p>{agent.location}</p>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
 };
 
 export default SwiperComponent;
+
