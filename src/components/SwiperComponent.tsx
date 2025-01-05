@@ -25,9 +25,9 @@ const SwiperComponent: React.FC = () => {
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
-          depth: 100,
-          modifier: 2,
-          slideShadows: true,
+          depth: 50, // Lower this to reduce out-of-focus effect
+          modifier: 1, // Adjust this to modify the effect strength
+          slideShadows: false, // Disabling slide shadows to prevent unwanted effects
         }}
         keyboard={{ enabled: true }}
         mousewheel={{ thresholdDelta: 70 }}
@@ -36,6 +36,7 @@ const SwiperComponent: React.FC = () => {
         pagination={{ clickable: true }}
         className="swiper"
       >
+
         {agents.map((agent, index) => (
           <SwiperSlide key={index} className="swiper-slide">
             <div className="text-center">
