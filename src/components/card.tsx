@@ -1,6 +1,5 @@
 import React, { forwardRef, ComponentProps, SVGProps } from "react";
 
-
 // Update the CardProps interface
 export interface CardProps
   extends Omit<ComponentProps<"div">, "className" | "children"> {
@@ -8,10 +7,11 @@ export interface CardProps
   description: string;
   pfp: string | React.ComponentType<SVGProps<SVGSVGElement>>; // Accept string or React component
   href: string;
+  sharePrice: string | number; // Added sharePrice prop
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, pfp, href, ...rest }, ref) => {
+  ({ title, description, pfp, href, sharePrice, ...rest }, ref) => {
     return (
       <div
         ref={ref}
@@ -41,13 +41,19 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <p className="mt-1 text-sm text-gray-300">{description}</p>
         </div>
 
-        {/* Right section: Visit Link */}
-        <div className="ml-4 flex-shrink-0">
+        {/* Right section: Share Price and Visit Button */}
+        <div className="ml-4 flex-shrink-0 flex items-center space-x-4">
+          {/* Share Price */}
+          <div className="text-sm text-gray-300 font-bold">
+            Share Price: <span className="text-white">${sharePrice}</span>
+          </div>
+
+          {/* Visit Button */}
           <a
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="text-white font-bold tracking-wide hover:text-blue-400"
+            className="block w-10 h-10 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-md flex items-center justify-center"
           >
             Visit
           </a>

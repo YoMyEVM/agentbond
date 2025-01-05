@@ -5,15 +5,15 @@ import Navbar from "../components/Navbar";
 import AgentPage from "./AgentPage"; // Personal page for each agent
 import Footer from "../components/Footer"; // Adjust the path as needed
 
-// Icons are now replaced with image paths for actual profile pictures.
+// Features array with agent information and share prices
 const features = [
-    { name: "Agent1", description: "....", pfp: "/agents/1.png" },
-    { name: "Agent2", description: "....", pfp: "/agents/2.png" },
-    { name: "Agent3", description: "....", pfp: "/agents/3.png" },
-    { name: "Agent4", description: "....", pfp: "/agents/4.png" },
-    { name: "Agent5", description: "....", pfp: "/agents/5.png" },
-    { name: "Agent6", description: "....", pfp: "/agents/6.png" },
-];  
+  { name: "Agent1", description: "....", pfp: "/agents/1.png", sharePrice: 12.34 },
+  { name: "Agent2", description: "....", pfp: "/agents/2.png", sharePrice: 45.67 },
+  { name: "Agent3", description: "....", pfp: "/agents/3.png", sharePrice: 89.01 },
+  { name: "Agent4", description: "....", pfp: "/agents/4.png", sharePrice: 23.45 },
+  { name: "Agent5", description: "....", pfp: "/agents/5.png", sharePrice: 67.89 },
+  { name: "Agent6", description: "....", pfp: "/agents/6.png", sharePrice: 34.56 },
+];
 
 function App() {
   return (
@@ -48,8 +48,9 @@ function App() {
                       <Card
                         title={props.name}
                         description={props.description}
-                        pfp={props.pfp}  // Pass image path to Card component
+                        pfp={props.pfp} // Pass image path to Card component
                         href={`/agent/${props.name}`} // Link to personal page
+                        sharePrice={props.sharePrice} // Pass sharePrice here
                       />
                     </div>
                   ))}
