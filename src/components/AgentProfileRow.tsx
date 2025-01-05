@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
 const agents = [
-  { name: 'Agent1', image: '/agents/1.png' },
-  { name: 'Agent2', image: '/agents/2.png' },
-  { name: 'Agent3', image: '/agents/3.png' },
-  { name: 'Agent4', image: '/agents/4.png' },
-  { name: 'Agent5', image: '/agents/5.png' },
-  { name: 'Agent5', image: '/agents/6.png' },
+  { name: "Agent1", image: "/agents/1.png" },
+  { name: "Agent2", image: "/agents/2.png" },
+  { name: "Agent3", image: "/agents/3.png" },
+  { name: "Agent4", image: "/agents/4.png" },
+  { name: "Agent5", image: "/agents/5.png" },
+
 ];
 
 const AgentProfileRow: React.FC = () => {
   return (
-    <section className="profiles flex flex-wrap justify-center gap-6 p-4">
+    <section className="profiles flex overflow-x-auto justify-center gap-6 p-4 h-full">
       {agents.map((agent, index) => (
         <div key={index} className="avatar flex flex-col items-center">
           <div className="avatar-img">
@@ -29,3 +29,4 @@ const AgentProfileRow: React.FC = () => {
 };
 
 export default AgentProfileRow;
+
