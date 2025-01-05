@@ -33,7 +33,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ agentName }) => {
               <div
                 className={`p-2 rounded-lg max-w-xs ${
                   msg.sender === "You" ? "bg-[#fd01f5]" : "bg-[#01fcfc]"
-                } text-white`}
+                } text-black`}
               >
                 {msg.text}
               </div>
