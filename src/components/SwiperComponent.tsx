@@ -5,12 +5,12 @@ import "./SwiperStyles.css";
 import { EffectCoverflow, Keyboard, Mousewheel, Pagination } from "swiper/modules";
 
 const agents = [
-  { name: "Agent1", description: "Enjoy the exotic of sunny Hawaii", location: "Maui, Hawaii", img: "/agents/1.png" },
-  { name: "Agent2", description: "The Island of Eternal Spring", location: "Lanzarote, Spain", img: "/agents/2.png" },
-  { name: "Agent3", description: "Awesome Eiffel Tower", location: "Paris, France", img: "/agents/3.png" },
-  { name: "Agent4", description: "One of the safest states in Mexico", location: "The Yucatan, Mexico", img: "/agents/4.png" },
-  { name: "Agent5", description: "The Island of Eternal Spring", location: "Lanzarote, Spain", img: "/agents/5.png" },
-  { name: "Agent6", description: "Awesome Eiffel Tower", location: "Paris, France", img: "/agents/6.png" },
+  { name: "Agent1", description: ".", location: "Maui, Hawaii", img: "/agents/1.png" },
+  { name: "Agent2", description: ".", location: "Lanzarote, Spain", img: "/agents/2.png" },
+  { name: "Agent3", description: ".", location: "Paris, France", img: "/agents/3.png" },
+  { name: "Agent4", description: ".", location: "The Yucatan, Mexico", img: "/agents/4.png" },
+  { name: "Agent5", description: ".", location: "Lanzarote, Spain", img: "/agents/5.png" },
+  { name: "Agent6", description: ".", location: "Paris, France", img: "/agents/6.png" },
 ];
 
 const SwiperComponent: React.FC = () => {
