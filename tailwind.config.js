@@ -2,7 +2,7 @@ import forms from '@tailwindcss/forms';
 
 export default {
   content: ["./src/**/*.tsx", "./src/**/*.css"],
-  plugins: [forms],
+  plugins: [forms], // Updated to use the import
   theme: {
     extend: {
       colors: {
