@@ -7,6 +7,14 @@ export default defineConfig(() => {
     plugins: [react()],
     server: {
       port: 3000,
+      proxy: {
+        // Example of proxy for CORS issue resolution (adjust URL to your backend or API)
+        '/api': {
+          target: 'http://localhost:5000', // Replace with your backend URL
+          changeOrigin: true,
+          secure: false, // If your backend uses http instead of https
+        },
+      },
     },
     resolve: {
       alias: {
