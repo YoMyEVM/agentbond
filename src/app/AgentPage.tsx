@@ -46,7 +46,7 @@ const AgentPage: React.FC = () => {
     "Unused Item 8", 
     "Unused Item 9"
   ];
-  
+
   return (
     <div className="max-w-screen-lg mx-auto py-10 space-y-8">
       {/* Progress Card */}
@@ -65,10 +65,11 @@ const AgentPage: React.FC = () => {
       {/* Chat Box */}
       <ChatBox agentName={name || "the agent"} />
 
+      {/* Equipment Title */}
+      <h2 className="text-[#01fcfc] text-center text-2xl font-bold">Equipment</h2> {/* Cyan centered title */}
+
       {/* Personality Section */}
-      <PersonalitySection
-        items={equipmentItems}
-      />
+      <PersonalitySection items={equipmentItems} />
 
       {/* Plugins Section */}
       <PluginsSection items={pluginsItems} />
@@ -78,6 +79,9 @@ const AgentPage: React.FC = () => {
 
       {/* Inventory Section */}
       <InventorySection items={inventoryItems} />
+
+      {/* Shop Title */}
+      <h2 className="text-[#01fcfc] text-center text-2xl font-bold">Shop</h2> {/* Cyan centered title */}
 
       {/* Shop Section */}
       <EquipmentStore />
