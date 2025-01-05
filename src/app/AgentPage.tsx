@@ -1,7 +1,9 @@
+// src/pages/AgentPage.tsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import ProgressCard from "../components/ProgressCard";
 import EquipmentStore from "../components/EquipmentStore";
+import ChatBox from "../components/ChatBox"; // Import ChatBox component
 
 const agents = [
   { name: "Agent1", avatar: "/agents/1.png" },
@@ -18,6 +20,8 @@ const AgentPage: React.FC = () => {
   // Find the agent's data based on the name from the URL
   const agent = agents.find((agent) => agent.name === name);
 
+  const walletBalance = 150.50; // Example wallet balance
+
   return (
     <div className="text-center max-w-screen-lg mx-auto py-10 space-y-8">
       {/* Progress Card and Chat Side-by-Side */}
@@ -30,22 +34,13 @@ const AgentPage: React.FC = () => {
             rank={44}
             level={12}
             xp={{ current: 429, max: 1337 }}
+            walletBalance={walletBalance} // Pass the wallet balance here
           />
         </div>
 
         {/* Right Side: Chat Box */}
-        <div className="flex-1 bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h2 className="text-white text-lg font-bold mb-2">Chat</h2>
-          <p className="text-gray-300 text-sm">Interact with {name || "the agent"}</p>
-          <div className="mt-4">
-            <textarea
-              className="w-full h-32 p-2 bg-gray-700 rounded-lg text-white placeholder-gray-400"
-              placeholder="Type your message..."
-            ></textarea>
-            <button className="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-400">
-              Send
-            </button>
-          </div>
+        <div className="flex-1">
+          <ChatBox agentName={name || "the agent"} /> {/* Pass agent name as prop */}
         </div>
       </div>
 
@@ -60,7 +55,6 @@ const AgentPage: React.FC = () => {
             <h3 className="text-white font-semibold mb-2">Personality</h3>
             <div className="flex gap-4">
               <div className="bg-blue-600 p-2 rounded-lg text-white flex-1">
-                {/* Example of Personality item */}
                 Personality Item 1
               </div>
             </div>
@@ -70,7 +64,6 @@ const AgentPage: React.FC = () => {
           <div className="bg-gray-800 p-4 rounded-lg">
             <h3 className="text-white font-semibold mb-2">Plugins</h3>
             <div className="grid grid-cols-5 gap-4">
-              {/* Example of Plugin items */}
               {[...Array(5)].map((_, index) => (
                 <div key={index} className="bg-green-600 p-2 rounded-lg text-white">
                   Plugin {index + 1}
@@ -83,7 +76,6 @@ const AgentPage: React.FC = () => {
           <div className="bg-gray-800 p-4 rounded-lg">
             <h3 className="text-white font-semibold mb-2">Skills</h3>
             <div className="grid grid-cols-5 gap-4">
-              {/* Example of Skill items */}
               {[...Array(5)].map((_, index) => (
                 <div key={index} className="bg-red-600 p-2 rounded-lg text-white">
                   Skill {index + 1}
@@ -100,7 +92,6 @@ const AgentPage: React.FC = () => {
 
         {/* Unused Equipment Items */}
         <div className="grid grid-cols-3 gap-6">
-          {/* Example of unused items */}
           {[...Array(9)].map((_, index) => (
             <div key={index} className="bg-gray-700 p-4 rounded-lg text-white">
               Unused Item {index + 1}
