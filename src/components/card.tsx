@@ -53,7 +53,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="block w-10 h-10 bg-accent2 hover:bg-accent2 text-white font-bold rounded-md flex items-center justify-center"
+            className="block w-20 h-10 bg-accent2 hover:bg-accent2 text-white font-bold rounded-md flex items-center justify-center"
           >
             Visit
           </a>
