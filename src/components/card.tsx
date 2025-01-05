@@ -44,7 +44,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         {/* Right section: Share Price and Visit Button */}
         <div className="ml-4 flex-shrink-0 flex items-center space-x-4">
           {/* Share Price */}
-          <div className="text-sm text-gray-300 font-bold">
+          <div className="text-xl text-gray-300 font-bold">
             Share Price: <span className="text-white">${sharePrice}</span>
           </div>
 
