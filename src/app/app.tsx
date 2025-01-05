@@ -28,10 +28,10 @@ function App() {
               <>
                 {/* Title and description */}
                 <section className="text-center max-w-screen-lg mx-auto py-2">
-                  <h1 className="text-5xl font-bold text-white mt-14">
+                  <h1 className="text-5xl font-bold text-accent2 mt-14">
                     ISAI Agent Studio Coming Soon
                   </h1>
-                  <p className="text-3x1 text-gray-300 mt-1 -mb-14">
+                  <p className="text-3xl text-gray-300 mt-1 -mb-14">
                     Craft, Evolve, and Interact with User-made Intelligent NFTs.
                   </p>
                 </section>
@@ -48,7 +48,7 @@ function App() {
                       <Card
                         title={props.name}
                         description={props.description}
-                        pfp={props.pfp} // Pass image path to Card component
+                        pfp={props.pfp}  // Pass image path to Card component
                         href={`/agent/${props.name}`} // Link to personal page
                         sharePrice={props.sharePrice} // Pass sharePrice here
                       />

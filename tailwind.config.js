@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent1: '#01fcfc', // First accent color
-        accent2: '#fd01f5', // Second accent color
+        accent1: '#01fcfc', // Accent color 1 (Cyan)
+        accent2: '#fd01f5', // Accent color 2 (Pink)
       },
     },
   },

@@ -37,7 +37,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
 
         {/* Middle section: Title and Description */}
         <div className="flex flex-col flex-1">
-          <h3 className="text-xl font-bold text-blue-500">{title}</h3>
+          <h3 className="text-xl font-bold text-accent1">{title}</h3>
           <p className="mt-1 text-sm text-gray-300">{description}</p>
         </div>
 
@@ -53,7 +53,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="block w-10 h-10 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-md flex items-center justify-center"
+            className="block w-10 h-10 bg-accent2 hover:bg-accent2 text-white font-bold rounded-md flex items-center justify-center"
           >
             Visit
           </a>
