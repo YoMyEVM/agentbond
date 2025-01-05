@@ -20,14 +20,14 @@ const SwiperComponent: React.FC = () => {
         modules={[EffectCoverflow, Keyboard, Mousewheel, Pagination]}
         effect="coverflow"
         grabCursor
-        centeredSlides
+        centeredSlides={true} // Ensures the current slide is always centered
         slidesPerView="auto"
         coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 50, // Lower this to reduce out-of-focus effect
-          modifier: 1, // Adjust this to modify the effect strength
-          slideShadows: false, // Disabling slide shadows to prevent unwanted effects
+          rotate: 15, // Slight rotation for a 3D effect
+          stretch: 0, // Keep slides in their original size (no stretching)
+          depth: 200, // Adjusted depth to give the middle slide prominence
+          modifier: 1.5, // Strength of the 3D effect
+          slideShadows: true, // Optional, enables shadows
         }}
         keyboard={{ enabled: true }}
         mousewheel={{ thresholdDelta: 70 }}
@@ -36,7 +36,6 @@ const SwiperComponent: React.FC = () => {
         pagination={{ clickable: true }}
         className="swiper"
       >
-
         {agents.map((agent, index) => (
           <SwiperSlide key={index} className="swiper-slide">
             <div className="text-center">
@@ -45,11 +44,8 @@ const SwiperComponent: React.FC = () => {
                 alt={`${agent.name} profile`}
                 className="w-full h-auto rounded-md"
               />
-              {/* Name with black background and white text */}
               <span className="agent-name">{agent.name}</span>
-              {/* Description with cyan accent color */}
               <h2 className="text-accent1 mt-2">{agent.description}</h2>
-              {/* Location with pink accent color */}
               <p className="text-accent2 mt-2">{agent.location}</p>
             </div>
           </SwiperSlide>
