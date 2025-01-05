@@ -2,8 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ProgressCard from "../components/ProgressCard";
 import EquipmentStore from "../components/EquipmentStore";
-import ChatBox from "../components/ChatBox"; // Import ChatBox component
-import BuySellShares from "components/BuySellShares";
+import ChatBox from "../components/ChatBox";
+import BuySellShares from "../components/BuySellShares";
+import PersonalitySection from "../components/PersonalitiesSection"; // Corrected import
+import PluginsSection from "../components/PluginsSection";
+import SkillsSection from "components/SkillSection";
+import InventorySection from "components/InventrorySection";
 
 const agents = [
   { name: "Agent1", avatar: "/agents/1.png" },
@@ -16,107 +20,67 @@ const agents = [
 
 const handleBuy = () => {
   console.log("Buy button clicked");
-  // Add logic to handle buying shares
 };
 
 const handleSell = () => {
   console.log("Sell button clicked");
-  // Add logic to handle selling shares
 };
 
-
 const AgentPage: React.FC = () => {
-  const { name } = useParams<{ name: string }>(); // Get agent's name from the URL
-
-  // Find the agent's data based on the name from the URL
+  const { name } = useParams<{ name: string }>();
   const agent = agents.find((agent) => agent.name === name);
 
-  const walletBalance = 150.50; // Example wallet balance
+  const walletBalance = 150.50;
 
+  const equipmentItems = ["Personality Item 1", "Personality Item 2"];
+  const pluginsItems = ["Plugin 1", "Plugin 2", "Plugin 3"];
+  const skillsItems = ["Skill 1", "Skill 2", "Skill 3"];
+  const inventoryItems = [
+    "Unused Item 1", 
+    "Unused Item 2", 
+    "Unused Item 3", 
+    "Unused Item 4", 
+    "Unused Item 5", 
+    "Unused Item 6", 
+    "Unused Item 7", 
+    "Unused Item 8", 
+    "Unused Item 9"
+  ];
+  
   return (
     <div className="max-w-screen-lg mx-auto py-10 space-y-8">
-      {/* Progress Card: Short and wide at the top */}
-      <div className="bg-blue-900 p-6 rounded-lg shadow-lg text-center">
-        <ProgressCard
-          avatar={agent?.avatar || "/default-avatar.png"} // Fallback to a default avatar if not found
-          username={name || "Agent"}
-          rank={44}
-          level={12}
-          xp={{ current: 429, max: 1337 }}
-          walletBalance={walletBalance} // Pass the wallet balance here
-        />
-      </div>
+      {/* Progress Card */}
+      <ProgressCard
+        avatar={agent?.avatar || "/default-avatar.png"}
+        username={name || "Agent"}
+        rank={44}
+        level={12}
+        xp={{ current: 429, max: 1337 }}
+        walletBalance={walletBalance}
+      />
 
-      {/* Buy & Sell Shares Component */}
-      <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-        <BuySellShares onBuy={handleBuy} onSell={handleSell} />
-      </div>
+      {/* Buy & Sell Shares Section */}
+      <BuySellShares onBuy={handleBuy} onSell={handleSell} />
 
-      {/* Chat Box: Full width with conversation above the input */}
-      <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <ChatBox agentName={name || "the agent"} />
-      </div>
+      {/* Chat Box */}
+      <ChatBox agentName={name || "the agent"} />
 
-      {/* Equipment Section */}
-      <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-        <h2 className="text-white text-xl font-bold mb-4">Equipment</h2>
+      {/* Personality Section */}
+      <PersonalitySection
+        items={equipmentItems}
+      />
 
-        {/* Left Column */}
-        <div className="grid grid-cols-1 gap-6">
-          {/* Personality */}
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-white font-semibold mb-2">Personality</h3>
-            <div className="flex gap-4">
-              <div className="bg-blue-600 p-2 rounded-lg text-white flex-1">
-                Personality Item 1
-              </div>
-            </div>
-          </div>
+      {/* Plugins Section */}
+      <PluginsSection items={pluginsItems} />
 
-          {/* Plugins */}
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-white font-semibold mb-2">Plugins</h3>
-            <div className="grid grid-cols-5 gap-4">
-              {[...Array(5)].map((_, index) => (
-                <div key={index} className="bg-green-600 p-2 rounded-lg text-white">
-                  Plugin {index + 1}
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Skills Section */}
+      <SkillsSection items={skillsItems} />
 
-          {/* Skills */}
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-white font-semibold mb-2">Skills</h3>
-            <div className="grid grid-cols-5 gap-4">
-              {[...Array(5)].map((_, index) => (
-                <div key={index} className="bg-red-600 p-2 rounded-lg text-white">
-                  Skill {index + 1}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Unused Inventory Section */}
-      <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-        <h2 className="text-white text-xl font-bold mb-4">Unused Inventory</h2>
-
-        {/* Unused Equipment Items */}
-        <div className="grid grid-cols-3 gap-6">
-          {[...Array(9)].map((_, index) => (
-            <div key={index} className="bg-gray-700 p-4 rounded-lg text-white">
-              Unused Item {index + 1}
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Inventory Section */}
+      <InventorySection items={inventoryItems} />
 
       {/* Shop Section */}
-      <div>
-        <EquipmentStore />
-      </div>
+      <EquipmentStore />
     </div>
   );
 };

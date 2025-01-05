@@ -7,25 +7,25 @@ interface BuySellSharesProps {
 
 const BuySellShares: React.FC<BuySellSharesProps> = ({ onBuy, onSell }) => {
   return (
-    <div className="bg-gray-900 p-6 rounded-lg shadow-lg text-white relative">
+    <div className="bg-black p-6 rounded-lg shadow-lg text-white relative">
       {/* Title */}
-      <h2 className="text-xl font-bold mb-4">Buy & Sell Shares</h2>
+      <h2 className="text-xl font-bold mb-4 text-[#fd01f5]">Buy & Sell Shares</h2>
 
       {/* Main Content */}
-      <div className="text-gray-400 mb-12">
+      <div className="text-[#01fcfc] mb-12">
         <p>Choose to buy or sell shares of this agent in the marketplace.</p>
       </div>
 
       {/* Buttons at the Bottom */}
       <div className="absolute bottom-4 left-4 right-4 flex justify-between">
         <button
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg w-1/2 mr-2"
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg w-1/2 mr-2 transition duration-200 ease-in-out transform hover:scale-105"
           onClick={onBuy}
         >
           Buy
         </button>
         <button
-          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-1/2 ml-2"
+          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg w-1/2 ml-2 transition duration-200 ease-in-out transform hover:scale-105"
           onClick={onSell}
         >
           Sell

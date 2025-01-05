@@ -35,22 +35,22 @@ const EquipmentStore: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-      <h3 className="text-white text-lg font-bold mb-4">Shop</h3>
+    <div className="bg-black p-6 rounded-lg shadow-lg">
+
 
       {/* Personality Section */}
-      <h4 className="text-white text-lg font-bold mb-2">Personality</h4>
+      <h4 className="text-[#fd01f5] text-lg font-bold mb-2">Personality</h4>
       <div className="grid grid-cols-3 gap-4 mb-6">
         {personalityItems.map((item) => (
           <div
             key={item.id}
-            className="bg-gray-800 p-4 rounded-lg text-center text-white"
+            className="bg-[#333333] p-4 rounded-lg text-center text-white"
           >
             <div>{item.name}</div>
             <div>{`Price: ${item.price} Coins`}</div>
             <button
               onClick={() => buyItem(item)}
-              className="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-400"
+              className="mt-2 bg-[#fd01f5] text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc]"
             >
               Buy
             </button>
@@ -59,18 +59,18 @@ const EquipmentStore: React.FC = () => {
       </div>
 
       {/* Skills Section */}
-      <h4 className="text-white text-lg font-bold mb-2">Skills</h4>
+      <h4 className="text-[#fd01f5] text-lg font-bold mb-2">Skills</h4>
       <div className="grid grid-cols-3 gap-4 mb-6">
         {skillItems.map((item) => (
           <div
             key={item.id}
-            className="bg-gray-800 p-4 rounded-lg text-center text-white"
+            className="bg-[#333333] p-4 rounded-lg text-center text-white"
           >
             <div>{item.name}</div>
             <div>{`Price: ${item.price} Coins`}</div>
             <button
               onClick={() => buyItem(item)}
-              className="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-400"
+              className="mt-2 bg-[#fd01f5] text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc]"
             >
               Buy
             </button>
@@ -79,18 +79,18 @@ const EquipmentStore: React.FC = () => {
       </div>
 
       {/* Plugins Section */}
-      <h4 className="text-white text-lg font-bold mb-2">Plugins</h4>
+      <h4 className="text-[#fd01f5] text-lg font-bold mb-2">Plugins</h4>
       <div className="grid grid-cols-3 gap-4">
         {pluginItems.map((item) => (
           <div
             key={item.id}
-            className="bg-gray-800 p-4 rounded-lg text-center text-white"
+            className="bg-[#333333] p-4 rounded-lg text-center text-white"
           >
             <div>{item.name}</div>
             <div>{`Price: ${item.price} Coins`}</div>
             <button
               onClick={() => buyItem(item)}
-              className="mt-2 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-400"
+              className="mt-2 bg-[#fd01f5] text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc]"
             >
               Buy
             </button>
