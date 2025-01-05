@@ -1,4 +1,3 @@
-// src/pages/AgentPage.tsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import ProgressCard from "../components/ProgressCard";
@@ -23,25 +22,22 @@ const AgentPage: React.FC = () => {
   const walletBalance = 150.50; // Example wallet balance
 
   return (
-    <div className="text-center max-w-screen-lg mx-auto py-10 space-y-8">
-      {/* Progress Card and Chat Side-by-Side */}
-      <div className="flex flex-col md:flex-row gap-4">
-        {/* Left Side: Progress Card */}
-        <div className="flex-1 bg-blue-900 p-6 rounded-lg shadow-lg">
-          <ProgressCard
-            avatar={agent?.avatar || "/default-avatar.png"} // Fallback to a default avatar if not found
-            username={name || "Agent"}
-            rank={44}
-            level={12}
-            xp={{ current: 429, max: 1337 }}
-            walletBalance={walletBalance} // Pass the wallet balance here
-          />
-        </div>
+    <div className="max-w-screen-lg mx-auto py-10 space-y-8">
+      {/* Progress Card: Short and wide at the top */}
+      <div className="bg-blue-900 p-6 rounded-lg shadow-lg text-center">
+        <ProgressCard
+          avatar={agent?.avatar || "/default-avatar.png"} // Fallback to a default avatar if not found
+          username={name || "Agent"}
+          rank={44}
+          level={12}
+          xp={{ current: 429, max: 1337 }}
+          walletBalance={walletBalance} // Pass the wallet balance here
+        />
+      </div>
 
-        {/* Right Side: Chat Box */}
-        <div className="flex-1">
-          <ChatBox agentName={name || "the agent"} /> {/* Pass agent name as prop */}
-        </div>
+      {/* Chat Box: Full width with conversation above the input */}
+      <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <ChatBox agentName={name || "the agent"} />
       </div>
 
       {/* Equipment Section */}
@@ -100,7 +96,7 @@ const AgentPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Full Width Grid */}
+      {/* Shop Section */}
       <div>
         <EquipmentStore />
       </div>

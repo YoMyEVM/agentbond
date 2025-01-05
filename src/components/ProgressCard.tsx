@@ -5,7 +5,7 @@ interface ProgressCardProps {
   username: string;
   rank: number;
   level: number;
-  xp: { current: number; max: number }; // Updated to expect an object
+  xp: { current: number; max: number };
   walletBalance: number; // Adding wallet balance as a prop
 }
 
@@ -18,7 +18,7 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
   walletBalance,
 }) => {
   return (
-    <div className="bg-blue-900 p-6 rounded-lg shadow-lg text-center space-y-4">
+    <div className="text-white space-y-4">
       {/* Avatar Section: Make the image larger and center it */}
       <div className="mb-4">
         <img
