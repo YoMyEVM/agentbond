@@ -24,11 +24,10 @@
     border: none;
     margin: 0;
     padding: 20px 0; /* Increase padding for height */
-
   }
 
   main {
-    @apply px-4 min-h-screen sm:px-0 space-y-16 w-full bg-gray-900;
+    @apply px-4 min-h-screen sm:px-0 space-y-16 w-full bg-black; /* Updated background to black */
     background-image: radial-gradient(hsla(0, 0%, 84.3%, 0.25) 1px, transparent 0),
       radial-gradient(hsla(0, 0%, 84.3%, 0.1) 1px, transparent 0);
     background-size: 50px 50px;
@@ -42,7 +41,6 @@
     }
   }
 }
-
 
 .profiles {
   --size: 200px;
@@ -127,4 +125,3 @@
   --name-opacity: 1;
   --bg-blur: var(--bg-blur-hover);
 }
-

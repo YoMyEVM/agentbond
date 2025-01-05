@@ -23,8 +23,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white z-50">
-      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full bg-black text-white z-50">
+      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center"> {/* Reduced padding */}
         {/* Left Section */}
         <div className="flex space-x-6 items-center">
           <a href="/" className="text-xl font-bold text-[#fd01f5]">
