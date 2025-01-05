@@ -5,12 +5,12 @@ import "./SwiperStyles.css";
 import { EffectCoverflow, Keyboard, Mousewheel, Pagination } from "swiper/modules";
 
 const agents = [
-  { name: "Agent1", description: ".", location: "Maui, Hawaii", img: "/agents/1.png" },
-  { name: "Agent2", description: ".", location: "Lanzarote, Spain", img: "/agents/2.png" },
-  { name: "Agent3", description: ".", location: "Paris, France", img: "/agents/3.png" },
-  { name: "Agent4", description: ".", location: "The Yucatan, Mexico", img: "/agents/4.png" },
-  { name: "Agent5", description: ".", location: "Lanzarote, Spain", img: "/agents/5.png" },
-  { name: "Agent6", description: ".", location: "Paris, France", img: "/agents/6.png" },
+  { name: "Agent1", description: ".", location: "BaseChain", img: "/agents/1.png" },
+  { name: "Agent2", description: ".", location: "Abstract", img: "/agents/2.png" },
+  { name: "Agent3", description: ".", location: "ApeChain", img: "/agents/3.png" },
+  { name: "Agent4", description: ".", location: "Optimism", img: "/agents/4.png" },
+  { name: "Agent5", description: ".", location: "Arbitrum", img: "/agents/5.png" },
+  { name: "Agent6", description: ".", location: "Polygon", img: "/agents/6.png" },
 ];
 
 const SwiperComponent: React.FC = () => {
