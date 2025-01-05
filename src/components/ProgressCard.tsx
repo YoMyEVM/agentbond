@@ -34,8 +34,9 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
           </div>
         </div>
         {/* Wallet Balance */}
-        <div className="text-lg font-semibold text-[#fd01f5]">
-          Wallet: ${walletBalance.toFixed(2)} {/* Neon text color for wallet balance */}
+        <div className="text-3xl font-semibold">
+          <span className="text-[#01fcfc]">Wallet Balance:</span>{" "}
+          <span className="text-white">${walletBalance.toFixed(2)}</span>
         </div>
       </div>
 
@@ -57,6 +58,5 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
     </div>
   );
 };
-
 
 export default ProgressCard;
