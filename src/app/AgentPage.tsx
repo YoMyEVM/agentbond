@@ -101,7 +101,7 @@ const AgentPage: React.FC = () => {
         {/* Unused Equipment Items */}
         <div className="grid grid-cols-3 gap-6">
           {/* Example of unused items */}
-          {[...Array(6)].map((_, index) => (
+          {[...Array(9)].map((_, index) => (
             <div key={index} className="bg-gray-700 p-4 rounded-lg text-white">
               Unused Item {index + 1}
             </div>
