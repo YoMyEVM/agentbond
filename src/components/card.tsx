@@ -12,12 +12,13 @@ export interface CardProps
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ title, description, pfp, href, sharePrice, status, ...rest }, ref) => {
-    const glowEffect = status === "online" ? "text-green-500 glow" : "text-red-500 glow"; // Glow effect based on status
+    const glowEffect =
+      status === "online" ? "text-green-500 glow" : "text-red-500 glow"; // Glow effect based on status
 
     return (
       <div
         ref={ref}
-        className="bg-white bg-opacity-5 rounded-md shadow p-4 flex items-center h-full" // No border applied
+        className="bg-white bg-opacity-5 rounded-md shadow p-4 flex items-center h-full border border-accent1" // Thinner border (border instead of border-2)
         {...rest}
       >
         {/* Left section: Profile Picture */}
@@ -42,17 +43,18 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <p className="mt-1 text-sm text-gray-300">{description}</p>
 
           {/* Status indicator with glow effect */}
-          <div
-            className={`mt-2 ${glowEffect} text-lg`} // Apply the glowing text effect
-          >
+          <div className={`mt-2 ${glowEffect} text-lg`}> {/* Apply the glowing text effect */}
             {status === "online" ? "Online" : "Offline"}
           </div>
         </div>
 
         {/* Right section: Share Price and Visit Button */}
         <div className="ml-4 flex-shrink-0 flex items-center space-x-4">
-          <div className="text-xl text-gray-300 font-bold">
-            Share Price: <span className="text-white">${sharePrice}</span>
+          <div className="text-xl text-accent1 font-bold"> {/* "Share Price" in accent1 color */}
+            Share Price:
+          </div>
+          <div className="text-2xl text-white font-bold"> {/* Price text size increased */}
+            ${sharePrice}
           </div>
           <a
             href={href}
@@ -69,4 +71,3 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
 );
 
 export default Card;
-
