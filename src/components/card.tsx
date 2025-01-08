@@ -1,17 +1,18 @@
 import React, { forwardRef, ComponentProps, SVGProps } from "react";
 
-// Update the CardProps interface
 export interface CardProps
   extends Omit<ComponentProps<"div">, "className" | "children"> {
   title: string;
   description: string;
-  pfp: string | React.ComponentType<SVGProps<SVGSVGElement>>; // Accept string or React component
+  pfp: string | React.ComponentType<SVGProps<SVGSVGElement>>;
   href: string;
-  sharePrice: string | number; // Added sharePrice prop
+  sharePrice: string | number;
+  status: "online" | "offline"; // Ensures status is strictly "online" or "offline"
 }
 
+
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, pfp, href, sharePrice, ...rest }, ref) => {
+  ({ title, description, pfp, href, sharePrice, status, ...rest }, ref) => {
     return (
       <div
         ref={ref}
@@ -27,7 +28,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
               className="h-16 w-16 rounded-full object-cover"
             />
           ) : (
-            // Render as React component
             React.createElement(pfp, {
               className: "h-16 w-16 text-blue-500",
               "aria-hidden": true,
@@ -35,20 +35,26 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           )}
         </div>
 
-        {/* Middle section: Title and Description */}
+        {/* Middle section: Title, Description, and Status */}
         <div className="flex flex-col flex-1">
           <h3 className="text-xl font-bold text-accent1">{title}</h3>
           <p className="mt-1 text-sm text-gray-300">{description}</p>
+
+          {/* Status indicator */}
+          <div
+            className={`mt-2 ${
+              status === "online" ? "text-green-500" : "text-gray-500"
+            }`}
+          >
+            {status === "online" ? "Online" : "Offline"}
+          </div>
         </div>
 
         {/* Right section: Share Price and Visit Button */}
         <div className="ml-4 flex-shrink-0 flex items-center space-x-4">
-          {/* Share Price */}
           <div className="text-xl text-gray-300 font-bold">
             Share Price: <span className="text-white">${sharePrice}</span>
           </div>
-
-          {/* Visit Button */}
           <a
             href={href}
             target="_blank"
