@@ -32,7 +32,7 @@ function App() {
                 <section className="text-center max-w-screen-lg mx-auto py-2">
                   <h1 className="text-5xl font-bold text-accent2 mt-14">
                     ISAI Agent Studio<br />
-                    <span className="text-accent1">Coming Soon</span>
+                    <span className="text-accent1 text-3xl">Coming Soon</span> {/* Updated to text-2xl */}
                   </h1>
                   <p className="text-3xl text-gray-300 mt-1 -mb-14">
                     Craft, Evolve, and Interact with User-made Intelligent NFTs.
