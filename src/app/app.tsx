@@ -7,7 +7,7 @@ import Footer from "../components/Footer"; // Adjust the path as needed
 
 // Features array with agent information and share prices
 const features = [
-  { name: "Agent1", description: "sfsd", pfp: "/agents/1.png", sharePrice: 12.34, status: "offline" as "online" }, 
+  { name: "Agent1", description: "ssd", pfp: "/agents/1.png", sharePrice: 12.34, status: "offline" as "online" }, 
   { name: "Agent2", description: "sfdsd", pfp: "/agents/2.png", sharePrice: 45.67, status: "offline" as "offline" },
   { name: "Agent3", description: "sfds", pfp: "/agents/3.png", sharePrice: 89.01, status: "online" as "online" },
   { name: "Agent4", description: "sfsd", pfp: "/agents/4.png", sharePrice: 23.45, status: "offline" as "offline" },
