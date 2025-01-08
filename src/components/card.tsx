@@ -10,13 +10,14 @@ export interface CardProps
   status: "online" | "offline"; // Ensures status is strictly "online" or "offline"
 }
 
-
 const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ title, description, pfp, href, sharePrice, status, ...rest }, ref) => {
+    const glowEffect = status === "online" ? "text-green-500 glow" : "text-red-500 glow"; // Glow effect based on status
+
     return (
       <div
         ref={ref}
-        className="bg-white bg-opacity-5 rounded-md shadow p-4 flex items-center h-full"
+        className="bg-white bg-opacity-5 rounded-md shadow p-4 flex items-center h-full" // No border applied
         {...rest}
       >
         {/* Left section: Profile Picture */}
@@ -40,11 +41,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <h3 className="text-xl font-bold text-accent1">{title}</h3>
           <p className="mt-1 text-sm text-gray-300">{description}</p>
 
-          {/* Status indicator */}
+          {/* Status indicator with glow effect */}
           <div
-            className={`mt-2 ${
-              status === "online" ? "text-green-500" : "text-gray-500"
-            }`}
+            className={`mt-2 ${glowEffect} text-lg`} // Apply the glowing text effect
           >
             {status === "online" ? "Online" : "Offline"}
           </div>
@@ -70,3 +69,4 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
 );
 
 export default Card;
+
