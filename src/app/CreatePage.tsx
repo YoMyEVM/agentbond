@@ -15,11 +15,11 @@ const CreatePage: React.FC = () => {
 
   return (
     <section className="text-center max-w-screen-lg mx-auto py-8">
-      <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">
-        Create and Sell AI Attributes
+      <h1 className="text-4xl font-bold text-[#fd01f5] mt-10">
+        Create & Sell AI, Plugins, and Web3 Skills
       </h1>
-      <p className="text-3xl text-gray-300 mt-4">
-        Craft the unique personality, traits, and abilities of your AI Brain.
+      <p className="text-2xl text-gray-300 mt-4">
+      Build and monetize No Code AI personalities, Web2 plugins, and Web3 skills.
       </p>
 
       {/* Category toggle buttons */}

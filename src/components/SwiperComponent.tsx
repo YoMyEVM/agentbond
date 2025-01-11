@@ -5,12 +5,14 @@ import "./SwiperStyles.css"; // Ensure this is included
 import { EffectCoverflow, Keyboard, Pagination } from "swiper/modules";
 
 const agents = [
-  { name: "Agent1", description: ".sfdj", location: "BaseChain", img: "/agents/1.png" },
-  { name: "Agent2", description: "sfsf.", location: "Abstract", img: "/agents/2.png" },
-  { name: "Agent3", description: "fsfsa.", location: "ApeChain", img: "/agents/3.png" },
-  { name: "Agent4", description: ".sfsfa", location: "Optimism", img: "/agents/4.png" },
-  { name: "Agent5", description: ".sfaf", location: "Arbitrum", img: "/agents/5.png" },
-  { name: "Agent6", description: ".afad", location: "Polygon", img: "/agents/6.png" },
+  { name: "Agent1", description: ".", location: "BaseChain", img: "/agents/1.png" },
+  { name: "Agent2", description: ".", location: "Abstract", img: "/agents/2.png" },
+  { name: "Agent3", description: ".", location: "ApeChain", img: "/agents/3.png" },
+  { name: "Agent4", description: ".", location: "Optimism", img: "/agents/4.png" },
+  { name: "Agent5", description: ".", location: "Arbitrum", img: "/agents/5.png" },
+  { name: "Agent6", description: ".", location: "Polygon", img: "/agents/6.png" },
+  { name: "Agent7", description: ".", location: "UniChain", img: "/agents/5.png" },
+  { name: "Agent8", description: ".", location: "BeraChain", img: "/agents/6.png" },
 ];
 
 const SwiperComponent: React.FC = () => {

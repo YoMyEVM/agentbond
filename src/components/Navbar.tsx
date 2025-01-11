@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 // Navbar.tsx
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const navigate = useNavigate();
+
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -24,9 +24,7 @@ const Navbar: React.FC = () => {
     setAccount(null);
   };
 
-  const handleScrollToAgents = () => {
-    navigate("/#agents");
-  };
+
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
@@ -36,12 +34,7 @@ const Navbar: React.FC = () => {
           <a href="/" className="text-xl font-bold text-[#fd01f5]">
             Studio
           </a>
-          <button
-            onClick={handleScrollToAgents}
-            className="hover:text-[#fd01f5] transition"
-          >
-            ISAI Agents
-          </button>
+
           <a href="/create" className="hover:text-[#fd01f5] transition">
             Create
           </a>
@@ -57,6 +50,9 @@ const Navbar: React.FC = () => {
 
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
+          </a>
+          <a href="/bond" className="hover:text-[#fd01f5] transition">
+            Bond
           </a>
         </div>
 
