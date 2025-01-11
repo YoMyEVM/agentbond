@@ -15,7 +15,7 @@ const CreatePage: React.FC = () => {
 
   return (
     <section className="text-center max-w-screen-lg mx-auto py-8">
-      <h1 className="text-5xl font-bold text-[#fd01f5] mt-14">
+      <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">
         Create and Sell AI Attributes
       </h1>
       <p className="text-3xl text-gray-300 mt-4">
