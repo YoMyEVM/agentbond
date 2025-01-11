@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 // Navbar.tsx
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -23,8 +23,6 @@ const Navbar: React.FC = () => {
   const disconnectWallet = () => {
     setAccount(null);
   };
-
-
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
@@ -57,7 +55,17 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Right Section */}
-        <div>
+        <div className="flex space-x-4">
+          {/* Get Gen Credits Button */}
+          <Link to="/buy-gen-credits">
+            <button
+              className="text-accent1 font-bold px-4 py-2 border border-accent2 rounded hover:bg-[#fd01f5] hover:text-black transition"
+            >
+              Get Gen Credits
+            </button>
+          </Link>
+
+          {/* Wallet Connection Button */}
           {account ? (
             <button
               onClick={disconnectWallet}

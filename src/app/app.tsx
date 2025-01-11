@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CreatePage from "./CreatePage";
 import AgentPage from "./AgentPage";
+import BuyGenCreditsPage from "./BuyGenCreditsPage"; // Correct import for BuyGenCreditsPage
 
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
@@ -11,12 +12,9 @@ import PortfolioPage from "./PortfolioPage";
 import ManagePage from "./ManagePage";
 import BondPage from "./BondPage";
 
-
-
 function App() {
   return (
     <Router>
-      
       <main className="pt-4">
         <Navbar />
         <Routes>
@@ -39,7 +37,6 @@ function App() {
                 <section className="mt-0">
                   <SwiperComponent />
                 </section>
-
               </>
             }
           />
@@ -61,6 +58,10 @@ function App() {
 
           {/* Bond Page */}
           <Route path="/bond" element={<BondPage />} />
+
+          {/* Buy Gen Credits Page Route */}
+          <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} /> {/* Ensure this route points to the BuyGenCreditsPage component */}
+
         </Routes>
       </main>
       <Footer />
