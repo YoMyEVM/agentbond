@@ -48,8 +48,8 @@ const Navbar: React.FC = () => {
           <a href="/shop" className="hover:text-[#fd01f5] transition">
             Shop
           </a>
-          <a href="/equip" className="hover:text-[#fd01f5] transition">
-            Equip
+          <a href="/manage" className="hover:text-[#fd01f5] transition">
+            Manage
           </a>
           <a href="/portfolio" className="hover:text-[#fd01f5] transition">
             Portfolio

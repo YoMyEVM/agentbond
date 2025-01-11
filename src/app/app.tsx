@@ -7,8 +7,8 @@ import AgentPage from "./AgentPage";
 import Card from "components/card";
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
-import EquipPage from "./EquipPage";
 import PortfolioPage from "./PortfolioPage";
+import ManagePage from "./ManagePage";
 
 // Features array with agent information and share prices
 const features = [
@@ -97,8 +97,8 @@ function App() {
           {/* Shop Page Route */}
           <Route path="/shop" element={<ShopPage />} />
 
-          {/* Equip Page Route */}
-          <Route path="/equip" element={<EquipPage />} />
+          {/* Manage Page Route */}
+          <Route path="/manage" element={<ManagePage />} />
 
           {/* Portfolio Page Route */}
           <Route path="/portfolio" element={<PortfolioPage />} />

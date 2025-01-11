@@ -1,7 +1,7 @@
 // EquipPage.tsx
 import React, { useState } from "react";
 
-const EquipPage: React.FC = () => {
+const ManagePage: React.FC = () => {
   // State to track the selected option (ISAI AGENT or BYO-NFT)
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -13,7 +13,7 @@ const EquipPage: React.FC = () => {
   return (
     <section className="text-center max-w-screen-lg mx-auto py-8">
       <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">
-        Smart NFT Brains
+        Manage your Smart NFT Brain
       </h1>
       <p className="text-3xl text-gray-300 mt-4">
         Turn any NFT into a Smart NFT by Equipping an ISAI Brain
@@ -57,4 +57,4 @@ const EquipPage: React.FC = () => {
   );
 };
 
-export default EquipPage;
+export default ManagePage;
