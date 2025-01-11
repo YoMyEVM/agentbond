@@ -5,6 +5,9 @@ import { Link } from "react-router-dom"; // Import Link for navigation
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
 
+// @ts-ignore
+const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
+
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
       try {
@@ -55,7 +58,13 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex space-x-4">
+        <div className="flex items-center space-x-4">
+          {/* Display Mock Gen Credit Balance */}
+          <div className="text-white font-bold">
+            <span>GenCredit Balance: </span>
+            <span className="text-[#01fcfc]">{genCreditBalance}</span> 
+          </div>
+
           {/* Get Gen Credits Button */}
           <Link to="/buy-gen-credits">
             <button
