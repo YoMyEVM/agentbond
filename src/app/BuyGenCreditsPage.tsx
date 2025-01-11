@@ -34,6 +34,13 @@ const BuyGenCreditsPage: React.FC = () => {
     setHasGasToken(answer);
   };
 
+  // Reset all states to start over
+  const startOver = () => {
+    setHasWallet(null);
+    setPaymentMethod(null);
+    setHasGasToken(null);
+  };
+
   return (
     <section className="max-w-screen-lg mx-auto py-8 bg-black text-white">
       <h1 className="text-4xl font-bold text-[#fd01f5] text-center">
@@ -100,7 +107,7 @@ const BuyGenCreditsPage: React.FC = () => {
       {/* Step 4: Show appropriate payment option */}
       {paymentMethod === "crypto" && <BuyWithCrypto />} {/* Render Crypto Buy Button */}
 
-      {paymentMethod === "card" && hasGasToken === "yes" && (
+      {paymentMethod === "card" && hasGasToken === "no" && (
         <div className="flex justify-center items-center w-full mt-6">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
@@ -110,7 +117,7 @@ const BuyGenCreditsPage: React.FC = () => {
         </div>
       )}
 
-      {paymentMethod === "card" && hasGasToken === "no" && (
+      {paymentMethod === "card" && hasGasToken === "yes" && (
         <div className="flex justify-center items-center w-full mt-6">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
@@ -119,6 +126,16 @@ const BuyGenCreditsPage: React.FC = () => {
           ></stripe-buy-button>
         </div>
       )}
+
+      {/* Fixed "Start Over" button at the bottom */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+        <button
+          onClick={startOver}
+          className="bg-[#fd01f5] text-white mb-20 font-bold px-4 py-2 rounded-full"
+        >
+          Start Over
+        </button>
+      </div>
     </section>
   );
 };
