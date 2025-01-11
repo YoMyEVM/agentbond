@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CommunityChat from "./CommunityChat"; // Import the CommunityChat component
+import AgentVoting from "./AgentVoting"; // Import the AgentVoting component
 
 const CommunitySection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("chat");
@@ -27,14 +29,10 @@ const CommunitySection: React.FC = () => {
         {/* Tab Content */}
         <div className="mt-4">
           {activeTab === "chat" && (
-            <div className="text-gray-400">
-              <p>Placeholder for Chat section. Users can interact here.</p>
-            </div>
+            <CommunityChat communityName="ISAI" /> // Use the CommunityChat component here
           )}
           {activeTab === "voting" && (
-            <div className="text-gray-400">
-              <p>Placeholder for Voting section. Users can vote on proposals here.</p>
-            </div>
+            <AgentVoting /> // Add the AgentVoting component here
           )}
         </div>
       </div>
