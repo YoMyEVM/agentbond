@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// Navbar.tsx
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const connectWallet = async () => {
-    if (window.ethereum && typeof window.ethereum.request === 'function') {
+    if (window.ethereum && typeof window.ethereum.request === "function") {
       try {
         const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts',
+          method: "eth_requestAccounts",
         });
         setAccount(accounts[0]);
       } catch (err) {
-        console.error('Error connecting wallet:', err);
+        console.error("Error connecting wallet:", err);
       }
     } else {
-      alert('MetaMask is not installed or Ethereum provider is unavailable.');
+      alert("MetaMask is not installed or Ethereum provider is unavailable.");
     }
   };
 
   const disconnectWallet = () => {
     setAccount(null);
+  };
+
+  const handleScrollToAgents = () => {
+    navigate("/#agents");
   };
 
   return (
@@ -28,8 +34,27 @@ const Navbar: React.FC = () => {
         {/* Left Section */}
         <div className="flex space-x-6 items-center">
           <a href="/" className="text-xl font-bold text-[#fd01f5]">
-            ISAI
+            Studio
           </a>
+          <button
+            onClick={handleScrollToAgents}
+            className="hover:text-[#fd01f5] transition"
+          >
+            ISAI Agents
+          </button>
+          <a href="/create" className="hover:text-[#fd01f5] transition">
+            Create
+          </a>
+          <a href="/shop" className="hover:text-[#fd01f5] transition">
+            Shop
+          </a>
+          <a href="/manage" className="hover:text-[#fd01f5] transition">
+            Manage
+          </a>
+          <a href="/portfolio" className="hover:text-[#fd01f5] transition">
+            Portfolio
+          </a>
+
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
           </a>
