@@ -1,16 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import CrashCourse from "./CrashCourse";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CreatePage from "./CreatePage";
 import AgentPage from "./AgentPage";
 import BuyGenCreditsPage from "./BuyGenCreditsPage"; // Correct import for BuyGenCreditsPage
+import FAQSection from "./FAQSection";
 
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
 import PortfolioPage from "./PortfolioPage";
 import ManagePage from "./ManagePage";
 import BondPage from "./BondPage";
+// In your main entry file (index.tsx or App.tsx)
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 function App() {
   return (
@@ -36,6 +41,11 @@ function App() {
                 {/* Swiper Component */}
                 <section className="mt-0">
                   <SwiperComponent />
+                  <CrashCourse />
+
+                </section>
+                <section className="mt-0">
+                  <FAQSection />
                 </section>
               </>
             }

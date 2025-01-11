@@ -48,13 +48,14 @@ const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
           <a href="/portfolio" className="hover:text-[#fd01f5] transition">
             Portfolio
           </a>
+          <a href="/bond" className="hover:text-[#fd01f5] transition">
+            Bond
+          </a>
 
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
           </a>
-          <a href="/bond" className="hover:text-[#fd01f5] transition">
-            Bond
-          </a>
+
         </div>
 
         {/* Right Section */}

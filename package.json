@@ -44,6 +44,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "^7.1.1",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
     "swiper": "^11.1.15"
   },
   "devDependencies": {
@@ -52,6 +54,7 @@
     "@tailwindcss/forms": "0.5.9",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
+    "@types/react-slick": "^0.23.13",
     "@types/swiper": "^5.4.3",
     "@vitejs/plugin-react": "4.3.3",
     "autoprefixer": "10.4.20",
