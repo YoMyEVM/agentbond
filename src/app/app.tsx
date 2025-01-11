@@ -2,10 +2,13 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from "react-route
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import CreateCharacter from "./CreateCharacter";
+import CreatePage from "./CreatePage";
 import AgentPage from "./AgentPage";
 import Card from "components/card";
 import SwiperComponent from "components/SwiperComponent";
+import ShopPage from "./ShopPage"; // Import the ShopPage component
+import EquipPage from "./EquipPage";
+
 
 // Features array with agent information and share prices
 const features = [
@@ -82,7 +85,13 @@ function App() {
           <Route path="/agent/:name" element={<AgentPage />} />
 
           {/* Create Character Page */}
-          <Route path="/create-character" element={<CreateCharacter />} />
+          <Route path="/create" element={<CreatePage />} />
+
+          {/* Shop Page Route */}
+          <Route path="/shop" element={<ShopPage />} /> {/* Add Shop route */}
+
+          {/* Shop Page Route */}
+          <Route path="/equip" element={<EquipPage />} /> {/* Add Equip route */}
         </Routes>
       </main>
       <Footer />

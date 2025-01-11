@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+// Navbar.tsx
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -42,8 +42,14 @@ const Navbar: React.FC = () => {
           >
             Agents
           </button>
-          <a href="/create-character" className="hover:text-[#fd01f5] transition">
-            Create Character
+          <a href="/create" className="hover:text-[#fd01f5] transition">
+            Create
+          </a>
+          <a href="/shop" className="hover:text-[#fd01f5] transition">
+            Shop
+          </a>
+          <a href="/equip" className="hover:text-[#fd01f5] transition">
+            Equip
           </a>
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
