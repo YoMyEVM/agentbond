@@ -1,8 +1,9 @@
+// CreatePage.tsx
 import React, { useState } from "react";
 import CreatePersonality from "components/CreatePersonality";
 import CreatePlugin from "components/CreatePlugin";
 import CreateSkill from "components/CreateSkill";
-import CreateAdvanced from "components/CreateAdvanced"; // Import CreateAdvanced
+import CreateComplex from "components/CreateComplex"; // Import CreateComplex
 
 const CreatePage: React.FC = () => {
   // State to track the active category
@@ -32,7 +33,7 @@ const CreatePage: React.FC = () => {
               : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create personality
+          Create Personality
         </button>
         <button
           onClick={() => handleCategoryChange("plugin")}
@@ -40,7 +41,7 @@ const CreatePage: React.FC = () => {
             activeCategory === "plugin" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create Web2 plugin
+          Create Web2 Plugin
         </button>
         <button
           onClick={() => handleCategoryChange("skill")}
@@ -48,15 +49,15 @@ const CreatePage: React.FC = () => {
             activeCategory === "skill" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create Web3 skill
+          Create Web3 Skill
         </button>
         <button
-          onClick={() => handleCategoryChange("advanced")}
+          onClick={() => handleCategoryChange("complex")}
           className={`px-6 py-2 mx-2 text-lg rounded ${
-            activeCategory === "advanced" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
+            activeCategory === "complex" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create advanced
+          Create Complex
         </button>
       </div>
 
@@ -64,7 +65,7 @@ const CreatePage: React.FC = () => {
       {activeCategory === "personality" && <CreatePersonality />}
       {activeCategory === "plugin" && <CreatePlugin />}
       {activeCategory === "skill" && <CreateSkill />}
-      {activeCategory === "advanced" && <CreateAdvanced />} {/* New Advanced Category */}
+      {activeCategory === "complex" && <CreateComplex />} {/* This will render the CreateComplex component */}
     </section>
   );
 };

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PersonalityItems from "components/PersonalityItems";
 import PluginItems from "components/PluginItems";
 import SkillItems from "../components/SkillItems";
+import ComplexItems from "components/ComplexItems"; // Import ComplexItems
 
 const ShopPage: React.FC = () => {
   // State to track the active category
@@ -17,7 +18,7 @@ const ShopPage: React.FC = () => {
     <section className="text-center max-w-screen-lg mx-auto py-8">
       <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">Shop</h1>
       <p className="text-3xl text-gray-300 mt-4">
-        Explore and buy amazing items here!
+        Explore and purchase upgrades for your AI Agent.
       </p>
 
       {/* Category toggle buttons */}
@@ -48,12 +49,21 @@ const ShopPage: React.FC = () => {
         >
           Web3 Skills
         </button>
+        <button
+          onClick={() => handleCategoryChange("complex")}
+          className={`px-6 py-2 mx-2 text-lg rounded ${
+            activeCategory === "complex" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
+          }`}
+        >
+          Complex
+        </button>
       </div>
 
       {/* Conditionally render components based on active category */}
       {activeCategory === "personality" && <PersonalityItems />}
       {activeCategory === "plugin" && <PluginItems />}
       {activeCategory === "skill" && <SkillItems />}
+      {activeCategory === "complex" && <ComplexItems />} {/* Complex Category */}
     </section>
   );
 };
