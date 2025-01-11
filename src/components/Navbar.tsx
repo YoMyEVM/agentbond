@@ -4,17 +4,17 @@ const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
 
   const connectWallet = async () => {
-    if (window.ethereum && typeof window.ethereum.request === 'function') {
+    if (window.ethereum && typeof window.ethereum.request === "function") {
       try {
         const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts',
+          method: "eth_requestAccounts",
         });
         setAccount(accounts[0]);
       } catch (err) {
-        console.error('Error connecting wallet:', err);
+        console.error("Error connecting wallet:", err);
       }
     } else {
-      alert('MetaMask is not installed or Ethereum provider is unavailable.');
+      alert("MetaMask is not installed or Ethereum provider is unavailable.");
     }
   };
 
@@ -28,10 +28,13 @@ const Navbar: React.FC = () => {
         {/* Left Section */}
         <div className="flex space-x-6 items-center">
           <a href="/" className="text-xl font-bold text-[#fd01f5]">
-            ISAI
+            ISAI Studio
           </a>
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
+          </a>
+          <a href="/create-character" className="hover:text-[#fd01f5] transition">
+            Create Character {/* New Link */}
           </a>
         </div>
 

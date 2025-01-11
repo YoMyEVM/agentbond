@@ -1,21 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import CreateCharacter from "./CreateCharacter";
+import AgentPage from "./AgentPage";
 import Card from "components/card";
 import SwiperComponent from "components/SwiperComponent";
-import Navbar from "../components/Navbar";
-import AgentPage from "./AgentPage"; // Personal page for each agent
-import Footer from "../components/Footer"; // Adjust the path as needed
 
 // Features array with agent information and share prices
 const features = [
-  { name: "Agent1", description: "ssd", pfp: "/agents/1.png", sharePrice: 12.34, status: "offline" as "online" }, 
+  { name: "Agent1", description: "ssd", pfp: "/agents/1.png", sharePrice: 12.34, status: "offline" as "online" },
   { name: "Agent2", description: "sfdsd", pfp: "/agents/2.png", sharePrice: 45.67, status: "offline" as "offline" },
   { name: "Agent3", description: "sfds", pfp: "/agents/3.png", sharePrice: 89.01, status: "online" as "online" },
   { name: "Agent4", description: "sfsd", pfp: "/agents/4.png", sharePrice: 23.45, status: "offline" as "offline" },
   { name: "Agent5", description: "dsfsd", pfp: "/agents/5.png", sharePrice: 67.89, status: "online" as "online" },
   { name: "Agent6", description: "sdfss.", pfp: "/agents/6.png", sharePrice: 34.56, status: "online" as "offline" },
 ];
-
-
 
 function App() {
   return (
@@ -28,11 +27,10 @@ function App() {
             path="/"
             element={
               <>
-                {/* Title and description */}
                 <section className="text-center max-w-screen-lg mx-auto py-2">
                   <h1 className="text-5xl font-bold text-accent2 mt-14">
                     ISAI Agent Studio<br />
-                    <span className="text-accent1 text-3xl">Coming Soon</span> {/* Updated to text-2xl */}
+                    <span className="text-accent1 text-3xl">Coming Soon</span>
                   </h1>
                   <p className="text-3xl text-gray-300 mt-1 -mb-14">
                     Craft, Evolve, and Interact with User-made Intelligent NFTs.
@@ -54,7 +52,7 @@ function App() {
                         pfp={props.pfp}
                         href={`/agent/${props.name}`}
                         sharePrice={props.sharePrice}
-                        status={props.status} // Pass the status here
+                        status={props.status}
                       />
                     </div>
                   ))}
@@ -65,6 +63,9 @@ function App() {
 
           {/* Dynamic Agent Page */}
           <Route path="/agent/:name" element={<AgentPage />} />
+
+          {/* Create Character Page */}
+          <Route path="/create-character" element={<CreateCharacter />} />
         </Routes>
       </main>
       <Footer />
