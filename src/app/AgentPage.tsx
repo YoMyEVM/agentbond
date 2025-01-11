@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ProgressCard from "../components/ProgressCard";
-import EquipmentStore from "../components/EquipmentStore";
 import ChatBox from "../components/ChatBox";
 import BuySellShares from "../components/BuySellShares";
 import PersonalitySection from "../components/PersonalitiesSection"; // Corrected import
@@ -80,11 +79,6 @@ const AgentPage: React.FC = () => {
       {/* Inventory Section */}
       <InventorySection items={inventoryItems} />
 
-      {/* Shop Title */}
-      <h2 className="text-[#01fcfc] text-center text-2xl font-bold">Shop</h2> {/* Cyan centered title */}
-
-      {/* Shop Section */}
-      <EquipmentStore />
     </div>
   );
 };

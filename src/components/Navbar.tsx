@@ -34,13 +34,13 @@ const Navbar: React.FC = () => {
         {/* Left Section */}
         <div className="flex space-x-6 items-center">
           <a href="/" className="text-xl font-bold text-[#fd01f5]">
-            ISAI Studio
+            Studio
           </a>
           <button
             onClick={handleScrollToAgents}
             className="hover:text-[#fd01f5] transition"
           >
-            Agents
+            ISAI Agents
           </button>
           <a href="/create" className="hover:text-[#fd01f5] transition">
             Create
@@ -50,6 +50,9 @@ const Navbar: React.FC = () => {
           </a>
           <a href="/equip" className="hover:text-[#fd01f5] transition">
             Equip
+          </a>
+          <a href="/mynfts" className="hover:text-[#fd01f5] transition">
+            My NFTs
           </a>
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About

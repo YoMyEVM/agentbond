@@ -8,7 +8,7 @@ import Card from "components/card";
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
 import EquipPage from "./EquipPage";
-
+import MyNFTsPage from "./MyNFTsPage";
 
 // Features array with agent information and share prices
 const features = [
@@ -50,7 +50,7 @@ function App() {
                 <section className="text-center max-w-screen-lg mx-auto py-2">
                   <h1 className="text-5xl font-bold text-accent2 mt-14">
                     ISAI Agent Studio<br />
-                    <span className="text-accent1 text-3xl">Coming Soon</span>
+                    <span className="text-accent1 text-3xl">Sneak Peak</span>
                   </h1>
                   <p className="text-3xl text-gray-300 mt-1 -mb-14">
                     Craft, Evolve, and Interact with User-made Intelligent NFTs.
@@ -60,6 +60,13 @@ function App() {
                 {/* Swiper Component */}
                 <section className="mt-0">
                   <SwiperComponent />
+                </section>
+
+                {/* Bond to Invest text above Agent Cards */}
+                <section className="text-center mt-8">
+                  <h2 className="text-4xl font-semibold text-[#fff]">
+                    Bond to Invest with an ISAI Agent
+                  </h2>
                 </section>
 
                 {/* Agent Cards */}
@@ -88,10 +95,13 @@ function App() {
           <Route path="/create" element={<CreatePage />} />
 
           {/* Shop Page Route */}
-          <Route path="/shop" element={<ShopPage />} /> {/* Add Shop route */}
+          <Route path="/shop" element={<ShopPage />} />
 
-          {/* Shop Page Route */}
-          <Route path="/equip" element={<EquipPage />} /> {/* Add Equip route */}
+          {/* Equip Page Route */}
+          <Route path="/equip" element={<EquipPage />} />
+
+          {/* MyNFTs Page Route */}
+          <Route path="/mynfts" element={<MyNFTsPage />} />
         </Routes>
       </main>
       <Footer />
