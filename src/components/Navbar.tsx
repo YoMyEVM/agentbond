@@ -51,9 +51,10 @@ const Navbar: React.FC = () => {
           <a href="/equip" className="hover:text-[#fd01f5] transition">
             Equip
           </a>
-          <a href="/mynfts" className="hover:text-[#fd01f5] transition">
-            My NFTs
+          <a href="/portfolio" className="hover:text-[#fd01f5] transition">
+            Portfolio
           </a>
+
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
           </a>

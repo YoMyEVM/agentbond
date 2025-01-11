@@ -8,7 +8,7 @@ import Card from "components/card";
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
 import EquipPage from "./EquipPage";
-import MyNFTsPage from "./MyNFTsPage";
+import PortfolioPage from "./PortfolioPage";
 
 // Features array with agent information and share prices
 const features = [
@@ -100,8 +100,8 @@ function App() {
           {/* Equip Page Route */}
           <Route path="/equip" element={<EquipPage />} />
 
-          {/* MyNFTs Page Route */}
-          <Route path="/mynfts" element={<MyNFTsPage />} />
+          {/* Portfolio Page Route */}
+          <Route path="/portfolio" element={<PortfolioPage />} />
         </Routes>
       </main>
       <Footer />
