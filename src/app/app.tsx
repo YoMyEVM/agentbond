@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CreateCharacter from "./CreateCharacter";
@@ -16,9 +17,25 @@ const features = [
   { name: "Agent6", description: "sdfss.", pfp: "/agents/6.png", sharePrice: 34.56, status: "online" as "offline" },
 ];
 
+function ScrollToAgents() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#agents") {
+      const agentSection = document.getElementById("agent-cards");
+      if (agentSection) {
+        agentSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToAgents />
       <main className="pt-4">
         <Navbar />
         <Routes>
@@ -43,7 +60,7 @@ function App() {
                 </section>
 
                 {/* Agent Cards */}
-                <section className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
+                <section id="agent-cards" className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
                   {features.map((props, index) => (
                     <div key={index} className="col-span-10 sm:col-span-5">
                       <Card

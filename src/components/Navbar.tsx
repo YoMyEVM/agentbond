@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -22,6 +24,10 @@ const Navbar: React.FC = () => {
     setAccount(null);
   };
 
+  const handleScrollToAgents = () => {
+    navigate("/#agents");
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
       <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
@@ -30,11 +36,17 @@ const Navbar: React.FC = () => {
           <a href="/" className="text-xl font-bold text-[#fd01f5]">
             ISAI Studio
           </a>
+          <button
+            onClick={handleScrollToAgents}
+            className="hover:text-[#fd01f5] transition"
+          >
+            Agents
+          </button>
+          <a href="/create-character" className="hover:text-[#fd01f5] transition">
+            Create Character
+          </a>
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
-          </a>
-          <a href="/create-character" className="hover:text-[#fd01f5] transition">
-            Create Character {/* New Link */}
           </a>
         </div>
 
