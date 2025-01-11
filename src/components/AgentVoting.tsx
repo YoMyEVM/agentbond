@@ -9,14 +9,12 @@ interface Submission {
 }
 
 const AgentVoting: React.FC = () => {
-  // Sample data for user submissions
   const [submissions, setSubmissions] = useState<Submission[]>([
     { id: 1, username: "User1", item: "Sword of Valor", upVotes: 3, downVotes: 1 },
     { id: 2, username: "User2", item: "Shield of Courage", upVotes: 5, downVotes: 0 },
     { id: 3, username: "User3", item: "Potion of Speed", upVotes: 2, downVotes: 2 },
   ]);
 
-  // Handle upvote and downvote actions
   const handleVote = (id: number, type: "up" | "down") => {
     setSubmissions((prevSubmissions) =>
       prevSubmissions.map((submission) =>
@@ -33,9 +31,7 @@ const AgentVoting: React.FC = () => {
 
   return (
     <div className="bg-gray-900 p-8 rounded shadow-lg">
-      <h2 className="text-3xl font-bold text-[#fd01f5]">Vote on Equipment for Upcoming Epoch</h2>
-      
-      {/* Table for User Submissions */}
+      <h2 className="text-2xl font-bold text-[#fd01f5]">Vote on Goals for the Upcoming Epoch</h2>
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-full table-auto">
           <thead>
@@ -50,10 +46,10 @@ const AgentVoting: React.FC = () => {
           <tbody>
             {submissions.map((submission) => (
               <tr key={submission.id} className="border-t border-gray-700">
-                <td className="py-2 px-4">{submission.username}</td>
-                <td className="py-2 px-4">{submission.item}</td>
-                <td className="py-2 px-4">{submission.upVotes}</td>
-                <td className="py-2 px-4">{submission.downVotes}</td>
+                <td className="py-2 px-4 text-white">{submission.username}</td>
+                <td className="py-2 px-4 text-white">{submission.item}</td>
+                <td className="py-2 px-4 text-white">{submission.upVotes}</td>
+                <td className="py-2 px-4 text-white">{submission.downVotes}</td>
                 <td className="py-2 px-4 flex space-x-4">
                   <button
                     onClick={() => handleVote(submission.id, "up")}

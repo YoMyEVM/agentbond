@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 
-// Navbar.tsx
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
 
-// @ts-ignore
-const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
+  // @ts-ignore
+  const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -32,8 +31,14 @@ const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
       <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
         {/* Left Section */}
         <div className="flex space-x-6 items-center">
-          <a href="/" className="text-xl font-bold text-[#fd01f5]">
-            Studio
+          <a href="/" className="flex items-center space-x-2">
+            {/* Studio Logo */}
+            <img
+              src="/studiologo.png"
+              alt="Studio Logo"
+              className="w-19 h-10" // Adjust size as needed
+            />
+            <span className="text-xl font-bold text-[#fd01f5]">Studio</span>
           </a>
 
           <a href="/create" className="hover:text-[#fd01f5] transition">
@@ -55,7 +60,6 @@ const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
           </a>
-
         </div>
 
         {/* Right Section */}
@@ -63,7 +67,7 @@ const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
           {/* Display Mock Gen Credit Balance */}
           <div className="text-white font-bold">
             <span>GenCredit Balance: </span>
-            <span className="text-[#01fcfc]">{genCreditBalance}</span> 
+            <span className="text-[#01fcfc]">{genCreditBalance}</span>
           </div>
 
           {/* Get Gen Credits Button */}
