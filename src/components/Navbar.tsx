@@ -28,15 +28,15 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
-      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 py-2 flex justify-between items-center">
+      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 flex justify-between items-center h-12">
         {/* Left Section */}
-        <div className="flex space-x-6 items-center">
+        <div className="flex items-center space-x-4">
           <a href="/" className="flex items-center space-x-2">
             {/* Studio Logo */}
             <img
               src="/studiologo.png"
               alt="Studio Logo"
-              className="w-19 h-10" // Adjust size as needed
+              className="w-12 h-12 object-contain" // 12x12 size without stretching
             />
             <span className="text-xl font-bold text-[#fd01f5]">Studio</span>
           </a>
