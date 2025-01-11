@@ -19,7 +19,7 @@ const CreatePage: React.FC = () => {
         Create & Sell AI, Plugins, Web3 Skills
       </h1>
       <p className="text-2xl text-gray-300 mt-4">
-        Build and monetize No Code AI personalities, Web2 plugins, Web3 skills, and more.
+        Build and monetize no-code AI personalities, Web2 plugins, Web3 skills, and more.
       </p>
 
       {/* Category toggle buttons */}
@@ -32,7 +32,7 @@ const CreatePage: React.FC = () => {
               : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create Personality
+          Create personality
         </button>
         <button
           onClick={() => handleCategoryChange("plugin")}
@@ -40,7 +40,7 @@ const CreatePage: React.FC = () => {
             activeCategory === "plugin" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create Web2 Plugin
+          Create Web2 plugin
         </button>
         <button
           onClick={() => handleCategoryChange("skill")}
@@ -48,7 +48,7 @@ const CreatePage: React.FC = () => {
             activeCategory === "skill" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create Web3 Skill
+          Create Web3 skill
         </button>
         <button
           onClick={() => handleCategoryChange("advanced")}
@@ -56,7 +56,7 @@ const CreatePage: React.FC = () => {
             activeCategory === "advanced" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
-          Create Advanced
+          Create advanced
         </button>
       </div>
 
