@@ -9,13 +9,12 @@ const BuyWithCrypto: React.FC = () => {
 
       <div className="mt-6 text-center">
         <p className="text-lg">
-          You can buy Gen Credits using cryptocurrency! Please follow the
-          instructions to complete your purchase.
+          You can swap for Gen Credits Here.
         </p>
         <div className="mt-4">
           {/* Placeholder for crypto payment button */}
           <button className="bg-[#fd01f5] text-white font-bold px-6 py-3 rounded hover:bg-[#fd01f5]/80 transition">
-            Proceed with Crypto
+            Swap
           </button>
         </div>
       </div>
