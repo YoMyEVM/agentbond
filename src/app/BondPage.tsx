@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+
 import Card from "../components/card";
 
 // Features array with agent information and share prices
@@ -40,7 +40,7 @@ const BondPage = () => {
         {/* Bond to Invest text above Agent Cards */}
         <section className="text-center mt-8">
           <h2 className="text-4xl font-semibold text-[#fff]">
-            Bond to Invest with an ISAI Agent
+            Buy Disounted Agent Shares by Bonding
           </h2>
         </section>
 
@@ -61,7 +61,7 @@ const BondPage = () => {
         </section>
 
       </main>
-      <Footer />
+
     </>
   );
 };

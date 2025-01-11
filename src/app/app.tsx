@@ -6,6 +6,7 @@ import CreatePage from "./CreatePage";
 import AgentPage from "./AgentPage";
 import BuyGenCreditsPage from "./BuyGenCreditsPage"; // Correct import for BuyGenCreditsPage
 import FAQSection from "./FAQSection";
+import OvermindPage from "./OvermindPage";
 
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
@@ -68,6 +69,9 @@ function App() {
 
           {/* Bond Page */}
           <Route path="/bond" element={<BondPage />} />
+          
+          {/* Overmind Page */}
+          <Route path="/overmind" element={<OvermindPage />} />
 
           {/* Buy Gen Credits Page Route */}
           <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} /> {/* Ensure this route points to the BuyGenCreditsPage component */}

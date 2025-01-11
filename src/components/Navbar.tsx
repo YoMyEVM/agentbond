@@ -56,6 +56,9 @@ const Navbar: React.FC = () => {
           <a href="/bond" className="hover:text-[#fd01f5] transition">
             Bond
           </a>
+          <a href="/overmind" className="hover:text-[#fd01f5] transition">
+            Overmind
+          </a>
 
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
             About
