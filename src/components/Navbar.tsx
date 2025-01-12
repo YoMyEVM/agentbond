@@ -40,29 +40,28 @@ const Navbar: React.FC = () => {
             />
             <span className="text-xl font-bold text-[#fd01f5]">Studio</span>
           </a>
-
-          <a href="/create" className="hover:text-[#fd01f5] transition">
+          <a href="/create" className="hover:text-[#01fcfc] transition">
             Create
           </a>
-          <a href="/shop" className="hover:text-[#fd01f5] transition">
+          <a href="/shop" className="hover:text-[#01fcfc] transition">
             Shop
           </a>
-          <a href="/manage" className="hover:text-[#fd01f5] transition">
+          <a href="/manage" className="hover:text-[#01fcfc] transition">
             Manage
           </a>
-          <a href="/portfolio" className="hover:text-[#fd01f5] transition">
+          <a href="/portfolio" className="hover:text-[#01fcfc] transition">
             Portfolio
           </a>
-          <a href="/bond" className="hover:text-[#fd01f5] transition">
+          <a href="/bond" className="hover:text-[#01fcfc] transition">
             Bond
           </a>
-          <a href="/overmind" className="hover:text-[#fd01f5] transition">
+          <a href="/overmind" className="hover:text-[#01fcfc] transition">
             Overmind
           </a>
-
-          <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
+          <a href="https://myevm.network" className="hover:text-[#01fcfc] transition">
             About
           </a>
+
         </div>
 
         {/* Right Section */}
