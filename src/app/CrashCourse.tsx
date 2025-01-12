@@ -6,43 +6,43 @@ const CrashCourse: React.FC = () => {
     {
       title: "ISAI Studio",
       description:
-        "Quickly connect your Ethereum wallet using MetaMask and start using our platform in seconds.",
+        ".",
       icon: "🤖", // Example icon, you can replace with any relevant icon or image
     },
     {
     title: "Wallet & Gas Quick Start",
     description:
-        "Pay for network transaction fees with gas tokens, ensuring smooth blockchain operations.",
+        ".",
     icon: "⛽", // Example icon
     },
     {
       title: "Earn with No Code AI",
       description:
-        "Purchase Gen Credits with crypto or card to access premium features and services.",
+        ".",
       icon: "💡", // Example icon
     },
     {
       title: "Level Up with Plugins",
       description:
-        "Sell, buy, and trade NFTs directly through the marketplace with seamless integration.",
+        ".",
       icon: "🎮", // Example icon
     },
     {
       title: "Manage you Agent NFT",
       description:
-        "Make payments using popular cryptocurrencies, ensuring security and ease of use.",
+        ".",
       icon: "⚙️", // Example icon
     },
     {
       title: "View Balances & Earnings",
       description:
-        "Track your credits, purchases, and activity all in one place with an intuitive user interface.",
+        ".",
       icon: "💸", // Example icon
     },
     {
       title: "Buy Advanced Agent Shares",
       description:
-        "Pay for network transaction fees with gas tokens, ensuring smooth blockchain operations.",
+        ".",
       icon: "🌱", // Example icon
     },
   ];

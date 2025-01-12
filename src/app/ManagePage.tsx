@@ -15,7 +15,7 @@ const ManagePage: React.FC = () => {
       <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">
         Manage your Smart NFT Brain
       </h1>
-      <p className="text-3xl text-gray-300 mt-4">
+      <p className="text-3xl text-accent1 mt-4">
         Turn any NFT into a Smart NFT by Equipping an ISAI Brain
       </p>
 
