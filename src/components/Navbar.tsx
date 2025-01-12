@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-
-  // @ts-ignore
-  const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -49,38 +45,22 @@ const Navbar: React.FC = () => {
           <a href="/manage" className="hover:text-[#01fcfc] transition">
             Manage
           </a>
-          <a href="/portfolio" className="hover:text-[#01fcfc] transition">
-            Portfolio
-          </a>
-          <a href="/bond" className="hover:text-[#01fcfc] transition">
-            Bond
-          </a>
-          <a href="/overmind" className="hover:text-[#01fcfc] transition">
-            Overmind
-          </a>
-          <a href="https://myevm.network" className="hover:text-[#01fcfc] transition">
-            About
-          </a>
 
+          {/* More Dropdown on Hover */}
+          <div className="relative group">
+            <button className="hover:text-[#01fcfc] transition">
+              More
+            </button>
+            <div className="absolute hidden group-hover:block bg-black text-white shadow-lg mt-2 py-2 px-4 rounded transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <a href="/bond" className="block py-1 hover:text-[#fd01f5]">Bond</a>
+              <a href="/overmind" className="block py-1 hover:text-[#fd01f5]">Overmind</a>
+              <a href="https://myevm.network" className="block py-1 hover:text-[#fd01f5]">About</a>
+            </div>
+          </div>
         </div>
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Display Mock Gen Credit Balance */}
-          <div className="text-white font-bold">
-            <span>GenCredit Balance: </span>
-            <span className="text-[#01fcfc]">{genCreditBalance}</span>
-          </div>
-
-          {/* Get Gen Credits Button */}
-          <Link to="/buy-gen-credits">
-            <button
-              className="text-accent1 font-bold px-4 py-2 border border-accent2 rounded hover:bg-[#fd01f5] hover:text-black transition"
-            >
-              Get Gen Credits
-            </button>
-          </Link>
-
           {/* Wallet Connection Button */}
           {account ? (
             <button

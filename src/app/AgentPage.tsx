@@ -67,7 +67,7 @@ const AgentPage: React.FC = () => {
 
       
       {/* Grouping Equipment, Personality, Plugins, Skills, Inventory Sections */}
-      <div className="space-y-4 text-center"> {/* Centered content and reduced spacing */}
+      <div className="space-y-0 text-center"> {/* Centered content and reduced spacing */}
         {/* Equipment Title */}
         <h2 className="text-[#01fcfc] text-3xl font-bold">Equipment</h2>
 
