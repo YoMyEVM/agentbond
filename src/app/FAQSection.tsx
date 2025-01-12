@@ -10,20 +10,20 @@ const FAQSection: React.FC = () => {
 
   const faqItems: FAQItem[] = [
     {
-      question: "What are Gen Credits?",
-      answer: "Gen Credits are tokens used to access premium features, content, and services within the platform. They can be purchased with crypto or card.",
+      question: "?",
+      answer: ".",
     },
     {
-      question: "How can I buy Gen Credits?",
-      answer: "You can purchase Gen Credits through our Buy Gen Credits page, using either a crypto wallet or a credit card. Follow the steps provided on the page.",
+      question: "?",
+      answer: ".",
     },
     {
-      question: "How do I check my Gen Credit balance?",
-      answer: "Your Gen Credit balance can be checked from your account dashboard. If you are connected with a wallet, it will display your current balance.",
+      question: "?",
+      answer: ".",
     },
     {
-      question: "What are gas tokens?",
-      answer: "Gas tokens are required for transactions on the blockchain. They are used to pay for network transaction fees, which are usually very small but can vary depending on network activity.",
+      question: "?",
+      answer: ".",
     },
   ];
 
