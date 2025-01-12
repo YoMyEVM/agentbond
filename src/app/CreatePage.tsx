@@ -19,7 +19,7 @@ const CreatePage: React.FC = () => {
       <h1 className="text-4xl font-bold text-[#fd01f5] mt-10">
         Create & Sell AI, Plugins, Web3 Skills
       </h1>
-      <p className="text-2xl text-gray-300 mt-4">
+      <p className="text-2xl text-accent1 mt-4">
         Build and monetize no-code AI personalities, Web2 plugins, Web3 skills, and more.
       </p>
 

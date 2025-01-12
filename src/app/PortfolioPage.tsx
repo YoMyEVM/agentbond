@@ -19,7 +19,7 @@ const PortfolioPage: React.FC = () => {
   return (
     <section className="text-center max-w-screen-lg mx-auto py-8">
       <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">Portfolio</h1>
-      <p className="text-3xl text-gray-300 mt-4">Manage Your Tokens and NFTs</p>
+      <p className="text-3xl text-accent1 mt-4">View Earnings from Your NFT and Token Balances</p>
 
       {/* Toggle between Manage Tokens and Manage NFTs */}
       <div className="mt-8 mb-8">
@@ -47,7 +47,7 @@ const PortfolioPage: React.FC = () => {
 
       {/* Manage Tokens Section */}
       {activeSection === "tokens" && (
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-2 border-accent1 mb-8">
           <h2 className="text-2xl font-bold text-[#fd01f5] mb-4">Manage Tokens</h2>
           <p className="text-gray-300">
             Select to manage your tokens, make transactions, or check your balances.
@@ -57,7 +57,7 @@ const PortfolioPage: React.FC = () => {
 
       {/* Manage NFTs Section */}
       {activeSection === "nfts" && (
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-2 border-accent1">
           <h2 className="text-2xl font-bold text-[#fd01f5] mb-4">Manage NFTs</h2>
           <p className="text-gray-300 mb-4">
             Select an option to manage or view your NFTs.
