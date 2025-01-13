@@ -40,7 +40,7 @@ const BondPage = () => {
         {/* Bond to Invest text above Agent Cards */}
         <section className="text-center mt-8">
           <h2 className="text-4xl font-semibold text-[#fff]">
-            Buy Disounted Agent Shares by Bonding
+            Buy Discounted Agent Shares by Bonding
           </h2>
         </section>
 

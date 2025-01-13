@@ -32,9 +32,9 @@ const AgentPage: React.FC = () => {
 
   const walletBalance = 150.50;
 
-  const equipmentItems = ["Personality Item 1", "Personality Item 2"];
-  const pluginsItems = ["Plugin 1", "Plugin 2", "Plugin 3"];
-  const skillsItems = ["Skill 1", "Skill 2", "Skill 3"];
+  const equipmentItems = ["Item 1"];
+  const pluginsItems = ["Plugin 1", "Plugin 2", "Plugin 3", "Plugin 4", "Plugin 5"];
+  const skillsItems = ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5"];
   const inventoryItems = [
     "Unused Item 1", 
     "Unused Item 2", 
@@ -65,22 +65,26 @@ const AgentPage: React.FC = () => {
       {/* Chat Box */}
       <ChatBox agentName={name || "the agent"} />
 
-      {/* Equipment Title */}
-      <h2 className="text-[#01fcfc] text-center text-2xl font-bold">Equipment</h2>
+      
+      {/* Grouping Equipment, Personality, Plugins, Skills, Inventory Sections */}
+      <div className="space-y-0 text-center"> {/* Centered content and reduced spacing */}
+        {/* Equipment Title */}
+        <h2 className="text-[#01fcfc] text-3xl font-bold">Equipment</h2>
 
-      {/* Personality Section */}
-      <PersonalitySection items={equipmentItems} />
+        {/* Personality Section */}
+        <PersonalitySection items={equipmentItems} />
 
-      {/* Plugins Section */}
-      <PluginsSection items={pluginsItems} />
+        {/* Plugins Section */}
+        <PluginsSection items={pluginsItems} />
 
-      {/* Skills Section */}
-      <SkillsSection items={skillsItems} />
+        {/* Skills Section */}
+        <SkillsSection items={skillsItems} />
 
-      {/* Inventory Section */}
-      <InventorySection items={inventoryItems} />
+        {/* Inventory Section */}
+        <InventorySection items={inventoryItems} />
+      </div>
 
-      {/* Community Section - Added below */}
+      {/* Community Section */}
       <CommunitySection />
     </div>
   );

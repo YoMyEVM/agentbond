@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './AgentVoting.css'; // Import the CSS file here
 
 interface Submission {
   id: number;
@@ -36,11 +37,11 @@ const AgentVoting: React.FC = () => {
         <table className="min-w-full table-auto">
           <thead>
             <tr>
-              <th className="text-left text-[#fd01f5] py-2 px-4">Username</th>
-              <th className="text-left text-[#fd01f5] py-2 px-4">Item</th>
-              <th className="text-left text-[#fd01f5] py-2 px-4">Upvotes</th>
-              <th className="text-left text-[#fd01f5] py-2 px-4">Downvotes</th>
-              <th className="text-left text-[#fd01f5] py-2 px-4">Actions</th>
+              <th className="text-left text-accent1 py-2 px-4">Username</th>
+              <th className="text-left text-accent1 py-2 px-4">Item</th>
+              <th className="text-left text-accent1 py-2 px-4">Upvotes</th>
+              <th className="text-left text-accent1 py-2 px-4">Downvotes</th>
+              <th className="text-left text-accent1 py-2 px-4">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -50,19 +51,29 @@ const AgentVoting: React.FC = () => {
                 <td className="py-2 px-4 text-white">{submission.item}</td>
                 <td className="py-2 px-4 text-white">{submission.upVotes}</td>
                 <td className="py-2 px-4 text-white">{submission.downVotes}</td>
-                <td className="py-2 px-4 flex space-x-4">
-                  <button
-                    onClick={() => handleVote(submission.id, "up")}
-                    className="bg-[#01fcfc] text-black px-4 py-2 rounded hover:bg-[#fd01f5]"
-                  >
-                    Upvote
-                  </button>
-                  <button
-                    onClick={() => handleVote(submission.id, "down")}
-                    className="bg-[#fd01f5] text-black px-4 py-2 rounded hover:bg-[#01fcfc]"
-                  >
-                    Downvote
-                  </button>
+                <td className="py-2 px-4">
+                  <div className="widget-vertical center-left">
+
+                    <div className="thumbs">
+                      {/* Upvote Button */}
+                      <div
+                        className="thumb-button upvote-button"
+                        onClick={() => handleVote(submission.id, "up")}
+                      >
+                        <i className="thumbs-icon thumbs-icon-up">👍</i>
+                        <p>YES</p>
+                      </div>
+
+                      {/* Downvote Button */}
+                      <div
+                        className="thumb-button downvote-button"
+                        onClick={() => handleVote(submission.id, "down")}
+                      >
+                        <i className="thumbs-icon thumbs-icon-down">👎</i>
+                        <p>NO</p>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             ))}

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import React, { useState, useEffect } from "react";
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-
-  // @ts-ignore
-  const [genCreditBalance, setGenCreditBalance] = useState<number>(100);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to control the dropdown visibility
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -26,6 +23,25 @@ const Navbar: React.FC = () => {
     setAccount(null);
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(prevState => !prevState); // Toggle dropdown visibility
+  };
+
+  // Close dropdown if clicked outside
+  const handleClickOutside = (event: MouseEvent) => {
+    if (event.target && !(event.target as HTMLElement).closest('.dropdown')) {
+      setIsDropdownOpen(false); // Close dropdown if click is outside
+    }
+  };
+
+  // Add event listener for closing dropdown on outside click
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
       <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 flex justify-between items-center h-12">
@@ -40,48 +56,33 @@ const Navbar: React.FC = () => {
             />
             <span className="text-xl font-bold text-[#fd01f5]">Studio</span>
           </a>
-
-          <a href="/create" className="hover:text-[#fd01f5] transition">
+          <a href="/create" className="hover:text-[#01fcfc] transition">
             Create
           </a>
-          <a href="/shop" className="hover:text-[#fd01f5] transition">
+          <a href="/shop" className="hover:text-[#01fcfc] transition">
             Shop
           </a>
-          <a href="/manage" className="hover:text-[#fd01f5] transition">
+          <a href="/manage" className="hover:text-[#01fcfc] transition">
             Manage
           </a>
-          <a href="/portfolio" className="hover:text-[#fd01f5] transition">
-            Portfolio
-          </a>
-          <a href="/bond" className="hover:text-[#fd01f5] transition">
-            Bond
-          </a>
-          <a href="/overmind" className="hover:text-[#fd01f5] transition">
-            Overmind
-          </a>
 
-          <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">
-            About
-          </a>
+          {/* More Dropdown on Click */}
+          <div className="relative dropdown">
+            <button onClick={toggleDropdown} className="hover:text-[#01fcfc] transition">
+              More
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded transition-all duration-300 opacity-100 dropdown-menu">
+                <a href="/bond" className="block py-1 hover:text-[#fd01f5]">Bond</a>
+                <a href="/overmind" className="block py-1 hover:text-[#fd01f5]">Overmind</a>
+                <a href="https://myevm.network" className="block py-1 hover:text-[#fd01f5]">About</a>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Display Mock Gen Credit Balance */}
-          <div className="text-white font-bold">
-            <span>GenCredit Balance: </span>
-            <span className="text-[#01fcfc]">{genCreditBalance}</span>
-          </div>
-
-          {/* Get Gen Credits Button */}
-          <Link to="/buy-gen-credits">
-            <button
-              className="text-accent1 font-bold px-4 py-2 border border-accent2 rounded hover:bg-[#fd01f5] hover:text-black transition"
-            >
-              Get Gen Credits
-            </button>
-          </Link>
-
           {/* Wallet Connection Button */}
           {account ? (
             <button

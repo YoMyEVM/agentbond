@@ -1,70 +1,72 @@
-// ShopPage.tsx
-import React, { useState } from "react";
-import PersonalityItems from "components/PersonalityItems";
-import PluginItems from "components/PluginItems";
-import SkillItems from "../components/SkillItems";
-import ComplexItems from "components/ComplexItems"; // Import ComplexItems
+import { useState } from 'react';
+import styles from './ShopPage.module.css'; // Import the CSS Module
 
-const ShopPage: React.FC = () => {
-  // State to track the active category
-  const [activeCategory, setActiveCategory] = useState<string>("personality");
+const ShopPage = () => {
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [items] = useState([
+    { id: 1, name: 'Plugin A', category: 'plugin', image: 'plugin-a.jpg' },
+    { id: 2, name: 'Skill B', category: 'skill', image: 'skill-b.jpg' },
+    { id: 3, name: 'Personality C', category: 'personality', image: 'personality-c.jpg' },
+    { id: 4, name: 'Complex Strategy D', category: 'complex', image: 'complex-d.jpg' }
+  ]);
 
-  // Function to handle category changes
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
   };
 
-  return (
-    <section className="text-center max-w-screen-lg mx-auto py-8">
-      <h1 className="text-5xl font-bold text-[#fd01f5] mt-10">Shop</h1>
-      <p className="text-3xl text-accent1 mt-4">
-        Explore and purchase upgrades for your AI Agent.
-      </p>
+  const filteredItems = activeCategory === 'all' 
+    ? items 
+    : items.filter(item => item.category === activeCategory);
 
-      {/* Category toggle buttons */}
-      <div className="mt-6 mb-8">
-        <button
-          onClick={() => handleCategoryChange("personality")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
-            activeCategory === "personality"
-              ? "bg-[#fd01f5] text-white"
-              : "bg-gray-700 text-gray-300"
-          }`}
-        >
+  return (
+    <div className={styles.shopPage}>
+      <h1>Shop</h1>
+      <p>Shop Page</p>
+      <div className={styles.categoryButtons}>
+        <button 
+          onClick={() => handleCategoryChange('all')}
+          className={activeCategory === 'all' ? styles.active : ''}>
+          All
+        </button>
+        <button 
+          onClick={() => handleCategoryChange('plugin')}
+          className={activeCategory === 'plugin' ? styles.active : ''}>
+          Plugins
+        </button>
+        <button 
+          onClick={() => handleCategoryChange('skill')}
+          className={activeCategory === 'skill' ? styles.active : ''}>
+          Skills
+        </button>
+        <button 
+          onClick={() => handleCategoryChange('personality')}
+          className={activeCategory === 'personality' ? styles.active : ''}>
           Personalities
         </button>
-        <button
-          onClick={() => handleCategoryChange("plugin")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
-            activeCategory === "plugin" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
-          }`}
-        >
-          Web2 Plugins
-        </button>
-        <button
-          onClick={() => handleCategoryChange("skill")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
-            activeCategory === "skill" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
-          }`}
-        >
-          Web3 Skills
-        </button>
-        <button
-          onClick={() => handleCategoryChange("complex")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
-            activeCategory === "complex" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
-          }`}
-        >
-          Complex
+        <button 
+          onClick={() => handleCategoryChange('complex')}
+          className={activeCategory === 'complex' ? styles.active : ''}>
+          Complex Strategies
         </button>
       </div>
 
-      {/* Conditionally render components based on active category */}
-      {activeCategory === "personality" && <PersonalityItems />}
-      {activeCategory === "plugin" && <PluginItems />}
-      {activeCategory === "skill" && <SkillItems />}
-      {activeCategory === "complex" && <ComplexItems />} {/* Complex Category */}
-    </section>
+      <div className={styles.imgGalleryContainer}>
+        {filteredItems.map(item => (
+          <div key={item.id} className={styles.imgGalleryItem}>
+            <img src={item.image} alt={item.name} />
+            <div className={styles.floatGalleryContent}>
+              <div className={styles.content}>
+                <p>{item.name}</p>
+                <a href="#">Learn More</a>
+              </div>
+              <div className={styles.contentBtn}>
+                <button>Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

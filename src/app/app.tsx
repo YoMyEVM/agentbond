@@ -10,7 +10,6 @@ import OvermindPage from "./OvermindPage";
 
 import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
-import PortfolioPage from "./PortfolioPage";
 import ManagePage from "./ManagePage";
 import BondPage from "./BondPage";
 // In your main entry file (index.tsx or App.tsx)
@@ -64,8 +63,6 @@ function App() {
           {/* Manage Page Route */}
           <Route path="/manage" element={<ManagePage />} />
 
-          {/* Portfolio Page Route */}
-          <Route path="/portfolio" element={<PortfolioPage />} />
 
           {/* Bond Page */}
           <Route path="/bond" element={<BondPage />} />
