@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 const ManagePage: React.FC = () => {
-  // State to track the selected option (ISAI AGENT or BYO-NFT)
+  // State to track the selected option (ISAI AGENT or YourNFT)
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   // Function to handle card selection
@@ -32,12 +32,12 @@ const ManagePage: React.FC = () => {
         </div>
 
         <div
-          onClick={() => handleCardSelection("BYO-NFT")}
+          onClick={() => handleCardSelection("YourNFT")}
           className={`cursor-pointer p-6 bg-gray-800 rounded-lg shadow-lg w-1/3 ${
-            selectedOption === "BYO-NFT" ? "bg-[#fd01f5] text-white" : "text-gray-300"
+            selectedOption === "YourNFT" ? "bg-[#fd01f5] text-white" : "text-gray-300"
           }`}
         >
-          <h2 className="text-2xl font-bold mb-4">BYO-NFT</h2>
+          <h2 className="text-2xl font-bold mb-4">YourNFTs</h2>
           <p>Select this option to equip your own NFT with an ISAI Brain.</p>
         </div>
       </div>

@@ -123,3 +123,28 @@
     background-color: #7b68ee;
   }
   
+  .toggleButtons {
+    margin-bottom: 20px; /* Adds spacing between toggle buttons and category buttons */
+}
+
+.toggleButtons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #fd01f5;
+    background-color: #000;
+    color: #01fcfc;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease;
+}
+
+.toggleButtons button:hover {
+    background-color: #fd01f5;
+    color: black;
+}
+
+.toggleButtons .active {
+    background-color: #fd01f5;
+    color: black;
+}
