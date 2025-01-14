@@ -170,7 +170,7 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
         {messageExamples.map((example, index) => (
           <div key={index} className="space-y-2">
             <div>
-              <label className="text-accent2">User Input</label>
+              <label className="text-white">User Input</label>
               <textarea
                 value={example.user}
                 onChange={(e) => handleMessageChange(index, "user", e.target.value)}
@@ -182,7 +182,7 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
               />
             </div>
             <div>
-              <label className="text-accent2">Character Response</label>
+              <label className="text-white">Character Response</label>
               <textarea
                 value={example.character}
                 onChange={(e) => handleMessageChange(index, "character", e.target.value)}

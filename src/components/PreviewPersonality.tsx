@@ -2,7 +2,7 @@ import React from "react";
 
 const PreviewPersonality: React.FC<{ personality: any }> = ({ personality }) => {
   return (
-    <div className="p-4 space-y-4 bg-gray-800 rounded">
+    <div className="p-4 space-y-4 bg-black rounded border-2 border-accent1">
       <h3 className="text-2xl font-bold text-[#fd01f5]">Preview Personality</h3>
 
       <div>
