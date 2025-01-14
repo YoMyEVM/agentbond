@@ -25,10 +25,11 @@ const CreateComplex: React.FC = () => {
       const newActions = [...prevActions];
       const targetIndex = direction === "up" ? index - 1 : index + 1;
 
-      // Ensure target index is within bounds
       if (targetIndex >= 0 && targetIndex < newActions.length) {
-        // Swap the actions
-        [newActions[index], newActions[targetIndex]] = [newActions[targetIndex], newActions[index]];
+        [newActions[index], newActions[targetIndex]] = [
+          newActions[targetIndex],
+          newActions[index],
+        ];
       }
       return newActions;
     });
@@ -44,11 +45,13 @@ const CreateComplex: React.FC = () => {
 
   return (
     <div className="bg-gray-900 p-8 rounded shadow-lg border-2 border-accent1">
+      <div className="flex justify-between mb-4">
+        <h2 className="text-white text-xl w-1/4 text-center mx-auto">Contract Actions</h2>
+        <h2 className="text-white text-xl w-1/4 text-center mx-auto">Transaction Builder</h2>
+      </div>
       <div className="flex gap-4">
         {/* Contract Actions */}
         <div className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md">
-          <h2 className="text-white text-xl mb-4">Contract Actions</h2>
-
           {/* Protocol Selection */}
           <div className="mb-4">
             <label className="text-white">Select Protocol:</label>
@@ -112,8 +115,6 @@ const CreateComplex: React.FC = () => {
           className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md"
           style={{ backgroundColor: isOver ? "rgba(0, 255, 255, 0.2)" : "transparent" }}
         >
-          <h2 className="text-white text-xl mb-4">Transaction Builder</h2>
-
           {actionsInTransaction.length > 0 ? (
             <ul className="space-y-4">
               {actionsInTransaction.map((action, index) => (
