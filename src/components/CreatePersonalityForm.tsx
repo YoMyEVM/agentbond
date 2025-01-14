@@ -194,13 +194,14 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
             </div>
           </div>
         ))}
-        <button
-          type="button"
-          onClick={addMessageExample}
-          className="w-full p-2 mt-2 bg-white text-black rounded"
-        >
-          Add Another Example
-        </button>
+      <button
+        type="button"
+        onClick={addMessageExample}
+        className="w-full p-2 mt-2 bg-gray-400 text-black rounded hover:bg-gray-300"
+      >
+        Add Another Example
+      </button>
+
       </div>
 
       {/* Post Examples (3x height) */}
