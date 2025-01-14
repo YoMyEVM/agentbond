@@ -56,55 +56,6 @@ export interface Protocol {
       image: "/curvelogo.png", // Replace with actual image URL
       description: ".",
     },
-    {
-      id: 9,
-      name: "Protocol9",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 10,
-      name: "Protocol10",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 11,
-      name: "Protocol11",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 12,
-      name: "Protocol12",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 13,
-      name: "Protocol13",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 14,
-      name: "Protocol14",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 15,
-      name: "Protocol15",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-    {
-      id: 16,
-      name: "Protocol16",
-      image: "/isailogo.png", // Replace with actual image URL
-      description: ".",
-    },
-
   
   ];
   

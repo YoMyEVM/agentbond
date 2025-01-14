@@ -94,14 +94,16 @@ const CreateComplex: React.FC = () => {
                 contracts
                   .filter((contract) => contract.id === selectedContract)
                   .map((contract) => (
-                    <DraggableContractActionCard
-                      key={`${protocol.id}-${contract.id}`}
-                      action={{
-                        id: `${protocol.id}-${contract.id}`,
-                        name: `${protocol.name} - ${contract.name}`,
-                        description: `${protocol.description} for contract ${contract.name}`,
-                      }}
-                    />
+                  <DraggableContractActionCard
+                    key={`${protocol.id}-${contract.id}`}
+                    action={{
+                      id: `${protocol.id}-${contract.id}`,
+                      name: `${protocol.name} - ${contract.name}`,
+                      description: `${protocol.description} for contract ${contract.name}`,
+                      image: protocol.image, // Pass protocol logo to the card
+                    }}
+                  />
+
                   ))
               )
           ) : (
