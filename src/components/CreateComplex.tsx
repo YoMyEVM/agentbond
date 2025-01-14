@@ -127,24 +127,30 @@ const CreateComplex: React.FC = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <button
-                      className="text-white bg-gray-600 p-1 rounded hover:bg-gray-500"
+                      className={`text-white bg-gray-600 p-1 rounded hover:bg-gray-500 ${
+                        index === 0 ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
                       onClick={() => handleMoveAction(index, "up")}
-                      disabled={index === 0} // Disable for the first item
+                      disabled={index === 0}
                     >
-                      ↑ 
+                      ↑
                     </button>
                     <button
                       className="text-red-500 bg-gray-600 p-1 rounded hover:bg-gray-500"
                       onClick={() => handleRemoveAction(index)}
                     >
-                      × 
+                      ×
                     </button>
                     <button
-                      className="text-white bg-gray-600 p-1 rounded hover:bg-gray-500"
+                      className={`text-white bg-gray-600 p-1 rounded hover:bg-gray-500 ${
+                        index === actionsInTransaction.length - 1
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
                       onClick={() => handleMoveAction(index, "down")}
-                      disabled={index === actionsInTransaction.length - 1} // Disable for the last item
+                      disabled={index === actionsInTransaction.length - 1}
                     >
-                      ↓ 
+                      ↓
                     </button>
                   </div>
                 </li>
