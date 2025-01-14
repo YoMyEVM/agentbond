@@ -16,8 +16,8 @@ export interface Protocol {
     },
     {
       id: 2,
-      name: "Curve",
-      image: "/curvelogo.png", // Replace with actual image URL
+      name: "Strategies",
+      image: "/isailogo.png", // Replace with actual image URL
       description: ".",
     },
     {
@@ -52,8 +52,8 @@ export interface Protocol {
     },
     {
       id: 8,
-      name: "Protocol8",
-      image: "/isailogo.png", // Replace with actual image URL
+      name: "Curve",
+      image: "/curvelogo.png", // Replace with actual image URL
       description: ".",
     },
     {
