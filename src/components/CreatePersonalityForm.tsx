@@ -112,12 +112,12 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onChange={handleChange}
           onFocus={() => handleFocus("name")}
           onBlur={() => handleBlur("name")}
-          className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+          className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
           placeholder={!inputFocus.name ? "C-4PO" : ""}
         />
       </div>
 
-      {/* Bio (3x height) */}
+{/* Bio (3x height) */}
       <div>
         <label className="text-accent1">Bio</label>
         <textarea
@@ -126,11 +126,12 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onChange={handleChange}
           onFocus={() => handleFocus("bio")}
           onBlur={() => handleBlur("bio")}
-          className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+          className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
           placeholder={!inputFocus.bio ? placeholderData.bio.join(" ") : ""}
           rows={9} // Increased height (3x default)
         />
       </div>
+
 
       {/* Lore (3x height) */}
       <div>
@@ -141,7 +142,7 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onChange={handleChange}
           onFocus={() => handleFocus("lore")}
           onBlur={() => handleBlur("lore")}
-          className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+          className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
           placeholder={!inputFocus.lore ? placeholderData.lore.join(" ") : ""}
           rows={9} // Increased height (3x default)
         />
@@ -156,7 +157,8 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onChange={handleChange}
           onFocus={() => handleFocus("knowledge")}
           onBlur={() => handleBlur("knowledge")}
-          className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+          className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
+
           placeholder={!inputFocus.knowledge ? placeholderData.knowledge.join(" ") : ""}
           rows={9} // Increased height (3x default)
         />
@@ -172,7 +174,9 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
               <textarea
                 value={example.user}
                 onChange={(e) => handleMessageChange(index, "user", e.target.value)}
-                className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+
+                className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
+
                 placeholder="Enter User input"
                 rows={4}
               />
@@ -182,7 +186,8 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
               <textarea
                 value={example.character}
                 onChange={(e) => handleMessageChange(index, "character", e.target.value)}
-                className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+                className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
+
                 placeholder="Enter Character response"
                 rows={4}
               />
@@ -207,7 +212,7 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onChange={handleChange}
           onFocus={() => handleFocus("postExamples")}
           onBlur={() => handleBlur("postExamples")}
-          className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+          className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
           placeholder={!inputFocus.postExamples ? placeholderData.postExamples.join(" ") : ""}
           rows={9} // Increased height (3x default)
         />
@@ -223,7 +228,7 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onChange={handleChange}
           onFocus={() => handleFocus("adjectives")}
           onBlur={() => handleBlur("adjectives")}
-          className="w-full p-2 mt-2 bg-gray-700 text-white rounded"
+          className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
           placeholder={!inputFocus.adjectives ? placeholderData.adjectives.join(", ") : ""}
         />
       </div>

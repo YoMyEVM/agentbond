@@ -1,16 +1,18 @@
 import React from "react";
+import GenerativePersonaImage from "./GenerativePersonaImage";
 
 interface PersonaVizProps {
-  imageSrc: string;
+  imageSrc: string | null;  // Make sure the imageSrc can be null
 }
 
 const PersonaViz: React.FC<PersonaVizProps> = ({ imageSrc }) => {
   return (
     <div className="w-full aspect-square bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center border-2 border-accent1">
+      {/* If imageSrc is provided, render the static image, otherwise render the generative image */}
       {imageSrc ? (
         <img src={imageSrc} alt="Persona" className="object-cover w-full h-full" />
       ) : (
-        <div className="text-white text-center">No Image Available</div>
+        <GenerativePersonaImage /> // Show generative image if no imageSrc is provided
       )}
     </div>
   );

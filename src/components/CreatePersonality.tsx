@@ -19,8 +19,17 @@ const CreatePersonality: React.FC = () => {
       post: "",
     },
     adjectives: "",
-    imageSrc: "", // Add image source to the state
+    imageSrc: "",
   });
+
+  // This function will force the image to be regenerated every time the "Update Preview" button is clicked
+  const handleUpdatePreview = () => {
+    // Reset imageSrc to an empty string or generate a new image source
+    setPersonality((prev) => ({
+      ...prev,
+      imageSrc: "", // Reset image source to trigger the generative image creation
+    }));
+  };
 
   return (
     <div className="flex space-x-8 p-8">
@@ -39,7 +48,10 @@ const CreatePersonality: React.FC = () => {
 
         {/* Action Buttons */}
         <div className="flex justify-between">
-          <button className="w-1/2 bg-accent1 text-black font-bold py-2 px-4 rounded hover:bg-accent2 mr-2">
+          <button
+            className="w-1/2 bg-accent1 text-black font-bold py-2 px-4 rounded hover:bg-accent2 mr-2"
+            onClick={handleUpdatePreview}
+          >
             Update Preview
           </button>
           <button className="w-1/2 bg-accent1 text-black font-bold py-2 px-4 rounded hover:bg-accent2 ml-2">
