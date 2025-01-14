@@ -3,7 +3,7 @@ import { useDrop } from "react-dnd";
 import { Action } from "../types/types"; // Import Action type
 import { contracts } from "../utils/contracts"; // Import contracts from utils/contracts.ts
 import { protocols } from "../utils/protocols"; // Import protocols from utils/protocols.ts
-import DraggableContractActionCard from "./DraggableContractActionsCard";// Import draggable card component
+import DraggableContractActionCard from "./DraggableContractActionsCard"; // Import draggable card component
 
 const CreateComplex: React.FC = () => {
   const [selectedProtocol, setSelectedProtocol] = useState<number | null>(null);
@@ -14,9 +14,15 @@ const CreateComplex: React.FC = () => {
     setActionsInTransaction((prevActions) => [...prevActions, action]);
   };
 
+  const handleRemoveAction = (index: number) => {
+    setActionsInTransaction((prevActions) =>
+      prevActions.filter((_, idx) => idx !== index)
+    );
+  };
+
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "action",
-    drop: (item: Action) => handleAddActionToTransaction(item),
+    drop: (item: any) => handleAddActionToTransaction(item.action),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -25,6 +31,7 @@ const CreateComplex: React.FC = () => {
   return (
     <div className="bg-gray-900 p-8 rounded shadow-lg border-2 border-accent1">
       <div className="flex gap-4">
+        {/* Contract Actions */}
         <div className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md">
           <h2 className="text-white text-xl mb-4">Contract Actions</h2>
 
@@ -71,9 +78,9 @@ const CreateComplex: React.FC = () => {
                   .filter((contract) => contract.id === selectedContract)
                   .map((contract) => (
                     <DraggableContractActionCard
-                      key={`${protocol.id}-${contract.id}`} // Use a unique key
+                      key={`${protocol.id}-${contract.id}`}
                       action={{
-                        id: `${protocol.id}-${contract.id}`, // Combine IDs as strings
+                        id: `${protocol.id}-${contract.id}`,
                         name: `${protocol.name} - ${contract.name}`,
                         description: `${protocol.description} for contract ${contract.name}`,
                       }}
@@ -85,6 +92,7 @@ const CreateComplex: React.FC = () => {
           )}
         </div>
 
+        {/* Transaction Builder */}
         <div
           ref={drop}
           className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md"
@@ -98,6 +106,12 @@ const CreateComplex: React.FC = () => {
                 <div key={index} className="bg-gray-700 p-4 rounded-lg mb-4">
                   <h3 className="text-white text-lg">{action.name}</h3>
                   <p className="text-white text-sm">{action.description}</p>
+                  <button
+                    className="text-red-500 hover:text-red-700"
+                    onClick={() => handleRemoveAction(index)}
+                  >
+                    <span className="text-xl">×</span> {/* Red X */}
+                  </button>
                 </div>
               ))
             ) : (
