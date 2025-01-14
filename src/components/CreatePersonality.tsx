@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import CreatePersonalityForm from "./CreatePersonalityForm";
+import PreviewPersonality from "./PreviewPersonality";
 
 const CreatePersonality: React.FC = () => {
+  const [personality, setPersonality] = useState({
+    name: "",
+    bio: "",
+    lore: "",
+    knowledge: "",
+    messageExamples: [{ user: "", content: "" }],
+    postExamples: "",
+    topics: "",
+    style: {
+      all: "",
+      chat: "",
+      post: "",
+    },
+    adjectives: "",
+  });
+
   return (
-    <div className="bg-gray-900 p-8 rounded shadow-lg border-2 border-accent1">
-      <h2 className="text-3xl font-bold text-[#fd01f5]">Create Personality</h2>
-      <p className="text-gray-400 mt-4">
-        This is a placeholder for creating personality items. Add your form or creation steps here.
-      </p>
+    <div className="flex space-x-8 p-8">
+      <div className="w-1/2">
+        <CreatePersonalityForm
+          personality={personality}
+          setPersonality={setPersonality}
+        />
+      </div>
+      <div className="w-1/2">
+        <PreviewPersonality personality={personality} />
+      </div>
     </div>
   );
 };
