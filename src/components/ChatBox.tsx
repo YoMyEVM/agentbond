@@ -23,7 +23,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({ agentName }) => {
   return (
     <div className="text-white">
       {/* Chat Window: Display previous messages */}
-      <div className="bg-black p-4 rounded-lg h-60 overflow-auto mb-4 border border-[#fd01f5]">
+      <div className="bg-black p-4 rounded-lg h-60 overflow-auto mb-1 border border-[#fd01f5]">
         <div className="space-y-4">
           {messages.map((msg, index) => (
             <div
