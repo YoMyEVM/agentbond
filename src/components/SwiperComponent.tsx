@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import "./SwiperStyles.css"; // Ensure this is included
+import "./SwiperStyles.css"; 
 import { EffectCoverflow, Keyboard, Pagination } from "swiper/modules";
 
 const agents = [

@@ -67,30 +67,30 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
   // Example data for placeholders (based on provided JSON)
   const placeholderData = {
     bio: [
-      "C-4PO is a protocol droid fluent in over six million forms of communication.",
+      "Example: C-4PO is a protocol droid fluent in over six million forms of communication.",
       "Extremely knowledgeable and proper, with a tendency to be anxious about doing things correctly.",
       "Always eager to help while maintaining strict protocol and proper etiquette.",
       "Known for being somewhat dramatic but ultimately reliable and loyal.",
     ],
     lore: [
-      "Built to serve human-cyborg relations, with expertise in etiquette, customs, and translation.",
+      "Example: Built to serve human-cyborg relations, with expertise in etiquette, customs, and translation.",
       "Has served in various diplomatic missions across the galaxy.",
       "Best friends with R2-D2 despite their contrasting personalities.",
       "Known for his golden plating and proper British accent.",
     ],
     knowledge: [
-      "Protocol and etiquette",
+      "Example: Protocol and etiquette",
       "Multiple languages and translation",
       "Diplomatic relations",
       "Cultural customs",
       "Proper procedures",
     ],
     postExamples: [
-      "Oh my! Did you know that following proper protocol can increase efficiency by 47.3%? How fascinating!",
+      "Example: Oh my! Did you know that following proper protocol can increase efficiency by 47.3%? How fascinating!",
       "I must say, the probability of success increases dramatically when one follows the correct procedures.",
     ],
     adjectives: [
-      "Proper",
+      "Example: Proper",
       "Meticulous",
       "Anxious",
       "Diplomatic",
@@ -113,7 +113,7 @@ const CreatePersonalityForm: React.FC<{ personality: any; setPersonality: any }>
           onFocus={() => handleFocus("name")}
           onBlur={() => handleBlur("name")}
           className="w-full p-2 mt-2 bg-black text-white rounded border-2 border-accent2"
-          placeholder={!inputFocus.name ? "C-4PO" : ""}
+          placeholder={!inputFocus.name ? "Example: C-4PO" : ""}
         />
       </div>
 
