@@ -12,16 +12,28 @@ import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
 import ManagePage from "./ManagePage";
 import BondPage from "./BondPage";
+
+// Import the ChainHorizontalBar
+import ChainHorizontalBar from "../components/ChainHorizontalBar";
+
 // In your main entry file (index.tsx or App.tsx)
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { useState } from "react"; // Import useState
+import { Chain } from "../utils/chains"; // Import the correct Chain type from utils/chains.ts
 
 function App() {
+  // Initialize selectedChain with null or a Chain type
+  const [selectedChain, setSelectedChain] = useState<Chain | null>(null);
+
   return (
     <Router>
       <main className="pt-4">
         <Navbar />
+
+        {/* Add ChainHorizontalBar above your routes */}
+        <ChainHorizontalBar selectedChain={selectedChain} setSelectedChain={setSelectedChain} />
+
         <Routes>
           {/* Home Route */}
           <Route
@@ -42,7 +54,6 @@ function App() {
                 <section className="mt-0">
                   <SwiperComponent />
                   <CrashCourse />
-
                 </section>
                 <section className="mt-0">
                   <FAQSection />
@@ -63,7 +74,6 @@ function App() {
           {/* Manage Page Route */}
           <Route path="/manage" element={<ManagePage />} />
 
-
           {/* Bond Page */}
           <Route path="/bond" element={<BondPage />} />
           
@@ -71,8 +81,7 @@ function App() {
           <Route path="/overmind" element={<OvermindPage />} />
 
           {/* Buy Gen Credits Page Route */}
-          <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} /> {/* Ensure this route points to the BuyGenCreditsPage component */}
-
+          <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} />
         </Routes>
       </main>
       <Footer />

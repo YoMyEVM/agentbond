@@ -1,4 +1,3 @@
-
 import { chains } from "../utils/chains"; // Import the 'chains' array
 import { Chain } from "../utils/chains"; // Import the 'Chain' interface
 
@@ -72,32 +71,20 @@ const ChainHorizontalBar = ({
           <div
             key={chain.id}
             onClick={() => handleChainSelect(chain)}
-            className={`flex flex-col items-center text-center bg-gray-800 p-3 rounded-lg shadow-md cursor-pointer transition-shadow hover:shadow-lg ${
+            className={`flex flex-row items-center justify-center text-center bg-gray-800 p-3 rounded-lg shadow-md cursor-pointer transition-shadow hover:shadow-lg ${
               selectedChain?.id === chain.id
-                ? "bg-[#fd01f5] text-white"
+                ? "border-4 border-[#fd01f5] bg-[#fd01f5] text-white"
                 : "text-gray-300"
             }`}
           >
             <img
               src={chain.image || "default-image-url"} // Fallback image URL if not provided
               alt={chain.name}
-              className="w-12 h-12 mb-1 rounded-full"
-              style={{ width: "60px", height: "60px" }}
+              className="w-10 h-10 mr-2 rounded-full" // Adjust size of the image
             />
-            <span className="text-white font-bold text-sm">{chain.name}</span>
+            <span className="text-white font-bold text-lg">{chain.name}</span> {/* Increase font size for name */}
           </div>
         ))}
-      </div>
-
-      {/* Selected Chain */}
-      <div className="mt-6 text-center">
-        {selectedChain ? (
-          <p className="text-4xl text-[#fd01f5] font-bold">
-            Selected Chain: {selectedChain.name}
-          </p>
-        ) : (
-          <p className="text-xl text-gray-400">No chain selected</p>
-        )}
       </div>
     </div>
   );
