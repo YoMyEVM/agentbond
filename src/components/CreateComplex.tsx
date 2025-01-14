@@ -46,15 +46,15 @@ const CreateComplex: React.FC = () => {
   return (
     <div className="bg-gray-900 p-8 rounded shadow-lg border-2 border-accent1">
       <div className="flex justify-between mb-4">
-        <h2 className="text-white text-xl w-1/4 text-center mx-auto">Contract Actions</h2>
-        <h2 className="text-white text-xl w-1/4 text-center mx-auto">Transaction Builder</h2>
+        <h2 className="text-accent2 text-xl w-1/4 text-center mx-auto">Contract Actions</h2>
+        <h2 className="text-accent2 text-xl w-1/4 text-center mx-auto">Transaction Builder</h2>
       </div>
       <div className="flex gap-4">
         {/* Contract Actions */}
         <div className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md">
           {/* Protocol Selection */}
           <div className="mb-4">
-            <label className="text-white">Select Protocol:</label>
+            <label className="text-accent1">Select Protocol:</label>
             <select
               className="w-full p-2 rounded bg-gray-700 text-white"
               value={selectedProtocol || ""}
@@ -71,7 +71,7 @@ const CreateComplex: React.FC = () => {
 
           {/* Contract Selection */}
           <div className="mb-4">
-            <label className="text-white">Select Contract:</label>
+            <label className="text-accent1">Select Contract:</label>
             <select
               className="w-full p-2 rounded bg-gray-700 text-white"
               value={selectedContract || ""}
