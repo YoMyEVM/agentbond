@@ -1,36 +1,54 @@
 import React, { useState } from "react";
-import { useDrop, useDrag } from "react-dnd";
+import { useDrop } from "react-dnd";
+import { Action } from "../types/types";
 
-// TransactionBuilder component
 const TransactionBuilder: React.FC = () => {
-  const [transactionActions, setTransactionActions] = useState<any[]>([]);
+  const [transactionActions, setTransactionActions] = useState<Action[]>([]);
 
-  // Handle action drop into the builder
-  const [, drop] = useDrop(() => ({
-    accept: "action",
-    drop: (item: any) => {
-      setTransactionActions((prevActions) => [
-        ...prevActions,
-        item.action, // Add the dropped action to the list
-      ]);
-    },
-  }));
+  // Add an action to the transaction builder
+  const handleAddActionToTransaction = (action: Action) => {
+    setTransactionActions((prevActions) => [...prevActions, action]);
+  };
 
-  // Handle removing an action
+  // Remove an action from the transaction builder
   const handleRemoveAction = (index: number) => {
     setTransactionActions((prevActions) =>
       prevActions.filter((_, idx) => idx !== index)
     );
   };
 
-  // Handle dragging and reordering actions within the builder
-  const moveAction = (dragIndex: number, hoverIndex: number) => {
-    const draggedAction = transactionActions[dragIndex];
-    const updatedActions = [...transactionActions];
-    updatedActions.splice(dragIndex, 1);
-    updatedActions.splice(hoverIndex, 0, draggedAction);
-    setTransactionActions(updatedActions);
+  // Move an action up in the list
+  const handleMoveUp = (index: number) => {
+    if (index > 0) {
+      setTransactionActions((prevActions) => {
+        const updatedActions = [...prevActions];
+        [updatedActions[index - 1], updatedActions[index]] = [
+          updatedActions[index],
+          updatedActions[index - 1],
+        ];
+        return updatedActions;
+      });
+    }
   };
+
+  // Move an action down in the list
+  const handleMoveDown = (index: number) => {
+    if (index < transactionActions.length - 1) {
+      setTransactionActions((prevActions) => {
+        const updatedActions = [...prevActions];
+        [updatedActions[index], updatedActions[index + 1]] = [
+          updatedActions[index + 1],
+          updatedActions[index],
+        ];
+        return updatedActions;
+      });
+    }
+  };
+
+  const [, drop] = useDrop(() => ({
+    accept: "action",
+    drop: (item: any) => handleAddActionToTransaction(item.action),
+  }));
 
   return (
     <div ref={drop} className="h-full bg-gray-700 p-4 rounded-lg shadow-md">
@@ -40,63 +58,71 @@ const TransactionBuilder: React.FC = () => {
         {transactionActions.length === 0 ? (
           <p className="text-white">Drag actions here to build a transaction.</p>
         ) : (
-          <div>
-            <h4 className="text-white">Current Actions:</h4>
-            <ul className="text-white">
-              {transactionActions.map((action, idx) => (
-                <DraggableActionCard
-                  key={idx}
-                  index={idx}
-                  action={action}
-                  removeAction={handleRemoveAction}
-                  moveAction={moveAction}
-                />
-              ))}
-            </ul>
-          </div>
+          <ul className="space-y-4">
+            {transactionActions.map((action, idx) => (
+              <ActionCard
+                key={idx}
+                index={idx}
+                action={action}
+                handleRemoveAction={handleRemoveAction}
+                handleMoveUp={handleMoveUp}
+                handleMoveDown={handleMoveDown}
+                isLast={idx === transactionActions.length - 1}
+              />
+            ))}
+          </ul>
         )}
       </div>
     </div>
   );
 };
 
-// DraggableActionCard component to render each action
-const DraggableActionCard: React.FC<{
-  action: any;
+const ActionCard: React.FC<{
   index: number;
-  removeAction: (index: number) => void;
-  moveAction: (dragIndex: number, hoverIndex: number) => void;
-}> = ({ action, index, removeAction, moveAction }) => {
-  const [, drag] = useDrag(() => ({
-    type: "action",
-    item: { index },
-  }));
-
-  const [, drop] = useDrop(() => ({
-    accept: "action",
-    hover: (item: any) => {
-      if (item.index !== index) {
-        moveAction(item.index, index);
-        item.index = index;
-      }
-    },
-  }));
-
+  action: Action;
+  handleRemoveAction: (index: number) => void;
+  handleMoveUp: (index: number) => void;
+  handleMoveDown: (index: number) => void;
+  isLast: boolean;
+}> = ({ index, action, handleRemoveAction, handleMoveUp, handleMoveDown, isLast }) => {
   return (
-    <li
-      ref={(node) => drag(drop(node))}
-      className="flex items-center justify-between bg-gray-700 p-4 rounded-lg mb-2"
-    >
+    <li className="bg-gray-700 p-4 rounded-lg flex justify-between items-center">
       <div>
-        <h5 className="text-white text-lg">{action.name}</h5>
+        <h3 className="text-white text-lg">{action.name}</h3>
         <p className="text-white text-sm">{action.description}</p>
       </div>
-      <button
-        className="text-red-500 hover:text-red-700"
-        onClick={() => removeAction(index)}
-      >
-        <span className="text-xl">×</span> {/* Red X */}
-      </button>
+
+      <div className="flex flex-col items-center space-y-2">
+        {/* Move Up Button */}
+        <button
+          className={`text-gray-400 hover:text-white ${
+            index === 0 ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => handleMoveUp(index)}
+          disabled={index === 0}
+        >
+          ↑ 
+        </button>
+
+        {/* Remove Button */}
+        <button
+          className="text-red-500 hover:text-red-700"
+          onClick={() => handleRemoveAction(index)}
+        >
+          × 
+        </button>
+
+        {/* Move Down Button */}
+        <button
+          className={`text-gray-400 hover:text-white ${
+            isLast ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={() => handleMoveDown(index)}
+          disabled={isLast}
+        >
+          ↓ 
+        </button>
+      </div>
     </li>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
-import { Action } from "../types/types"; // Import Action type
-import { contracts } from "../utils/contracts"; // Import contracts from utils/contracts.ts
-import { protocols } from "../utils/protocols"; // Import protocols from utils/protocols.ts
-import DraggableContractActionCard from "./DraggableContractActionsCard"; // Import draggable card component
+import { Action } from "../types/types";
+import { contracts } from "../utils/contracts";
+import { protocols } from "../utils/protocols";
+import DraggableContractActionCard from "./DraggableContractActionsCard";
 
 const CreateComplex: React.FC = () => {
   const [selectedProtocol, setSelectedProtocol] = useState<number | null>(null);
@@ -20,9 +20,23 @@ const CreateComplex: React.FC = () => {
     );
   };
 
+  const handleMoveAction = (index: number, direction: "up" | "down") => {
+    setActionsInTransaction((prevActions) => {
+      const newActions = [...prevActions];
+      const targetIndex = direction === "up" ? index - 1 : index + 1;
+
+      // Ensure target index is within bounds
+      if (targetIndex >= 0 && targetIndex < newActions.length) {
+        // Swap the actions
+        [newActions[index], newActions[targetIndex]] = [newActions[targetIndex], newActions[index]];
+      }
+      return newActions;
+    });
+  };
+
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "action",
-    drop: (item: any) => handleAddActionToTransaction(item.action),
+    drop: (item: { action: Action }) => handleAddActionToTransaction(item.action),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -73,7 +87,7 @@ const CreateComplex: React.FC = () => {
           {selectedProtocol && selectedContract ? (
             protocols
               .filter((protocol) => protocol.id === selectedProtocol)
-              .map((protocol) =>
+              .flatMap((protocol) =>
                 contracts
                   .filter((contract) => contract.id === selectedContract)
                   .map((contract) => (
@@ -100,24 +114,45 @@ const CreateComplex: React.FC = () => {
         >
           <h2 className="text-white text-xl mb-4">Transaction Builder</h2>
 
-          <div>
-            {actionsInTransaction.length > 0 ? (
-              actionsInTransaction.map((action, index) => (
-                <div key={index} className="bg-gray-700 p-4 rounded-lg mb-4">
-                  <h3 className="text-white text-lg">{action.name}</h3>
-                  <p className="text-white text-sm">{action.description}</p>
-                  <button
-                    className="text-red-500 hover:text-red-700"
-                    onClick={() => handleRemoveAction(index)}
-                  >
-                    <span className="text-xl">×</span> {/* Red X */}
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p className="text-white">Drag actions here to build a transaction.</p>
-            )}
-          </div>
+          {actionsInTransaction.length > 0 ? (
+            <ul className="space-y-4">
+              {actionsInTransaction.map((action, index) => (
+                <li
+                  key={index}
+                  className="bg-gray-700 p-4 rounded-lg flex justify-between items-center"
+                >
+                  <div>
+                    <h3 className="text-white text-lg">{action.name}</h3>
+                    <p className="text-white text-sm">{action.description}</p>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <button
+                      className="text-white bg-gray-600 p-1 rounded hover:bg-gray-500"
+                      onClick={() => handleMoveAction(index, "up")}
+                      disabled={index === 0} // Disable for the first item
+                    >
+                      ↑ 
+                    </button>
+                    <button
+                      className="text-red-500 bg-gray-600 p-1 rounded hover:bg-gray-500"
+                      onClick={() => handleRemoveAction(index)}
+                    >
+                      × 
+                    </button>
+                    <button
+                      className="text-white bg-gray-600 p-1 rounded hover:bg-gray-500"
+                      onClick={() => handleMoveAction(index, "down")}
+                      disabled={index === actionsInTransaction.length - 1} // Disable for the last item
+                    >
+                      ↓ 
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-white">Drag actions here to build a transaction.</p>
+          )}
         </div>
       </div>
     </div>
