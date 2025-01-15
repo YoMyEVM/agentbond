@@ -71,9 +71,10 @@ function App() {
 
             {/* Shop Page Route */}
             <Route path="/shop" element={<ShopPage />} />
-
-            {/* Manage Page Route */}
-            <Route path="/manage" element={<ManagePage />} />
+            <Route
+              path="/manage"
+              element={<ManagePage selectedChain={selectedChain} />}
+            />
 
             {/* Bond Page */}
             <Route path="/bond" element={<BondPage />} />
