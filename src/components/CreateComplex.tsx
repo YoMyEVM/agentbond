@@ -99,7 +99,7 @@ const CreateComplex: React.FC = () => {
                     action={{
                       id: `${protocol.id}-${contract.id}`,
                       name: `${protocol.name} - ${contract.name}`,
-                      description: `${protocol.description} for contract ${contract.name}`,
+                      description: `${protocol.description} function1 ${contract.name}`,
                       image: protocol.image, // Pass protocol logo to the card
                     }}
                   />
@@ -107,7 +107,7 @@ const CreateComplex: React.FC = () => {
                   ))
               )
           ) : (
-            <p className="text-white">Select a protocol and contract to see actions.</p>
+            <p className="text-white">Select a contract function.</p>
           )}
         </div>
 
