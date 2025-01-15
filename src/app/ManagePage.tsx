@@ -101,7 +101,7 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
             </>
           ) : (
             <p className="text-white">
-              Connect your wallet to view collections.
+              Connect your wallet and select a chain to view collections.
             </p>
           )}
         </div>
