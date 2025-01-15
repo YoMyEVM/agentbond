@@ -50,7 +50,7 @@ const BuyGenCreditsPage: React.FC = () => {
       {/* Step 1: Do you have a Wallet? */}
       {hasWallet === null && (
         <div className="text-center mt-4">
-          <p>Do you have an Ethereum Wallet?<br/> If not, we can create one!</p>
+          <p>Do you have an Ethereum Wallet?<br /> If not, we can create one!</p>
           <button
             onClick={() => handleWalletAnswer("yes")}
             className="bg-[#01fcfc] text-black font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
@@ -59,7 +59,9 @@ const BuyGenCreditsPage: React.FC = () => {
           </button>
           <button
             onClick={() => handleWalletAnswer("no")}
-            className="bg-[#fd01f5] text-white font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
+            className="bg-[#fd01f5] text-white font-bold px-4 py-2 rounded m-2 w-full sm:w-48 cursor-not-allowed"
+            disabled
+            title="Coming Soon"
           >
             No
           </button>
@@ -69,7 +71,7 @@ const BuyGenCreditsPage: React.FC = () => {
       {/* Step 2: If the user has a wallet */}
       {hasWallet === "yes" && paymentMethod === null && (
         <div className="text-center mt-4">
-          <p>Do you want to buy Credits with Crypto or Card?<br/> Swap Crypto for Gen Tokens or Load with Stripe.</p>
+          <p>Do you want to buy Credits with Crypto or Card?<br /> Swap Crypto for Gen Tokens or Load with Stripe.</p>
           <button
             onClick={() => handlePaymentMethod("crypto")}
             className="bg-[#01fcfc] text-black font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
@@ -88,19 +90,19 @@ const BuyGenCreditsPage: React.FC = () => {
       {/* Step 3: If the user selected Card, ask for gas token */}
       {paymentMethod === "card" && hasGasToken === null && (
         <div className="text-center mt-4">
-            <p>Do you have Gas Tokens in your wallet to cover small transaction fees? <br/> Fees are typically under a penny, but can rise to 5 cents during peak times.</p>
+            <p>Do you have Gas Tokens in your wallet to cover small transaction fees? <br /> Fees are typically under a penny, but can rise to 5 cents during peak times.</p>
             <button
-            onClick={() => handleGasTokenAnswer("yes")}
-            className="bg-[#01fcfc] text-black font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
-          >
-            Yes
-          </button>
-          <button
-            onClick={() => handleGasTokenAnswer("no")}
-            className="bg-[#fd01f5] text-white font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
-          >
-            No
-          </button>
+              onClick={() => handleGasTokenAnswer("yes")}
+              className="bg-[#01fcfc] text-black font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => handleGasTokenAnswer("no")}
+              className="bg-[#fd01f5] text-white font-bold px-4 py-2 rounded m-2 w-full sm:w-48"
+            >
+              No
+            </button>
         </div>
       )}
 
@@ -113,7 +115,7 @@ const BuyGenCreditsPage: React.FC = () => {
 
       {paymentMethod === "card" && hasGasToken === "no" && (
         <div className="flex flex-col justify-center items-center w-full mt-6">
-          <p className="text-center text-accent1 mb-4"> Click Buy, then choose how much you want to buy. <br/>Whatever amount we will give you $3 of it in the network gas token.</p>
+          <p className="text-center text-accent1 mb-4"> Click Buy, then choose how much you want to buy. <br />Whatever amount we will give you $3 of it in the network gas token.</p>
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
             buy-button-id="buy_btn_1Qg7NjANbA5DNh8yiChz3Pts"
@@ -124,7 +126,7 @@ const BuyGenCreditsPage: React.FC = () => {
 
       {paymentMethod === "card" && hasGasToken === "yes" && (
         <div className="flex flex-col justify-center items-center w-full mt-6">
-          <p className="text-center mb-4">All of your purchase will be in Gen Credits <br/> Knowing you already have gas in your wallet.</p>
+          <p className="text-center mb-4">All of your purchase will be in Gen Credits <br /> Knowing you already have gas in your wallet.</p>
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
             buy-button-id="buy_btn_1Qg7ECANbA5DNh8yPgoVVblP"

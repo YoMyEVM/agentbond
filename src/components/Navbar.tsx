@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom for navigation
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to control the dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0); // New state for balance
+
+  // Function to fetch GenCredits balance (example function)
+  const fetchGenCreditsBalance = async () => {
+    // Simulating fetching balance, replace with actual API call or logic
+    setGenCreditsBalance(100); // Set your balance value here
+  };
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -24,22 +32,24 @@ const Navbar: React.FC = () => {
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(prevState => !prevState); // Toggle dropdown visibility
+    setIsDropdownOpen((prevState) => !prevState);
   };
 
-  // Close dropdown if clicked outside
   const handleClickOutside = (event: MouseEvent) => {
     if (event.target && !(event.target as HTMLElement).closest('.dropdown')) {
-      setIsDropdownOpen(false); // Close dropdown if click is outside
+      setIsDropdownOpen(false);
     }
   };
 
-  // Add event listener for closing dropdown on outside click
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
+  }, []);
+
+  useEffect(() => {
+    fetchGenCreditsBalance(); // Fetch balance on component mount
   }, []);
 
   return (
@@ -52,7 +62,7 @@ const Navbar: React.FC = () => {
             <img
               src="/studiologo.png"
               alt="Studio Logo"
-              className="w-12 h-12 object-contain" // 12x12 size without stretching
+              className="w-12 h-12 object-contain"
             />
             <span className="text-xl font-bold text-[#fd01f5]">Studio</span>
           </a>
@@ -83,6 +93,15 @@ const Navbar: React.FC = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
+          {/* Wrap the GenCredits Button with Link */}
+          <Link to="/buy-gen-credits">
+            <button
+              className="px-4 py-2 bg-black text-white border-2 border-accent2 rounded hover:bg-[#333] transition"
+            >
+              GenCredit Balance: <span className="text-accent1">{genCreditsBalance}</span>
+            </button>
+          </Link>
+
           {/* Wallet Connection Button */}
           {account ? (
             <button
