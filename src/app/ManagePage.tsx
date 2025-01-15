@@ -18,6 +18,9 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
   const [selectedCollection, setSelectedCollection] = useState<Collection | null>(null);
   const [nfts, setNfts] = useState<NFT[]>([]);
 
+  // Track whether the NFT is equipped or not
+  const [equippedNfts, setEquippedNfts] = useState<Set<string>>(new Set());
+
   const mockCollections: Collection[] = [
     { name: "Cool NFT Collection", address: "0x1234...abcd" },
     { name: "Rare NFT Collection", address: "0x5678...efgh" },
@@ -53,6 +56,18 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
   const fetchNFTs = async (collection: Collection) => {
     const filteredNFTs = mockNFTs.filter((nft) => nft.id.startsWith(collection.address[2]));
     setNfts(filteredNFTs);
+  };
+
+  const toggleEquip = (nftId: string) => {
+    setEquippedNfts((prev) => {
+      const newEquipped = new Set(prev);
+      if (newEquipped.has(nftId)) {
+        newEquipped.delete(nftId); // Unequip if already equipped
+      } else {
+        newEquipped.add(nftId); // Equip if not equipped
+      }
+      return newEquipped;
+    });
   };
 
   useEffect(() => {
@@ -117,7 +132,7 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
                 {nfts.map((nft) => (
                   <div
                     key={nft.id}
-                    className="bg-gray-800 p-4 rounded shadow hover:bg-gray-700"
+                    className="bg-gray-800 p-4 rounded shadow hover:bg-gray-700 flex flex-col items-center"
                   >
                     <img
                       src={nft.imageUrl}
@@ -125,6 +140,16 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
                       className="w-full h-48 object-cover rounded"
                     />
                     <p className="text-white mt-2">{nft.name}</p>
+                    <button
+                      onClick={() => toggleEquip(nft.id)}
+                      className={`mt-4 py-2 px-8 w-full ${
+                        equippedNfts.has(nft.id)
+                          ? "bg-black border-2 border-[#fd01f5] text-[#fd01f5] hover:bg-gray-800"
+                          : "bg-[#fd01f5] text-white hover:bg-[#fd01d0]"
+                      } rounded`}
+                    >
+                      {equippedNfts.has(nft.id) ? "Unequip" : "Equip"}
+                    </button>
                   </div>
                 ))}
               </div>
