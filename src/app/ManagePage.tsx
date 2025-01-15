@@ -16,7 +16,7 @@ const ManagePage: React.FC = () => {
         Manage your Agent Core Brain
       </h1>
       <p className="text-3xl text-accent1 mt-4">
-        Turn any NFT into a Smart NFT by Equipping an ISAI Brain
+        Turn any NFT into a Smart NFT by Equipping an ISAI Core Brain
       </p>
 
       {/* Toggleable buttons */}
