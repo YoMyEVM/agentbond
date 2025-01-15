@@ -52,11 +52,32 @@ const ChainHorizontalBar = ({
     }
   };
 
-  // Function to handle chain selection
   const handleChainSelect = async (chain: Chain) => {
-    await switchChain(chain); // Switch the chain in MetaMask
-    setSelectedChain(chain); // Update the selected chain in the state
+    if (!window.ethereum) {
+      alert("MetaMask is not installed.");
+      return;
+    }
+  
+    try {
+      // Check if the wallet is connected
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts", // Request the connected accounts
+      });
+  
+      if (accounts.length === 0) {
+        // If no accounts are connected, prompt the user to connect their wallet
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+      }
+  
+      // Once the wallet is connected, proceed with switching the chain
+      await switchChain(chain); // Switch the chain in MetaMask
+      setSelectedChain(chain); // Update the selected chain in the state
+    } catch (error) {
+      console.error("Error handling chain selection:", error);
+      alert("Error handling chain selection.");
+    }
   };
+  
 
   return (
     <div className="py-6">

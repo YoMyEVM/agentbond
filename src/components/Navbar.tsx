@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom for navigation
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0); // New state for balance
+  const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
 
   // Function to fetch GenCredits balance (example function)
   const fetchGenCreditsBalance = async () => {
-    // Simulating fetching balance, replace with actual API call or logic
     setGenCreditsBalance(100); // Set your balance value here
   };
 
@@ -52,13 +51,25 @@ const Navbar: React.FC = () => {
     fetchGenCreditsBalance(); // Fetch balance on component mount
   }, []);
 
+  // This will check if the wallet is already connected when the page loads
+  useEffect(() => {
+    const checkConnection = async () => {
+      if (window.ethereum) {
+        const accounts = await window.ethereum.request({ method: "eth_accounts" });
+        if (accounts.length > 0) {
+          setAccount(accounts[0]);
+        }
+      }
+    };
+    checkConnection();
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
       <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 flex justify-between items-center h-12">
         {/* Left Section */}
         <div className="flex items-center space-x-4">
           <a href="/" className="flex items-center space-x-2">
-            {/* Studio Logo */}
             <img
               src="/studiologo.png"
               alt="Studio Logo"
@@ -66,17 +77,10 @@ const Navbar: React.FC = () => {
             />
             <span className="text-xl font-bold text-[#fd01f5]">Studio</span>
           </a>
-          <a href="/create" className="hover:text-[#01fcfc] transition">
-            Create
-          </a>
-          <a href="/shop" className="hover:text-[#01fcfc] transition">
-            Shop
-          </a>
-          <a href="/manage" className="hover:text-[#01fcfc] transition">
-            Manage
-          </a>
+          <a href="/create" className="hover:text-[#01fcfc] transition">Create</a>
+          <a href="/shop" className="hover:text-[#01fcfc] transition">Shop</a>
+          <a href="/manage" className="hover:text-[#01fcfc] transition">Manage</a>
 
-          {/* More Dropdown on Click */}
           <div className="relative dropdown">
             <button onClick={toggleDropdown} className="hover:text-[#01fcfc] transition">
               More
@@ -93,7 +97,6 @@ const Navbar: React.FC = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Wrap the GenCredits Button with Link */}
           <Link to="/buy-gen-credits">
             <button
               className="px-4 py-2 bg-black text-white border-2 border-accent2 rounded hover:bg-[#333] transition"
