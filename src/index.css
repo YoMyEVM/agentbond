@@ -6,13 +6,16 @@
   html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
   }
 
-  html,
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
   }
 
   * {
@@ -42,6 +45,7 @@
     }
   }
 }
+
 
 .profiles {
   --size: 200px;

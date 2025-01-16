@@ -1,88 +1,77 @@
-import { useState } from "react";
-import { items } from "../utils/items"; // Import items
-import styles from "./ShopPage.module.css";
+import React, { useState } from "react";
+import { items } from "../utils/items"; // Removed unused 'Item' import
 
-const ShopPage = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [activeView, setActiveView] = useState("approved");
+const ShopPage: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-  };
-
-  const filteredItems = items.filter(
-    (item) =>
-      (activeView === "approved" ? item.type === "approved" : item.type === "user") &&
-      (activeCategory === "all" || item.category === activeCategory)
-  );
+  // Filter items based on the selected category
+  const filteredItems = selectedCategory === "all"
+    ? items
+    : items.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className={styles.shopPage}>
-      {/* Toggle Buttons */}
-      <div className={styles.toggleButtons}>
-        <button
-          onClick={() => setActiveView("approved")}
-          className={activeView === "approved" ? styles.active : ""}
-        >
-          Approved Components
-        </button>
-        <button
-          onClick={() => setActiveView("user")}
-          className={activeView === "user" ? styles.active : ""}
-        >
-          User-Made Components
-        </button>
-      </div>
+    <div className="p-4 bg-gray-900 text-white">
 
-      {/* Category Filter Buttons */}
-      <div className={styles.categoryButtons}>
+
+      {/* Category Selection Buttons */}
+      <div className="flex justify-center mb-6 space-x-4">
         <button
-          onClick={() => handleCategoryChange("all")}
-          className={activeCategory === "all" ? styles.active : ""}
+          onClick={() => setSelectedCategory("all")}
+          className={`${
+            selectedCategory === "all" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+          } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           All
         </button>
         <button
-          onClick={() => handleCategoryChange("plugin")}
-          className={activeCategory === "plugin" ? styles.active : ""}
+          onClick={() => setSelectedCategory("plugin")}
+          className={`${
+            selectedCategory === "plugin" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+          } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Plugins
         </button>
         <button
-          onClick={() => handleCategoryChange("skill")}
-          className={activeCategory === "skill" ? styles.active : ""}
+          onClick={() => setSelectedCategory("skill")}
+          className={`${
+            selectedCategory === "skill" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+          } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Skills
         </button>
         <button
-          onClick={() => handleCategoryChange("personality")}
-          className={activeCategory === "personality" ? styles.active : ""}
-        >
-          Personalities
-        </button>
-        <button
-          onClick={() => handleCategoryChange("complex")}
-          className={activeCategory === "complex" ? styles.active : ""}
-        >
-          Complex Strategies
-        </button>
-        <button
-          onClick={() => handleCategoryChange("wisdom")}
-          className={activeCategory === "wisdom" ? styles.active : ""}
+          onClick={() => setSelectedCategory("wisdom")}
+          className={`${
+            selectedCategory === "wisdom" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+          } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Wisdom
         </button>
+        <button
+          onClick={() => setSelectedCategory("personality")}
+          className={`${
+            selectedCategory === "personality" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+          } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
+        >
+          Personalities
+        </button>
       </div>
 
-      {/* Items Gallery */}
-      <div className={styles.imgGalleryContainer}>
+      {/* Shop Items */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredItems.map((item) => (
-          <div key={item.id} className={styles.imgGalleryItem}>
-            <img src={item.image} alt={item.name} className={styles.img} />
-            <p className={styles.itemName}>{item.name}</p>
-            <a href="#" className={styles.learnMore}>Learn More</a>
-            <div className={styles.contentBtn}>
-              <button className={styles.addToCart}>Add to Cart</button>
+          <div key={item.id} className="bg-gray-800 p-4 rounded-lg shadow-md">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-32 object-contain mb-4 rounded"
+            />
+            <h3 className="text-xl text-center">{item.name}</h3>
+            <p className="text-center text-sm text-gray-400">{item.category}</p>
+            <div className="mt-4 flex justify-center">
+              <button className="bg-[#fd01f5] text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors">
+                {item.type === "approved" ? "Approved" : "Pending"}
+              </button>
             </div>
           </div>
         ))}
