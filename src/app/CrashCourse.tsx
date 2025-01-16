@@ -5,44 +5,37 @@ const CrashCourse: React.FC = () => {
   const featureItems = [
     {
       title: "ISAI Studio",
-      description:
-        ".",
+      description: ".",
       icon: "🤖", // Example icon, you can replace with any relevant icon or image
     },
     {
-    title: "Wallet & Gas Quick Start",
-    description:
-        ".",
-    icon: "⛽", // Example icon
+      title: "Wallet & Gas Quick Start",
+      description: ".",
+      icon: "⛽", // Example icon
     },
     {
       title: "Earn with No Code AI",
-      description:
-        ".",
+      description: ".",
       icon: "💡", // Example icon
     },
     {
       title: "Level Up with Plugins",
-      description:
-        ".",
+      description: ".",
       icon: "🎮", // Example icon
     },
     {
       title: "Manage you Agent NFT",
-      description:
-        ".",
+      description: ".",
       icon: "⚙️", // Example icon
     },
     {
       title: "View Balances & Earnings",
-      description:
-        ".",
+      description: ".",
       icon: "💸", // Example icon
     },
     {
       title: "Buy Advanced Agent Shares",
-      description:
-        ".",
+      description: ".",
       icon: "🌱", // Example icon
     },
   ];
@@ -53,6 +46,7 @@ const CrashCourse: React.FC = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    arrows: true, // Enable arrows by default
     responsive: [
       {
         breakpoint: 1024,
@@ -64,10 +58,14 @@ const CrashCourse: React.FC = () => {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
+          centerMode: true,
+          centerPadding: "10%",
+          arrows: false, // Disable arrows on mobile (screen width <= 600px)
         },
       },
     ],
   };
+  
 
   return (
     <section className="max-w-screen-lg mx-auto py-8 bg-black text-white">

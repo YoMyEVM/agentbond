@@ -6,6 +6,7 @@ const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // To manage mobile menu toggle
+  const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
 
   // Function to fetch GenCredits balance (example function)
   const fetchGenCreditsBalance = async () => {
@@ -64,6 +65,18 @@ const Navbar: React.FC = () => {
     checkConnection();
   }, []);
 
+  useEffect(() => {
+    // Listen for resize events to update isMobile state
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
       <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 flex justify-between items-center h-6 md:h-6">
@@ -106,8 +119,6 @@ const Navbar: React.FC = () => {
             <button
               className="px-2 py-1 bg-black text-white border-2 border-accent2 rounded hover:bg-[#333] transition md:px-4 md:py-2"
             >
-              {/* Show "GenCredits" text on mobile */}
-              <span className="hidden md:inline">GenCredit Balance: </span>
               GenCredits: <span className="text-accent1">{genCreditsBalance}</span>
             </button>
           </Link>
@@ -119,7 +130,7 @@ const Navbar: React.FC = () => {
               className="text-white font-bold px-2 py-1 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 transition md:px-4 md:py-2"
             >
               {/* Show only "Disconnect" without address on mobile */}
-              {window.innerWidth < 768 ? "Disconnect" : `Disconnect (${account.slice(0, 6)}...${account.slice(-4)})`}
+              {isMobile ? "Disconnect" : `Disconnect (${account.slice(0, 6)}...${account.slice(-4)})`}
             </button>
           ) : (
             <button
