@@ -80,7 +80,7 @@ const CreateComplex: React.FC = () => {
               <option value="">-- Select Contract --</option>
               {contracts.map((contract) => (
                 <option key={contract.id} value={contract.id}>
-                  {contract.name} {/* Address is hidden here */}
+                  {contract.name}
                 </option>
               ))}
             </select>
@@ -107,10 +107,27 @@ const CreateComplex: React.FC = () => {
                         </a>
                       </div>
 
+                      {/* Draggable Card for Desktop */}
+                      <div className="hidden sm:block mt-2">
+                        <DraggableContractActionCard
+                          action={{
+                            id: `${protocol.id}-${contract.id}`,
+                            name: `${protocol.name} - ${contract.name}`,
+                            description: "Action description",
+                            image: protocol.image,
+                          }}
+                        />
+                      </div>
+
                       {/* On mobile, replace drag-and-drop with an 'Add' button */}
                       <div className="sm:hidden mt-2">
                         <button
-                          onClick={() => handleAddActionToTransaction({ id: `${protocol.id}-${contract.id}`, name: `${protocol.name} - ${contract.name}`, description: "Action description", image: protocol.image })}
+                          onClick={() => handleAddActionToTransaction({
+                            id: `${protocol.id}-${contract.id}`,
+                            name: `${protocol.name} - ${contract.name}`,
+                            description: "Action description",
+                            image: protocol.image,
+                          })}
                           className="w-full bg-[#fd01f5] text-white py-2 rounded"
                         >
                           Add Action
