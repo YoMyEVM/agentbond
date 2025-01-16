@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
             </button>
             {isDropdownOpen && (
               <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
-                <a href="/bond" className="block py-1 text-sm hover:text-[#fd01f5]">Bond</a>
+                <a href="/agents" className="block py-1 text-sm hover:text-[#fd01f5]">Agents</a>
                 <a href="/overmind" className="block py-1 text-sm hover:text-[#fd01f5]">Overmind</a>
                 <a href="https://myevm.network" className="block py-1 text-sm hover:text-[#fd01f5]">About</a>
               </div>
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
           <a href="/create" className="hover:text-[#01fcfc] transition">Create</a>
           <a href="/shop" className="hover:text-[#01fcfc] transition">Shop</a>
           <a href="/manage" className="hover:text-[#01fcfc] transition">Manage</a>
-          <a href="/bond" className="hover:text-[#fd01f5] transition">Bond</a>
+          <a href="/agents" className="hover:text-[#fd01f5] transition">Agents</a>
           <a href="/overmind" className="hover:text-[#fd01f5] transition">Overmind</a>
           <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">About</a>
         </div>

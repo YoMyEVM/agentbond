@@ -77,7 +77,7 @@ function App() {
             />
 
             {/* Bond Page */}
-            <Route path="/bond" element={<BondPage />} />
+            <Route path="/agents" element={<BondPage />} />
             
             {/* Overmind Page */}
             <Route path="/overmind" element={<OvermindPage />} />
