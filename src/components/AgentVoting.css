@@ -1,3 +1,10 @@
+/* Center the Next Epoch Settings heading */
+h2 {
+  text-align: center;  /* Center the heading text */
+  margin-bottom: 16px; /* Optional: Add spacing below the heading */
+}
+
+
 .widget-vertical {
     display: flex;
     flex-direction: column;

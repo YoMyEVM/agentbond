@@ -11,9 +11,9 @@ interface Submission {
 
 const AgentVoting: React.FC = () => {
   const [submissions, setSubmissions] = useState<Submission[]>([
-    { id: 1, username: "User1", item: "Sword of Valor", upVotes: 3, downVotes: 1 },
-    { id: 2, username: "User2", item: "Shield of Courage", upVotes: 5, downVotes: 0 },
-    { id: 3, username: "User3", item: "Potion of Speed", upVotes: 2, downVotes: 2 },
+    { id: 1, username: "User1", item: "Add FlashLoan Reciever Module", upVotes: 3, downVotes: 1 },
+    { id: 2, username: "User2", item: "Remove Tiktok Plugin", upVotes: 5, downVotes: 0 },
+    { id: 3, username: "User3", item: "Upgrade Discord Plugin", upVotes: 2, downVotes: 2 },
   ]);
 
   const handleVote = (id: number, type: "up" | "down") => {
@@ -31,54 +31,55 @@ const AgentVoting: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-900 p-8 rounded shadow-lg">
-      <h2 className="text-2xl font-bold text-[#fd01f5]">Vote on Goals for the Upcoming Epoch</h2>
-      <div className="mt-4 overflow-x-auto">
-        <table className="min-w-full table-auto">
-          <thead>
-            <tr>
-              <th className="text-left text-accent1 py-2 px-4">Username</th>
-              <th className="text-left text-accent1 py-2 px-4">Item</th>
-              <th className="text-left text-accent1 py-2 px-4">Upvotes</th>
-              <th className="text-left text-accent1 py-2 px-4">Downvotes</th>
-              <th className="text-left text-accent1 py-2 px-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {submissions.map((submission) => (
-              <tr key={submission.id} className="border-t border-gray-700">
-                <td className="py-2 px-4 text-white">{submission.username}</td>
-                <td className="py-2 px-4 text-white">{submission.item}</td>
-                <td className="py-2 px-4 text-white">{submission.upVotes}</td>
-                <td className="py-2 px-4 text-white">{submission.downVotes}</td>
-                <td className="py-2 px-4">
-                  <div className="widget-vertical center-left">
+    <div className="container">  {/* Center the content */}
+      <div className="content-wrapper">  {/* Wrapper for content */}
+        <h2 className="text-2xl font-bold text-[#fd01f5]">Next Epoch Settings</h2>
+        <div className="mt-4 table-container">
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr>
+                <th className="text-left text-accent1 py-2 px-4 sm:block hidden">User</th> {/* Show on desktop, hide on mobile */}
+                <th className="text-left text-accent1 py-2 px-4">Item</th>
+                <th className="text-left text-accent1 py-2 px-4">Yes</th>
+                <th className="text-left text-accent1 py-2 px-4">No</th>
+                <th className="text-left text-accent1 py-2 px-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {submissions.map((submission) => (
+                <tr key={submission.id} className="border-t border-gray-700">
+                  <td className="py-2 px-4 text-white sm:block hidden">{submission.username}</td> {/* Show on desktop, hide on mobile */}
+                  <td className="py-2 px-4 text-white">{submission.item}</td>
+                  <td className="py-2 px-4 text-white">{submission.upVotes}</td>
+                  <td className="py-2 px-4 text-white">{submission.downVotes}</td>
+                  <td className="py-2 px-4">
+                    <div className="widget-vertical center-left">
+                      <div className="thumbs">
+                        {/* Upvote Button */}
+                        <div
+                          className="thumb-button upvote-button"
+                          onClick={() => handleVote(submission.id, "up")}
+                        >
+                          <i className="thumbs-icon thumbs-icon-up">👍</i>
+                          <p className="hidden sm:block">YES</p> {/* Hide on mobile, show on desktop */}
+                        </div>
 
-                    <div className="thumbs">
-                      {/* Upvote Button */}
-                      <div
-                        className="thumb-button upvote-button"
-                        onClick={() => handleVote(submission.id, "up")}
-                      >
-                        <i className="thumbs-icon thumbs-icon-up">👍</i>
-                        <p>YES</p>
-                      </div>
-
-                      {/* Downvote Button */}
-                      <div
-                        className="thumb-button downvote-button"
-                        onClick={() => handleVote(submission.id, "down")}
-                      >
-                        <i className="thumbs-icon thumbs-icon-down">👎</i>
-                        <p>NO</p>
+                        {/* Downvote Button */}
+                        <div
+                          className="thumb-button downvote-button"
+                          onClick={() => handleVote(submission.id, "down")}
+                        >
+                          <i className="thumbs-icon thumbs-icon-down">👎</i>
+                          <p className="hidden sm:block">NO</p> {/* Hide on mobile, show on desktop */}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
