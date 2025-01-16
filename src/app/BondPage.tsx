@@ -40,7 +40,7 @@ const BondPage = () => {
         {/* Bond to Invest text above Agent Cards */}
         <section className="text-center mt-8">
           <h2 className="text-4xl font-semibold text-[#fff]">
-            Buy Discounted Agent Shares by Bonding
+            Buy Shares of Advanced Agent Strategies
           </h2>
         </section>
 
@@ -50,7 +50,7 @@ const BondPage = () => {
             <div key={index} className="col-span-10 sm:col-span-5">
               <Card
                 title={props.name}
-                description={props.description}
+         
                 pfp={props.pfp}
                 href={`/agent/${props.name}`}
                 sharePrice={props.sharePrice}
