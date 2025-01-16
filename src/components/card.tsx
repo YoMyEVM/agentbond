@@ -3,7 +3,6 @@ import React, { forwardRef, ComponentProps, SVGProps } from "react";
 export interface CardProps
   extends Omit<ComponentProps<"div">, "className" | "children"> {
   title: string;
-  description: string;
   pfp: string | React.ComponentType<SVGProps<SVGSVGElement>>;
   href: string;
   sharePrice: string | number;
@@ -11,7 +10,7 @@ export interface CardProps
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, pfp, href, sharePrice, status, ...rest }, ref) => {
+  ({ title, pfp, href, sharePrice, status, ...rest }, ref) => {
     const glowEffect =
       status === "online" ? "text-green-500 glow" : "text-red-500 glow"; // Glow effect based on status
 
@@ -37,24 +36,25 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           )}
         </div>
 
-        {/* Middle section: Title, Description, and Status */}
+        {/* Middle section: Title and Status */}
         <div className="flex flex-col flex-1">
           <h3 className="text-xl font-bold text-accent1">{title}</h3>
-          <p className="mt-1 text-sm text-gray-300">{description}</p>
 
           {/* Status indicator with glow effect */}
-          <div className={`mt-2 ${glowEffect} text-lg`}> {/* Apply the glowing text effect */}
+          <div className={`mt-2 ${glowEffect} text-lg`}>
             {status === "online" ? "Online" : "Offline"}
           </div>
         </div>
 
         {/* Right section: Share Price and Visit Button */}
         <div className="ml-4 flex-shrink-0 flex items-center space-x-4">
-          <div className="text-xl text-accent1 font-bold"> {/* "Share Price" in accent1 color */}
-            Share Price:
-          </div>
-          <div className="text-2xl text-white font-bold"> {/* Price text size increased */}
-            ${sharePrice}
+          <div className="flex flex-col items-end">
+            <div className="text-xl text-accent1 font-bold"> {/* "Share Price" in accent1 color */}
+              Share Price:
+            </div>
+            <div className="text-2xl text-white font-bold"> {/* Price text size increased */}
+              ${sharePrice}
+            </div>
           </div>
           <a
             href={href}
