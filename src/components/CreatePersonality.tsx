@@ -24,7 +24,6 @@ const CreatePersonality: React.FC = () => {
 
   // This function will force the image to be regenerated every time the "Update Preview" button is clicked
   const handleUpdatePreview = () => {
-    // Reset imageSrc to an empty string or generate a new image source
     setPersonality((prev) => ({
       ...prev,
       imageSrc: "", // Reset image source to trigger the generative image creation
@@ -32,9 +31,9 @@ const CreatePersonality: React.FC = () => {
   };
 
   return (
-    <div className="flex space-x-8 p-8">
+    <div className="flex flex-col md:flex-row space-y-8 md:space-x-8 p-8">
       {/* Left Side: Create Personality Form */}
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <CreatePersonalityForm
           personality={personality}
           setPersonality={setPersonality}
@@ -42,7 +41,12 @@ const CreatePersonality: React.FC = () => {
       </div>
 
       {/* Right Side: PersonaViz, ChatBox, and Preview */}
-      <div className="w-1/2 flex flex-col space-y-4">
+      <div className="w-full md:w-1/2 flex flex-col space-y-4">
+        {/* ChatBox on top for mobile */}
+        <div className="md:hidden">
+          <ChatBox agentName={personality.name || "Agent"} />
+        </div>
+
         {/* Persona Visualization */}
         <PersonaViz imageSrc={personality.imageSrc || ""} />
 
@@ -59,11 +63,13 @@ const CreatePersonality: React.FC = () => {
           </button>
         </div>
 
-        {/* ChatBox */}
-        <ChatBox agentName={personality.name || "Agent"} />
-
         {/* Preview Personality */}
         <PreviewPersonality personality={personality} />
+
+        {/* ChatBox on larger screens */}
+        <div className="hidden md:block">
+          <ChatBox agentName={personality.name || "Agent"} />
+        </div>
       </div>
     </div>
   );
