@@ -43,7 +43,7 @@ const BuyGenCreditsPage: React.FC = () => {
 
   return (
     <section className="max-w-screen-lg mx-auto py-8 bg-black text-white">
-      <h1 className="text-4xl font-bold text-[#fd01f5] text-center">
+      <h1 className="text-4xl font-bold text-white text-center">
         Purchase Gen Credits
       </h1>
 
