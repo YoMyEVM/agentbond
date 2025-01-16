@@ -5,12 +5,11 @@ const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // To manage mobile menu toggle
-  const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Function to fetch GenCredits balance (example function)
   const fetchGenCreditsBalance = async () => {
-    setGenCreditsBalance(100); // Set your balance value here
+    setGenCreditsBalance(100);
   };
 
   const connectWallet = async () => {
@@ -28,114 +27,89 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const disconnectWallet = () => {
-    setAccount(null);
-  };
+  const disconnectWallet = () => setAccount(null);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((prevState) => !prevState);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (event.target && !(event.target as HTMLElement).closest('.dropdown')) {
-      setIsDropdownOpen(false);
-    }
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
-    fetchGenCreditsBalance(); // Fetch balance on component mount
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     const checkConnection = async () => {
       if (window.ethereum) {
         const accounts = await window.ethereum.request({ method: "eth_accounts" });
-        if (accounts.length > 0) {
-          setAccount(accounts[0]);
-        }
+        if (accounts.length > 0) setAccount(accounts[0]);
       }
     };
     checkConnection();
-  }, []);
-
-  useEffect(() => {
-    // Listen for resize events to update isMobile state
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Initial check
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    fetchGenCreditsBalance();
   }, []);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black text-white z-50 border-b-2 border-[#fd01f5]">
-      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 flex justify-between items-center h-6 md:h-6">
-        {/* Left Section */}
-        <div className="flex items-center space-x-4">
-          <a href="/" className="flex items-center space-x-2">
-            <img
-              src="/studiologo.png"
-              alt="Studio Logo"
-              className="w-10 h-10 object-contain"
-            />
-            <span className="text-xl font-bold text-[#fd01f5] hidden md:inline-block">Studio</span> {/* Hide on mobile */}
+      <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 flex justify-between items-center h-10">
+        {/* Logo and Title */}
+        <a href="/" className="flex items-center space-x-3">
+          <img
+            src="/studiologo.png"
+            alt="Studio Logo"
+            className="w-14 h-14 object-contain"
+          />
+          <span className="text-3xl font-bold text-[#fd01f5] hidden md:block">
+            Studio
+          </span>
+        </a>
+
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex space-x-10">
+          <a href="/create" className="text-lg font-medium hover:text-[#01fcfc] transition">
+            Create
           </a>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex space-x-4">
-            <a href="/create" className="hover:text-[#01fcfc] transition">Create</a>
-            <a href="/shop" className="hover:text-[#01fcfc] transition">Shop</a>
-            <a href="/manage" className="hover:text-[#01fcfc] transition">Manage</a>
-
-            {/* More Dropdown */}
-            <div className="relative dropdown">
-              <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="hover:text-[#01fcfc] transition">
-                More
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded transition-all duration-300 opacity-100 dropdown-menu">
-                  <a href="/bond" className="block py-1 hover:text-[#fd01f5]">Bond</a>
-                  <a href="/overmind" className="block py-1 hover:text-[#fd01f5]">Overmind</a>
-                  <a href="https://myevm.network" className="block py-1 hover:text-[#fd01f5]">About</a>
-                </div>
-              )}
-            </div>
+          <a href="/shop" className="text-lg font-medium hover:text-[#01fcfc] transition">
+            Shop
+          </a>
+          <a href="/manage" className="text-lg font-medium hover:text-[#01fcfc] transition">
+            Manage
+          </a>
+          <div className="relative dropdown">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-lg font-medium hover:text-[#01fcfc] transition"
+            >
+              More
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
+                <a href="/bond" className="block py-1 text-sm hover:text-[#fd01f5]">Bond</a>
+                <a href="/overmind" className="block py-1 text-sm hover:text-[#fd01f5]">Overmind</a>
+                <a href="https://myevm.network" className="block py-1 text-sm hover:text-[#fd01f5]">About</a>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
           <Link to="/buy-gen-credits">
-            <button
-              className="px-2 py-1 bg-black text-white border-2 border-accent2 rounded hover:bg-[#333] transition md:px-4 md:py-2"
-            >
+            <button className="px-4 py-2 bg-black text-white border-2 border-accent2 rounded hover:bg-[#333]">
               GenCredits: <span className="text-accent1">{genCreditsBalance}</span>
             </button>
           </Link>
-
-          {/* Wallet Connection Button */}
           {account ? (
             <button
               onClick={disconnectWallet}
-              className="text-white font-bold px-2 py-1 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 transition md:px-4 md:py-2"
+              className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
             >
-              {/* Show only "Disconnect" without address on mobile */}
               {isMobile ? "Disconnect" : `Disconnect (${account.slice(0, 6)}...${account.slice(-4)})`}
             </button>
           ) : (
             <button
               onClick={connectWallet}
-              className="text-black font-bold px-6 py-2 bg-[#01fcfc] rounded hover:bg-[#01fcfc]/80 transition md:px-4 md:py-2"
+              className="px-6 py-2 bg-[#01fcfc] rounded hover:bg-[#01fcfc]/80 text-black font-bold"
             >
               Connect
             </button>

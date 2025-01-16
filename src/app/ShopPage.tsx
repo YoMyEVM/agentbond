@@ -5,17 +5,15 @@ const ShopPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   // Filter items based on the selected category
-  const filteredItems = selectedCategory === "all"
-    ? items
-    : items.filter((item) => item.category === selectedCategory);
+  const filteredItems =
+    selectedCategory === "all"
+      ? items
+      : items.filter((item) => item.category === selectedCategory);
 
   return (
     <div className="p-4 bg-gray-900 text-white">
-
-
       {/* Category Selection Buttons */}
       <div className="flex justify-center mb-6 space-x-2">
-
         <button
           onClick={() => setSelectedCategory("all")}
           className={`${
@@ -27,7 +25,9 @@ const ShopPage: React.FC = () => {
         <button
           onClick={() => setSelectedCategory("plugin")}
           className={`${
-            selectedCategory === "plugin" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+            selectedCategory === "plugin"
+              ? "bg-[#fd01f5] text-black"
+              : "bg-gray-700"
           } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Plugins
@@ -43,7 +43,9 @@ const ShopPage: React.FC = () => {
         <button
           onClick={() => setSelectedCategory("wisdom")}
           className={`${
-            selectedCategory === "wisdom" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+            selectedCategory === "wisdom"
+              ? "bg-[#fd01f5] text-black"
+              : "bg-gray-700"
           } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Wisdom
@@ -51,7 +53,9 @@ const ShopPage: React.FC = () => {
         <button
           onClick={() => setSelectedCategory("personality")}
           className={`${
-            selectedCategory === "personality" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+            selectedCategory === "personality"
+              ? "bg-[#fd01f5] text-black"
+              : "bg-gray-700"
           } text-white px-4 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Personalities
@@ -61,7 +65,10 @@ const ShopPage: React.FC = () => {
       {/* Shop Items */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredItems.map((item) => (
-          <div key={item.id} className="bg-gray-800 p-4 rounded-lg shadow-md">
+          <div
+            key={item.id}
+            className="bg-gray-800 p-4 rounded-lg shadow-md border-2 border-accent1 hover:border-[#01fcfc] transition-colors"
+          >
             <img
               src={item.image}
               alt={item.name}

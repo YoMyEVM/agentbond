@@ -136,6 +136,7 @@
   background: #1a1a1a;
   padding: 16px;
   border-radius: 8px;
+  border: 2px solid #fd01f5 !important; /* Forcing the accent1 color border */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -145,6 +146,13 @@
   justify-content: space-between;
   overflow: hidden; /* Prevent any content from overflowing */
 }
+
+.imgGalleryItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: #01fcfc; /* Change border to accent2 on hover */
+}
+
 
 .imgGalleryItem img {
   width: 150%;

@@ -139,7 +139,7 @@ const BuyGenCreditsPage: React.FC = () => {
       <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-10">
         <button
           onClick={startOver}
-          className="bg-[#fd01f5] text-white font-bold px-4 py-2 rounded-full w-full sm:w-48"
+          className="bg-[#fd01f5] text-black font-bold px-4 py-2 rounded-full w-full sm:w-48"
         >
           Start Over
         </button>
