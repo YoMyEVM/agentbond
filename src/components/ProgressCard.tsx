@@ -34,8 +34,8 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
           </div>
         </div>
         {/* Wallet Balance */}
-        <div className="text-3xl font-semibold">
-          <span className="text-[#01fcfc]">Wallet Balance:</span>{" "}
+        <div className="text-2xl font-semibold mr-4">
+          <span className="text-[#01fcfc]">Balance<br/></span>{" "}
           <span className="text-white">${walletBalance.toFixed(2)}</span>
         </div>
       </div>
