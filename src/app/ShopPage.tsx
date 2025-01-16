@@ -14,7 +14,8 @@ const ShopPage: React.FC = () => {
 
 
       {/* Category Selection Buttons */}
-      <div className="flex justify-center mb-6 space-x-4">
+      <div className="flex justify-center mb-6 space-x-2">
+
         <button
           onClick={() => setSelectedCategory("all")}
           className={`${
