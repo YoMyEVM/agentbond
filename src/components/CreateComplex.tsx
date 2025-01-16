@@ -45,13 +45,13 @@ const CreateComplex: React.FC = () => {
 
   return (
     <div className="bg-gray-900 p-8 rounded shadow-lg border-2 border-accent1">
-      <div className="flex justify-between mb-4">
-        <h2 className="text-accent2 text-xl w-1/4 text-center mx-auto">Contract Actions</h2>
-        <h2 className="text-accent2 text-xl w-1/4 text-center mx-auto">Transaction Builder</h2>
+      <div className="flex flex-col sm:flex-row justify-between mb-4">
+        <h2 className="text-accent2 text-xl w-full sm:w-1/4 text-center mx-auto">Contract Actions</h2>
+        <h2 className="text-accent2 text-xl w-full sm:w-1/4 text-center mx-auto">Transaction Builder</h2>
       </div>
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         {/* Contract Actions */}
-        <div className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md">
+        <div className="w-full sm:w-1/2 bg-gray-800 p-4 rounded-lg shadow-md">
           {/* Protocol Selection */}
           <div className="mb-4">
             <label className="text-accent1">Select Protocol:</label>
@@ -80,7 +80,7 @@ const CreateComplex: React.FC = () => {
               <option value="">-- Select Contract --</option>
               {contracts.map((contract) => (
                 <option key={contract.id} value={contract.id}>
-                  {contract.name} (Address: {contract.address})
+                  {contract.name} {/* Address is hidden here */}
                 </option>
               ))}
             </select>
@@ -94,16 +94,29 @@ const CreateComplex: React.FC = () => {
                 contracts
                   .filter((contract) => contract.id === selectedContract)
                   .map((contract) => (
-                  <DraggableContractActionCard
-                    key={`${protocol.id}-${contract.id}`}
-                    action={{
-                      id: `${protocol.id}-${contract.id}`,
-                      name: `${protocol.name} - ${contract.name}`,
-                      description: `${protocol.description} function1 ${contract.name}`,
-                      image: protocol.image, // Pass protocol logo to the card
-                    }}
-                  />
+                    <div key={`${protocol.id}-${contract.id}`} className="bg-gray-700 p-4 rounded-lg mb-4">
+                      <div className="flex justify-between">
+                        <h3 className="text-white">{protocol.name} - {contract.name}</h3>
+                        <a
+                          href={`https://etherscan.io/address/${contract.address}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 text-sm"
+                        >
+                          {`${contract.address.substring(0, 6)}...${contract.address.substring(38)}`}
+                        </a>
+                      </div>
 
+                      {/* On mobile, replace drag-and-drop with an 'Add' button */}
+                      <div className="sm:hidden mt-2">
+                        <button
+                          onClick={() => handleAddActionToTransaction({ id: `${protocol.id}-${contract.id}`, name: `${protocol.name} - ${contract.name}`, description: "Action description", image: protocol.image })}
+                          className="w-full bg-[#fd01f5] text-white py-2 rounded"
+                        >
+                          Add Action
+                        </button>
+                      </div>
+                    </div>
                   ))
               )
           ) : (
@@ -114,7 +127,7 @@ const CreateComplex: React.FC = () => {
         {/* Transaction Builder */}
         <div
           ref={drop}
-          className="w-1/2 bg-gray-800 p-4 rounded-lg shadow-md"
+          className="w-full sm:w-1/2 bg-gray-800 p-4 rounded-lg shadow-md"
           style={{ backgroundColor: isOver ? "rgba(0, 255, 255, 0.2)" : "transparent" }}
         >
           {actionsInTransaction.length > 0 ? (
@@ -130,9 +143,7 @@ const CreateComplex: React.FC = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <button
-                      className={`text-white bg-gray-600 p-1 rounded hover:bg-gray-500 ${
-                        index === 0 ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
+                      className={`text-white bg-gray-600 p-1 rounded hover:bg-gray-500 ${index === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
                       onClick={() => handleMoveAction(index, "up")}
                       disabled={index === 0}
                     >
@@ -145,11 +156,7 @@ const CreateComplex: React.FC = () => {
                       ×
                     </button>
                     <button
-                      className={`text-white bg-gray-600 p-1 rounded hover:bg-gray-500 ${
-                        index === actionsInTransaction.length - 1
-                          ? "opacity-50 cursor-not-allowed"
-                          : ""
-                      }`}
+                      className={`text-white bg-gray-600 p-1 rounded hover:bg-gray-500 ${index === actionsInTransaction.length - 1 ? "opacity-50 cursor-not-allowed" : ""}`}
                       onClick={() => handleMoveAction(index, "down")}
                       disabled={index === actionsInTransaction.length - 1}
                     >

@@ -1,4 +1,3 @@
-// CreatePage.tsx
 import React, { useState } from "react";
 import CreatePersonality from "components/CreatePersonality";
 import CreatePlugin from "components/CreatePlugin";
@@ -24,10 +23,10 @@ const CreatePage: React.FC = () => {
       </p>
 
       {/* Category toggle buttons */}
-      <div className="mt-6 mb-8">
+      <div className="mt-6 mb-8 flex flex-wrap justify-center gap-4">
         <button
           onClick={() => handleCategoryChange("personality")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
+          className={`w-full sm:w-auto px-2 py-1 text-lg rounded ${
             activeCategory === "personality"
               ? "bg-[#fd01f5] text-white"
               : "bg-gray-700 text-gray-300"
@@ -37,7 +36,7 @@ const CreatePage: React.FC = () => {
         </button>
         <button
           onClick={() => handleCategoryChange("plugin")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
+          className={`w-full sm:w-auto px-2 py-1 text-lg rounded ${
             activeCategory === "plugin" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
@@ -45,7 +44,7 @@ const CreatePage: React.FC = () => {
         </button>
         <button
           onClick={() => handleCategoryChange("skill")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
+          className={`w-full sm:w-auto px-2 py-1 text-lg rounded ${
             activeCategory === "skill" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
@@ -53,7 +52,7 @@ const CreatePage: React.FC = () => {
         </button>
         <button
           onClick={() => handleCategoryChange("complex")}
-          className={`px-6 py-2 mx-2 text-lg rounded ${
+          className={`w-full sm:w-auto px-2 py-1 text-lg rounded ${
             activeCategory === "complex" ? "bg-[#fd01f5] text-white" : "bg-gray-700 text-gray-300"
           }`}
         >
