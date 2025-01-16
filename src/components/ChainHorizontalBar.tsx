@@ -57,18 +57,18 @@ const ChainHorizontalBar = ({
       alert("MetaMask is not installed.");
       return;
     }
-  
+
     try {
       // Check if the wallet is connected
       const accounts = await window.ethereum.request({
         method: "eth_accounts", // Request the connected accounts
       });
-  
+
       if (accounts.length === 0) {
         // If no accounts are connected, prompt the user to connect their wallet
         await window.ethereum.request({ method: "eth_requestAccounts" });
       }
-  
+
       // Once the wallet is connected, proceed with switching the chain
       await switchChain(chain); // Switch the chain in MetaMask
       setSelectedChain(chain); // Update the selected chain in the state
@@ -77,22 +77,16 @@ const ChainHorizontalBar = ({
       alert("Error handling chain selection.");
     }
   };
-  
 
   return (
     <div className="py-6">
-      {/* Horizontal Bar */}
-      <div
-        className="grid gap-5 px-4"
-        style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-        }}
-      >
-        {chains.map((chain) => (
+      {/* Horizontal Bar for mobile (8 logos across the top) */}
+      <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 px-4">
+        {chains.slice(0, 8).map((chain) => (
           <div
             key={chain.id}
             onClick={() => handleChainSelect(chain)}
-            className={`flex flex-row items-center justify-center text-center bg-gray-800 p-3 rounded-lg shadow-md cursor-pointer transition-shadow hover:shadow-lg ${
+            className={`flex items-center justify-center bg-gray-800 p-2 rounded-lg cursor-pointer transition-shadow hover:shadow-lg ${
               selectedChain?.id === chain.id
                 ? "border-4 border-[#fd01f5] bg-[#fd01f5] text-white"
                 : "text-gray-300"
@@ -101,9 +95,12 @@ const ChainHorizontalBar = ({
             <img
               src={chain.image || "default-image-url"} // Fallback image URL if not provided
               alt={chain.name}
-              className="w-10 h-10 mr-2 rounded-full" // Adjust size of the image
+              className="w-10 h-10 object-contain" // Square logos
             />
-            <span className="text-white font-bold text-lg">{chain.name}</span> {/* Increase font size for name */}
+            {/* Show chain name only on larger screens */}
+            <span className="text-white font-bold text-lg hidden sm:inline-block ml-2">
+              {chain.name}
+            </span>
           </div>
         ))}
       </div>
