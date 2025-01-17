@@ -13,14 +13,10 @@ import SwiperComponent from "components/SwiperComponent";
 import ShopPage from "./ShopPage"; // Import the ShopPage component
 import ManagePage from "./ManagePage";
 import BondPage from "./BondPage";
-
-// Import the ChainHorizontalBar
 import ChainHorizontalBar from "../components/ChainHorizontalBar";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react"; // Import useState
 import { Chain } from "../utils/chains"; // Import the correct Chain type from utils/chains.ts
+import ItemPage from "./ItemPage";
 
 function App() {
   // Initialize selectedChain with null or a Chain type
@@ -71,6 +67,8 @@ function App() {
 
             {/* Shop Page Route */}
             <Route path="/shop" element={<ShopPage />} />
+
+            {/* Manage Page */}
             <Route
               path="/manage"
               element={<ManagePage selectedChain={selectedChain} />}
@@ -84,6 +82,9 @@ function App() {
 
             {/* Buy Gen Credits Page Route */}
             <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} />
+
+            {/* Dynamic Item Page */}
+            <Route path="/item/:id" element={<ItemPage />} /> {/* The route for individual items */}
           </Routes>
         </main>
         <Footer />

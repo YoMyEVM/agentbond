@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Add Link for routing
 import { items } from "../utils/items";
 
 const ShopPage: React.FC = () => {
@@ -51,7 +52,15 @@ const ShopPage: React.FC = () => {
               </div>
             )}
 
-            <div className="mt-4 flex justify-center">
+            <div className="mt-4 flex justify-center space-x-4">
+              {/* View Details Button */}
+              <Link to={`/item/${item.id}`}>
+                <button className="bg-[#01fcfc] text-black px-6 py-2 rounded-lg hover:bg-[#fd01f5] transition-colors">
+                  View Details
+                </button>
+              </Link>
+              
+              {/* Buy Now Button */}
               <button className="bg-[#fd01f5] text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors">
                 Buy Now
               </button>
