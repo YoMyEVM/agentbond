@@ -54,7 +54,7 @@ const BondPage: React.FC = () => {
               view === "cards" ? "bg-[#fd01f5] text-black" : "bg-gray-700 text-white"
             } hover:bg-[#01fcfc] transition-colors`}
           >
-            View Cards
+            Buy Shares
           </button>
           <button
             onClick={() => setView("leaderboard")}
@@ -62,7 +62,7 @@ const BondPage: React.FC = () => {
               view === "leaderboard" ? "bg-[#fd01f5] text-black" : "bg-gray-700 text-white"
             } hover:bg-[#01fcfc] transition-colors`}
           >
-            View Leaderboard
+            Leaderboard
           </button>
         </section>
 
