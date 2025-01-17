@@ -42,23 +42,6 @@ export interface Chain {  // Interface for an individual chain
       explorerUrl: "https://arbiscan.io",
       image: "/arbitrumlogo.svg", // Add an image URL for Arbitrum
     },
-
-    {
-      name: "Abstract",
-      id: 2741, // Example ID, replace with the actual ID
-      rpc: "https://abstract-testnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
-      symbol: "ABS",
-      explorerUrl: "https://explorer.testnet.abs.xyz/",
-      image: "/abstractlogo.jpg", // Add an image URL for Abstract
-    },
-    {
-      name: "UniChain",
-      id: 130, // Example ID, replace with the actual ID
-      rpc: "https://unichain-sepolia.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
-      symbol: "UNI",
-      explorerUrl: "https://sepolia.uniscan.xyz/",
-      image: "/unichainlogo.svg", // Add an image URL for UniChain
-    },
     {
       name: "ApeChain",
       id: 33139, // Example ID, replace with the actual ID
@@ -67,8 +50,26 @@ export interface Chain {  // Interface for an individual chain
       explorerUrl: "https://apescan.io/",
       image: "/apechainlogo.png", // Add an image URL for ApeChain
     },
+
     {
-      name: "BeraChain",
+      name: "Testnet",
+      id: 2741, // Example ID, replace with the actual ID
+      rpc: "https://abstract-testnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+      symbol: "ABS",
+      explorerUrl: "https://explorer.testnet.abs.xyz/",
+      image: "/abstractlogo.jpg", // Add an image URL for Abstract
+    },
+    {
+      name: "Testnet",
+      id: 130, // Example ID, replace with the actual ID
+      rpc: "https://unichain-sepolia.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+      symbol: "UNI",
+      explorerUrl: "https://sepolia.uniscan.xyz/",
+      image: "/unichainlogo.svg", // Add an image URL for UniChain
+    },
+
+    {
+      name: "Testnet",
       id: 80084, // Example ID, replace with the actual ID
       rpc: "https://berachain-bartio.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
       symbol: "BERA",
