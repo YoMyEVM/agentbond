@@ -41,13 +41,13 @@ function App() {
               path="/"
               element={
                 <>
-                  <section className="text-center max-w-screen-lg mx-auto py-2">
+                  <section className="text-center max-w-screen-lg mx-auto py-1">
                     <h1 className="text-5xl font-bold text-accent2 mt-14">
                       ISAI Agent Studio<br />
-                      <span className="text-accent1 text-3xl">Sneak Peak</span>
+                      <span className="text-accent1 text-3xl">Craft, Evolve, and Interact with Intelligent NFTs.</span>
                     </h1>
-                    <p className="text-3xl text-gray-300 mt-1 -mb-14">
-                      Craft, Evolve, and Interact with User-made Intelligent NFTs.
+                    <p className="text-3xl text-gray-300 mt-5 -mb-14">
+                      A Components Design Studio and Shop for Autonomous Agents
                     </p>
                   </section>
 

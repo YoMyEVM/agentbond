@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-
 import Card from "../components/card";
+import Leaderboard from "../components/Leaderboard";
 
 // Features array with agent information and share prices
 const features = [
@@ -29,13 +30,14 @@ function ScrollToAgents() {
   return null;
 }
 
-const BondPage = () => {
+const BondPage: React.FC = () => {
+  const [view, setView] = useState<"cards" | "leaderboard">("cards");
+
   return (
     <>
       <ScrollToAgents />
       <main className="pt-4">
         <Navbar />
-        
 
         {/* Bond to Invest text above Agent Cards */}
         <section className="text-center mt-8">
@@ -44,24 +46,47 @@ const BondPage = () => {
           </h2>
         </section>
 
-        {/* Agent Cards */}
-        <section id="agent-cards" className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
-          {features.map((props, index) => (
-            <div key={index} className="col-span-10 sm:col-span-5">
-              <Card
-                title={props.name}
-         
-                pfp={props.pfp}
-                href={`/agent/${props.name}`}
-                sharePrice={props.sharePrice}
-                status={props.status}
-              />
-            </div>
-          ))}
+        {/* View Switching Buttons */}
+        <section className="flex justify-center mt-6 space-x-4">
+          <button
+            onClick={() => setView("cards")}
+            className={`px-6 py-2 rounded-lg ${
+              view === "cards" ? "bg-[#fd01f5] text-black" : "bg-gray-700 text-white"
+            } hover:bg-[#01fcfc] transition-colors`}
+          >
+            View Cards
+          </button>
+          <button
+            onClick={() => setView("leaderboard")}
+            className={`px-6 py-2 rounded-lg ${
+              view === "leaderboard" ? "bg-[#fd01f5] text-black" : "bg-gray-700 text-white"
+            } hover:bg-[#01fcfc] transition-colors`}
+          >
+            View Leaderboard
+          </button>
         </section>
 
+        {/* Conditional Rendering of Cards or Leaderboard */}
+        {view === "cards" ? (
+          <section id="agent-cards" className="max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4">
+            {features.map((props, index) => (
+              <div key={index} className="col-span-10 sm:col-span-5">
+                <Card
+                  title={props.name}
+                  pfp={props.pfp}
+                  href={`/agent/${props.name}`}
+                  sharePrice={props.sharePrice}
+                  status={props.status}
+                />
+              </div>
+            ))}
+          </section>
+        ) : (
+          <section className="max-w-screen-lg xl:max-w-screen-xl mx-auto mt-8">
+            <Leaderboard />
+          </section>
+        )}
       </main>
-
     </>
   );
 };
