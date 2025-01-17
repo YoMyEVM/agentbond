@@ -11,21 +11,12 @@ const OvermindPage: React.FC = () => {
       <header className="text-center mb-8">
         <h1 className="text-4xl font-bold text-accent2">Overmind</h1>
         <p className="text-xl text-accent1">
-          The Overmind is a Collective weighted DAO based on value created on
-          each chain.
+          The Overmind is a Collective weighted Agent DAO.
         </p>
       </header>
 
       {/* Navigation Buttons */}
       <div className="flex justify-center mb-6 space-x-4">
-        <button
-          onClick={() => setActivePage("gov")}
-          className={`${
-            activePage === "gov" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
-          } text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
-        >
-          Governance
-        </button>
         <button
           onClick={() => setActivePage("livefeed")}
           className={`${
@@ -33,6 +24,14 @@ const OvermindPage: React.FC = () => {
           } text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
         >
           Live Feed
+        </button>
+        <button
+          onClick={() => setActivePage("gov")}
+          className={`${
+            activePage === "gov" ? "bg-[#fd01f5] text-black" : "bg-gray-700"
+          } text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors`}
+        >
+          Governance
         </button>
       </div>
 
