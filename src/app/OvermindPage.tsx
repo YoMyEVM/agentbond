@@ -3,7 +3,7 @@ import Gov from "../components/Gov";
 import LiveFeed from "../components/LiveFeed";
 
 const OvermindPage: React.FC = () => {
-  const [activePage, setActivePage] = useState<"gov" | "livefeed">("gov");
+  const [activePage, setActivePage] = useState<"gov" | "livefeed">("livefeed"); // Set livefeed to be the default
 
   return (
     <div className="bg-black text-white min-h-screen p-8">
