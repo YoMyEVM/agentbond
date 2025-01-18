@@ -20,8 +20,8 @@ const CreateSkill: React.FC = () => {
 
   return (
     <div className="flex flex-col space-y-8">
-      {/* Form and Preview Section (Side-by-Side) */}
-      <div className="flex space-x-8">
+      {/* Form and Preview Section (Responsive Layout) */}
+      <div className="flex flex-col sm:flex-row sm:space-x-8 space-y-8 sm:space-y-0">
         {/* Form Section */}
         <div className="bg-gray-900 p-8 rounded shadow-lg border-2 border-accent1 flex-1">
           <h2 className="text-3xl font-bold text-[#fd01f5]">Create Web3 Skill</h2>
