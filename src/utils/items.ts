@@ -24,7 +24,7 @@ export interface Item {
       category: "plugin",
       image: "/discordlogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [3, 4], // Xcom depends on Discord and Email
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ export interface Item {
       category: "plugin",
       image: "/emaillogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [5, 6], // Xcom depends on Discord and Email
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ export interface Item {
       category: "plugin",
       image: "/wikilogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [7, 8], // Xcom depends on Discord and Email
     },
     {
       id: 5,
@@ -48,7 +48,7 @@ export interface Item {
       category: "plugin",
       image: "/githublogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [9, 10], // Xcom depends on Discord and Email
     },
     {
       id: 6,
@@ -56,7 +56,7 @@ export interface Item {
       category: "plugin",
       image: "/giphylogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [11, 12], // Xcom depends on Discord and Email
     },
   
     {
@@ -81,7 +81,7 @@ export interface Item {
       category: "skill",
       image: "/stargatelogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [13, 14], // Xcom depends on Discord and Email
     },
     {
       id: 10,
@@ -89,7 +89,7 @@ export interface Item {
       category: "skill",
       image: "/opensealogo.webp", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [1, 15], // Xcom depends on Discord and Email
     },
     {
       id: 11,
@@ -97,7 +97,7 @@ export interface Item {
       category: "skill",
       image: "/wethlogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [6, 9], // Xcom depends on Discord and Email
     },
   
     {
@@ -106,7 +106,7 @@ export interface Item {
       category: "wisdom",
       image: "/tensorflowlogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [2, 5], // Xcom depends on Discord and Email
     },
     {
       id: 13,

@@ -6,8 +6,11 @@ import { items } from "../utils/items"; // Assuming we have an items array
 const ItemPage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the ID from URL params
 
+  // Ensure the ID is a valid number
+  const itemId = id ? Number(id) : NaN;
+
   // Find the item by ID from the items list
-  const item = items.find((item) => item.id === Number(id));
+  const item = !isNaN(itemId) ? items.find((item) => item.id === itemId) : undefined;
 
   // If item is not found, return a 404-style message
   if (!item) {
@@ -20,8 +23,8 @@ const ItemPage: React.FC = () => {
 
   return (
     <div className="p-6 bg-gray-900 text-white">
-      {/* Display the ItemDependencyTree and force re-render by passing key */}
-      <ItemDependencyTree key={item.id} item={item} />
+      {/* Display the ItemDependencyTree */}
+      <ItemDependencyTree item={item} />
     </div>
   );
 };
