@@ -17,6 +17,7 @@ import ChainHorizontalBar from "../components/ChainHorizontalBar";
 import { useState } from "react"; // Import useState
 import { Chain } from "../utils/chains"; // Import the correct Chain type from utils/chains.ts
 import ItemPage from "./ItemPage";
+import PreOrderPage from "./PreOrderPage"; // Import the PreOrderPage component
 
 function App() {
   // Initialize selectedChain with null or a Chain type
@@ -50,12 +51,23 @@ function App() {
                   {/* Swiper Component */}
                   <section className="mt-0">
                     <SwiperComponent />
-      
                   </section>
-                  <section className="mt-0">
+
+                  {/* Pre-Order Now Button Section */}
+                  <section className="mt-8 text-center">
+                    <button
+                      onClick={() => window.location.href = '/pre-order'} // This will navigate to Pre-Order page
+                      className="preorder-now-btn bg-accent2 text-white py-3 px-6 rounded-lg hover:bg-accent1 transition"
+                    >
+                      Pre-Order Now
+                    </button>
+                  </section>
+
+                  {/* Crash Course Section */}
+                  <section className="mt-8">
                     <CrashCourse />
-      
                   </section>
+
                   <section className="mt-0">
                     <FAQSection />
                   </section>
@@ -63,6 +75,10 @@ function App() {
               }
             />
 
+            {/* Add PreOrderPage route */}
+            <Route path="/pre-order" element={<PreOrderPage />} /> {/* Add this route for PreOrderPage */}
+
+            {/* Other Routes */}
             {/* Dynamic Agent Page */}
             <Route path="/agent/:name" element={<AgentPage />} />
 
@@ -80,7 +96,7 @@ function App() {
 
             {/* Bond Page */}
             <Route path="/agents" element={<BondPage />} />
-            
+
             {/* Overmind Page */}
             <Route path="/overmind" element={<OvermindPage />} />
 
