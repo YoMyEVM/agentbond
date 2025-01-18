@@ -10,7 +10,6 @@ interface ItemDependencyTreeProps {
 const ItemDependencyTree: React.FC<ItemDependencyTreeProps> = ({ item }) => {
   const [showDependencies, setShowDependencies] = useState(false);
   const [visibleChildDependencies, setVisibleChildDependencies] = useState<{ [key: number]: boolean }>({});
-  const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({});
 
   const toggleParentDependencies = () => {
     setShowDependencies((prev) => !prev);
@@ -26,13 +25,6 @@ const ItemDependencyTree: React.FC<ItemDependencyTreeProps> = ({ item }) => {
       }
       return newVisibility;
     });
-  };
-
-  const toggleItemExpansion = (itemId: number) => {
-    setExpandedItems((prev) => ({
-      ...prev,
-      [itemId]: !prev[itemId],
-    }));
   };
 
   const childItems: (Item | null)[] = (item.dependencies ?? []).map((id) => {
@@ -96,7 +88,6 @@ const ItemDependencyTree: React.FC<ItemDependencyTreeProps> = ({ item }) => {
             {validChildItems.length > 0 ? (
               validChildItems.map((child) => {
                 const isChildVisible = visibleChildDependencies[child.id];
-                const isExpanded = expandedItems[child.id];
                 return (
                   <div key={child.id} className="flex flex-col items-center">
                     <ItemChildCard
@@ -104,13 +95,7 @@ const ItemDependencyTree: React.FC<ItemDependencyTreeProps> = ({ item }) => {
                       onToggleDependencies={() => toggleChildDependencies(child.id)}
                       showDependencies={isChildVisible}
                     />
-                    <button
-                      className="text-white mt-2"
-                      onClick={() => toggleItemExpansion(child.id)}
-                    >
-                      {isExpanded ? "Hide Dependencies" : "Show Dependencies"}
-                    </button>
-                    {isExpanded && renderChildDependencies(child, new Set())}
+                    {isChildVisible && renderChildDependencies(child, new Set())}
                   </div>
                 );
               })
