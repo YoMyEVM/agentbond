@@ -20,9 +20,8 @@ const ItemPage: React.FC = () => {
 
   return (
     <div className="p-6 bg-gray-900 text-white">
-      {/* Display the ItemDependencyTree */}
-      <ItemDependencyTree item={item} />
-
+      {/* Display the ItemDependencyTree and force re-render by passing key */}
+      <ItemDependencyTree key={item.id} item={item} />
     </div>
   );
 };
