@@ -37,7 +37,7 @@ const PreOrderPage: React.FC = () => {
         Guarentee your ISAI Agent NFT
       </h1>
       {/* Apply accent2 and 2xl text size */}
-      <p className="text-accent2 text-2xl">333 Genesis Agents on Each Chain</p>
+      <p className="text-accent1 text-2xl">333 Genesis Agents on Each Chain</p>
 
       <table
         style={{
