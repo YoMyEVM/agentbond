@@ -137,7 +137,7 @@ const PreOrderPage: React.FC = () => {
                 <button
                   style={{
                     backgroundColor: "#fd01f5", // Accent color for the button
-                    color: "white",
+                    color: "black",
                     padding: "10px 25px",
                     border: "none",
                     borderRadius: "5px",
