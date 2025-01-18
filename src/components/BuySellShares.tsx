@@ -13,7 +13,7 @@ const BuySellShares: React.FC<BuySellSharesProps> = ({ onBuy, onSell }) => {
 
       {/* Main Content */}
       <div className="text-[#01fcfc] mb-12">
-        <p>Choose to buy or sell shares of this Agent.</p>
+        <p>.</p>
       </div>
 
       {/* Buttons at the Bottom */}
