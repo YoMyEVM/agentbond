@@ -72,16 +72,21 @@ const CrashCourse: React.FC = () => {
       <h1 className="text-4xl font-bold text-accent2 text-center mb-8">Crash Course</h1>
 
       <Slider {...settings}>
-        {featureItems.map((item, index) => (
-          <div key={index} className="px-4">
-            <div className="bg-[#1a1a1a] p-6 rounded-lg border-2 border-accent1 text-center hover:bg-[#fd01f5] hover:text-black transition">
-              <div className="text-4xl mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p>{item.description}</p>
+        {featureItems.length > 0 ? (
+          featureItems.map((item, index) => (
+            <div key={index} className="px-4">
+              <div className="bg-[#1a1a1a] p-6 rounded-lg border-2 border-accent1 text-center hover:bg-[#fd01f5] hover:text-black transition">
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <div>No items available</div>
+        )}
       </Slider>
+
     </section>
   );
 };

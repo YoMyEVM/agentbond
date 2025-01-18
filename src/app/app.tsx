@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { DndProvider } from "react-dnd"; // Import DndProvider
 import { HTML5Backend } from "react-dnd-html5-backend"; // or any other backend you're using
-import CrashCourse from "./CrashCourse";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CreatePage from "./CreatePage";
@@ -50,8 +50,10 @@ function App() {
                   {/* Swiper Component */}
                   <section className="mt-0">
                     <SwiperComponent />
-                    <CrashCourse />
+       
                   </section>
+\
+
                   <section className="mt-0">
                     <FAQSection />
                   </section>
