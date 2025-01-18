@@ -5,6 +5,7 @@ export interface Item {
     category: string;
     image: string;
     type: string;
+    dependencies?: number[]; 
   }
   
   // Example list of items
@@ -15,6 +16,7 @@ export interface Item {
       category: "plugin",
       image: "/xlogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 2,
@@ -22,6 +24,7 @@ export interface Item {
       category: "plugin",
       image: "/discordlogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 3,
@@ -29,6 +32,7 @@ export interface Item {
       category: "plugin",
       image: "/emaillogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 4,
@@ -36,6 +40,7 @@ export interface Item {
       category: "plugin",
       image: "/wikilogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 5,
@@ -43,6 +48,7 @@ export interface Item {
       category: "plugin",
       image: "/githublogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 6,
@@ -50,6 +56,7 @@ export interface Item {
       category: "plugin",
       image: "/giphylogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
   
     {
@@ -58,6 +65,7 @@ export interface Item {
       category: "skill",
       image: "/aavelogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 8,
@@ -65,6 +73,7 @@ export interface Item {
       category: "skill",
       image: "/unilogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 9,
@@ -72,6 +81,7 @@ export interface Item {
       category: "skill",
       image: "/stargatelogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 10,
@@ -79,6 +89,7 @@ export interface Item {
       category: "skill",
       image: "/opensealogo.webp", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 11,
@@ -86,6 +97,7 @@ export interface Item {
       category: "skill",
       image: "/wethlogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
   
     {
@@ -94,6 +106,7 @@ export interface Item {
       category: "wisdom",
       image: "/tensorflowlogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 13,
@@ -101,6 +114,7 @@ export interface Item {
       category: "wisdom",
       image: "/unilogo.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 14,
@@ -108,6 +122,7 @@ export interface Item {
       category: "wisdom",
       image: "/psychology.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 15,
@@ -115,6 +130,7 @@ export interface Item {
       category: "wisdom",
       image: "/shortpath.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 16,
@@ -122,6 +138,7 @@ export interface Item {
       category: "wisdom",
       image: "/drumbass.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
   
     {
@@ -130,6 +147,7 @@ export interface Item {
       category: "personality",
       image: "/bizreporter.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 18,
@@ -137,6 +155,7 @@ export interface Item {
       category: "personality",
       image: "/ytshill.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 19,
@@ -144,6 +163,7 @@ export interface Item {
       category: "personality",
       image: "/bizhippie.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 20,
@@ -151,6 +171,7 @@ export interface Item {
       category: "personality",
       image: "/moggishcook.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
     {
       id: 21,
@@ -158,6 +179,7 @@ export interface Item {
       category: "personality",
       image: "/datascientist.png", // Replace with actual image URL
       type: "approved",
+      dependencies: [2, 3], // Xcom depends on Discord and Email
     },
   ];
   
