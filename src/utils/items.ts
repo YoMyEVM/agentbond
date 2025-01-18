@@ -155,7 +155,7 @@ export interface Item {
       category: "personality",
       image: "/ytshill.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [], // Xcom depends on Discord and Email
     },
     {
       id: 19,
@@ -179,7 +179,7 @@ export interface Item {
       category: "personality",
       image: "/datascientist.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [], // Xcom depends on Discord and Email
     },
   ];
   

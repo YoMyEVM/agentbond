@@ -100,7 +100,7 @@ const ItemDependencyTree: React.FC<ItemDependencyTreeProps> = ({ item }) => {
                 );
               })
             ) : (
-              <p className="text-white">No dependencies available</p>
+              <p className="text-white">This component does not rely on other components</p>
             )}
           </div>
         )}
