@@ -4,6 +4,7 @@ import { chains, Chain } from "../utils/chains";
 import PreOrderTableCard from "./PreOrderTableCard";
 import getGPOSupply from "../utils/getGPOSupply";
 
+
 // Export PreOrderChain interface so it can be used in other files
 export interface PreOrderChain extends Chain {
   progress: number;
@@ -58,6 +59,7 @@ const PreOrderTable: React.FC = () => {
 
   return (
     <div style={{ overflowX: "auto", width: "100%" }}>
+      {/* Pre-Order Table */}
       <table
         style={{
           width: "100%",
@@ -94,6 +96,11 @@ const PreOrderTable: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      {/* GPO Leaderboard */}
+      <div style={{ marginTop: "40px" }}>
+
+      </div>
     </div>
   );
 };
