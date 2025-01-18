@@ -65,7 +65,7 @@ export interface Item {
       category: "skill",
       image: "/aavelogo.png", // Replace with actual image URL
       type: "approved",
-      dependencies: [2, 3], // Xcom depends on Discord and Email
+      dependencies: [1, 18], // Xcom depends on Discord and Email
     },
     {
       id: 8,
