@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ItemDependencyTree from "../components/ItemDependencyTree"; // Import the correct tree component
+import ItemDependencyTree from "../components/ItemDependencyTree";
+import ItemDetail from "../components/ItemDetail"; // Import the ItemDetail component
 import { items } from "../utils/items"; // Assuming we have an items array
 
 const ItemPage: React.FC = () => {
@@ -23,6 +24,9 @@ const ItemPage: React.FC = () => {
 
   return (
     <div className="p-6 bg-gray-900 text-white">
+      {/* Display the ItemDetail above the tree */}
+      <ItemDetail item={item} />
+      
       {/* Display the ItemDependencyTree */}
       <ItemDependencyTree item={item} />
     </div>

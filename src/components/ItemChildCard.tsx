@@ -1,49 +1,41 @@
 import React from "react";
-import { Item } from "../utils/items";
+import { Link } from "react-router-dom";
+import { Item } from "../utils/items"; // Make sure to import the Item type
 
-interface ItemCardProps {
+interface ItemChildCardProps {
   item: Item;
-  onToggleDependencies: () => void; // Prop to handle the toggle action
-  showDependencies: boolean; // Prop to check if dependencies should be visible
+  onToggleDependencies: () => void;
+  showDependencies: boolean;
 }
 
-const ItemChildCard: React.FC<ItemCardProps> = ({ item, onToggleDependencies, showDependencies }) => {
+const ItemChildCard: React.FC<ItemChildCardProps> = ({ item, onToggleDependencies, showDependencies }) => {
   return (
-    <div className="bg-gray-800 p-4 rounded-lg shadow-md border-2 border-accent1 hover:border-[#01fcfc] transition-colors">
-      <img
-        src={item.image}
-        alt={item.name}
-        className="w-full h-32 object-contain mb-4 rounded"
-      />
-      <h3 className="text-xl text-center">{item.name}</h3>
-      <p className="text-center text-sm text-gray-400">{item.category}</p>
+    <div className="bg-gray-800 text-white p-4 rounded-lg shadow-lg">
+      <div className="flex flex-col items-center">
+        {/* Display the item information */}
+        <img src={item.image} alt={item.name} className="w-32 h-32 rounded-full" />
+        <h3 className="mt-2 text-lg font-semibold">{item.name}</h3>
+        <p className="text-sm text-gray-400">{item.category}</p>
 
-      {/* Approved Badge */}
-      {item.type === "approved" && (
-        <div className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full mt-2 flex justify-center w-full">
-          Approved
+        {/* Go To Component Button */}
+        <div className="mt-4 flex justify-center space-x-4">
+          <Link to={`/item/${item.id}`} className="bg-[#fd01f5] text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors">
+            Go To Component
+          </Link>
         </div>
-      )}
 
-      <div className="mt-4 flex justify-center space-x-4">
-        {/* Buy Now Button */}
-        <button className="bg-[#fd01f5] text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors">
-          Buy Now
-        </button>
-      </div>
-
-      {/* View Dependencies Button */}
-      <div className="mt-4">
-        <button
-          onClick={onToggleDependencies}
-          className="w-full bg-[#01fcfc] text-black px-4 py-2 rounded-lg hover:bg-[#fd01f5] transition-colors"
-        >
-          {showDependencies ? "Hide Dependencies" : "View Dependencies"}
-        </button>
+        {/* Toggle Dependencies Button */}
+        <div className="mt-4 flex justify-center space-x-4">
+          <button
+            onClick={onToggleDependencies}
+            className="bg-[#fd01f5] text-white px-6 py-2 rounded-lg hover:bg-[#01fcfc] transition-colors"
+          >
+            {showDependencies ? "Hide Dependencies" : "View Dependencies"}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default ItemChildCard;
-
