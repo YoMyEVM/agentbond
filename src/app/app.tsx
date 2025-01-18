@@ -43,7 +43,7 @@ function App() {
                       <span className="text-accent1 text-3xl">Craft, Evolve, and Interact with Intelligent NFTs.</span>
                     </h1>
                     <p className="text-3xl text-gray-300 mt-5 -mb-14">
-                      A Components Design Studio and Shop for Autonomous Agents
+                      A Workflow Design Studio and Components Store for Autonomous Agents
                     </p>
                   </section>
 
