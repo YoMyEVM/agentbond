@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.1.5",
+    "axios": "^1.7.9",
     "ethereum-blockies": "^0.1.1",
     "ethers": "^6.13.4",
     "gsap": "^3.12.5",
@@ -59,6 +60,7 @@
     "@commitlint/cli": "19.5.0",
     "@eslint/js": "9.13.0",
     "@tailwindcss/forms": "0.5.9",
+    "@types/axios": "^0.9.36",
     "@types/gsap": "^1.20.2",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",

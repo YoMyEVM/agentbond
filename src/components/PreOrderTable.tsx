@@ -1,6 +1,6 @@
-// PreOrderTable.tsx
-import React from "react";
-import { chains, Chain } from '../utils/chains'; // Ensure the correct import path
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { chains, Chain } from "../utils/chains"; // Ensure the correct import path
 
 // Define a new type that includes progress and price
 interface PreOrderChain extends Chain {
@@ -8,14 +8,34 @@ interface PreOrderChain extends Chain {
   price: number;  // Price is a number
 }
 
+interface EthPriceResponse {
+  ethereum: {
+    usd: number;
+  };
+}
+
 const PreOrderTable: React.FC = () => {
+  const [ethPrice, setEthPrice] = useState<number | null>(null);
+
+  // Fetch ETH price on component mount
+  useEffect(() => {
+    axios
+      .get<EthPriceResponse>("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd")
+      .then((response) => {
+        setEthPrice(response.data.ethereum.usd);
+      })
+      .catch((error) => {
+        console.error("Error fetching ETH price:", error);
+      });
+  }, []);
+
   // Add mock progress values (randomly generated for each chain as an example)
   const preOrderChains: PreOrderChain[] = chains.map((chain) => ({
     ...chain,
     progress: Math.floor(Math.random() * 334), // Random progress value between 0 and 333
-    price: parseFloat((Math.random() * (10 - 1) + 1).toFixed(2)), // Price is now a number
+    price: 0.004, // Set price to 0.004 ETH for each chain
   }));
-  
+
   return (
     <table
       style={{
@@ -130,7 +150,7 @@ const PreOrderTable: React.FC = () => {
                 color: "#fff",
               }}
             >
-              ${chain.price.toFixed(2)} {/* Display price with 2 decimals */}
+              0.004 ETH ({ethPrice ? `$${(ethPrice * 0.004).toFixed(2)}` : "Loading..."})
             </td>
             <td style={{ textAlign: "center", padding: "12px 15px" }}>
               <button
