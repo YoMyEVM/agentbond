@@ -1,9 +1,10 @@
 import React from "react";
 import { chains, Chain } from '../utils/chains'; // Ensure the correct import path
 
-// Define a new type that includes progress
+// Define a new type that includes progress and price
 interface PreOrderChain extends Chain {
   progress: number;
+  price: number;  // Price is a number
 }
 
 const PreOrderPage: React.FC = () => {
@@ -11,8 +12,9 @@ const PreOrderPage: React.FC = () => {
   const preOrderChains: PreOrderChain[] = chains.map((chain) => ({
     ...chain,
     progress: Math.floor(Math.random() * 334), // Random progress value between 0 and 333
+    price: parseFloat((Math.random() * (10 - 1) + 1).toFixed(2)), // Price is now a number
   }));
-
+  
   return (
     <div
       style={{
@@ -34,7 +36,7 @@ const PreOrderPage: React.FC = () => {
           color: "#fd01f5", // Accent color for title
         }}
       >
-        Guarentee your ISAI Agent NFT
+        Guarantee your ISAI Agent NFT
       </h1>
       {/* Apply accent2 and 2xl text size */}
       <p className="text-accent1 text-2xl">333 Genesis Agents on Each Chain</p>
@@ -72,7 +74,7 @@ const PreOrderPage: React.FC = () => {
                 fontSize: "1.2rem",
                 textAlign: "left",
                 color: "#fff",
-                width: "70%", // Progress column width
+                width: "50%", // Adjusted width for Progress column
               }}
             >
               Progress
@@ -81,9 +83,20 @@ const PreOrderPage: React.FC = () => {
               style={{
                 padding: "15px",
                 fontSize: "1.2rem",
+                textAlign: "center", // Centered the price in the column
+                color: "#fff",
+                width: "15%", // Current Price column width
+              }}
+            >
+              Current Price
+            </th>
+            <th
+              style={{
+                padding: "15px",
+                fontSize: "1.2rem",
                 textAlign: "center",
                 color: "#fff",
-                width: "15%", // Pre-Order button column width
+                width: "20%", // Pre-Order button column width
               }}
             >
               Pre-Order
@@ -122,22 +135,32 @@ const PreOrderPage: React.FC = () => {
                 >
                   <div
                     style={{
-                      width: `${(chain.progress / 333) * 100}%`, // Calculate width based on progress
+                      width: `${(chain.progress / 333) * 100}%`, 
                       height: "100%",
                       borderRadius: "5px",
                       backgroundColor: chain.color, // Chain-specific color for progress bar fill
                     }}
                   />
                 </div>
-                <span style={{ fontSize: "1rem" }}>
+                <span style={{ fontSize: "1rem", whiteSpace: "nowrap" }}>
                   {chain.progress} / 333
                 </span>
+              </td>
+              <td
+                style={{
+                  padding: "12px 15px",
+                  fontSize: "1rem",
+                  textAlign: "center", // Centered the price
+                  color: "#fff",
+                }}
+              >
+                ${chain.price.toFixed(2)} {/* Display price with 2 decimals */}
               </td>
               <td style={{ textAlign: "center", padding: "12px 15px" }}>
                 <button
                   style={{
                     backgroundColor: "#fd01f5", // Accent color for the button
-                    color: "black",
+                    color: "white",
                     padding: "10px 25px",
                     border: "none",
                     borderRadius: "5px",
