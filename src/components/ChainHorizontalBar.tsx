@@ -79,9 +79,9 @@ const ChainHorizontalBar = ({
   };
 
   return (
-    <div className="py-6">
+    <div className="py-2">
       {/* Horizontal Bar for mobile (8 logos across the top) */}
-      <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 px-4">
+      <div className="grid grid-cols-4 sm:grid-cols-8 gap-2 px-2">
         {chains.slice(0, 8).map((chain) => (
           <div
             key={chain.id}

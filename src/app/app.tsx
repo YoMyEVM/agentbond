@@ -1,35 +1,36 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { DndProvider } from "react-dnd"; // Import DndProvider
-import { HTML5Backend } from "react-dnd-html5-backend"; // or any other backend you're using
+import { HTML5Backend } from "react-dnd-html5-backend"; // Import HTML5Backend for drag-and-drop functionality
 import CrashCourse from "./CrashCourse";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CreatePage from "./CreatePage";
 import AgentPage from "./AgentPage";
-import BuyGenCreditsPage from "./BuyGenCreditsPage"; // Correct import for BuyGenCreditsPage
+import BuyGenCreditsPage from "./BuyGenCreditsPage"; 
 import FAQSection from "./FAQSection";
 import OvermindPage from "./OvermindPage";
 import SwiperComponent from "components/SwiperComponent";
-import ShopPage from "./ShopPage"; // Import the ShopPage component
+import ShopPage from "./ShopPage";
 import ManagePage from "./ManagePage";
 import BondPage from "./BondPage";
 import ChainHorizontalBar from "../components/ChainHorizontalBar";
-import { useState } from "react"; // Import useState
-import { Chain } from "../utils/chains"; // Import the correct Chain type from utils/chains.ts
+import { useState } from "react"; 
+import { Chain } from "../utils/chains"; // Assuming this is defined correctly in your utils/chains.ts
 import ItemPage from "./ItemPage";
-import PreOrderPage from "./PreOrderPage"; // Import the PreOrderPage component
+import PreOrderPage from "./PreOrderPage"; // Pre-order page
+import ChainPage from "./ChainPage";  // Dynamic Chain Page component
 
 function App() {
-  // Initialize selectedChain with null or a Chain type
+  // Initialize selectedChain state
   const [selectedChain, setSelectedChain] = useState<Chain | null>(null);
 
   return (
-    <DndProvider backend={HTML5Backend}> {/* Wrap the entire app with DndProvider */}
+    <DndProvider backend={HTML5Backend}> {/* Wrap the entire app with DndProvider for drag-and-drop */}
       <Router>
         <main className="pt-4">
           <Navbar />
 
-          {/* Add ChainHorizontalBar above your routes */}
+          {/* Chain selection bar */}
           <ChainHorizontalBar selectedChain={selectedChain} setSelectedChain={setSelectedChain} />
 
           <Routes>
@@ -48,15 +49,15 @@ function App() {
                     </p>
                   </section>
 
-                  {/* Swiper Component */}
+                  {/* Swiper Component Section */}
                   <section className="mt-0">
                     <SwiperComponent />
                   </section>
 
-                  {/* Pre-Order Now Button Section */}
+                  {/* Pre-Order Now Button */}
                   <section className="mt-8 text-center">
                     <button
-                      onClick={() => window.location.href = '/pre-order'} // This will navigate to Pre-Order page
+                      onClick={() => window.location.href = '/pre-order'}
                       className="preorder-now-btn bg-accent2 text-white py-3 px-6 rounded-lg hover:bg-accent1 transition"
                     >
                       Pre-Order Now
@@ -68,6 +69,7 @@ function App() {
                     <CrashCourse />
                   </section>
 
+                  {/* FAQ Section */}
                   <section className="mt-0">
                     <FAQSection />
                   </section>
@@ -75,36 +77,29 @@ function App() {
               }
             />
 
-            {/* Add PreOrderPage route */}
-            <Route path="/pre-order" element={<PreOrderPage />} /> {/* Add this route for PreOrderPage */}
+            {/* Route for Pre-Order Page */}
+            <Route path="/pre-order" element={<PreOrderPage />} />
 
-            {/* Other Routes */}
-            {/* Dynamic Agent Page */}
-            <Route path="/agent/:name" element={<AgentPage />} />
+            {/* Dynamic Routes */}
+            <Route path="/agent/:name" element={<AgentPage />} /> {/* Dynamic Agent Page */}
 
-            {/* Create Character Page */}
-            <Route path="/create" element={<CreatePage />} />
+            <Route path="/create" element={<CreatePage />} /> {/* Character Creation Page */}
 
-            {/* Shop Page Route */}
-            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/shop" element={<ShopPage />} /> {/* Shop Page */}
 
-            {/* Manage Page */}
-            <Route
-              path="/manage"
-              element={<ManagePage selectedChain={selectedChain} />}
-            />
+            {/* Manage Page with selectedChain prop */}
+            <Route path="/manage" element={<ManagePage selectedChain={selectedChain} />} />
 
-            {/* Bond Page */}
-            <Route path="/agents" element={<BondPage />} />
+            <Route path="/agents" element={<BondPage />} /> {/* Bonding Agents */}
 
-            {/* Overmind Page */}
-            <Route path="/overmind" element={<OvermindPage />} />
+            <Route path="/overmind" element={<OvermindPage />} /> {/* Overmind Page */}
 
-            {/* Buy Gen Credits Page Route */}
-            <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} />
+            <Route path="/buy-gen-credits" element={<BuyGenCreditsPage />} /> {/* Buy Gen Credits Page */}
 
-            {/* Dynamic Item Page */}
-            <Route path="/item/:id" element={<ItemPage />} /> {/* The route for individual items */}
+            <Route path="/item/:id" element={<ItemPage />} /> {/* Individual Item Page */}
+
+            <Route path="/chain/:id" element={<ChainPage />} /> {/* Dynamic Chain Page */}
+
           </Routes>
         </main>
         <Footer />

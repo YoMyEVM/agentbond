@@ -17,7 +17,7 @@
   nav {
     background-color: #020d16; /* Black background for navbar */
     border-bottom: 2px solid #fd01f5; /* Pink border at the bottom */
-    padding: 20px 0; /* Increased padding for height */
+    padding: 15px 0; /* Reduced padding to minimize space */
     box-shadow: none; /* Remove any shadow if present */
   }
 
@@ -35,6 +35,7 @@
     overflow: hidden;  /* Prevent vertical overflow */
   }
 
+  /* Adjust spacing for mobile */
   @media (max-width: 600px) {
     main {
       min-height: 100vh; /* Ensure full viewport height */
@@ -50,12 +51,12 @@
 
 .profiles {
   --size: 200px;
-  --img-clip: "M 0 -50 L 200 -50 L 200 150 C 100 150 0 250 0 150 Z"; /* unfortunatly it isn't possible (as far as I know) to use custom properties in clip paths */
+  --img-clip: "M 0 -50 L 200 -50 L 200 150 C 100 150 0 250 0 150 Z"; /* Unfortunately it isn't possible (as far as I know) to use custom properties in clip paths */
   --img-shadow: drop-shadow(5px 5px 2px rgba(0 0 0 / 0.5));
   --name-txt-clr: #EEE;
-  --bg-clr: steelblue;  /* only displayed if no background image defined */
-  --bg-blur: 0;         /* background image default blur */
-  --bg-blur-hover: 20px; /* background image blur on hover */
+  --bg-clr: steelblue;  /* Only displayed if no background image defined */
+  --bg-blur: 0;         /* Background image default blur */
+  --bg-blur-hover: 20px; /* Background image blur on hover */
   
   font-family: 'Roboto', sans-serif;
   display: grid;
@@ -65,22 +66,22 @@
   width: fit-content;
 }
 
-@media (min-width: 500px){
-  .profiles{
-    --grid-cols: 2 ;
+@media (min-width: 500px) {
+  .profiles {
+    --grid-cols: 2;
   }
 }
 
-@media (min-width: 860px){
-  .profiles{
-    --grid-cols: 5 ;
+@media (min-width: 860px) {
+  .profiles {
+    --grid-cols: 5;
   }
 }
 
 .avatar {
   position: relative;
   width: var(--size);
-  height: var(--size); 
+  height: var(--size);
   aspect-ratio: 1;
 }
 

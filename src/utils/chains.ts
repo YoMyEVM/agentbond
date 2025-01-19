@@ -83,5 +83,40 @@ export const chains: Chain[] = [
     WETHaddress: "0xcF800F4948D16F23333508191B1B1591daF70438",
     GPOexplorerurl: "https://apechain.calderaexplorer.xyz/address/0x1b2aE5F73Fd1db012B982DF554509eF8b3efb6c4"
   },
-
+  {
+    name: "Abstract",
+    id: 2741,
+    rpc: "https://abstract-testnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    symbol: "ABS",
+    explorerUrl: "https://explorer.testnet.abs.xyz/",
+    image: "/abstractlogo.jpg",
+    color: colors.abstract,
+    GPOaddress: "null",  // Placeholder for Abstract
+    WETHaddress: "null", // Placeholder for Abstract
+    GPOexplorerurl: "null"
+  },
+  {
+    name: "Unichain",
+    id: 130,
+    rpc: "https://unichain-sepolia.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    symbol: "UNI",
+    explorerUrl: "https://sepolia.uniscan.xyz/",
+    image: "/unichainlogo.svg",
+    color: colors.uniChain,
+    GPOaddress: "null",  // Placeholder for Unichain
+    WETHaddress: "null", // Placeholder for Unichain
+    GPOexplorerurl: "null"
+  },
+  {
+    name: "BeraChain",
+    id: 80084,
+    rpc: "https://berachain-bartio.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    symbol: "BERA",
+    explorerUrl: "https://berachain.nodefleet.net/",
+    image: "/berachainlogo.webp",
+    color: colors.beraChain,
+    GPOaddress: "null",  // Placeholder for BeraChain
+    WETHaddress: "null", // Placeholder for BeraChain
+    GPOexplorerurl: "null"
+  },
 ];
