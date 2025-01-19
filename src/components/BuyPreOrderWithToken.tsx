@@ -8,15 +8,14 @@ interface BuyPreOrderWithTokenProps {
 
 const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({ token }) => {
   return (
-    <div className="token-card flex flex-col items-center">
-      <img
-        src={token.image}
-        alt={token.name}
-        className="w-[60px] h-[60px] object-contain mb-2" // Explicit 20x20px size
-      />
-      <h3 className="text-sm">{token.name}</h3>
-      <p className="text-xs">{token.symbol}</p>
-      <button className="mt-2 px-4 py-2 bg-[#fd01f5] text-white rounded">Pre-order</button>
+    <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
+      {/* Centering the logo */}
+      <img src={token.image} alt={token.name} className="w-40 h-40 mb-4" />
+      <h3 className="text-lg font-semibold text-center">{token.name}</h3>
+      <p className="text-sm text-center">{token.symbol}</p>
+      <button className="mt-2 py-2 px-4 bg-[#fd01f5] text-white rounded-full hover:bg-[#ff007f]">
+        Pre-order
+      </button>
     </div>
   );
 };

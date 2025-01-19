@@ -1,3 +1,4 @@
+// ChainPage.tsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import { chains } from "../utils/chains"; // Assuming you have a chains array
@@ -56,7 +57,7 @@ const ChainPage: React.FC = () => {
       <ChainDetail chain={chain} />
 
       {/* Render token cards for the selected chain */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {tokens.map((token) => (
           <BuyPreOrderWithToken key={token.name} token={token} />
         ))}
