@@ -133,3 +133,22 @@
   --name-opacity: 1;
   --bg-blur: var(--bg-blur-hover);
 }
+
+
+.chart-container {
+  width: 100%;       /* Takes up full width of the parent */
+  height: 400px;     /* Set a specific height */
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .chart-container {
+    height: 500px;   /* Adjust height for larger screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .chart-container {
+    height: 600px;   /* Adjust height for large screens */
+  }
+}

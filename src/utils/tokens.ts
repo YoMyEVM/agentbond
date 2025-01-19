@@ -1,11 +1,12 @@
 // tokens.ts
-
 export interface Token {
   name: string;
   address: string;
   symbol: string;
-  image: string; // Image stored in the public directory
-  color: string; // Hex color code for the token
+  image: string;
+  color: string;
+  progress?: number[];
+
 }
 
 export const baseTokens: Token[] = [
@@ -15,6 +16,7 @@ export const baseTokens: Token[] = [
     symbol: "USDbC",
     image: "/usdbclogo.png",
     color: "#fff", // Coinbase blue for USDbC
+
   },
   {
     name: "cbETH",
@@ -22,6 +24,7 @@ export const baseTokens: Token[] = [
     symbol: "cbETH",
     image: "/cbethlogo.png",
     color: "#6697ff", // Coinbase blue for cbETH
+
   },
   {
     name: "cbBTC",
@@ -29,6 +32,7 @@ export const baseTokens: Token[] = [
     symbol: "cbBTC",
     image: "/cbbtclogo.png",
     color: "#0052FF", // Coinbase blue for cbBTC
+
   },
   {
     name: "WETH",
@@ -36,6 +40,7 @@ export const baseTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "ISAI",
@@ -54,6 +59,7 @@ export const optimismTokens: Token[] = [
     symbol: "OP",
     image: "/optimismlogo.svg",
     color: "#ed1e2c", // Coinbase blue for OP
+
   },
   {
     name: "WETH",
@@ -61,6 +67,7 @@ export const optimismTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "USDC",
@@ -68,6 +75,7 @@ export const optimismTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
+
   },
   {
     name: "SNX",
@@ -75,6 +83,7 @@ export const optimismTokens: Token[] = [
     symbol: "SNX",
     image: "/snxlogo.png",
     color: "#170659", // Coinbase blue for SNX
+
   },
   {
     name: "ISAI",
@@ -82,6 +91,7 @@ export const optimismTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+
   },
 ];
 
@@ -92,6 +102,7 @@ export const polygonTokens: Token[] = [
     symbol: "POL",
     image: "/pollogo.png",
     color: "#8347e5", // Coinbase blue for POL
+
   },
   {
     name: "USDC",
@@ -99,6 +110,7 @@ export const polygonTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
+
   },
   {
     name: "WETH",
@@ -106,6 +118,7 @@ export const polygonTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "OLAS",
@@ -113,6 +126,7 @@ export const polygonTokens: Token[] = [
     symbol: "OLAS",
     image: "/olaslogo.png",
     color: "#ffffff", // OLAS color
+
   },
   {
     name: "ISAI",
@@ -130,6 +144,8 @@ export const arbitrumTokens: Token[] = [
     symbol: "ARB",
     image: "/arblogo.png",
     color: "#9dcced", // Coinbase blue for ARB
+
+
   },
   {
     name: "WETH",
@@ -137,6 +153,7 @@ export const arbitrumTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "USDC",
@@ -144,6 +161,7 @@ export const arbitrumTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
+
   },
   {
     name: "ISAI",
@@ -151,6 +169,8 @@ export const arbitrumTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+
+ 
   },
 ];
 
@@ -161,6 +181,7 @@ export const apeChainTokens: Token[] = [
     symbol: "APE",
     image: "/apelogo.png",
     color: "#0148d7", // Coinbase blue for APE
+
   },
   {
     name: "ApeETH",
@@ -168,6 +189,7 @@ export const apeChainTokens: Token[] = [
     symbol: "ApeETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for ApeETH
+
   },
   {
     name: "ApeUSD",
@@ -175,6 +197,7 @@ export const apeChainTokens: Token[] = [
     symbol: "ApeUSD",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for ApeUSD
+
   },
   {
     name: "SUPER",
@@ -199,6 +222,7 @@ export const abstractTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
+
   },
   {
     name: "WETH",
@@ -206,6 +230,7 @@ export const abstractTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "PENGU",
@@ -213,6 +238,7 @@ export const abstractTokens: Token[] = [
     symbol: "PENGU",
     image: "/pengulogo.png",
     color: "#83a9f6", // PENGU color
+
   },
   {
     name: "ISAI",
@@ -230,6 +256,7 @@ export const unichainTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+
   },
   {
     name: "WETH",
@@ -237,6 +264,7 @@ export const unichainTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "UNI",
@@ -244,6 +272,7 @@ export const unichainTokens: Token[] = [
     symbol: "UNI",
     image: "/unilogos.png",
     color: "#FF007A", // Coinbase blue for UNI
+
   },
   {
     name: "USDC",
@@ -251,6 +280,7 @@ export const unichainTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color:" #2775ca", // Coinbase blue for USDC
+ 
   },
 ];
 
@@ -261,13 +291,15 @@ export const beraChainTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+
   },
   {
     name: "BERA",
     address: "Not live yet",
     symbol: "BERA",
     image: "/beralogo.png",
-    color: "#78350f", // BERA color
+
+    color: "#78350f", // HONEY color
   },
   {
     name: "HONEY",
@@ -275,6 +307,7 @@ export const beraChainTokens: Token[] = [
     symbol: "HONEY",
     image: "/honeylogo.png",
     color: "#e29d42", // HONEY color
+
   },
   {
     name: "ISAI",
@@ -282,5 +315,6 @@ export const beraChainTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+
   },
 ];

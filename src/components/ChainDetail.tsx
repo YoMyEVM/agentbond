@@ -26,3 +26,4 @@ const ChainDetail: React.FC<ChainDetailProps> = ({ chain }) => {
 };
 
 export default ChainDetail;
+

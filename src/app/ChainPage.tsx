@@ -1,9 +1,9 @@
-// ChainPage.tsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import { chains } from "../utils/chains"; // Assuming you have a chains array
 import ChainDetail from "../components/ChainDetail"; // A component to display chain details
 import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken"; // Import the BuyPreOrderWithToken component
+import PreOrderChart from "../components/PreOrderChart"; // Import the PreOrderChart component
 import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens, apeChainTokens, abstractTokens, unichainTokens, beraChainTokens } from '../utils/tokens';
 
 const ChainPage: React.FC = () => {
@@ -51,10 +51,21 @@ const ChainPage: React.FC = () => {
   // Get the tokens for the current chain
   const tokens = getTokensForChain(chain.name);
 
+  const tokenData = tokens.map((token) => ({
+    label: token.name,
+    color: token.color || '#000',
+    progress: token.progress || [0, 0, 0],
+    symbol: token.symbol, // Ensure symbol is included
+  }));
+  
+
   return (
     <div className="p-6 bg-[#000] text-white text-center">
       {/* Display the ChainDetail component */}
       <ChainDetail chain={chain} />
+
+      {/* Display the PreOrderChart component with the correctly transformed tokenData */}
+      <PreOrderChart tokenData={tokenData} />
 
       {/* Render token cards for the selected chain */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
