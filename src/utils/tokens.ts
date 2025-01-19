@@ -32,6 +32,13 @@ export interface Token {
       symbol: "WETH",
       image: "/wethlogo.png",
     },
+    {
+      name: "ISAI",
+      address: "Not live yet",
+      symbol: "ISAI",
+      image: "/isaitoken.png",
+    },
+  
     // ISAI not live yet
   ];
   
@@ -60,6 +67,13 @@ export interface Token {
       symbol: "SNX",
       image: "/snxlogo.png",
     },
+    {
+      name: "ISAI",
+      address: "Not live yet",
+      symbol: "ISAI",
+      image: "/isaitoken.png",
+    },
+  
     // ISAI not live yet
   ];
   
@@ -88,7 +102,13 @@ export interface Token {
       symbol: "OLAS",
       image: "/olaslogo.png",
     },
-    // ISAI not live yet
+    {
+      name: "ISAI",
+      address: "Not live yet",
+      symbol: "ISAI",
+      image: "/isaitoken.png",
+    },
+
   ];
   
   export const arbitrumTokens: Token[] = [
@@ -110,6 +130,13 @@ export interface Token {
       symbol: "USDC",
       image: "/usdclogo.png",
     },
+    {
+      name: "ISAI",
+      address: "Not live yet",
+      symbol: "ISAI",
+      image: "/isaitoken.png",
+    },
+  
     // ISAI not live yet
   ];
   
@@ -138,7 +165,13 @@ export interface Token {
       symbol: "SUPER",
       image: "/superlogo.png",
     },
-    // ISAI not live yet
+    {
+      name: "ISAI",
+      address: "Not live yet",
+      symbol: "ISAI",
+      image: "/isaitoken.png",
+    },
+
   ];
   
   export const abstractTokens: Token[] = [
