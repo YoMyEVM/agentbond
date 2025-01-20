@@ -24,12 +24,14 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
   return (
     <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
       <img src={token.image} alt={token.name} className="w-20 h-20 mb-4" />
-      <p className="text-sm text-center">{token.symbol}</p>
-      <p className="text-lg font-semibold mt-1">
+      <p className="text-lg text-center text-accent2">Pre-order with {token.symbol}</p>  {/* Updated text */}
+
+      <p className="text-2xl mt-4 font-semibold mt-1">
         {priceFormatted !== "Price unavailable" ? `$${priceFormatted}` : "Price unavailable"}
       </p>
 
-      <button className="mt-2 py-2 px-4 bg-[#fd01f5] text-white rounded-full hover:bg-[#ff007f]">
+      {/* Button Styled Like the GenCredits Button */}
+      <button className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]">
         Pre-order
       </button>
 

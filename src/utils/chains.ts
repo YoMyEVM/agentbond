@@ -5,12 +5,9 @@ export interface Chain {
   symbol?: string;
   explorerUrl?: string;
   image?: string;
-  color: string;  
-  GPOaddress: string;
+  color: string;
   WETHaddress: string;
-  GPOexplorerurl: string;
 }
-
 
 export const colors: { [key in 'polygon' | 'baseChain' | 'apeChain' | 'abstract' | 'optimism' | 'beraChain' | 'arbitrum' | 'uniChain']: string } = {
   polygon: '#8247E5',  
@@ -22,6 +19,7 @@ export const colors: { [key in 'polygon' | 'baseChain' | 'apeChain' | 'abstract'
   arbitrum: '#2bbdfa',   
   uniChain: '#FF007A',   
 };
+
 export const chains: Chain[] = [
   {
     name: "Base",
@@ -31,9 +29,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://basescan.org/",
     image: "/basechainlogo.svg",
     color: colors.baseChain,
-    GPOaddress: "0xF30667dBd90868dB7AAb74Ad87E9671B8eED7F99",
     WETHaddress: "0x4200000000000000000000000000000000000006",
-    GPOexplorerurl: "https://basescan.org/address/0xF30667dBd90868dB7AAb74Ad87E9671B8eED7F99"
   },
   {
     name: "Optimism",
@@ -43,9 +39,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://optimistic.etherscan.io",
     image: "/optimismlogo.svg",
     color: colors.optimism,
-    GPOaddress: "0xF3F029Cdd7586Fc5F705bd206339507F1fbEd275",
     WETHaddress: "0x4200000000000000000000000000000000000006",
-    GPOexplorerurl: "https://optimistic.etherscan.io/address/0xF3F029Cdd7586Fc5F705bd206339507F1fbEd275"
   },
   {
     name: "Polygon",
@@ -55,9 +49,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://polygonscan.com",
     image: "/polygonlogo.svg",
     color: colors.polygon,
-    GPOaddress: "0x1FD729f324B6FDd4F12464f970b587139B24b005",
     WETHaddress: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-    GPOexplorerurl: "https://polygonscan.com/address/0x1FD729f324B6FDd4F12464f970b587139B24b005"
   },
   {
     name: "Arbitrum",
@@ -67,9 +59,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://arbiscan.io",
     image: "/arbitrumlogo.svg",
     color: colors.arbitrum,
-    GPOaddress: "0xA49794ffA36f26C403000d1F2A501c5A78Db6b47",
     WETHaddress: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    GPOexplorerurl: "https://arbiscan.io/address/0xA49794ffA36f26C403000d1F2A501c5A78Db6b47"
   },
   {
     name: "ApeChain",
@@ -79,9 +69,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://apescan.io/",
     image: "/apechainlogo.png",
     color: colors.apeChain,
-    GPOaddress: "0x1b2aE5F73Fd1db012B982DF554509eF8b3efb6c4",
     WETHaddress: "0xcF800F4948D16F23333508191B1B1591daF70438",
-    GPOexplorerurl: "https://apechain.calderaexplorer.xyz/address/0x1b2aE5F73Fd1db012B982DF554509eF8b3efb6c4"
   },
   {
     name: "Abstract",
@@ -91,9 +79,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://explorer.testnet.abs.xyz/",
     image: "/abstractlogo.jpg",
     color: colors.abstract,
-    GPOaddress: "null",  // Placeholder for Abstract
     WETHaddress: "null", // Placeholder for Abstract
-    GPOexplorerurl: "null"
   },
   {
     name: "Unichain",
@@ -103,9 +89,7 @@ export const chains: Chain[] = [
     explorerUrl: "https://sepolia.uniscan.xyz/",
     image: "/unichainlogo.svg",
     color: colors.uniChain,
-    GPOaddress: "null",  // Placeholder for Unichain
-    WETHaddress: "null", // Placeholder for Unichain
-    GPOexplorerurl: "null"
+    WETHaddress: "null", // Placeholder for Abstract
   },
   {
     name: "BeraChain",
@@ -115,8 +99,6 @@ export const chains: Chain[] = [
     explorerUrl: "https://berachain.nodefleet.net/",
     image: "/berachainlogo.webp",
     color: colors.beraChain,
-    GPOaddress: "null",  // Placeholder for BeraChain
-    WETHaddress: "null", // Placeholder for BeraChain
-    GPOexplorerurl: "null"
+    WETHaddress: "null", // Placeholder for Abstract
   },
 ];
