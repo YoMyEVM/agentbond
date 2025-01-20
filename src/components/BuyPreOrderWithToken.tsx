@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface BuyPreOrderWithTokenProps {
   token: {
@@ -21,14 +21,42 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
   const priceFormatted = typeof price === "number" ? price.toFixed(2) : price;
   const progress = total ? current / total : 0;  // Calculate progress as a fraction
 
+  // Calculate next epoch (4 days from now)
+  const epochDuration = 4 * 24 * 60 * 60; // 4 days in seconds
+  const now = Math.floor(Date.now() / 1000); // Current Unix time in seconds
+  const nextEpoch = Math.floor(now / epochDuration) * epochDuration + epochDuration; // Next epoch start time
+
+  const [timeLeft, setTimeLeft] = useState<number>(nextEpoch - now);
+
+  // Update the countdown every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup the interval on unmount
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours}:${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  const priceText = priceFormatted !== "Price unavailable" ? `$${priceFormatted}` : "Price unavailable";
+
   return (
     <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
       <img src={token.image} alt={token.name} className="w-20 h-20 mb-4" />
-      <p className="text-lg text-center text-accent2">Pre-order with {token.symbol}</p>  {/* Updated text */}
+      <p className="text-lg text-center text-accent2">Pre-order with {token.symbol}</p>
 
       <p className="text-2xl mt-4 font-semibold mt-1">
-        {priceFormatted !== "Price unavailable" ? `$${priceFormatted}` : "Price unavailable"}
+        {priceText}
       </p>
+
+      {/* Rebalance in countdown */}
+      <p className="text-sm text-accent1 mt-2">Rebalance in {formatTime(timeLeft)}</p>
 
       {/* Button Styled Like the GenCredits Button */}
       <button className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]">
