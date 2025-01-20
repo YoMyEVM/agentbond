@@ -6,6 +6,7 @@ export interface Token {
   image: string;
   color: string;
   progress?: number[];
+  dexpool: string;
 
 }
 
@@ -16,6 +17,7 @@ export const baseTokens: Token[] = [
     symbol: "USDbC",
     image: "/usdbclogo.png",
     color: "#fff", // Coinbase blue for USDbC
+    dexpool: "0x0E635F8EeED4F7279d56692D552F034ECE136019",
 
   },
   {
@@ -24,6 +26,7 @@ export const baseTokens: Token[] = [
     symbol: "cbETH",
     image: "/cbethlogo.png",
     color: "#6697ff", // Coinbase blue for cbETH
+    dexpool: "0x9BB646BF0F4Da44bfaF3d899e774DE065731EDFe",
 
   },
   {
@@ -32,6 +35,7 @@ export const baseTokens: Token[] = [
     symbol: "cbBTC",
     image: "/cbbtclogo.png",
     color: "#0052FF", // Coinbase blue for cbBTC
+    dexpool: "0xfBB6Eed8e7aa03B138556eeDaF5D271A5E1e43ef",
 
   },
   {
@@ -40,7 +44,7 @@ export const baseTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
-
+    dexpool:"0xd0b53D9277642d899DF5C87A3966A349A798F224",
   },
   {
     name: "ISAI",
@@ -48,6 +52,7 @@ export const baseTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
   },
 
 ];
@@ -59,7 +64,7 @@ export const optimismTokens: Token[] = [
     symbol: "OP",
     image: "/optimismlogo.svg",
     color: "#ed1e2c", // Coinbase blue for OP
-
+    dexpool:"0xfc1f3296458f9b2a27a0b91dd7681c4020e09d05",
   },
   {
     name: "WETH",
@@ -67,7 +72,7 @@ export const optimismTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
-
+    dexpool: "0x03af20bdaaffb4cc0a521796a223f7d85e2aac31",
   },
   {
     name: "USDC",
@@ -75,7 +80,7 @@ export const optimismTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
-
+    dexpool: "0x1fb3cf6e48f1e7b10213e7b6d87d4c073c7fdb7b",
   },
   {
     name: "SNX",
@@ -83,7 +88,7 @@ export const optimismTokens: Token[] = [
     symbol: "SNX",
     image: "/snxlogo.png",
     color: "#170659", // Coinbase blue for SNX
-
+    dexpool: "0x0392b358ce4547601befa962680bede836606ae2",
   },
   {
     name: "ISAI",
@@ -91,7 +96,7 @@ export const optimismTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
-
+    dexpool: "Placeholder",
   },
 ];
 
@@ -102,7 +107,7 @@ export const polygonTokens: Token[] = [
     symbol: "POL",
     image: "/pollogo.png",
     color: "#8347e5", // Coinbase blue for POL
-
+    dexpool: "0xa374094527e1673a86de625aa59517c5de346d32",
   },
   {
     name: "USDC",
@@ -110,7 +115,7 @@ export const polygonTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
-
+    dexpool: "0xb6e57ed85c4c9dbfef2a68711e9d6f36c56e0fcb",
   },
   {
     name: "WETH",
@@ -118,7 +123,7 @@ export const polygonTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
-
+    dexpool: "0x4ccd010148379ea531d6c587cfdd60180196f9b1",
   },
   {
     name: "OLAS",
@@ -126,7 +131,7 @@ export const polygonTokens: Token[] = [
     symbol: "OLAS",
     image: "/olaslogo.png",
     color: "#ffffff", // OLAS color
-
+    dexpool: "0x6f72dfc64873de9f27ee12f6f1ff138f15dbac74",
   },
   {
     name: "ISAI",
@@ -134,6 +139,7 @@ export const polygonTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
   },
 ];
 
@@ -144,7 +150,7 @@ export const arbitrumTokens: Token[] = [
     symbol: "ARB",
     image: "/arblogo.png",
     color: "#9dcced", // Coinbase blue for ARB
-
+    dexpool: "0xc6f780497a95e246eb9449f5e4770916dcd6396a",
 
   },
   {
@@ -153,7 +159,7 @@ export const arbitrumTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
-
+    dexpool: "0x641c00a822e8b671738d32a431a4fb6074e5c79d",
   },
   {
     name: "USDC",
@@ -161,7 +167,7 @@ export const arbitrumTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
-
+    dexpool: "0xc6962004f452be9203591991d15f6b388e09e8d0",
   },
   {
     name: "ISAI",
@@ -169,19 +175,19 @@ export const arbitrumTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
-
+    dexpool: "Placeholder",
  
   },
 ];
 
 export const apeChainTokens: Token[] = [
   {
-    name: "APE",
-    address: "Native",
+    name: "WAPE",
+    address: "0x48b62137EdfA95a428D35C09E44256a739F6B557",
     symbol: "APE",
     image: "/apelogo.png",
     color: "#0148d7", // Coinbase blue for APE
-
+    dexpool: "0xcbbe0a6d394b34a486fe9c50bf37bf835cbbae51",
   },
   {
     name: "ApeETH",
@@ -189,7 +195,7 @@ export const apeChainTokens: Token[] = [
     symbol: "ApeETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for ApeETH
-
+    dexpool: "0xea03aedda280ed21f39cb6084b4f84bacd3ebc31",
   },
   {
     name: "ApeUSD",
@@ -197,7 +203,7 @@ export const apeChainTokens: Token[] = [
     symbol: "ApeUSD",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for ApeUSD
-
+    dexpool: "0x99556e210123da382eded3c72aa8dcb605c3c435",
   },
   {
     name: "SUPER",
@@ -205,6 +211,7 @@ export const apeChainTokens: Token[] = [
     symbol: "SUPER",
     image: "/superlogo.png",
     color: "#71f294", // Coinbase blue for SUPER
+    dexpool: "0x8b2bc7d000d395cba8442e4d835a5e77e4f9d1fe",
   },
   {
     name: "ISAI",
@@ -212,6 +219,7 @@ export const apeChainTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
   },
 ];
 
@@ -222,6 +230,7 @@ export const abstractTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
+    dexpool: "Placeholder",
 
   },
   {
@@ -230,6 +239,7 @@ export const abstractTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
+    dexpool: "Placeholder",
 
   },
   {
@@ -238,6 +248,7 @@ export const abstractTokens: Token[] = [
     symbol: "PENGU",
     image: "/pengulogo.png",
     color: "#83a9f6", // PENGU color
+    dexpool: "Placeholder",
 
   },
   {
@@ -246,6 +257,7 @@ export const abstractTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
   },
 ];
 
@@ -256,6 +268,7 @@ export const unichainTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
 
   },
   {
@@ -264,7 +277,7 @@ export const unichainTokens: Token[] = [
     symbol: "WETH",
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
-
+    dexpool: "Placeholder",
   },
   {
     name: "UNI",
@@ -272,7 +285,7 @@ export const unichainTokens: Token[] = [
     symbol: "UNI",
     image: "/unilogos.png",
     color: "#FF007A", // Coinbase blue for UNI
-
+    dexpool: "Placeholder",
   },
   {
     name: "USDC",
@@ -280,7 +293,7 @@ export const unichainTokens: Token[] = [
     symbol: "USDC",
     image: "/usdclogo.png",
     color:" #2775ca", // Coinbase blue for USDC
- 
+    dexpool: "Placeholder",
   },
 ];
 
@@ -290,16 +303,16 @@ export const beraChainTokens: Token[] = [
     address: "Not live yet",
     symbol: "WETH",
     image: "/wethlogo.png",
-    color: "#ffffff", // White for WETH
-
+    color: "#ffffff", // White for WETH 
+    dexpool: "Placeholder",
   },
   {
     name: "BERA",
     address: "Not live yet",
     symbol: "BERA",
     image: "/beralogo.png",
-
     color: "#78350f", // HONEY color
+    dexpool: "Placeholder",
   },
   {
     name: "HONEY",
@@ -307,7 +320,7 @@ export const beraChainTokens: Token[] = [
     symbol: "HONEY",
     image: "/honeylogo.png",
     color: "#e29d42", // HONEY color
-
+    dexpool: "Placeholder",
   },
   {
     name: "ISAI",
@@ -315,6 +328,6 @@ export const beraChainTokens: Token[] = [
     symbol: "ISAI",
     image: "/isaitoken.png",
     color: "#01ecec", // ISAI color
-
+    dexpool: "Placeholder",
   },
 ];

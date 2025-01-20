@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { chains } from "../utils/chains"; // Assuming you have a chains array
-import ChainDetail from "../components/ChainDetail"; // A component to display chain details
-import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken"; // Import the BuyPreOrderWithToken component
-import PreOrderChart from "../components/PreOrderChart"; // Import the PreOrderChart component
+import { chains } from "../utils/chains";
+import ChainDetail from "../components/ChainDetail";
+import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken"; 
 import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens, apeChainTokens, abstractTokens, unichainTokens, beraChainTokens } from '../utils/tokens';
+import axios from 'axios';
+
+interface DexscreenerResponse {
+  pair: {
+    priceUsd: number;
+  };
+}
 
 const ChainPage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the ID from URL params
+  const [tokensWithPrice, setTokensWithPrice] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Ensure the ID is a valid number
   const chainId = id ? Number(id) : NaN;
 
-  // Find the chain by ID from the chains list
   const chain = !isNaN(chainId) ? chains.find((chain) => chain.id === chainId) : undefined;
 
-  // If chain is not found, return a 404-style message
   if (!chain) {
     return (
       <div className="p-6 bg-[#000] text-white">
@@ -24,7 +29,6 @@ const ChainPage: React.FC = () => {
     );
   }
 
-  // Helper function to determine which tokens to display based on the chain
   const getTokensForChain = (chainName: string) => {
     switch (chainName) {
       case "Base":
@@ -48,31 +52,64 @@ const ChainPage: React.FC = () => {
     }
   };
 
-  // Get the tokens for the current chain
   const tokens = getTokensForChain(chain.name);
 
-  const tokenData = tokens.map((token) => ({
-    label: token.name,
-    color: token.color || '#000',
-    progress: token.progress || [0, 0, 0],
-    symbol: token.symbol, // Ensure symbol is included
-  }));
+  const fetchTokenPrices = async (tokens: any[]) => {
+    try {
+      const prices = await Promise.all(
+        tokens.map(async (token) => {
+          try {
+            // Check if the token has a valid dexpool address
+            if (!token.dexpool) {
+              console.error(`No dexpool address for ${token.symbol}`);
+              return { ...token, price: "Price unavailable" };  // Return as unavailable if no dexpool
+            }
   
+            const response = await axios.get<DexscreenerResponse>(
+              `https://api.dexscreener.com/latest/dex/pairs/${chain.name.toLowerCase()}/${token.dexpool.toLowerCase()}`
+            );
+            
+            console.log(`Response for ${token.symbol}:`, response.data);  // Inspect response
+  
+            if (response.data.pair) {
+              const price = response.data.pair.priceUsd;
+              return { ...token, price: price || "Price unavailable" };
+            } else {
+              console.error(`No pair found for ${token.symbol}`);
+              return { ...token, price: "Price unavailable" };  // Fallback if no pair is found
+            }
+          } catch (error) {
+            console.error(`Error fetching price for ${token.symbol}:`, error);
+            return { ...token, price: "Price unavailable" };  // Return as unavailable if there was an error
+          }
+        })
+      );
+      setTokensWithPrice(prices);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching token prices:", error);
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    if (tokens.length > 0) {
+      fetchTokenPrices(tokens);
+    }
+  }, [tokens]);
 
   return (
     <div className="p-6 bg-[#000] text-white text-center">
-      {/* Display the ChainDetail component */}
       <ChainDetail chain={chain} />
-
-      {/* Display the PreOrderChart component with the correctly transformed tokenData */}
-      <PreOrderChart tokenData={tokenData} />
-
-      {/* Render token cards for the selected chain */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {tokens.map((token) => (
-          <BuyPreOrderWithToken key={token.name} token={token} />
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {tokensWithPrice.map((token) => (
+            <BuyPreOrderWithToken key={token.name} token={token} price={token.price} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
