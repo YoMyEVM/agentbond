@@ -30,6 +30,14 @@ export const baseTokens: Token[] = [
 
   },
   {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+  },
+  {
     name: "cbBTC",
     address: "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
     symbol: "cbBTC",
@@ -45,14 +53,6 @@ export const baseTokens: Token[] = [
     image: "/wethlogo.png",
     color: "#ffffff", // White for WETH
     dexpool:"0xd0b53D9277642d899DF5C87A3966A349A798F224",
-  },
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
   },
 
 ];
@@ -75,6 +75,14 @@ export const optimismTokens: Token[] = [
     dexpool: "0x03af20bdaaffb4cc0a521796a223f7d85e2aac31",
   },
   {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+  },
+  {
     name: "USDC",
     address: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
     symbol: "USDC",
@@ -90,14 +98,7 @@ export const optimismTokens: Token[] = [
     color: "#170659", // Coinbase blue for SNX
     dexpool: "0x0392b358ce4547601befa962680bede836606ae2",
   },
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
-  },
+
 ];
 
 export const polygonTokens: Token[] = [
@@ -118,6 +119,14 @@ export const polygonTokens: Token[] = [
     dexpool: "0xb6e57ed85c4c9dbfef2a68711e9d6f36c56e0fcb",
   },
   {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+  },
+  {
     name: "WETH",
     address: "0x11CD37bb86F65419713f30673A480EA33c826872",
     symbol: "WETH",
@@ -132,14 +141,6 @@ export const polygonTokens: Token[] = [
     image: "/olaslogo.png",
     color: "#ffffff", // OLAS color
     dexpool: "0x6f72dfc64873de9f27ee12f6f1ff138f15dbac74",
-  },
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
   },
 ];
 
@@ -162,6 +163,14 @@ export const arbitrumTokens: Token[] = [
     dexpool: "0x641c00a822e8b671738d32a431a4fb6074e5c79d",
   },
   {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+  },
+  {
     name: "USDC",
     address: "Not specified",
     symbol: "USDC",
@@ -169,15 +178,7 @@ export const arbitrumTokens: Token[] = [
     color: "#2775ca", // Coinbase blue for USDC
     dexpool: "0xc6962004f452be9203591991d15f6b388e09e8d0",
   },
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
- 
-  },
+
 ];
 
 export const apeChainTokens: Token[] = [
@@ -198,6 +199,14 @@ export const apeChainTokens: Token[] = [
     dexpool: "0xea03aedda280ed21f39cb6084b4f84bacd3ebc31",
   },
   {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+  },
+  {
     name: "ApeUSD",
     address: "0xA2235d059F80e176D931Ef76b6C51953Eb3fBEf4",
     symbol: "ApeUSD",
@@ -212,14 +221,6 @@ export const apeChainTokens: Token[] = [
     image: "/superlogo.png",
     color: "#71f294", // Coinbase blue for SUPER
     dexpool: "0x8b2bc7d000d395cba8442e4d835a5e77e4f9d1fe",
-  },
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
   },
 ];
 
@@ -243,6 +244,14 @@ export const abstractTokens: Token[] = [
 
   },
   {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+  },
+  {
     name: "PENGU",
     address: "Not live yet",
     symbol: "PENGU",
@@ -251,26 +260,11 @@ export const abstractTokens: Token[] = [
     dexpool: "Placeholder",
 
   },
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
-  },
+
 ];
 
 export const unichainTokens: Token[] = [
-  {
-    name: "ISAI",
-    address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
-    dexpool: "Placeholder",
 
-  },
   {
     name: "WETH",
     address: "Not live yet",
@@ -286,6 +280,15 @@ export const unichainTokens: Token[] = [
     image: "/unilogos.png",
     color: "#FF007A", // Coinbase blue for UNI
     dexpool: "Placeholder",
+  },
+  {
+    name: "ISAI",
+    address: "Not live yet",
+    symbol: "ISAI",
+    image: "/isaitoken.png",
+    color: "#01ecec", // ISAI color
+    dexpool: "Placeholder",
+
   },
   {
     name: "USDC",
