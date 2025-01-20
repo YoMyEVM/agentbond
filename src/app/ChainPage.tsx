@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { chains } from "../utils/chains";
 import ChainDetail from "../components/ChainDetail";
-import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken"; 
+import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken";
 import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens, apeChainTokens, abstractTokens, unichainTokens, beraChainTokens } from '../utils/tokens';
 import axios from 'axios';
 
@@ -16,6 +16,7 @@ const ChainPage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the ID from URL params
   const [tokensWithPrice, setTokensWithPrice] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [progressData, setProgressData] = useState<any[]>([]); // To store dynamic progress data
 
   const chainId = id ? Number(id) : NaN;
 
@@ -59,28 +60,14 @@ const ChainPage: React.FC = () => {
       const prices = await Promise.all(
         tokens.map(async (token) => {
           try {
-            // Check if the token has a valid dexpool address
-            if (!token.dexpool) {
-              console.error(`No dexpool address for ${token.symbol}`);
-              return { ...token, price: "Price unavailable" };  // Return as unavailable if no dexpool
-            }
-  
             const response = await axios.get<DexscreenerResponse>(
               `https://api.dexscreener.com/latest/dex/pairs/${chain.name.toLowerCase()}/${token.dexpool.toLowerCase()}`
             );
-            
-            console.log(`Response for ${token.symbol}:`, response.data);  // Inspect response
-  
-            if (response.data.pair) {
-              const price = response.data.pair.priceUsd;
-              return { ...token, price: price || "Price unavailable" };
-            } else {
-              console.error(`No pair found for ${token.symbol}`);
-              return { ...token, price: "Price unavailable" };  // Fallback if no pair is found
-            }
+            const price = response.data.pair?.priceUsd || "Price unavailable";
+            return { ...token, price: price };
           } catch (error) {
             console.error(`Error fetching price for ${token.symbol}:`, error);
-            return { ...token, price: "Price unavailable" };  // Return as unavailable if there was an error
+            return { ...token, price: "Price unavailable" };
           }
         })
       );
@@ -91,10 +78,20 @@ const ChainPage: React.FC = () => {
       setLoading(false);
     }
   };
-  
+
+  const fetchProgressData = async () => {
+    const progress = tokens.map((token) => ({
+      tokenName: token.name,
+      current: 50,  // Example static value, replace with real on-chain data
+      total: 100,   // Example static value, replace with real on-chain data
+    }));
+    setProgressData(progress);
+  };
+
   useEffect(() => {
     if (tokens.length > 0) {
       fetchTokenPrices(tokens);
+      fetchProgressData(); // Fetch dynamic progress data
     }
   }, [tokens]);
 
@@ -105,9 +102,19 @@ const ChainPage: React.FC = () => {
         <p>Loading...</p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {tokensWithPrice.map((token) => (
-            <BuyPreOrderWithToken key={token.name} token={token} price={token.price} />
-          ))}
+          {tokensWithPrice.map((token) => {
+            const progress = progressData.find((data) => data.tokenName === token.name);
+
+            return (
+              <BuyPreOrderWithToken
+                key={token.name}
+                token={token}
+                price={token.price}
+                current={progress ? progress.current : 0}
+                total={progress ? progress.total : 100}
+              />
+            );
+          })}
         </div>
       )}
     </div>
@@ -115,3 +122,4 @@ const ChainPage: React.FC = () => {
 };
 
 export default ChainPage;
+
