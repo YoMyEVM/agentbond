@@ -174,8 +174,17 @@ export const arbitrumTokens: Token[] = [
     address: "Native",
     symbol: "ARB",
     image: "/arblogo.png",
-    color: "#9dcced", // Coinbase blue for ARB
+    color: "#12AAFF", // Coinbase blue for ARB
     dexpool: "0xc6f780497a95e246eb9449f5e4770916dcd6396a",
+
+  },
+  {
+    name: "SOL",
+    address: "0x2bcC6D6CdBbDC0a4071e48bb3B969b06B3330c07",
+    symbol: "SOL",
+    image: "/sollogo.png",
+    color: "#00FFA3", // Coinbase blue for ARB
+    dexpool: "0x622B5186384783BB805c12A808cCF07F41DE1Ff0",
 
   },
 
