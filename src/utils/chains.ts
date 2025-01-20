@@ -22,16 +22,6 @@ export const colors: { [key in 'polygon' | 'baseChain' | 'apeChain' | 'abstract'
 
 export const chains: Chain[] = [
   {
-    name: "Base",
-    id: 8453,
-    rpc: "https://base-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
-    symbol: "BASE",
-    explorerUrl: "https://basescan.org/",
-    image: "/basechainlogo.svg",
-    color: colors.baseChain,
-    WETHaddress: "0x4200000000000000000000000000000000000006",
-  },
-  {
     name: "Optimism",
     id: 10,
     rpc: "https://opt-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
@@ -40,6 +30,16 @@ export const chains: Chain[] = [
     image: "/optimismlogo.svg",
     color: colors.optimism,
     WETHaddress: "0x4200000000000000000000000000000000000006",
+  },
+  {
+    name: "Arbitrum",
+    id: 42161,
+    rpc: "https://arb-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    symbol: "ARB",
+    explorerUrl: "https://arbiscan.io",
+    image: "/arbitrumlogo.svg",
+    color: colors.arbitrum,
+    WETHaddress: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
   },
   {
     name: "Polygon",
@@ -52,15 +52,16 @@ export const chains: Chain[] = [
     WETHaddress: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
   },
   {
-    name: "Arbitrum",
-    id: 42161,
-    rpc: "https://arb-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
-    symbol: "ARB",
-    explorerUrl: "https://arbiscan.io",
-    image: "/arbitrumlogo.svg",
-    color: colors.arbitrum,
-    WETHaddress: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+    name: "Base",
+    id: 8453,
+    rpc: "https://base-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    symbol: "BASE",
+    explorerUrl: "https://basescan.org/",
+    image: "/basechainlogo.svg",
+    color: colors.baseChain,
+    WETHaddress: "0x4200000000000000000000000000000000000006",
   },
+
   {
     name: "ApeChain",
     id: 33139,
@@ -101,4 +102,5 @@ export const chains: Chain[] = [
     color: colors.beraChain,
     WETHaddress: "null", // Placeholder for Abstract
   },
+  
 ];
