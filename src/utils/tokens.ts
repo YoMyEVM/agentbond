@@ -126,8 +126,8 @@ export const polygonTokens: Token[] = [
     dexpool: "Placeholder",
   },
   {
-    name: "POL",
-    address: "Native",
+    name: "WPOL",
+    address: "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
     symbol: "POL",
     image: "/pollogo.png",
     color: "#8347e5", // Coinbase blue for POL
@@ -146,7 +146,7 @@ export const polygonTokens: Token[] = [
 export const arbitrumTokens: Token[] = [
   {
     name: "USDC",
-    address: "Not specified",
+    address: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     symbol: "USDC",
     image: "/usdclogo.png",
     color: "#2775ca", // Coinbase blue for USDC
