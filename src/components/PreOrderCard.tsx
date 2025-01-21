@@ -34,7 +34,7 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
           style={{ backgroundColor: chain.color }}
           onClick={handlePreOrderClick}
         >
-          Pre-order Now
+          Pre-Order Now
         </button>
       </div>
     </div>

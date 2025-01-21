@@ -62,7 +62,7 @@ function App() {
                       onClick={() => window.location.href = '/pre-order'}
                       className="preorder-now-btn bg-accent2 text-white py-3 px-6 rounded-lg hover:bg-accent1 transition"
                     >
-                      Pre-Order Now
+                      Pre-Order Soon
                     </button>
                   </section>
 

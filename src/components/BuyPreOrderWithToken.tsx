@@ -61,7 +61,7 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
 
       {/* Button Styled Like the GenCredits Button */}
       <button className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]">
-        Pre-order
+        Pre-Order
       </button>
 
       <div className="w-full mt-4">
