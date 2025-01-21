@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
+  const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
   const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -75,14 +76,17 @@ const Navbar: React.FC = () => {
           <a href="/manage" className="text-lg font-medium hover:text-[#01fcfc] transition">
             Manage
           </a>
-          <div className="relative dropdown">
+          <div className="relative">
             <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="text-lg font-medium hover:text-[#01fcfc] transition"
+              onClick={() => {
+                setIsMoreDropdownOpen(!isMoreDropdownOpen);
+                setIsAccountDropdownOpen(false); // Close account dropdown
+              }}
+              className="text-lg font-medium hover:text-[#01fcfc] transition flex items-center"
             >
-              More
+              More <span className="ml-2">▼</span>
             </button>
-            {isDropdownOpen && (
+            {isMoreDropdownOpen && (
               <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
                 <a href="/agents" className="block py-1 text-sm hover:text-[#fd01f5]">Agents</a>
                 <a href="/overmind" className="block py-1 text-sm hover:text-[#fd01f5]">Overmind</a>
@@ -100,12 +104,24 @@ const Navbar: React.FC = () => {
             </button>
           </Link>
           {account ? (
-            <button
-              onClick={disconnectWallet}
-              className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
-            >
-              {isMobile ? "Disconnect" : `Disconnect (${account.slice(0, 6)}...${account.slice(-4)})`}
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setIsAccountDropdownOpen(!isAccountDropdownOpen);
+                  setIsMoreDropdownOpen(false); // Close more dropdown
+                }}
+                className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
+              >
+                Account
+              </button>
+              {isAccountDropdownOpen && (
+                <div className="absolute right-0 bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
+                  <a href="/profile" className="block py-1 text-sm hover:text-[#fd01f5]">Profile</a>
+                  <a href="/settings" className="block py-1 text-sm hover:text-[#fd01f5]">Settings</a>
+                  <button onClick={disconnectWallet} className="block py-1 text-sm hover:text-[#fd01f5]">Disconnect</button>
+                </div>
+              )}
+            </div>
           ) : (
             <button
               onClick={connectWallet}
