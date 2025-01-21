@@ -13,37 +13,39 @@ const ChainDetail: React.FC<ChainDetailProps> = ({ chain, sold = 0, totalunits =
   const progress = totalunits ? sold / totalunits : 0;
 
   return (
-    <div className="max-w-lg mx-auto bg-black p-6 rounded-lg shadow-lg text-center">
+    <div className="max-w-lg mx-auto bg-black p-0 rounded-lg shadow-lg text-center">
       {/* Centered Logo and Chain Name */}
-      <div className="flex flex-col items-center justify-center mb-4">
+      <div className="flex flex-col items-center justify-center mb-1">
         <img
-          src={chain.image || "/defaultLogo.png"}
-          alt={`${chain.name} logo`}
-          className="w-40 h-40 object-cover rounded-full mb-4" // Updated logo size
-        />
-        <h2 className="text-2xl font-semibold text-white">{chain.name}</h2>
+            src={chain.image || "/defaultLogo.png"}
+            alt={`${chain.name} logo`}
+            className="w-20 h-20 object-cover rounded-full mb-4"
+          />
+
+        <h2 className="text-3xl font-semibold text-white">{chain.name}</h2> {/* Increased font size */}
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full mt-4">
+      <div className="w-full mt-6"> {/* Increased margin-top */}
         <div className="relative pt-1">
-          <div className="flex mb-2 items-center justify-between w-full px-2">
-            <span className="text-xs">Progress</span>
-            <span className="text-xs">
+          <div className="flex mb-4 items-center justify-between w-full px-4"> {/* Increased margin-bottom */}
+            <span className="text-sm font-medium text-white">Progress</span> {/* Increased font size */}
+            <span className="text-sm font-medium text-white">
               {sold}/{totalunits}
             </span>
           </div>
-          <div className="flex mb-4 items-center justify-between w-full">
+          <div className="flex mb-6 items-center justify-between w-full"> {/* Increased margin-bottom */}
             <div className="relative pt-1 w-full">
               <div className="flex mb-2">
                 <div className="flex w-full">
-                  <div
-                    className="progress-bar h-2 rounded-full"
-                    style={{
-                      width: `${progress * 100}%`,
-                      backgroundColor: progress >= 1 ? "#4caf50" : chain.color,
-                    }}
-                  ></div>
+                <div
+                  className="progress-bar h-4 rounded-full"
+                  style={{
+                    width: `${progress * 100}%`,
+                    backgroundColor: progress >= 1 ? "#4caf50" : chain.color,
+                  }} // Ensure that there is no misplaced comma or syntax issue
+                ></div>
+
                 </div>
               </div>
             </div>
