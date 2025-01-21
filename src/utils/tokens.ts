@@ -243,7 +243,7 @@ export const apeChainTokens: Token[] = [
   {
     name: "WAPE",
     address: "0x48b62137EdfA95a428D35C09E44256a739F6B557",
-    symbol: "APE",
+    symbol: "WAPE",
     image: "/apelogo.png",
     color: "#0148d7", // Coinbase blue for APE
     dexpool: "0xcbbe0a6d394b34a486fe9c50bf37bf835cbbae51",
