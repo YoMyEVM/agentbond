@@ -47,6 +47,9 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
 
   const priceText = priceFormatted !== "Price unavailable" ? `$${priceFormatted}` : "Price unavailable";
 
+  // Determine button text based on price availability
+  const buttonText = priceFormatted !== "Price unavailable" ? "Pre-Order" : "Coming Soon";
+
   return (
     <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
       <img src={token.image} alt={token.name} className="w-20 h-20 mb-4" />
@@ -59,9 +62,9 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
       {/* Rebalance in countdown */}
       <p className="text-sm text-accent1 mt-2">Rebalance in {formatTime(timeLeft)}</p>
 
-      {/* Button Styled Like the GenCredits Button */}
+      {/* Conditionally render button text */}
       <button className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]">
-        Pre-Order
+        {buttonText}
       </button>
 
       <div className="w-full mt-4">
@@ -92,5 +95,6 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
     </div>
   );
 };
+;
 
 export default BuyPreOrderWithToken;
