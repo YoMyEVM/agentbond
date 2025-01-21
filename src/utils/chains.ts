@@ -102,5 +102,4 @@ export const chains: Chain[] = [
     color: colors.beraChain,
     WETHaddress: "null", // Placeholder for Abstract
   },
-  
 ];
