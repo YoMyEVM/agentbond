@@ -19,6 +19,8 @@ import { Chain } from "../utils/chains"; // Assuming this is defined correctly i
 import ItemPage from "./ItemPage";
 import PreOrderPage from "./PreOrderPage"; // Pre-order page
 import ChainPage from "./ChainPage";  // Dynamic Chain Page component
+import ProfilePage from "./ProfilePage"; // Import the Profile Page
+
 
 function App() {
   // Initialize selectedChain state
@@ -99,6 +101,9 @@ function App() {
             <Route path="/item/:id" element={<ItemPage />} /> {/* Individual Item Page */}
 
             <Route path="/chain/:id" element={<ChainPage />} /> {/* Dynamic Chain Page */}
+            
+            <Route path="/profile" element={<ProfilePage />} />
+
 
           </Routes>
         </main>

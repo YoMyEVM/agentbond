@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AccountSidebar from "./AccountSidebar";
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
-  const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
+  const [isAccountPanelOpen, setIsAccountPanelOpen] = useState(false);
   const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   const fetchGenCreditsBalance = async () => {
     setGenCreditsBalance(100);
@@ -28,16 +26,10 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const disconnectWallet = () => setAccount(null);
-
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const disconnectWallet = () => {
+    setAccount(null);
+    setIsAccountPanelOpen(false);
+  };
 
   useEffect(() => {
     const checkConnection = async () => {
@@ -65,37 +57,6 @@ const Navbar: React.FC = () => {
           </span>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex space-x-10">
-          <a href="/create" className="text-lg font-medium hover:text-[#01fcfc] transition">
-            Create
-          </a>
-          <a href="/shop" className="text-lg font-medium hover:text-[#01fcfc] transition">
-            Shop
-          </a>
-          <a href="/manage" className="text-lg font-medium hover:text-[#01fcfc] transition">
-            Manage
-          </a>
-          <div className="relative">
-            <button
-              onClick={() => {
-                setIsMoreDropdownOpen(!isMoreDropdownOpen);
-                setIsAccountDropdownOpen(false); // Close account dropdown
-              }}
-              className="text-lg font-medium hover:text-[#01fcfc] transition flex items-center"
-            >
-              More <span className="ml-2">▼</span>
-            </button>
-            {isMoreDropdownOpen && (
-              <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
-                <a href="/agents" className="block py-1 text-sm hover:text-[#fd01f5]">Agents</a>
-                <a href="/overmind" className="block py-1 text-sm hover:text-[#fd01f5]">Overmind</a>
-                <a href="https://myevm.network" className="block py-1 text-sm hover:text-[#fd01f5]">About</a>
-              </div>
-            )}
-          </div>
-        </div>
-
         {/* Right Section */}
         <div className="flex items-center space-x-4">
           <Link to="/buy-gen-credits">
@@ -104,24 +65,12 @@ const Navbar: React.FC = () => {
             </button>
           </Link>
           {account ? (
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setIsAccountDropdownOpen(!isAccountDropdownOpen);
-                  setIsMoreDropdownOpen(false); // Close more dropdown
-                }}
-                className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
-              >
-                Account
-              </button>
-              {isAccountDropdownOpen && (
-                <div className="absolute right-0 bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
-                  <a href="/profile" className="block py-1 text-sm hover:text-[#fd01f5]">Profile</a>
-                  <a href="/settings" className="block py-1 text-sm hover:text-[#fd01f5]">Settings</a>
-                  <button onClick={disconnectWallet} className="block py-1 text-sm hover:text-[#fd01f5]">Disconnect</button>
-                </div>
-              )}
-            </div>
+            <button
+              onClick={() => setIsAccountPanelOpen(true)}
+              className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
+            >
+              Account
+            </button>
           ) : (
             <button
               onClick={connectWallet}
@@ -131,23 +80,15 @@ const Navbar: React.FC = () => {
             </button>
           )}
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <button className="md:hidden" onClick={toggleMobileMenu}>
-          <span className="text-white">☰</span>
-        </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-black text-white flex flex-col items-center space-y-4 py-4">
-          <a href="/create" className="hover:text-[#01fcfc] transition">Create</a>
-          <a href="/shop" className="hover:text-[#01fcfc] transition">Shop</a>
-          <a href="/manage" className="hover:text-[#01fcfc] transition">Manage</a>
-          <a href="/agents" className="hover:text-[#fd01f5] transition">Agents</a>
-          <a href="/overmind" className="hover:text-[#fd01f5] transition">Overmind</a>
-          <a href="https://myevm.network" className="hover:text-[#fd01f5] transition">About</a>
-        </div>
+      {/* Account Sidebar */}
+      {isAccountPanelOpen && (
+        <AccountSidebar
+          account={account}
+          onClose={() => setIsAccountPanelOpen(false)}
+          disconnectWallet={disconnectWallet}
+        />
       )}
     </nav>
   );
