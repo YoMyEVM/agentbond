@@ -12,7 +12,7 @@ const ShopPage: React.FC = () => {
       : items.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="p-4 bg-gray-900 text-white">
+    <div className="p-4 bg-black text-white">
       {/* Category Selection Buttons */}
       <div className="flex justify-center mb-6 space-x-2">
         {["all", "plugin", "skill", "wisdom", "personality"].map((category) => (
@@ -35,7 +35,7 @@ const ShopPage: React.FC = () => {
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className="bg-gray-800 p-4 rounded-lg shadow-md border-2 border-accent1 hover:border-[#01fcfc] transition-colors"
+            className="bg-black p-4 rounded-lg shadow-md border-2 border-accent1 hover:border-[#01fcfc] transition-colors"
           >
             <img
               src={item.image}
@@ -47,7 +47,7 @@ const ShopPage: React.FC = () => {
 
             {/* Approved Badge */}
             {item.type === "approved" && (
-              <div className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full inline-block mt-2">
+              <div className="bg-green-500 text-white text-xs font-bold px-4 py-1 rounded-full inline-block mt-2 mx-auto flex justify-center items-center w-24 text-center">
                 Approved
               </div>
             )}

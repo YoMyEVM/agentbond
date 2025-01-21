@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AccountSidebar from "./AccountSidebar";
+import AccountSidebar from "./AccountSidebar";  // Import AccountSidebar
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const [isAccountPanelOpen, setIsAccountPanelOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
+  const [isAccountPanelOpen, setIsAccountPanelOpen] = useState(false);  // Track sidebar open state
 
   const fetchGenCreditsBalance = async () => {
     setGenCreditsBalance(100);
@@ -28,7 +29,7 @@ const Navbar: React.FC = () => {
 
   const disconnectWallet = () => {
     setAccount(null);
-    setIsAccountPanelOpen(false);
+    setIsAccountPanelOpen(false);  // Close the sidebar if disconnecting
   };
 
   useEffect(() => {
@@ -57,6 +58,58 @@ const Navbar: React.FC = () => {
           </span>
         </a>
 
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex space-x-10">
+          <a
+            href="/create"
+            className="text-lg font-medium text-white hover:text-[#01fcfc] transition"
+          >
+            Create
+          </a>
+          <a
+            href="/shop"
+            className="text-lg font-medium text-white hover:text-[#01fcfc] transition"
+          >
+            Shop
+          </a>
+          <a
+            href="/manage"
+            className="text-lg font-medium text-white hover:text-[#01fcfc] transition"
+          >
+            Manage
+          </a>
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-lg font-medium text-white hover:text-[#01fcfc] transition"
+            >
+              More
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute bg-black text-white shadow-lg mt-2 py-2 px-4 rounded">
+                <a
+                  href="/agents"
+                  className="block py-1 text-sm hover:text-[#fd01f5]"
+                >
+                  Agents
+                </a>
+                <a
+                  href="/overmind"
+                  className="block py-1 text-sm hover:text-[#fd01f5]"
+                >
+                  Overmind
+                </a>
+                <a
+                  href="https://myevm.network"
+                  className="block py-1 text-sm hover:text-[#fd01f5]"
+                >
+                  About
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Right Section */}
         <div className="flex items-center space-x-4">
           <Link to="/buy-gen-credits">
@@ -66,7 +119,7 @@ const Navbar: React.FC = () => {
           </Link>
           {account ? (
             <button
-              onClick={() => setIsAccountPanelOpen(true)}
+              onClick={() => setIsAccountPanelOpen(!isAccountPanelOpen)}  // Toggle the sidebar
               className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
             >
               Account
