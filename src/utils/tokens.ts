@@ -8,7 +8,6 @@ export interface Token {
   progress?: number[];
   dexpool: string;
   gposale: string;
-
 }
 
 export const baseTokens: Token[] = [

@@ -6,20 +6,21 @@ interface BuyPreOrderWithTokenProps {
     name: string;
     image: string;
     color: string;
+    gposale: string;
   };
   price: number | string;  // Price can now be a number or a string ("Price unavailable")
-  current: number;
-  total: number;
+  sold: number;
+  totalunits: number;
 }
 
 const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
   token,
   price,
-  current,
-  total,
+  sold,
+  totalunits,
 }) => {
   const priceFormatted = typeof price === "number" ? price.toFixed(2) : price;
-  const progress = total ? current / total : 0;  // Calculate progress as a fraction
+  const progress = totalunits ? sold / totalunits : 0;  // Calculate progress as a fraction
 
   // Calculate next epoch (4 days from now)
   const epochDuration = 4 * 24 * 60 * 60; // 4 days in seconds
@@ -68,7 +69,7 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
           <div className="flex mb-2 items-center justify-between w-full px-2">
             <span className="text-xs">Progress</span>
             <span className="text-xs">
-              {current}/{total}
+              {sold}/{totalunits}
             </span>
           </div>
           <div className="flex mb-4 items-center justify-between w-full">

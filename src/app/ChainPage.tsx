@@ -5,6 +5,7 @@ import ChainDetail from "../components/ChainDetail";
 import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken";
 import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens, apeChainTokens, abstractTokens, unichainTokens, beraChainTokens } from '../utils/tokens';
 import axios from 'axios';
+import { ethers } from 'ethers';
 
 interface DexscreenerResponse {
   pair: {
@@ -19,7 +20,6 @@ const ChainPage: React.FC = () => {
   const [progressData, setProgressData] = useState<any[]>([]); // To store dynamic progress data
 
   const chainId = id ? Number(id) : NaN;
-
   const chain = !isNaN(chainId) ? chains.find((chain) => chain.id === chainId) : undefined;
 
   if (!chain) {
@@ -80,12 +80,38 @@ const ChainPage: React.FC = () => {
   };
 
   const fetchProgressData = async () => {
-    const progress = tokens.map((token) => ({
-      tokenName: token.name,
-      current: 50,  // Example static value, replace with real on-chain data
-      total: 100,   // Example static value, replace with real on-chain data
-    }));
-    setProgressData(progress);
+    const progress = tokens.map(async (token) => {
+      const provider = new ethers.JsonRpcProvider(chain.rpc);
+
+      // Create a contract instance for the gposale token
+      const contract = new ethers.Contract(token.gposale, [
+        "function totalSupply() public view returns (uint256)"
+      ], provider);
+
+      try {
+        // Fetch totalSupply
+        const totalSupply = await contract.totalSupply();
+
+        // Format the value using ethers.js utility functions
+        const formattedTotalSupply = ethers.formatUnits(totalSupply, 18); // Adjust decimals if needed
+
+        return {
+          tokenName: token.name,
+          sold: parseFloat(formattedTotalSupply),
+          totalunits: 80, // Total possible units to sell
+        };
+      } catch (error) {
+        console.error(`Error fetching data for ${token.name}:`, error);
+        return {
+          tokenName: token.name,
+          sold: 0,
+          totalunits: 80, // Total possible units to sell
+        };
+      }
+    });
+
+    const progressData = await Promise.all(progress);
+    setProgressData(progressData);
   };
 
   useEffect(() => {
@@ -110,8 +136,8 @@ const ChainPage: React.FC = () => {
                 key={token.name}
                 token={token}
                 price={token.price}
-                current={progress ? progress.current : 0}
-                total={progress ? progress.total : 100}
+                sold={progress ? progress.sold : 0}
+                totalunits={progress ? progress.totalunits : 80}
               />
             );
           })}
@@ -122,4 +148,3 @@ const ChainPage: React.FC = () => {
 };
 
 export default ChainPage;
-
