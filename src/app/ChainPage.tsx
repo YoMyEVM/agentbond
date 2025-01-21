@@ -95,9 +95,11 @@ const ChainPage: React.FC = () => {
 
     const progressData = await Promise.all(progress);
     setProgressData(progressData);
+
+    // Send progress data elsewhere, for now just logging it
+    console.log('Progress Data:', progressData);
   };
 
-  // Calculate the total sold and total units across all tokens
   const totalSold = progressData.reduce((sum, data) => sum + data.sold, 0);
   const totalUnits = 450; // Total units for all tokens combined
 
@@ -112,6 +114,7 @@ const ChainPage: React.FC = () => {
     <div className="p-6 bg-[#000] text-white text-center">
       {/* Pass total sold and total units to ChainDetail */}
       <ChainDetail chain={chain} sold={totalSold} totalunits={totalUnits} />
+
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -133,6 +136,5 @@ const ChainPage: React.FC = () => {
     </div>
   );
 };
-
 
 export default ChainPage;
