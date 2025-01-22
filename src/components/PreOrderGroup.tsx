@@ -57,7 +57,7 @@ const PreOrderGroup: React.FC = () => {
       return {
         id: chain.id,
         sold: totalSold,
-        totalunits: 450, // Total possible units
+        totalunits: 500, // Total possible units
         name: chain.name,
         image: chain.image,
         color: chain.color,

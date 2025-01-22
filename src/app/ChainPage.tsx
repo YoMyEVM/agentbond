@@ -81,14 +81,14 @@ const ChainPage: React.FC = () => {
         return {
           tokenName: token.name,
           sold: parseFloat(formattedTotalSupply),
-          totalunits: 80, // Total possible units to sell per token
+          totalunits: 100, // Total possible units to sell per token
         };
       } catch (error) {
         console.error(`Error fetching data for ${token.name}:`, error);
         return {
           tokenName: token.name,
           sold: 0,
-          totalunits: 80,
+          totalunits: 100,
         };
       }
     });
@@ -101,7 +101,7 @@ const ChainPage: React.FC = () => {
   };
 
   const totalSold = progressData.reduce((sum, data) => sum + data.sold, 0);
-  const totalUnits = 450; // Total units for all tokens combined
+  const totalUnits = 500; // Total units for all tokens combined
 
   useEffect(() => {
     if (tokens.length > 0) {
@@ -127,7 +127,8 @@ const ChainPage: React.FC = () => {
                 token={token}
                 price={token.price}
                 sold={progress ? progress.sold : 0}
-                totalunits={progress ? progress.totalunits : 80}
+                totalunits={progress ? progress.totalunits : 100}
+                currentprice={token.currentprice}  // Pass currentprice here
               />
             );
           })}

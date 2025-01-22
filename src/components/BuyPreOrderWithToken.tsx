@@ -11,6 +11,7 @@ interface BuyPreOrderWithTokenProps {
   price: number | string;  // Price can now be a number or a string ("Price unavailable")
   sold: number;
   totalunits: number;
+  currentprice: string; // Add currentprice to props
 }
 
 const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
@@ -18,6 +19,7 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
   price,
   sold,
   totalunits,
+  currentprice,  // Access currentprice from props
 }) => {
   const priceFormatted = typeof price === "number" ? price.toFixed(2) : price;
   const progress = totalunits ? sold / totalunits : 0;  // Calculate progress as a fraction
@@ -59,6 +61,9 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
         {priceText}
       </p>
 
+      {/* Display current price below the main price */}
+      <p className="text-sm text-accent2 mt-3">{`Current Price: ${currentprice} ${token.symbol}`}</p>
+
       {/* Rebalance in countdown */}
       <p className="text-sm text-accent1 mt-2">Rebalance in {formatTime(timeLeft)}</p>
 
@@ -95,6 +100,5 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
     </div>
   );
 };
-;
 
 export default BuyPreOrderWithToken;

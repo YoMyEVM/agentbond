@@ -9,7 +9,7 @@ interface ChainDetailProps {
   totalunits?: number; // Optional prop for totalunits
 }
 
-const ChainDetail: React.FC<ChainDetailProps> = ({ chain, sold = 0, totalunits = 80 }) => {
+const ChainDetail: React.FC<ChainDetailProps> = ({ chain, sold = 0, totalunits = 100 }) => {
   const progress = totalunits ? sold / totalunits : 0;
 
   return (

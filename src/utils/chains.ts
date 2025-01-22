@@ -9,7 +9,7 @@ export interface Chain {
   WETHaddress: string;
 }
 
-export const colors: { [key in 'polygon' | 'baseChain' | 'apeChain' | 'abstract' | 'optimism' | 'beraChain' | 'arbitrum' | 'uniChain']: string } = {
+export const colors: { [key in 'polygon' | 'baseChain' | 'apeChain' | 'abstract' | 'optimism' | 'beraChain' | 'arbitrum' | 'uniChain' |'worldChain']: string } = {
   polygon: '#8247E5',  
   baseChain: '#0052FF',  
   apeChain: '#0b48d7',
@@ -17,7 +17,8 @@ export const colors: { [key in 'polygon' | 'baseChain' | 'apeChain' | 'abstract'
   optimism: '#FF0420',   
   beraChain: '#E8663D',  
   arbitrum: '#2bbdfa',   
-  uniChain: '#FF007A',   
+  uniChain: '#FF007A', 
+  worldChain: '#808080',  
 };
 
 export const chains: Chain[] = [
@@ -102,4 +103,14 @@ export const chains: Chain[] = [
     color: colors.beraChain,
     WETHaddress: "null", // Placeholder for Abstract
   },
+  {
+    name: "WorldChain",
+    id: 480,
+    rpc: "https://worldchain-mainnet.g.alchemy.com/v2/sXn2qG4jYWyUx8Ws-6XvHBb9sk6KcQ9k",
+    symbol: "WLD",
+    explorerUrl: "https://worldchain-mainnet.explorer.alchemy.com//",
+    image: "/worldchainlogo.png",
+    color: colors.worldChain,
+    WETHaddress: "0x4200000000000000000000000000000000000006", // Placeholder for Abstract
+  }, 
 ];

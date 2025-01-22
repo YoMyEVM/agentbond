@@ -8,7 +8,7 @@ interface PreOrderCardProps {
     color: string;
     id: string;
     sold: number; // Sold amount for the chain's tokens
-    totalunits: number; // Total units (450) for the chain
+    totalunits: number; // Total units (500) for the chain
   };
 }
 
