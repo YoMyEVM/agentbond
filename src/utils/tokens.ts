@@ -20,7 +20,7 @@ export const baseTokens: Token[] = [
     color: "#fff", // Coinbase blue for USDbC
     dexpool: "0x0E635F8EeED4F7279d56692D552F034ECE136019",
     gposale: "0xaC94342fc2DC50E544D752C86750C1aBC29a1b51",
-    currentprice: "9",
+    currentprice: "38",
 
   },
   {
@@ -34,14 +34,14 @@ export const baseTokens: Token[] = [
     currentprice: 0.003,
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "cbBTC",
@@ -61,7 +61,7 @@ export const baseTokens: Token[] = [
     color: "#6697ff", // Coinbase blue for cbETH
     dexpool: "0x9BB646BF0F4Da44bfaF3d899e774DE065731EDFe",
     gposale: "0x4409295C64d03Ef0d8263e175702BD8c2d6d86d4",
-    currentprice: "Placeholder",
+    currentprice: "0.0112",
 
   },
 
@@ -76,7 +76,7 @@ export const optimismTokens: Token[] = [
     color: "#2775ca", // Coinbase blue for USDC
     dexpool: "0x1fb3cf6e48f1e7b10213e7b6d87d4c073c7fdb7b",
     gposale: "0x0a562239542A7aBb2e7817018b187e462C039C1B",
-    currentprice: "9",
+    currentprice: "37",
   },
   {
     name: "WETH",
@@ -86,17 +86,17 @@ export const optimismTokens: Token[] = [
     color: "#ffffff", // White for WETH
     dexpool: "0x03af20bdaaffb4cc0a521796a223f7d85e2aac31",
     gposale: "0xF3F029Cdd7586Fc5F705bd206339507F1fbEd275",
-    currentprice: "0.003",
+    currentprice: "0.012",
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "OP",
@@ -106,7 +106,7 @@ export const optimismTokens: Token[] = [
     color: "#ed1e2c", // Coinbase blue for OP
     dexpool:"0xfc1f3296458f9b2a27a0b91dd7681c4020e09d05",
     gposale: "0xB1B757e71438841E20FC0a71E6F9a38BA41a9dAf",
-    currentprice: "5",
+    currentprice: "20",
   },
   {
     name: "SNX",
@@ -116,7 +116,7 @@ export const optimismTokens: Token[] = [
     color: "#01cefd", // Coinbase blue for SNX
     dexpool: "0x0392b358ce4547601befa962680bede836606ae2",
     gposale: "0xAe2a4e7a21193F9b26656cb4b2DCFDD9b4A2Be78",
-    currentprice: "4.5",
+    currentprice: "20",
   },
 
 ];
@@ -130,7 +130,7 @@ export const polygonTokens: Token[] = [
     color: "#2775ca", // Coinbase blue for USDC
     dexpool: "0xb6e57ed85c4c9dbfef2a68711e9d6f36c56e0fcb",
     gposale: "0x9741E9eD8B9042A43523493271890333023bF706",
-    currentprice: "9",
+    currentprice: "38",
   },
   {
     name: "WETH",
@@ -140,17 +140,17 @@ export const polygonTokens: Token[] = [
     color: "#ffffff", // White for WETH
     dexpool: "0x4ccd010148379ea531d6c587cfdd60180196f9b1",
     gposale: "0x1FD729f324B6FDd4F12464f970b587139B24b005",
-    currentprice: "0.003",
+    currentprice: "0.012",
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "WPOL",
@@ -160,7 +160,7 @@ export const polygonTokens: Token[] = [
     color: "#8347e5", // Coinbase blue for POL
     dexpool: "0xa374094527e1673a86de625aa59517c5de346d32",
     gposale: "0xd43B8fd4248108359e104619a26C1B62251fDde5",
-    currentprice: "Placeholder",
+    currentprice: "78",
   },
   {
     name: "OLAS",
@@ -170,7 +170,7 @@ export const polygonTokens: Token[] = [
     color: "#ffffff", // OLAS color
     dexpool: "0x2b274ed54b94b44909085d0cac36171f03109bb9",
     gposale: "0xcC162F6387Ab5c12a376E99103ff4628b4dcE913",
-    currentprice: "Placeholder",
+    currentprice: "38",
   },
 ];
 
@@ -183,7 +183,7 @@ export const arbitrumTokens: Token[] = [
     color: "#2775ca", // Coinbase blue for USDC
     dexpool: "0xc6962004f452be9203591991d15f6b388e09e8d0",
     gposale: "0x01406239Ef672c35E4FD6113E4DBD8e3784CB780",
-    currentprice: "9",
+    currentprice: "38",
   },
 
   {
@@ -194,17 +194,17 @@ export const arbitrumTokens: Token[] = [
     color: "#ffffff", // White for WETH
     dexpool: "0x641c00a822e8b671738d32a431a4fb6074e5c79d",
     gposale: "0xA49794ffA36f26C403000d1F2A501c5A78Db6b47",
-    currentprice: "0.003",
+    currentprice: "0.012",
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "ARB",
@@ -214,7 +214,7 @@ export const arbitrumTokens: Token[] = [
     color: "#12AAFF", // Coinbase blue for ARB
     dexpool: "0xc6f780497a95e246eb9449f5e4770916dcd6396a",
     gposale: "0x091C138224Aa7272924E1fAFF5c110e3de93F6a6",
-    currentprice: "Placeholder",
+    currentprice: "50",
 
   },
   {
@@ -225,7 +225,7 @@ export const arbitrumTokens: Token[] = [
     color: "#00FFA3", // Coinbase blue for ARB
     dexpool: "0x622B5186384783BB805c12A808cCF07F41DE1Ff0",
     gposale: "0x180E767040263BAB041783C82fC826d85Afc6a5a",
-    currentprice: "Placeholder",
+    currentprice: "0.13",
 
   },
 
@@ -255,14 +255,14 @@ export const apeChainTokens: Token[] = [
     currentprice: "0.003",
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "WAPE",
@@ -312,14 +312,14 @@ export const abstractTokens: Token[] = [
     currentprice: "Placeholder",
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "PENGU",
@@ -358,15 +358,14 @@ export const unichainTokens: Token[] = [
     currentprice: "Placeholder",
   },
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
-
+    currentprice: "1000",
   },
   {
     name: "UNI",
@@ -403,14 +402,14 @@ export const beraChainTokens: Token[] = [
   },
   
   {
-    name: "ISAI",
+    name: "GenCredits",
     address: "Not live yet",
-    symbol: "ISAI",
-    image: "/isaitoken.png",
-    color: "#01ecec", // ISAI color
+    symbol: "GenCredits",
+    image: "/studiologo.png",
+    color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-    currentprice: "Placeholder",
+    currentprice: "1000",
   },
   {
     name: "BERA",

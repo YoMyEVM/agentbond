@@ -54,23 +54,34 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
 
   return (
     <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
-      <img src={token.image} alt={token.name} className="w-20 h-20 mb-4" />
-      <p className="text-lg text-center text-accent2">Pre-order with {token.symbol}</p>
+      <p className="text-lg text-center mb-5 text-white">Pre-order with {token.symbol}</p>
+      <img src={token.image} alt={token.name} className="w-20 h-20 mb-1" />
 
       <p className="text-2xl mt-4 font-semibold mt-1">
         {priceText}
       </p>
 
-      {/* Display current price below the main price */}
-      <p className="text-sm text-accent2 mt-3">{`Current Price: ${currentprice} ${token.symbol}`}</p>
+{/* Display current price with the label in accent1 and the price number in white */}
+<p className="text-sm mt-3">
+  <span className="text-accent2">Current Price</span>
+  <br />
+  <span className="text-white">
+    {`${currentprice} `}
+    <span style={{ color: token.color }}>
+      {token.symbol}
+    </span>
+  </span>
+</p>
 
-      {/* Rebalance in countdown */}
-      <p className="text-sm text-accent1 mt-2">Rebalance in {formatTime(timeLeft)}</p>
 
       {/* Conditionally render button text */}
       <button className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]">
         {buttonText}
       </button>
+
+      {/* Rebalance in countdown */}
+      <p className="text-sm text-accent1 mt-5">Rebalance in {formatTime(timeLeft)}</p>
+
 
       <div className="w-full mt-4">
         <div className="relative pt-1">
@@ -80,7 +91,7 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
               {sold}/{totalunits}
             </span>
           </div>
-          <div className="flex mb-4 items-center justify-between w-full">
+          <div className="flex mb-0 items-center justify-between w-full">
             <div className="relative pt-1 w-full">
               <div className="flex mb-2">
                 <div className="flex w-full">
