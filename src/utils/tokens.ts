@@ -31,7 +31,7 @@ export const baseTokens: Token[] = [
     color: "#ffffff", // White for WETH
     dexpool:"0xd0b53D9277642d899DF5C87A3966A349A798F224",
     gposale: "0xF30667dBd90868dB7AAb74Ad87E9671B8eED7F99",
-    currentprice: 0.003,
+    currentprice: 0.013,
   },
   {
     name: "GenCredits",
@@ -51,7 +51,7 @@ export const baseTokens: Token[] = [
     color: "#0052FF", // Coinbase blue for cbBTC
     dexpool: "0xfBB6Eed8e7aa03B138556eeDaF5D271A5E1e43ef",
     gposale: "0xd4e04FB72936D52c66587681874CF75AedF4a1de",
-    currentprice: "Placeholder",
+    currentprice: "0.00036",
   },
   {
     name: "cbETH",
@@ -241,7 +241,7 @@ export const apeChainTokens: Token[] = [
     color: "#2775ca", // Coinbase blue for ApeUSD
     dexpool: "0x99556e210123da382eded3c72aa8dcb605c3c435",
     gposale: "0x3aC3d1Be569a11Db02f57a3cFB0C8f332283f689",
-    currentprice: "9",
+    currentprice: "36",
   },
 
   {
@@ -252,7 +252,7 @@ export const apeChainTokens: Token[] = [
     color: "#ffffff", // White for ApeETH
     dexpool: "0xea03aedda280ed21f39cb6084b4f84bacd3ebc31",
     gposale: "0x1b2aE5F73Fd1db012B982DF554509eF8b3efb6c4",
-    currentprice: "0.003",
+    currentprice: "0.012",
   },
   {
     name: "GenCredits",
@@ -272,7 +272,7 @@ export const apeChainTokens: Token[] = [
     color: "#0148d7", // Coinbase blue for APE
     dexpool: "0xcbbe0a6d394b34a486fe9c50bf37bf835cbbae51",
     gposale: "0xCf93435D2c00D64375fED1d287eA244c1a055f4c",
-    currentprice: "Placeholder",
+    currentprice: "38",
   },
 
   {

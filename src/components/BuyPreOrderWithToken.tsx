@@ -61,17 +61,17 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
         {priceText}
       </p>
 
-{/* Display current price with the label in accent1 and the price number in white */}
-<p className="text-sm mt-3">
-  <span className="text-accent2">Current Price</span>
-  <br />
-  <span className="text-white">
-    {`${currentprice} `}
-    <span style={{ color: token.color }}>
-      {token.symbol}
-    </span>
-  </span>
-</p>
+      {/* Display current price with the label in accent1 and the price number in white */}
+      <p className="text-sm mt-3">
+        <span className="text-accent2">Current Price</span>
+        <br />
+        <span className="text-white">
+          {`${currentprice} `}
+          <span style={{ color: token.color }}>
+            {token.symbol}
+          </span>
+        </span>
+      </p>
 
 
       {/* Conditionally render button text */}
