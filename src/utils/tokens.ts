@@ -106,7 +106,7 @@ export const optimismTokens: Token[] = [
     color: "#ed1e2c", // Coinbase blue for OP
     dexpool:"0xfc1f3296458f9b2a27a0b91dd7681c4020e09d05",
     gposale: "0xB1B757e71438841E20FC0a71E6F9a38BA41a9dAf",
-    currentprice: "Placeholder",
+    currentprice: "5",
   },
   {
     name: "SNX",
@@ -116,7 +116,7 @@ export const optimismTokens: Token[] = [
     color: "#01cefd", // Coinbase blue for SNX
     dexpool: "0x0392b358ce4547601befa962680bede836606ae2",
     gposale: "0xAe2a4e7a21193F9b26656cb4b2DCFDD9b4A2Be78",
-    currentprice: "Placeholder",
+    currentprice: "4.5",
   },
 
 ];

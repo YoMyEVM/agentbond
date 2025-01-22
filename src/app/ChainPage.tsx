@@ -121,11 +121,15 @@ const ChainPage: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {tokensWithPrice.map((token) => {
             const progress = progressData.find((data) => data.tokenName === token.name);
+            
+            // Calculate the price (Dexscreener price * current price of GPO)
+            const currentPriceOfGPO = token.price * token.currentprice;
+
             return (
               <BuyPreOrderWithToken
                 key={token.name}
                 token={token}
-                price={token.price}
+                price={currentPriceOfGPO}  // Pass the updated price here
                 sold={progress ? progress.sold : 0}
                 totalunits={progress ? progress.totalunits : 100}
                 currentprice={token.currentprice}  // Pass currentprice here
