@@ -16,7 +16,12 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
   onClose,
   disconnectWallet,
 }) => {
-  const [preOrderedAgents, setPreOrderedAgents] = useState<{ [key: string]: number }>({});
+  const [preOrderedAgents, setPreOrderedAgents] = useState<{ [key: string]: number | "loading" }>(
+    chains.reduce((acc, chain) => {
+      acc[chain.name] = "loading"; // Initialize each chain with "loading"
+      return acc;
+    }, {} as { [key: string]: number | "loading" })
+  );
 
   const tokenLists: { [key: string]: any[] } = {
     Base: baseTokens,
@@ -28,12 +33,13 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
   const fetchGPOBalances = async () => {
     if (!account) return;
 
-    const balances: { [key: string]: number } = {};
+    const balances: { [key: string]: number | "loading" } = { ...preOrderedAgents };
 
     for (const chain of chains) {
       const provider = new ethers.JsonRpcProvider(chain.rpc);
+
       const tokens = tokenLists[chain.name] || [];
-      let totalGPO = BigInt(0); // Initialize using BigInt(0)
+      let totalGPO = BigInt(0);
 
       for (const token of tokens) {
         if (token.gposale && token.gposale !== "Placeholder") {
@@ -43,8 +49,9 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
               ["function balanceOf(address account) external view returns (uint256)"],
               provider
             );
+
             const balance = await gpoContract.balanceOf(account);
-            totalGPO += BigInt(balance.toString()); // Add balance using BigInt
+            totalGPO += BigInt(balance.toString());
           } catch (error) {
             console.error(`Error fetching balance for ${token.name} on ${chain.name}:`, error);
           }
@@ -52,9 +59,8 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
       }
 
       balances[chain.name] = Number(totalGPO) / 10 ** 18; // Convert BigInt to number
+      setPreOrderedAgents({ ...balances }); // Update state incrementally
     }
-
-    setPreOrderedAgents(balances);
   };
 
   useEffect(() => {
@@ -138,24 +144,32 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
         <div className="mt-2">
           <h3 className="text-lg font-bold text-center mb-2">Owned Agents</h3>
           <ul className="space-y-2">
-            {chains.map((chain) => (
-              <li
-                key={chain.id}
-                className="flex items-center justify-between px-4 py-2 border rounded"
-                style={{ borderColor: chain.color }}
-              >
-                <span
-                  className="text-sm font-medium"
-                  style={{ color: chain.color }}
+            {chains.map((chain) => {
+              const agentCount = preOrderedAgents[chain.name];
+
+              return (
+                <li
+                  key={chain.id}
+                  className="flex items-center justify-between px-4 py-2 border rounded"
+                  style={{ borderColor: chain.color }}
                 >
-                  {chain.name}
-                </span>
-                <span className="text-sm text-white">
-                  {preOrderedAgents[chain.name]?.toFixed(0) || 0} Agents
-                </span>
-              </li>
-            ))}
+                  <span
+                    className="text-sm font-medium"
+                    style={{ color: chain.color }}
+                  >
+                    {chain.name}
+                  </span>
+                  <span className="text-sm text-white">
+                    {agentCount === "loading"
+                      ? "Loading..."
+                      : `${agentCount.toFixed(0)} Agents`}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
+
+
         </div>
       </div>
     </div>
