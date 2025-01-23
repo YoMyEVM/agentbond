@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import { GpoSaleABI } from "../utils/GpoSaleABI";
-
 import { checkAndSwitchChain } from "../utils/checkAndSwitchChain";
-
 
 interface BuyPreOrderWithTokenProps {
   token: {
@@ -58,31 +56,31 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
       alert("Please connect a wallet.");
       return;
     }
-  
+
     setIsProcessing(true);
-  
+
     try {
       // Check and switch to the correct chain
       await checkAndSwitchChain(ethers.toBeHex(chain.id));
       console.log("Chain switched successfully!");
-  
+
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-  
+
       const gpoAddress = token.gposale;
       const erc20Contract = new ethers.Contract(token.address, [
         "function approve(address spender, uint256 amount) external returns (bool)",
         "function allowance(address owner, address spender) external view returns (uint256)",
       ], signer);
-  
+
       const approveAmount = ethers.parseUnits(
         (quantity * tokenQuantity).toString(),
         parseInt(token.decimals, 10) || 18
       );
-  
+
       // Check allowance
       const allowance = await erc20Contract.allowance(await signer.getAddress(), gpoAddress);
-  
+
       if (allowance.gte(approveAmount)) {
         console.log(`Sufficient allowance: ${allowance.toString()}`);
       } else {
@@ -91,19 +89,19 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
         await approveTx.wait();
         console.log("Token approved!");
       }
-  
+
       // Call claim function
       const gpoContract = new ethers.Contract(gpoAddress, GpoSaleABI, signer);
       const pricePerToken = ethers.parseUnits(
         (usdPrice / tokenQuantity).toString(),
         parseInt(token.decimals, 10) || 18
       );
-  
+
       const totalCost = ethers.parseUnits(
         (quantity * (usdPrice / tokenQuantity)).toString(),
         parseInt(token.decimals, 10) || 18
       );
-  
+
       const tx = await gpoContract.claim(
         await signer.getAddress(),
         ethers.parseUnits(quantity.toString(), parseInt(token.decimals, 10) || 18),
@@ -120,7 +118,7 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
           value: totalCost,
         }
       );
-  
+
       console.log("Transaction submitted:", tx.hash);
       await tx.wait();
       console.log("Transaction confirmed:", tx);
@@ -140,7 +138,6 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
       setIsProcessing(false);
     }
   };
-  
 
   // Format USD cost to 4 decimals
   const usdText =
@@ -157,8 +154,10 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
   // Progress fraction
   const progress = totalunits ? sold / totalunits : 0;
 
+  const isButtonDisabled = tokenQuantity <= 0 || isProcessing;
+
   return (
-    <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
+    <div className="token-card border-2 border-accent1 p-4 rounded-lg flex flex-col items-center">
       <p className="text-lg text-center mb-5 text-accent2">
         Pre-order with {token.symbol}
       </p>
@@ -201,14 +200,23 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
         <span className="text-white">{costInTokens}</span>
       </p>
 
-      {/* Pre-order button */}
-      <button
-        onClick={handlePreOrder}
-        className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]"
-        disabled={isProcessing || tokenQuantity <= 0}
-      >
-        {isProcessing ? "Processing..." : "Pre-Order"}
-      </button>
+      {/* Pre-order button with tooltip */}
+      <div className="relative group">
+        <button
+          onClick={handlePreOrder}
+          className={`px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333] ${
+            isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={isButtonDisabled}
+        >
+          {isProcessing ? "Processing..." : "Pre-Order"}
+        </button>
+        {isButtonDisabled && (
+          <div className="absolute bottom-full mb-2 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100">
+            Coming Soon
+          </div>
+        )}
+      </div>
 
       {/* Progress bar */}
       <div className="w-full mt-4">
