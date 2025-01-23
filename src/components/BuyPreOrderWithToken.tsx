@@ -200,23 +200,19 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
         <span className="text-white">{costInTokens}</span>
       </p>
 
-      {/* Pre-order button with tooltip */}
-      <div className="relative group">
-        <button
-          onClick={handlePreOrder}
-          className={`px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333] ${
-            isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-          disabled={isButtonDisabled}
-        >
-          {isProcessing ? "Processing..." : "Pre-Order"}
-        </button>
-        {isButtonDisabled && (
-          <div className="absolute bottom-full mb-2 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100">
-            Coming Soon
-          </div>
-        )}
-      </div>
+{/* Pre-order button with tooltip */}
+<div className="relative group">
+  <button
+    className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded opacity-50 cursor-not-allowed"
+    disabled // This makes the button always disabled
+  >
+    Pre-Order
+  </button>
+  {/* Tooltip */}
+  <div className="absolute bottom-full mb-2 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100">
+    Coming Soon
+  </div>
+</div>
 
       {/* Progress bar */}
       <div className="w-full mt-4">
