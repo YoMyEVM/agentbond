@@ -39,7 +39,7 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
           {chain.name}
         </h3>
 
-        <p className="text-gray-400 mb-4">
+        <p className="text-gray-400 text-lg mb-4">
           Best Price ~${chain.bestPrice?.toFixed(4) || "0.0000"}
         </p>
 
