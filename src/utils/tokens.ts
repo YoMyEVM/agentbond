@@ -252,7 +252,7 @@ export const apeChainTokens: Token[] = [
     symbol: "ApeUSD",
     decimals: "18",
     image: "/usdclogo.png",
-    color: "#ffffff", // White for ApeETH
+    color: "#2775ca", // White for ApeETH
     dexpool: "0x99556e210123da382eDEd3c72AA8DCb605C3c435",
     gposale: "0x3aC3d1Be569a11Db02f57a3cFB0C8f332283f689",
 
@@ -289,6 +289,17 @@ export const apeChainTokens: Token[] = [
     color: "#0148d7", // Coinbase blue for APE
     dexpool: "0xcbbe0a6d394b34a486fe9c50bf37bf835cbbae51",
     gposale: "0xCf93435D2c00D64375fED1d287eA244c1a055f4c",
+  },
+  {
+    name: "Placeholder",
+    address: "Not live yet",
+    symbol: "Placeholder",
+    decimals: "18",
+    image: "/studiologo.png",
+    color: "#01ecec", 
+    dexpool: "Placeholder",
+    gposale: "Placeholder",
+
   },
 
 ];
