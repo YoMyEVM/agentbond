@@ -20,6 +20,7 @@ import ItemPage from "./ItemPage";
 import PreOrderPage from "./PreOrderPage"; // Pre-order page
 import ChainPage from "./ChainPage";  // Dynamic Chain Page component
 import ProfilePage from "./ProfilePage"; // Import the Profile Page
+import AnimatedPreOrderButton from "components/AnimatedPreOrderButton";
 
 
 function App() {
@@ -56,16 +57,9 @@ function App() {
                     <SwiperComponent />
                   </section>
 
-                  {/* Pre-Order Now Button */}
                   <section className="mt-8 text-center">
-                    <button
-                      onClick={() => window.location.href = '/pre-order'}
-                      className="preorder-now-btn bg-accent2 text-white py-3 px-6 rounded-lg hover:bg-accent1 transition"
-                    >
-                      Pre-Order Soon
-                    </button>
+                    <AnimatedPreOrderButton />
                   </section>
-
                   {/* Crash Course Section */}
                   <section className="mt-8">
                     <CrashCourse />
