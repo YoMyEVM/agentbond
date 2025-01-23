@@ -8,12 +8,17 @@ const CrashCourse: React.FC = () => {
     {
       title: "ISAI Studio",
       description: ".",
-      icon: "🤖",
+      icon: <img src="/studiologo.png" alt="ISAI Studio Logo" className="w-12 h-12 -mb-2 mx-auto" />, 
     },
     {
       title: "Wallet & Gas Quick Start",
       description: ".",
       icon: "⛽",
+    },
+    {
+      title: "Pre-Order an Agent",
+      description: ".",
+      icon: "🤖",
     },
     {
       title: "Earn with No Code AI",
