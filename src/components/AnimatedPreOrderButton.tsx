@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AnimatedPreOrderButton: React.FC = () => {
+interface AnimatedPreOrderButtonProps {
+  smallText?: boolean; // Prop to control size
+}
+
+const AnimatedPreOrderButton: React.FC<AnimatedPreOrderButtonProps> = ({ smallText }) => {
   return (
     <>
       <style>
@@ -13,13 +17,18 @@ const AnimatedPreOrderButton: React.FC = () => {
           .animated-link {
             position: relative;
             padding: 30px 60px;
+            font-size: 30px;
             box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
             color: #999;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 4px;
-            font: 700 30px consolas;
+            font: 700 consolas;
             overflow: hidden;
+          }
+          .animated-link.small-text {
+            padding: 15px 20px; /* Smaller padding */
+            font-size: 16px; /* Smaller font size */
           }
           .animated-link span:nth-child(1) {
             position: absolute;
@@ -79,7 +88,7 @@ const AnimatedPreOrderButton: React.FC = () => {
             left: 0;
             height: 100%;
             width: 3px;
-            background: linear-gradient(to top, #171618,rgb(10, 199, 32));
+            background: linear-gradient(to top, #171618, rgb(10, 199, 32));
             animation: animate4 2s linear infinite;
             animation-delay: 1s;
           }
@@ -95,7 +104,7 @@ const AnimatedPreOrderButton: React.FC = () => {
       </style>
 
       <div className="animated-button-container">
-        <Link to="/pre-order" className="animated-link">
+        <Link to="/pre-order" className={`animated-link ${smallText ? "small-text" : ""}`}>
           <span></span>
           <span></span>
           <span></span>

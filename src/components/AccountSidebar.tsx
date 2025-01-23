@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AnimatedPreOrderButton from "components/AnimatedPreOrderButton";
 
 interface AccountSidebarProps {
   account: string | null;
@@ -16,6 +17,7 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
     <div
       className={`fixed top-0 right-0 h-full bg-black text-white w-80 z-50 transform translate-x-0 transition-transform duration-300 shadow-lg`}
     >
+      {/* Header */}
       <div className="flex justify-between items-center p-4 border-b border-[#fd01f5]">
         <h2 className="text-lg font-bold">Account</h2>
         <button
@@ -25,12 +27,19 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
           ×
         </button>
       </div>
+
+      {/* Animated Button with Smaller Text */}
+      <div className="p-4">
+        <AnimatedPreOrderButton smallText={true} />
+      </div>
+
+      {/* Wallet Info */}
       <div className="p-4 space-y-6">
-        {/* Centered Connected Wallet */}
         <div className="text-center">
           <p className="mb-2 text-sm font-semibold">Connected Wallet</p>
           <p className="text-xs font-mono break-all">{account}</p>
         </div>
+
         {/* Buttons */}
         <div className="flex justify-between">
           {/* Profile */}
@@ -42,6 +51,7 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
             />
             <span className="text-xs">Profile</span>
           </Link>
+
           {/* Settings */}
           <Link to="/settings" className="flex flex-col items-center space-y-1">
             <img
@@ -51,6 +61,7 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
             />
             <span className="text-xs">Settings</span>
           </Link>
+
           {/* Disconnect */}
           <button
             onClick={disconnectWallet}
