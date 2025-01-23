@@ -30,7 +30,7 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
       </div>
 
       {/* PreOrder Button */}
-      <div className="p-1">
+      <div className="p-3">
         <AnimatedPreOrderButton smallText={true} />
       </div>
 
