@@ -14,9 +14,6 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
   onClose,
   disconnectWallet,
 }) => {
-  const genCreditsBalance = 100; // Replace with actual GenCredits balance logic
-  const isaiBalance = 500; // Replace with actual ISAI balance logic
-
   return (
     <div
       className={`fixed top-0 right-0 h-full bg-black text-white w-80 z-50 transform translate-x-0 transition-transform duration-300 shadow-lg`}
@@ -40,29 +37,8 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
       {/* Wallet Info */}
       <div className="p-1 space-y-2">
         <div className="text-center">
-
           <p className="mb-1 text-sm font-semibold text-accent2">Connected Wallet</p>
-
           <p className="text-xs font-mono break-all">{account}</p>
-        </div>
-
-        {/* GenCredits and ISAI Buttons */}
-        <div className="flex justify-between gap-4">
-          {/* GenCredits */}
-          <Link to="/buy-gen-credits" className="w-full">
-            <button className="w-full px-4 py-2 bg-black text-white border-2 border-accent2 rounded hover:bg-[#333]">
-              GenCredits
-              <br />
-              <span className="text-accent1 text-sm">{genCreditsBalance}</span>
-            </button>
-          </Link>
-
-          {/* ISAI */}
-          <button className="w-full px-4 py-2 bg-black text-white border-2 border-[#fd01f5] rounded hover:bg-[#333]">
-            ISAI
-            <br />
-            <span className="text-accent1 text-sm">{isaiBalance}</span>
-          </button>
         </div>
 
         {/* Profile, Check-In, Settings, Disconnect Buttons */}
