@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedPreOrderButton from "components/AnimatedPreOrderButton";
 import { chains } from "../utils/chains"; // Import chains
+import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens } from "../utils/tokens"; // Import tokens
+import { ethers } from "ethers"; // Import ethers
 
 interface AccountSidebarProps {
   account: string | null;
@@ -14,6 +16,51 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
   onClose,
   disconnectWallet,
 }) => {
+  const [preOrderedAgents, setPreOrderedAgents] = useState<{ [key: string]: number }>({});
+
+  const tokenLists: { [key: string]: any[] } = {
+    Base: baseTokens,
+    Optimism: optimismTokens,
+    Polygon: polygonTokens,
+    Arbitrum: arbitrumTokens,
+  };
+
+  const fetchGPOBalances = async () => {
+    if (!account) return;
+
+    const balances: { [key: string]: number } = {};
+
+    for (const chain of chains) {
+      const provider = new ethers.JsonRpcProvider(chain.rpc);
+      const tokens = tokenLists[chain.name] || [];
+      let totalGPO = BigInt(0); // Initialize using BigInt(0)
+
+      for (const token of tokens) {
+        if (token.gposale && token.gposale !== "Placeholder") {
+          try {
+            const gpoContract = new ethers.Contract(
+              token.gposale,
+              ["function balanceOf(address account) external view returns (uint256)"],
+              provider
+            );
+            const balance = await gpoContract.balanceOf(account);
+            totalGPO += BigInt(balance.toString()); // Add balance using BigInt
+          } catch (error) {
+            console.error(`Error fetching balance for ${token.name} on ${chain.name}:`, error);
+          }
+        }
+      }
+
+      balances[chain.name] = Number(totalGPO) / 10 ** 18; // Convert BigInt to number
+    }
+
+    setPreOrderedAgents(balances);
+  };
+
+  useEffect(() => {
+    fetchGPOBalances();
+  }, [account]);
+
   return (
     <div
       className={`fixed top-0 right-0 h-full bg-black text-white w-80 z-50 transform translate-x-0 transition-transform duration-300 shadow-lg`}
@@ -102,6 +149,9 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
                   style={{ color: chain.color }}
                 >
                   {chain.name}
+                </span>
+                <span className="text-sm text-white">
+                  {preOrderedAgents[chain.name]?.toFixed(2) || 0} Agents
                 </span>
               </li>
             ))}
