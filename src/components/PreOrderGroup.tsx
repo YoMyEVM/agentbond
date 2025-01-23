@@ -14,20 +14,18 @@ import {
   beraChainTokens,
 } from "../utils/tokens";
 
-// Dexscreener response shape
 interface DexscreenerResponse {
   pair: {
     priceUsd: string;
   };
 }
 
-// Define token type with 'name', 'symbol', 'dexpool', 'gposale', and optional 'currentprice'
 interface Token {
   name: string;
   symbol: string;
   dexpool: string;
   gposale: string;
-  currentprice?: number;  // if you store it in tokens
+  currentprice?: number;
 }
 
 const PreOrderGroup: React.FC = () => {
@@ -53,10 +51,9 @@ const PreOrderGroup: React.FC = () => {
       const tokens = getTokensForChain(chain.name);
 
       let totalSold = 0;
-      let bestPrice = 0; // We'll calculate it below
+      let bestPrice = 0;
       const prices: number[] = [];
 
-      // For each token, fetch total supply + DexScreener price
       for (const token of tokens) {
         // 1) totalSupply
         let soldAmount = 0;
@@ -84,18 +81,15 @@ const PreOrderGroup: React.FC = () => {
           console.error(`Error fetching Dex price for ${token.symbol}:`, error);
         }
 
-        // Multiply if your "best price" needs token.currentprice
-        // For example: finalPrice = DexScreener price * currentPriceOfGPO
-        const currentprice = token.currentprice || 1; // fallback if undefined
+        // Multiply if needed
+        const currentprice = token.currentprice || 1;
         const finalPrice = dexPriceUsd * currentprice;
 
-        // Store for picking min
         if (finalPrice > 0) {
           prices.push(finalPrice);
         }
       }
 
-      // compute chain's bestPrice (lowest found)
       if (prices.length) {
         bestPrice = Math.min(...prices);
       }
@@ -106,7 +100,7 @@ const PreOrderGroup: React.FC = () => {
         image: chain.image,
         color: chain.color,
         sold: totalSold,
-        totalunits: 500, // or your logic
+        totalunits: 500,
         bestPrice,
       };
     });

@@ -9,7 +9,7 @@ interface PreOrderCardProps {
     id: string;
     sold: number;
     totalunits: number;
-    bestPrice?: number; // add this
+    bestPrice?: number;
   };
 }
 
@@ -18,8 +18,13 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
   const defaultImage = "/defaultLogo.png";
   const imageSrc = chain.image || defaultImage;
 
+  // If bestPrice is zero or undefined, treat as "no price yet".
+  const hasPrice = chain.bestPrice && chain.bestPrice > 0;
+
   const handlePreOrderClick = () => {
-    navigate(`/chain/${chain.id}`);
+    if (hasPrice) {
+      navigate(`/chain/${chain.id}`);
+    }
   };
 
   const progress = (chain.sold / chain.totalunits) * 100;
@@ -34,11 +39,10 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
           {chain.name}
         </h3>
 
-        {/* Show best price here */}
         <p className="text-gray-400 mb-4">
           Best Price ~${chain.bestPrice?.toFixed(4) || "0.0000"}
         </p>
-        
+
         <div className="text-sm text-gray-300 mb-2">
           {chain.sold} / {chain.totalunits} Sold
         </div>
@@ -51,12 +55,13 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
             }}
           />
         </div>
+
         <button
           className="text-black py-2 px-4 rounded-lg hover:opacity-80 focus:outline-none"
           style={{ backgroundColor: chain.color }}
           onClick={handlePreOrderClick}
         >
-          Pre-Order Now
+          {hasPrice ? "Pre-Order Now" : "Coming Soon"}
         </button>
       </div>
     </div>
