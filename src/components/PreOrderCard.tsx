@@ -61,7 +61,7 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
           style={{ backgroundColor: chain.color }}
           onClick={handlePreOrderClick}
         >
-          {hasPrice ? "Pre-Order Now" : "Coming Soon"}
+          {hasPrice ? "Pre-Order Soon" : "Coming Soon"}
         </button>
       </div>
     </div>
