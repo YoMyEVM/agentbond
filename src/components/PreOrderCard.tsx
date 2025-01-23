@@ -7,8 +7,9 @@ interface PreOrderCardProps {
     image?: string;
     color: string;
     id: string;
-    sold: number; // Sold amount for the chain's tokens
-    totalunits: number; // Total units (500) for the chain
+    sold: number;
+    totalunits: number;
+    bestPrice?: number; // add this
   };
 }
 
@@ -21,7 +22,6 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
     navigate(`/chain/${chain.id}`);
   };
 
-  // Calculate progress percentage
   const progress = (chain.sold / chain.totalunits) * 100;
 
   return (
@@ -33,13 +33,15 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
         <h3 className="text-xl font-semibold text-gray-100 mb-2">
           {chain.name}
         </h3>
-        <p className="text-gray-400 mb-4">Best Price ~$0.00</p>
+
+        {/* Show best price here */}
+        <p className="text-gray-400 mb-4">
+          Best Price ~${chain.bestPrice?.toFixed(4) || "0.0000"}
+        </p>
         
-        {/* Progress Information */}
         <div className="text-sm text-gray-300 mb-2">
           {chain.sold} / {chain.totalunits} Sold
         </div>
-
         <div className="w-full h-2 bg-gray-600 rounded-full mb-4">
           <div
             className="h-full rounded-full"
@@ -49,7 +51,6 @@ const PreOrderCard: React.FC<PreOrderCardProps> = ({ chain }) => {
             }}
           />
         </div>
-
         <button
           className="text-black py-2 px-4 rounded-lg hover:opacity-80 focus:outline-none"
           style={{ backgroundColor: chain.color }}
