@@ -58,7 +58,7 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
 
   return (
     <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
-      <p className="text-lg text-center mb-5 text-white">
+      <p className="text-lg text-center mb-5 text-accent2">
         Pre-order with {token.symbol}
       </p>
 
