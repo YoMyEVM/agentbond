@@ -8,49 +8,60 @@ interface BuyPreOrderWithTokenProps {
     color: string;
     gposale: string;
   };
-  price: number | string;  // Price can now be a number or a string ("Price unavailable")
+  usdPrice: number;        // final USD cost (e.g. "30")
+  tokenQuantity: number;   // e.g. "20" for 20 OP
   sold: number;
   totalunits: number;
-  currentprice: string; // Add currentprice to props
 }
 
 const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
   token,
-  price,
+  usdPrice,
+  tokenQuantity,
   sold,
   totalunits,
-  currentprice,  // Access currentprice from props
 }) => {
-  const priceFormatted = typeof price === "number" ? price.toFixed(2) : price;
-  const progress = totalunits ? sold / totalunits : 0;  // Calculate progress as a fraction
+  // Format USD cost to 4 decimals
+  const usdText =
+    usdPrice && usdPrice > 0 ? `$${usdPrice.toFixed(4)}` : "Coming Soon";
 
-  const priceText = priceFormatted !== "Price unavailable" ? `$${priceFormatted}` : "Price unavailable";
+  // Format on-chain token cost (4 decimals)
+  const costInTokens =
+    tokenQuantity && tokenQuantity > 0
+      ? `${tokenQuantity.toFixed(4)} ${token.symbol}`
+      : "No cost data";
 
-  // Determine button text based on price availability
-  const buttonText = priceFormatted !== "Price unavailable" ? "Pre-Order" : "Coming Soon";
+  // Progress fraction
+  const progress = totalunits ? sold / totalunits : 0;
+
+  // Button text
+  const buttonText = tokenQuantity > 0 ? "Pre-Order" : "Coming Soon";
 
   return (
     <div className="token-card border-4 border-accent1 p-4 rounded-lg flex flex-col items-center">
-      <p className="text-lg text-center mb-5 text-white">Pre-order with {token.symbol}</p>
+      <p className="text-lg text-center mb-5 text-white">
+        Pre-order with {token.symbol}
+      </p>
+
       <img src={token.image} alt={token.name} className="w-20 h-20 mb-1" />
 
-      {/* Price display */}
-      <p className="text-2xl mt-4 font-semibold">{priceText}</p>
+      {/* Display USD price */}
+      <p className="text-2xl mt-4 font-semibold">{usdText}</p>
 
-      {/* Current price display */}
+      {/* Display on-chain token cost */}
       <p className="text-sm mt-3">
         <span className="text-accent2">Current Price</span>
         <br />
         <span className="text-white">
-          {`${currentprice} `}
-          <span style={{ color: token.color }}>
-            {token.symbol}
-          </span>
+          {costInTokens}
         </span>
       </p>
 
       {/* Pre-order button */}
-      <button className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]">
+      <button
+        className="px-2 py-1 mt-5 bg-black text-accent1 border-2 border-accent2 rounded hover:bg-[#333]"
+        disabled={tokenQuantity <= 0}
+      >
         {buttonText}
       </button>
 
@@ -79,7 +90,8 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+      {/* end progress bar */}
     </div>
   );
 };

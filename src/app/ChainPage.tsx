@@ -85,7 +85,6 @@ const ChainPage: React.FC = () => {
 
           // 'pricePerToken' from the claim condition is a BigNumber
           const rawPrice = condition.pricePerToken;
-          // parse decimals from string to number
           const decimals = Number(token.decimals) || 18;
 
           onChainPricePerToken = parseFloat(
@@ -101,9 +100,8 @@ const ChainPage: React.FC = () => {
 
       return {
         ...token,
-        dexPriceUsd,
-        onChainPricePerToken,
-        finalPriceUsd, // cost in USD of 1 GPO
+        onChainPricePerToken, // e.g. "20" for 20 OP
+        finalPriceUsd,        // e.g. "30" in USD
       };
     });
 
@@ -167,17 +165,14 @@ const ChainPage: React.FC = () => {
             const sold = progress ? progress.sold : 0;
             const totalunits = progress ? progress.totalunits : 100;
 
-            // If you want to show the USD price, pass finalPriceUsd.
-            // If you want to show the on-chain token cost, pass onChainPricePerToken.
             return (
               <BuyPreOrderWithToken
                 key={token.name}
                 token={token}
-                price={token.finalPriceUsd} // or token.onChainPricePerToken
+                usdPrice={token.finalPriceUsd}            // pass the computed USD amount
+                tokenQuantity={token.onChainPricePerToken} // pass the token cost (e.g. "20" for OP)
                 sold={sold}
                 totalunits={totalunits}
-                // If you still store currentprice in tokens.ts, you can show it, otherwise remove:
-                currentprice={token.currentprice || ""}
               />
             );
           })}
