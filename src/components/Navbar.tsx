@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AccountSidebar from "./AccountSidebar";  // Import AccountSidebar
+import AccountSidebar from "./AccountSidebar"; // Import AccountSidebar
 
 const Navbar: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Track mobile menu state
   const [genCreditsBalance, setGenCreditsBalance] = useState<number>(0);
-  const [isAccountPanelOpen, setIsAccountPanelOpen] = useState(false);  // Track sidebar open state
+  const [isAccountPanelOpen, setIsAccountPanelOpen] = useState(false); // Track sidebar open state
 
   const fetchGenCreditsBalance = async () => {
     setGenCreditsBalance(0);
@@ -29,7 +30,7 @@ const Navbar: React.FC = () => {
 
   const disconnectWallet = () => {
     setAccount(null);
-    setIsAccountPanelOpen(false);  // Close the sidebar if disconnecting
+    setIsAccountPanelOpen(false); // Close the sidebar if disconnecting
   };
 
   useEffect(() => {
@@ -57,6 +58,14 @@ const Navbar: React.FC = () => {
             Studio
           </span>
         </a>
+
+        {/* Hamburger Menu for Mobile */}
+        <button
+          className="md:hidden text-white text-2xl focus:outline-none"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          ☰
+        </button>
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex space-x-10">
@@ -119,7 +128,7 @@ const Navbar: React.FC = () => {
           </Link>
           {account ? (
             <button
-              onClick={() => setIsAccountPanelOpen(!isAccountPanelOpen)}  // Toggle the sidebar
+              onClick={() => setIsAccountPanelOpen(!isAccountPanelOpen)} // Toggle the sidebar
               className="px-4 py-2 bg-[#fd01f5] rounded hover:bg-[#fd01f5]/80 text-white font-bold"
             >
               Account
@@ -134,6 +143,48 @@ const Navbar: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-black text-white px-4 py-2 space-y-2">
+          <a
+            href="/create"
+            className="block text-lg font-medium text-white hover:text-[#01fcfc] transition"
+          >
+            Create
+          </a>
+          <a
+            href="/shop"
+            className="block text-lg font-medium text-white hover:text-[#01fcfc] transition"
+          >
+            Shop
+          </a>
+          <a
+            href="/manage"
+            className="block text-lg font-medium text-white hover:text-[#01fcfc] transition"
+          >
+            Manage
+          </a>
+          <a
+            href="/agents"
+            className="block text-lg font-medium text-white hover:text-[#fd01f5] transition"
+          >
+            Agents
+          </a>
+          <a
+            href="/overmind"
+            className="block text-lg font-medium text-white hover:text-[#fd01f5] transition"
+          >
+            Overmind
+          </a>
+          <a
+            href="https://myevm.network"
+            className="block text-lg font-medium text-white hover:text-[#fd01f5] transition"
+          >
+            About
+          </a>
+        </div>
+      )}
 
       {/* Account Sidebar */}
       {isAccountPanelOpen && (
