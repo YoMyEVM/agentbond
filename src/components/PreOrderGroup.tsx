@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PreOrderCard from "./PreOrderCard";
 import { chains } from "../utils/chains";
-import { ethers } from 'ethers';
+import { ethers } from "ethers";
 import axios from "axios";
+
+// import your GpoSale ABI
+import { GpoSaleABI } from "../utils/GpoSaleABI";
+
+// token arrays
 import {
   baseTokens,
   optimismTokens,
@@ -20,17 +25,19 @@ interface DexscreenerResponse {
   };
 }
 
+// If your tokens have decimals as a string, do `decimals?: number | string`.
 interface Token {
   name: string;
   symbol: string;
   dexpool: string;
   gposale: string;
-  currentprice?: number;
+  decimals?: number | string;
 }
 
 const PreOrderGroup: React.FC = () => {
   const [progressData, setProgressData] = useState<any[]>([]);
 
+  // Return the relevant token list for each chain
   const getTokensForChain = (chainName: string): Token[] => {
     switch (chainName) {
       case "Base":       return baseTokens;
@@ -46,31 +53,28 @@ const PreOrderGroup: React.FC = () => {
   };
 
   const fetchProgressData = async () => {
-    const progress = chains.map(async (chain) => {
+    const progressPromises = chains.map(async (chain) => {
       const provider = new ethers.JsonRpcProvider(chain.rpc);
       const tokens = getTokensForChain(chain.name);
 
       let totalSold = 0;
-      let bestPrice = 0;
       const prices: number[] = [];
 
       for (const token of tokens) {
-        // 1) totalSupply
-        let soldAmount = 0;
+        // 1) totalSupply (optional, for "sold" logic)
         try {
-          const contract = new ethers.Contract(
+          const saleContract = new ethers.Contract(
             token.gposale,
             ["function totalSupply() public view returns (uint256)"],
             provider
           );
-          const totalSupply = await contract.totalSupply();
-          soldAmount = parseFloat(ethers.formatUnits(totalSupply, 18));
+          const totalSupply = await saleContract.totalSupply();
+          totalSold += parseFloat(ethers.formatUnits(totalSupply, 18));
         } catch (error) {
           console.error(`Error fetching totalSupply for ${token.name}:`, error);
         }
-        totalSold += soldAmount;
 
-        // 2) DexScreener Price
+        // 2) Dex Price in USD
         let dexPriceUsd = 0;
         try {
           const res = await axios.get<DexscreenerResponse>(
@@ -81,18 +85,39 @@ const PreOrderGroup: React.FC = () => {
           console.error(`Error fetching Dex price for ${token.symbol}:`, error);
         }
 
-        // Multiply if needed
-        const currentprice = token.currentprice || 1;
-        const finalPrice = dexPriceUsd * currentprice;
+        // 3) On-chain GPO price (pricePerToken)
+        let onChainPricePerToken = 0;
+        if (token.gposale && token.gposale !== "Placeholder") {
+          try {
+            const gpoContract = new ethers.Contract(token.gposale, GpoSaleABI, provider);
+            const conditionId = await gpoContract.getActiveClaimConditionId();
+            const condition = await gpoContract.getClaimConditionById(conditionId);
 
+            // convert decimals if stored as a string
+            let decimals = 18;
+            if (token.decimals) {
+              decimals = (typeof token.decimals === "string")
+                ? parseInt(token.decimals, 10)
+                : token.decimals;
+            }
+
+            // parse the price
+            const rawPrice = condition.pricePerToken;
+            onChainPricePerToken = parseFloat(ethers.formatUnits(rawPrice, decimals));
+          } catch (err) {
+            console.error(`Error fetching on-chain GPO price for ${token.name}:`, err);
+          }
+        }
+
+        // 4) Final GPO price in USD = Dex price * how many tokens needed
+        const finalPrice = dexPriceUsd * onChainPricePerToken;
         if (finalPrice > 0) {
           prices.push(finalPrice);
         }
       }
 
-      if (prices.length) {
-        bestPrice = Math.min(...prices);
-      }
+      // Use the lowest valid price for the chain
+      const bestPrice = prices.length ? Math.min(...prices) : 0;
 
       return {
         id: chain.id,
@@ -105,7 +130,7 @@ const PreOrderGroup: React.FC = () => {
       };
     });
 
-    const allProgressData = await Promise.all(progress);
+    const allProgressData = await Promise.all(progressPromises);
     setProgressData(allProgressData);
   };
 
