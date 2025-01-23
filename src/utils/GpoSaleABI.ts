@@ -1,4 +1,5 @@
 // GpoSaleABI.ts
+
 export const GpoSaleABI = [
     {
       "inputs": [
@@ -42,7 +43,6 @@ export const GpoSaleABI = [
       "stateMutability": "view",
       "type": "function"
     },
-    // There is no function named "getActiveClaimConditionID" (capital D) in the provided ABI.
     {
       "inputs": [
         { "internalType": "address", "name": "spender", "type": "address" },
@@ -74,18 +74,49 @@ export const GpoSaleABI = [
       "stateMutability": "nonpayable",
       "type": "function"
     },
+  
+    // --------------------------
+    // ADDING the "claim" function:
+    // --------------------------
+    {
+      "inputs": [
+        { "internalType": "address", "name": "_receiver",       "type": "address" },
+        { "internalType": "uint256", "name": "_quantity",       "type": "uint256" },
+        { "internalType": "address", "name": "_currency",       "type": "address" },
+        { "internalType": "uint256", "name": "_pricePerToken",  "type": "uint256" },
+        {
+          "components": [
+            { "internalType": "bytes32[]",  "name": "proof",                  "type": "bytes32[]" },
+            { "internalType": "uint256",    "name": "quantityLimitPerWallet", "type": "uint256" },
+            { "internalType": "uint256",    "name": "pricePerToken",          "type": "uint256" },
+            { "internalType": "address",    "name": "currency",               "type": "address" }
+          ],
+          "internalType": "struct IDrop.AllowlistProof",
+          "name": "_allowlistProof",
+          "type": "tuple"
+        },
+        { "internalType": "bytes",    "name": "_data",           "type": "bytes" }
+      ],
+      "name": "claim",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    // --------------------------
+  
+  
     {
       "inputs": [
         {
           "components": [
-            { "internalType": "uint256", "name": "startTimestamp", "type": "uint256" },
-            { "internalType": "uint256", "name": "maxClaimableSupply", "type": "uint256" },
-            { "internalType": "uint256", "name": "supplyClaimed", "type": "uint256" },
-            { "internalType": "uint256", "name": "quantityLimitPerWallet", "type": "uint256" },
-            { "internalType": "bytes32", "name": "merkleRoot", "type": "bytes32" },
-            { "internalType": "uint256", "name": "pricePerToken", "type": "uint256" },
-            { "internalType": "address", "name": "currency", "type": "address" },
-            { "internalType": "string", "name": "metadata", "type": "string" }
+            { "internalType": "uint256", "name": "startTimestamp",           "type": "uint256" },
+            { "internalType": "uint256", "name": "maxClaimableSupply",       "type": "uint256" },
+            { "internalType": "uint256", "name": "supplyClaimed",            "type": "uint256" },
+            { "internalType": "uint256", "name": "quantityLimitPerWallet",   "type": "uint256" },
+            { "internalType": "bytes32", "name": "merkleRoot",               "type": "bytes32" },
+            { "internalType": "uint256", "name": "pricePerToken",            "type": "uint256" },
+            { "internalType": "address","name": "currency",                  "type": "address" },
+            { "internalType": "string", "name": "metadata",                  "type": "string" }
           ],
           "internalType": "struct IClaimCondition.ClaimCondition[]",
           "name": "_conditions",
@@ -100,8 +131,8 @@ export const GpoSaleABI = [
     },
     {
       "inputs": [
-        { "internalType": "address", "name": "to", "type": "address" },
-        { "internalType": "uint256", "name": "amount", "type": "uint256" }
+        { "internalType": "address", "name": "to",    "type": "address" },
+        { "internalType": "uint256", "name": "amount","type": "uint256" }
       ],
       "name": "transfer",
       "outputs": [
@@ -112,9 +143,9 @@ export const GpoSaleABI = [
     },
     {
       "inputs": [
-        { "internalType": "address", "name": "from", "type": "address" },
-        { "internalType": "address", "name": "to", "type": "address" },
-        { "internalType": "uint256", "name": "amount", "type": "uint256" }
+        { "internalType": "address", "name": "from",  "type": "address" },
+        { "internalType": "address", "name": "to",    "type": "address" },
+        { "internalType": "uint256", "name": "amount","type": "uint256" }
       ],
       "name": "transferFrom",
       "outputs": [
@@ -123,30 +154,31 @@ export const GpoSaleABI = [
       "stateMutability": "nonpayable",
       "type": "function"
     },
+  
     {
-        "inputs": [
-          { "internalType": "uint256", "name": "_conditionId", "type": "uint256" }
-        ],
-        "name": "getClaimConditionById",
-        "outputs": [
-          {
-            "components": [
-              { "internalType": "uint256", "name": "startTimestamp",           "type": "uint256" },
-              { "internalType": "uint256", "name": "maxClaimableSupply",       "type": "uint256" },
-              { "internalType": "uint256", "name": "supplyClaimed",            "type": "uint256" },
-              { "internalType": "uint256", "name": "quantityLimitPerWallet",   "type": "uint256" },
-              { "internalType": "bytes32", "name": "merkleRoot",               "type": "bytes32" },
-              { "internalType": "uint256", "name": "pricePerToken",            "type": "uint256" },
-              { "internalType": "address","name": "currency",                  "type": "address" },
-              { "internalType": "string", "name": "metadata",                  "type": "string" }
-            ],
-            "internalType": "struct IClaimCondition.ClaimCondition",
-            "name": "condition",
-            "type": "tuple"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      }    
+      "inputs": [
+        { "internalType": "uint256", "name": "_conditionId", "type": "uint256" }
+      ],
+      "name": "getClaimConditionById",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "uint256", "name": "startTimestamp",           "type": "uint256" },
+            { "internalType": "uint256", "name": "maxClaimableSupply",       "type": "uint256" },
+            { "internalType": "uint256", "name": "supplyClaimed",            "type": "uint256" },
+            { "internalType": "uint256", "name": "quantityLimitPerWallet",   "type": "uint256" },
+            { "internalType": "bytes32", "name": "merkleRoot",               "type": "bytes32" },
+            { "internalType": "uint256", "name": "pricePerToken",            "type": "uint256" },
+            { "internalType": "address","name": "currency",                  "type": "address" },
+            { "internalType": "string", "name": "metadata",                  "type": "string" }
+          ],
+          "internalType": "struct IClaimCondition.ClaimCondition",
+          "name": "condition",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
   ];
   
