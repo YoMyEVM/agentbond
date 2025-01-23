@@ -162,7 +162,6 @@ export const polygonTokens: Token[] = [
     color: "#01ecec", 
     dexpool: "Placeholder",
     gposale: "Placeholder",
-
   },
   {
     name: "WPOL",
@@ -173,7 +172,6 @@ export const polygonTokens: Token[] = [
     color: "#8347e5", // Coinbase blue for POL
     dexpool: "0xa374094527e1673a86de625aa59517c5de346d32",
     gposale: "0xd43B8fd4248108359e104619a26C1B62251fDde5",
-
   },
   {
     name: "OLAS",
@@ -184,7 +182,6 @@ export const polygonTokens: Token[] = [
     color: "#ffffff", // OLAS color
     dexpool: "0x62309056c759c36879cde93693e7903bf415e4bc",
     gposale: "0xcC162F6387Ab5c12a376E99103ff4628b4dcE913",
-
   },
 ];
 
@@ -198,9 +195,7 @@ export const arbitrumTokens: Token[] = [
     color: "#2775ca", // Coinbase blue for USDC
     dexpool: "0xc6962004f452be9203591991d15f6b388e09e8d0",
     gposale: "0x01406239Ef672c35E4FD6113E4DBD8e3784CB780",
-
   },
-
   {
     name: "WETH",
     address: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
@@ -255,7 +250,6 @@ export const apeChainTokens: Token[] = [
     color: "#2775ca", // White for ApeETH
     dexpool: "0x99556e210123da382eDEd3c72AA8DCb605C3c435",
     gposale: "0x3aC3d1Be569a11Db02f57a3cFB0C8f332283f689",
-
   },
 
   {
@@ -267,7 +261,6 @@ export const apeChainTokens: Token[] = [
     color: "#ffffff", // White for ApeETH
     dexpool: "0xea03aedda280ed21f39cb6084b4f84bacd3ebc31",
     gposale: "0x1b2aE5F73Fd1db012B982DF554509eF8b3efb6c4",
-
   },
 
   {
