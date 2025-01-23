@@ -151,7 +151,7 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
                   {chain.name}
                 </span>
                 <span className="text-sm text-white">
-                  {preOrderedAgents[chain.name]?.toFixed(2) || 0} Agents
+                  {preOrderedAgents[chain.name]?.toFixed(0) || 0} Agents
                 </span>
               </li>
             ))}
