@@ -269,17 +269,7 @@ export const apeChainTokens: Token[] = [
     gposale: "0x1b2aE5F73Fd1db012B982DF554509eF8b3efb6c4",
 
   },
-  {
-    name: "GenCredits",
-    address: "Not live yet",
-    symbol: "GenCredits",
-    decimals: "18",
-    image: "/studiologo.png",
-    color: "#01ecec", 
-    dexpool: "Placeholder",
-    gposale: "Placeholder",
 
-  },
   {
     name: "WAPE",
     address: "0x48b62137EdfA95a428D35C09E44256a739F6B557",
@@ -290,17 +280,7 @@ export const apeChainTokens: Token[] = [
     dexpool: "0xcbbe0a6d394b34a486fe9c50bf37bf835cbbae51",
     gposale: "0xCf93435D2c00D64375fED1d287eA244c1a055f4c",
   },
-  {
-    name: "Placeholder",
-    address: "Not live yet",
-    symbol: "Placeholder",
-    decimals: "18",
-    image: "/studiologo.png",
-    color: "#01ecec", 
-    dexpool: "Placeholder",
-    gposale: "Placeholder",
 
-  },
 
 ];
 

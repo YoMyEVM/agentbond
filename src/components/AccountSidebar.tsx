@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedPreOrderButton from "components/AnimatedPreOrderButton";
 import { chains } from "../utils/chains"; // Import chains
-import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens } from "../utils/tokens"; // Import tokens
+import { baseTokens, optimismTokens, polygonTokens, arbitrumTokens, apeChainTokens} from "../utils/tokens"; // Import tokens
 import { ethers } from "ethers"; // Import ethers
 
 interface AccountSidebarProps {
@@ -16,7 +16,9 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
   onClose,
   disconnectWallet,
 }) => {
-  const [preOrderedAgents, setPreOrderedAgents] = useState<{ [key: string]: number | "loading" }>(
+  const [preOrderedAgents, setPreOrderedAgents] = useState<{
+    [key: string]: number | "loading";
+  }>(
     chains.reduce((acc, chain) => {
       acc[chain.name] = "loading"; // Initialize each chain with "loading"
       return acc;
@@ -28,17 +30,19 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
     Optimism: optimismTokens,
     Polygon: polygonTokens,
     Arbitrum: arbitrumTokens,
+    ApeChain: apeChainTokens,
   };
 
   const fetchGPOBalances = async () => {
     if (!account) return;
 
-    const balances: { [key: string]: number | "loading" } = { ...preOrderedAgents };
-
     for (const chain of chains) {
+      console.log(`Fetching balances for chain: ${chain.name}`);
       const provider = new ethers.JsonRpcProvider(chain.rpc);
 
       const tokens = tokenLists[chain.name] || [];
+      console.log(`Tokens for ${chain.name}:`, tokens);
+
       let totalGPO = BigInt(0);
 
       for (const token of tokens) {
@@ -51,6 +55,8 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
             );
 
             const balance = await gpoContract.balanceOf(account);
+            console.log(`Balance for ${token.name} on ${chain.name}:`, balance.toString());
+
             totalGPO += BigInt(balance.toString());
           } catch (error) {
             console.error(`Error fetching balance for ${token.name} on ${chain.name}:`, error);
@@ -58,8 +64,14 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
         }
       }
 
-      balances[chain.name] = Number(totalGPO) / 10 ** 18; // Convert BigInt to number
-      setPreOrderedAgents({ ...balances }); // Update state incrementally
+      const totalGPOConverted = Number(totalGPO) / 10 ** 18;
+      console.log(`Total GPO for ${chain.name}:`, totalGPOConverted);
+
+      // Update state using functional updates
+      setPreOrderedAgents((prev) => ({
+        ...prev,
+        [chain.name]: totalGPOConverted || 0, // Ensure no NaN is set
+      }));
     }
   };
 
@@ -90,13 +102,14 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
       {/* Wallet Info */}
       <div className="p-1 space-y-2">
         <div className="text-center">
-          <p className="mb-1 text-sm font-semibold text-accent2">Connected Wallet</p>
+          <p className="mb-1 text-sm font-semibold text-accent2">
+            Connected Wallet
+          </p>
           <p className="text-xs font-mono break-all">{account}</p>
         </div>
 
         {/* Profile, Check-In, Settings, Disconnect Buttons */}
         <div className="flex justify-between mt-6 gap-2">
-          {/* Profile */}
           <Link to="/profile" className="flex flex-col items-center space-y-1">
             <img
               src="/user.png"
@@ -106,7 +119,6 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
             <span className="text-xs">Profile</span>
           </Link>
 
-          {/* Check-In */}
           <Link to="/daily-checkin" className="flex flex-col items-center space-y-1">
             <img
               src="/dailycheckin.png"
@@ -116,7 +128,6 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
             <span className="text-xs">Check-In</span>
           </Link>
 
-          {/* Settings */}
           <Link to="/settings" className="flex flex-col items-center space-y-1">
             <img
               src="/setting.png"
@@ -126,7 +137,6 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
             <span className="text-xs">Settings</span>
           </Link>
 
-          {/* Disconnect */}
           <button
             onClick={disconnectWallet}
             className="flex flex-col items-center space-y-1 focus:outline-none"
@@ -146,6 +156,7 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
           <ul className="space-y-2">
             {chains.map((chain) => {
               const agentCount = preOrderedAgents[chain.name];
+              console.log(`Rendering agentCount for ${chain.name}:`, agentCount);
 
               return (
                 <li
@@ -162,14 +173,14 @@ const AccountSidebar: React.FC<AccountSidebarProps> = ({
                   <span className="text-sm text-white">
                     {agentCount === "loading"
                       ? "Loading..."
-                      : `${agentCount.toFixed(0)} Agents`}
+                      : isNaN(agentCount as number)
+                      ? "0 Agents"
+                      : `${(agentCount as number).toFixed(0)} Agents`}
                   </span>
                 </li>
               );
             })}
           </ul>
-
-
         </div>
       </div>
     </div>
