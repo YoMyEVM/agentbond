@@ -14,9 +14,6 @@ import {
   polygonTokens,
   arbitrumTokens,
   apeChainTokens,
-  abstractTokens,
-  unichainTokens,
-  beraChainTokens,
 } from "../utils/tokens";
 
 interface DexscreenerResponse {
@@ -37,6 +34,12 @@ const PreOrderGroup: React.FC = () => {
   const [progressData, setProgressData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true); // Loading state
 
+  // List of chains to exclude
+  const hiddenChains = ["Abstract", "Unichain", "BeraChain"];
+
+  // Get only visible chains
+  const visibleChains = chains.filter((chain) => !hiddenChains.includes(chain.name));
+
   // Return the relevant token list for each chain
   const getTokensForChain = (chainName: string): Token[] => {
     switch (chainName) {
@@ -50,12 +53,6 @@ const PreOrderGroup: React.FC = () => {
         return arbitrumTokens;
       case "ApeChain":
         return apeChainTokens;
-      case "Abstract":
-        return abstractTokens;
-      case "Unichain":
-        return unichainTokens;
-      case "BeraChain":
-        return beraChainTokens;
       default:
         return [];
     }
@@ -63,7 +60,7 @@ const PreOrderGroup: React.FC = () => {
 
   const fetchProgressData = async () => {
     try {
-      const allProgressPromises = chains.map(async (chain) => {
+      const allProgressPromises = visibleChains.map(async (chain) => {
         const provider = new ethers.JsonRpcProvider(chain.rpc);
         const tokens = getTokensForChain(chain.name);
 
