@@ -169,6 +169,7 @@ const ChainPage: React.FC = () => {
               <BuyPreOrderWithToken
                 key={token.name}
                 token={token}
+                chain={chain}
                 usdPrice={token.finalPriceUsd}            // pass the computed USD amount
                 tokenQuantity={token.onChainPricePerToken} // pass the token cost (e.g. "20" for OP)
                 sold={sold}
