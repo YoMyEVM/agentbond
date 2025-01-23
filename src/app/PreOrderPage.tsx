@@ -16,6 +16,11 @@ const PreOrderPage: React.FC = () => {
         alignItems: "center", // Center horizontally
       }}
     >
+      {/* Add page header */}
+      <h1 style={{ fontSize: "28px", textAlign: "center", marginBottom: "20px" }}>
+        Pre-Order an Agent to get a free Brain,<br/> Personality, and GenCredit Token Airdrop
+      </h1>
+
       {/* Directly render the PreOrderGroup component */}
       <PreOrderGroup />
     </div>
