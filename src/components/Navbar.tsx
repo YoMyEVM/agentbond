@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const [isAccountPanelOpen, setIsAccountPanelOpen] = useState(false);  // Track sidebar open state
 
   const fetchGenCreditsBalance = async () => {
-    setGenCreditsBalance(100);
+    setGenCreditsBalance(0);
   };
 
   const connectWallet = async () => {
