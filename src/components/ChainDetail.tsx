@@ -53,7 +53,7 @@ const ChainDetail: React.FC<ChainDetailProps> = ({ chain, sold = 0, totalunits =
 
       {/* Additional Text at the Bottom */}
       <div className="mt-8 mb-10 text-center max-w-2xl mx-auto"> {/* Increased max-width */}
-        <h3 className="text-4xl font-bold text-accent2 tracking-wide">Epoch Based Pricing</h3> {/* Bold and spaced heading */}
+        <h3 className="text-3xl font-bold text-accent2 tracking-wide">Epoch Based Pricing</h3> {/* Bold and spaced heading */}
         <p className="text-xl text-gray-300 mt-2 tracking-wide">
           Pre-Order Early & Check often for Arbitrage Deals
         </p> {/* Subheading style */}
