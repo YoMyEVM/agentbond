@@ -33,6 +33,16 @@ export const chains: Chain[] = [
     WETHaddress: "0x4200000000000000000000000000000000000006",
   },
   {
+    name: "Base",
+    id: 8453,
+    rpc: "https://base-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    symbol: "BASE",
+    explorerUrl: "https://basescan.org/",
+    image: "/basechainlogo.svg",
+    color: colors.baseChain,
+    WETHaddress: "0x4200000000000000000000000000000000000006",
+  },
+  {
     name: "Arbitrum",
     id: 42161,
     rpc: "https://arb-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
@@ -52,16 +62,7 @@ export const chains: Chain[] = [
     color: colors.polygon,
     WETHaddress: "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
   },
-  {
-    name: "Base",
-    id: 8453,
-    rpc: "https://base-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
-    symbol: "BASE",
-    explorerUrl: "https://basescan.org/",
-    image: "/basechainlogo.svg",
-    color: colors.baseChain,
-    WETHaddress: "0x4200000000000000000000000000000000000006",
-  },
+
 
   {
     name: "ApeChain",
