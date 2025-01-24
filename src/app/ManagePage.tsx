@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Chain } from "../utils/chains";
 import { ethers } from "ethers";
 
-
 interface Collection {
   name: string;
   address: string;
@@ -63,18 +62,46 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
     setNewCollectionAddress(""); // Clear input field
   };
 
+  const fetchNFTs = async (collection: Collection) => {
+    if (!selectedChain || !account) return;
+
+    const provider = new ethers.JsonRpcProvider(selectedChain.rpc);
+    const erc721Contract = new ethers.Contract(
+      collection.address,
+      [
+        "function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)",
+        "function balanceOf(address owner) view returns (uint256)",
+        "function tokenURI(uint256 tokenId) view returns (string)",
+      ],
+      provider
+    );
+
+    try {
+      const balance = await erc721Contract.balanceOf(account);
+      const nfts: NFT[] = [];
+
+      for (let i = 0; i < balance; i++) {
+        const tokenId = await erc721Contract.tokenOfOwnerByIndex(account, i);
+        const tokenURI = await erc721Contract.tokenURI(tokenId);
+
+        nfts.push({
+          id: tokenId.toString(),
+          name: `NFT #${tokenId.toString()}`,
+          imageUrl: tokenURI, // Update if metadata parsing is required
+        });
+      }
+
+      setNfts(nfts);
+    } catch (error) {
+      console.error("Failed to fetch NFTs:", error);
+    }
+  };
+
   useEffect(() => {
     if (selectedChain) {
       connectWallet();
     }
   }, [selectedChain]);
-
-  const fetchNFTs = async (collection: Collection) => {
-    const filteredNFTs: NFT[] = []; // Explicitly define the type
-    // Add logic to fetch and populate filteredNFTs
-    setNfts(filteredNFTs);
-  };
-  
 
   useEffect(() => {
     if (selectedCollection) {
@@ -165,12 +192,6 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
                       className="w-full h-48 object-cover rounded"
                     />
                     <p className="text-white mt-2">{nft.name}</p>
-                    <button
-                      onClick={() => {}}
-                      className="mt-4 py-2 px-8 bg-[#fd01f5] text-white hover:bg-[#fd01d0] rounded"
-                    >
-                      Equip
-                    </button>
                   </div>
                 ))}
               </div>
