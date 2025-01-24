@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { chains } from "../utils/chains";
 import ChainDetail from "../components/ChainDetail";
 import BuyPreOrderWithToken from "../components/BuyPreOrderWithToken";
+import AgentFeatures from "components/AgentFeatures";
 import {
   baseTokens,
   optimismTokens,
@@ -42,18 +43,29 @@ const ChainPage: React.FC = () => {
     );
   }
 
+
+
   // Filter tokens by chain
   const getTokensForChain = (chainName: string) => {
     switch (chainName) {
-      case "Base":       return baseTokens;
-      case "Optimism":   return optimismTokens;
-      case "Polygon":    return polygonTokens;
-      case "Arbitrum":   return arbitrumTokens;
-      case "ApeChain":   return apeChainTokens;
-      case "Abstract":   return abstractTokens;
-      case "Unichain":   return unichainTokens;
-      case "BeraChain":  return beraChainTokens;
-      default:           return [];
+      case "Base":
+        return baseTokens;
+      case "Optimism":
+        return optimismTokens;
+      case "Polygon":
+        return polygonTokens;
+      case "Arbitrum":
+        return arbitrumTokens;
+      case "ApeChain":
+        return apeChainTokens;
+      case "Abstract":
+        return abstractTokens;
+      case "Unichain":
+        return unichainTokens;
+      case "BeraChain":
+        return beraChainTokens;
+      default:
+        return [];
     }
   };
 
@@ -64,7 +76,6 @@ const ChainPage: React.FC = () => {
     const provider = new ethers.JsonRpcProvider(chain.rpc);
 
     const dataPromises = tokens.map(async (token) => {
-      // 1) Dex price in USD
       let dexPriceUsd = 0;
       try {
         const res = await axios.get<DexscreenerResponse>(
@@ -75,7 +86,6 @@ const ChainPage: React.FC = () => {
         console.error(`Error fetching Dex price for ${token.symbol}:`, err);
       }
 
-      // 2) On-chain GPO price
       let onChainPricePerToken = 0;
       if (token.gposale && token.gposale !== "Placeholder") {
         try {
@@ -83,7 +93,6 @@ const ChainPage: React.FC = () => {
           const conditionId = await gpoContract.getActiveClaimConditionId();
           const condition = await gpoContract.getClaimConditionById(conditionId);
 
-          // 'pricePerToken' from the claim condition is a BigNumber
           const rawPrice = condition.pricePerToken;
           const decimals = Number(token.decimals) || 18;
 
@@ -95,13 +104,12 @@ const ChainPage: React.FC = () => {
         }
       }
 
-      // 3) Multiply to get total cost in USD for 1 GPO
       const finalPriceUsd = dexPriceUsd * onChainPricePerToken;
 
       return {
         ...token,
-        onChainPricePerToken, // e.g. "20" for 20 OP
-        finalPriceUsd,        // e.g. "30" in USD
+        onChainPricePerToken,
+        finalPriceUsd,
       };
     });
 
@@ -110,7 +118,6 @@ const ChainPage: React.FC = () => {
     setLoading(false);
   };
 
-  // Fetch supply progress data
   const fetchProgressData = async () => {
     const progress = tokens.map(async (token) => {
       const provider = new ethers.JsonRpcProvider(chain.rpc);
@@ -170,8 +177,8 @@ const ChainPage: React.FC = () => {
                 key={token.name}
                 token={token}
                 chain={chain}
-                usdPrice={token.finalPriceUsd}            // pass the computed USD amount
-                tokenQuantity={token.onChainPricePerToken} // pass the token cost (e.g. "20" for OP)
+                usdPrice={token.finalPriceUsd}
+                tokenQuantity={token.onChainPricePerToken}
                 sold={sold}
                 totalunits={totalunits}
               />
@@ -179,6 +186,8 @@ const ChainPage: React.FC = () => {
           })}
         </div>
       )}
+
+      <AgentFeatures />
     </div>
   );
 };

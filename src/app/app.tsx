@@ -23,6 +23,7 @@ import ProfilePage from "./ProfilePage"; // Import the Profile Page
 import AnimatedPreOrderButton from "components/AnimatedPreOrderButton";
 
 
+
 function App() {
   // Initialize selectedChain state
   const [selectedChain, setSelectedChain] = useState<Chain | null>(null);
@@ -97,7 +98,7 @@ function App() {
             <Route path="/chain/:id" element={<ChainPage />} /> {/* Dynamic Chain Page */}
             
             <Route path="/profile" element={<ProfilePage />} />
-
+ 
 
           </Routes>
         </main>

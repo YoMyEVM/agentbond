@@ -19,7 +19,7 @@ export const baseTokens: Token[] = [
     symbol: "USDbC",
     decimals: "6",
     image: "/usdbclogo.png",
-    color: "#fff", // Coinbase blue for USDbC
+    color: "#6697ff", // Coinbase blue for USDbC
     dexpool: "0x0E635F8EeED4F7279d56692D552F034ECE136019",
     gposale: "0xaC94342fc2DC50E544D752C86750C1aBC29a1b51",
 
@@ -63,7 +63,7 @@ export const baseTokens: Token[] = [
     symbol: "WETH",
     decimals: "18",
     image: "/wethlogo.png",
-    color: "#6697ff", // Coinbase blue for cbETH
+    color: "#fff", // Coinbase blue for cbETH
     dexpool: "0xd0b53d9277642d899df5c87a3966a349a798f224",
     gposale: "0xF30667dBd90868dB7AAb74Ad87E9671B8eED7F99",
   },

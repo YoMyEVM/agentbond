@@ -18,7 +18,7 @@ const PreOrderPage: React.FC = () => {
     >
       {/* Add page header */}
       <h1 style={{ fontSize: "28px", textAlign: "center", marginBottom: "20px" }}>
-        Pre-Order an Agent to get a free Brain,<br/> Personality, and GenCredit Token Airdrop
+        Pre-Order an Agent to get a free Brain Core,<br/> Personality, and GenCredit Token Airdrop
       </h1>
 
       {/* Directly render the PreOrderGroup component */}

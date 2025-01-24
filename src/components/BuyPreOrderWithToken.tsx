@@ -158,9 +158,14 @@ const BuyPreOrderWithToken: React.FC<BuyPreOrderWithTokenProps> = ({
 
   return (
     <div className="token-card border-2 border-accent1 p-4 rounded-lg flex flex-col items-center">
-      <p className="text-lg text-center mb-5 text-accent2">
-        Pre-order with {token.symbol}
+      <p>Pre-Order with</p>
+      <p
+        className="text-lg text-center mb-5 font-bold"
+        style={{ color: token.color }} // Apply token color dynamically
+      >
+        {token.symbol}
       </p>
+
 
       {/* Token logo */}
       <img src={token.image} alt={token.name} className="w-20 h-20 mb-1" />

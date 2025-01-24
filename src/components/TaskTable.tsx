@@ -38,7 +38,7 @@ const TaskTable: React.FC = () => {
 
   return (
     <section className="max-w-screen-lg mx-auto py-8 bg-black text-white">
-      <h1 className="text-4xl font-bold text-accent2 text-center mb-6">Task Table</h1>
+      <h1 className="text-4xl font-bold text-accent2 text-center mb-6">Earn GenCredits by Completing Tasks</h1>
 
       <div className="space-y-4">
         {tasks.map((task, index) => (
