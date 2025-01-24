@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Chain } from "../utils/chains";
+import { ethers } from "ethers";
+
 
 interface Collection {
   name: string;
@@ -17,20 +19,7 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
   const [collections, setCollections] = useState<Collection[]>([]);
   const [selectedCollection, setSelectedCollection] = useState<Collection | null>(null);
   const [nfts, setNfts] = useState<NFT[]>([]);
-
-  // Track whether the NFT is equipped or not
-  const [equippedNfts, setEquippedNfts] = useState<Set<string>>(new Set());
-
-  const mockCollections: Collection[] = [
-    { name: "Cool NFT Collection", address: "0x1234...abcd" },
-    { name: "Rare NFT Collection", address: "0x5678...efgh" },
-  ];
-
-  const mockNFTs: NFT[] = [
-    { id: "1", imageUrl: "/nft1.png", name: "NFT #1" },
-    { id: "2", imageUrl: "/nft2.png", name: "NFT #2" },
-    { id: "3", imageUrl: "/nft3.png", name: "NFT #3" },
-  ];
+  const [newCollectionAddress, setNewCollectionAddress] = useState<string>("");
 
   const connectWallet = async () => {
     if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -47,35 +36,45 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
     }
   };
 
-  const fetchCollections = async () => {
-    if (selectedChain) {
-      setCollections(mockCollections); // Replace with chain-specific logic if needed
+  const fetchCollectionName = async (address: string): Promise<string> => {
+    if (!selectedChain) return "Unknown Collection";
+
+    try {
+      const provider = new ethers.JsonRpcProvider(selectedChain.rpc);
+      const erc721Contract = new ethers.Contract(
+        address,
+        ["function name() view returns (string)"],
+        provider
+      );
+
+      const name = await erc721Contract.name();
+      return name;
+    } catch (error) {
+      console.error("Failed to fetch collection name:", error);
+      return "Unknown Collection";
     }
   };
 
-  const fetchNFTs = async (collection: Collection) => {
-    const filteredNFTs = mockNFTs.filter((nft) => nft.id.startsWith(collection.address[2]));
-    setNfts(filteredNFTs);
-  };
+  const addCollection = async () => {
+    if (!newCollectionAddress || !selectedChain) return;
 
-  const toggleEquip = (nftId: string) => {
-    setEquippedNfts((prev) => {
-      const newEquipped = new Set(prev);
-      if (newEquipped.has(nftId)) {
-        newEquipped.delete(nftId); // Unequip if already equipped
-      } else {
-        newEquipped.add(nftId); // Equip if not equipped
-      }
-      return newEquipped;
-    });
+    const name = await fetchCollectionName(newCollectionAddress);
+    setCollections((prev) => [...prev, { name, address: newCollectionAddress }]);
+    setNewCollectionAddress(""); // Clear input field
   };
 
   useEffect(() => {
     if (selectedChain) {
       connectWallet();
-      fetchCollections();
     }
   }, [selectedChain]);
+
+  const fetchNFTs = async (collection: Collection) => {
+    const filteredNFTs: NFT[] = []; // Explicitly define the type
+    // Add logic to fetch and populate filteredNFTs
+    setNfts(filteredNFTs);
+  };
+  
 
   useEffect(() => {
     if (selectedCollection) {
@@ -95,7 +94,24 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
       <div className="flex mt-8">
         {/* Sidebar */}
         <div className="w-1/4 bg-gray-800 p-4 rounded shadow-lg">
-          {account ? (
+          <h3 className="text-xl text-white mb-4">Import Collection</h3>
+          <div className="mb-4">
+            <input
+              type="text"
+              value={newCollectionAddress}
+              onChange={(e) => setNewCollectionAddress(e.target.value)}
+              placeholder="Enter ERC-721 contract address"
+              className="w-full p-2 rounded bg-gray-700 text-white placeholder-gray-400"
+            />
+            <button
+              onClick={addCollection}
+              className="mt-2 py-2 px-4 bg-[#fd01f5] text-white rounded hover:bg-[#fd01d0] w-full"
+            >
+              Import
+            </button>
+          </div>
+
+          {account && collections.length > 0 ? (
             <>
               <h3 className="text-xl text-white mb-4">Your Collections</h3>
               <ul className="space-y-4">
@@ -109,14 +125,23 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
                         : "bg-gray-700 text-gray-300 hover:bg-gray-600"
                     }`}
                   >
-                    {collection.name}
+                    <a
+                      href={`${selectedChain?.explorerUrl}/address/${collection.address}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-blue-300 hover:text-blue-400"
+                    >
+                      {collection.name}
+                    </a>
                   </li>
                 ))}
               </ul>
             </>
           ) : (
             <p className="text-white">
-              Connect your wallet and select a chain to view collections.
+              {account
+                ? "No collections imported. Add one using the form above."
+                : "Connect your wallet and select a chain to view collections."}
             </p>
           )}
         </div>
@@ -141,14 +166,10 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
                     />
                     <p className="text-white mt-2">{nft.name}</p>
                     <button
-                      onClick={() => toggleEquip(nft.id)}
-                      className={`mt-4 py-2 px-8 w-full ${
-                        equippedNfts.has(nft.id)
-                          ? "bg-black border-2 border-[#fd01f5] text-[#fd01f5] hover:bg-gray-800"
-                          : "bg-[#fd01f5] text-white hover:bg-[#fd01d0]"
-                      } rounded`}
+                      onClick={() => {}}
+                      className="mt-4 py-2 px-8 bg-[#fd01f5] text-white hover:bg-[#fd01d0] rounded"
                     >
-                      {equippedNfts.has(nft.id) ? "Unequip" : "Equip"}
+                      Equip
                     </button>
                   </div>
                 ))}
@@ -156,7 +177,9 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
             </>
           ) : (
             <p className="text-gray-400">
-              {account ? "Select a collection to view its NFTs." : "Sign in to view your NFT collections."}
+              {account
+                ? "Select a collection to view its NFTs."
+                : "Sign in to view your NFT collections."}
             </p>
           )}
         </div>
