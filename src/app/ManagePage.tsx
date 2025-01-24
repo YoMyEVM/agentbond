@@ -69,8 +69,8 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
     const erc721Contract = new ethers.Contract(
       collection.address,
       [
-        "function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)",
         "function balanceOf(address owner) view returns (uint256)",
+        "function tokenOfOwnerByIndex(address owner, uint256 index) view returns (uint256)",
         "function tokenURI(uint256 tokenId) view returns (string)",
       ],
       provider
@@ -84,10 +84,13 @@ const ManagePage: React.FC<{ selectedChain: Chain | null }> = ({ selectedChain }
         const tokenId = await erc721Contract.tokenOfOwnerByIndex(account, i);
         const tokenURI = await erc721Contract.tokenURI(tokenId);
 
+        // Fetch metadata from the tokenURI
+        const metadata = await fetch(tokenURI).then((res) => res.json());
+
         nfts.push({
           id: tokenId.toString(),
-          name: `NFT #${tokenId.toString()}`,
-          imageUrl: tokenURI, // Update if metadata parsing is required
+          name: metadata.name || `NFT #${tokenId}`,
+          imageUrl: metadata.image || "",
         });
       }
 
