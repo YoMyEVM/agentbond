@@ -72,14 +72,14 @@ export const chains: Chain[] = [
     explorerUrl: "https://apescan.io/",
     image: "/apechainlogo.png",
     color: colors.apeChain,
-    WETHaddress: "0xcF800F4948D16F23333508191B1B1591daF70438",
+    WETHaddress: "0x3439153EB7AF838Ad19d56E1571FBD09333C2809",
   },
   {
     name: "Abstract",
     id: 2741,
-    rpc: "https://abstract-testnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    rpc: "https://api.mainnet.abs.xyz",
     symbol: "ABS",
-    explorerUrl: "https://explorer.testnet.abs.xyz/",
+    explorerUrl: "https://abscan.org/",
     image: "/abstractlogo.jpg",
     color: colors.abstract,
     WETHaddress: "null", // Placeholder for Abstract
@@ -87,21 +87,21 @@ export const chains: Chain[] = [
   {
     name: "Unichain",
     id: 130,
-    rpc: "https://unichain-sepolia.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    rpc: "https://mainnet.unichain.org",
     symbol: "UNI",
-    explorerUrl: "https://sepolia.uniscan.xyz/",
+    explorerUrl: "https://unichain.blockscout.com/",
     image: "/unichainlogo.svg",
     color: colors.uniChain,
-    WETHaddress: "null", // Placeholder for Abstract
+    WETHaddress: "0x4200000000000000000000000000000000000006", 
   },
   {
     name: "BeraChain",
-    id: 80084,
-    rpc: "https://berachain-bartio.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
+    id: 80094,
+    rpc: "https://rpc.berachain.com",
     symbol: "BERA",
-    explorerUrl: "https://berachain.nodefleet.net/",
+    explorerUrl: "https://berascan.com/",
     image: "/berachainlogo.webp",
     color: colors.beraChain,
-    WETHaddress: "null", // Placeholder for Abstract
+    WETHaddress: "0x6fc6545d5cDE268D5C7f1e476D444F39c995120d", 
   }, 
 ];
