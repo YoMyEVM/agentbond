@@ -28,7 +28,7 @@ export const chains: Chain[] = [
     rpc: "https://opt-mainnet.g.alchemy.com/v2/Q-PUqxJnC1RsVq_KZG1KeNSxJOHZXs4g",
     symbol: "OP",
     explorerUrl: "https://optimistic.etherscan.io",
-    image: "/optimismchainlogo.webp",
+    image: "/optimismchainlogo.png",
     color: colors.optimism,
     WETHaddress: "0x4200000000000000000000000000000000000006",
   },
