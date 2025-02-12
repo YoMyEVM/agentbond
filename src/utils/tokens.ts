@@ -328,7 +328,7 @@ export const abstractTokens: Token[] = [
 export const unichainTokens: Token[] = [
   {
     name: "USDC",
-    address: "Not live yet",
+    address: "0x078D782b760474a361dDA0AF3839290b0EF57AD6",
     symbol: "USDC",
     decimals: "6",
     image: "/usdclogo.png",
@@ -340,7 +340,7 @@ export const unichainTokens: Token[] = [
 
   {
     name: "WETH",
-    address: "Not live yet",
+    address: "0x4200000000000000000000000000000000000006",
     symbol: "WETH",
     decimals: "18",
     image: "/wethlogo.png",

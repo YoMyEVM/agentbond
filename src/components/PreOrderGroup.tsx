@@ -4,16 +4,17 @@ import { chains } from "../utils/chains";
 import { ethers } from "ethers";
 import axios from "axios";
 
-// Import your GpoSale ABI
 import { GpoSaleABI } from "../utils/GpoSaleABI";
 
-// Token arrays
 import {
   baseTokens,
   optimismTokens,
   polygonTokens,
   arbitrumTokens,
   apeChainTokens,
+  abstractTokens,
+  unichainTokens,
+  beraChainTokens,
 } from "../utils/tokens";
 
 interface DexscreenerResponse {
@@ -32,15 +33,10 @@ interface Token {
 
 const PreOrderGroup: React.FC = () => {
   const [progressData, setProgressData] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
 
-  // List of chains to exclude
-  const hiddenChains = ["Abstract", "Unichain", "BeraChain"];
+  const visibleChains = chains;
 
-  // Get only visible chains
-  const visibleChains = chains.filter((chain) => !hiddenChains.includes(chain.name));
-
-  // Return the relevant token list for each chain
   const getTokensForChain = (chainName: string): Token[] => {
     switch (chainName) {
       case "Base":
@@ -53,6 +49,12 @@ const PreOrderGroup: React.FC = () => {
         return arbitrumTokens;
       case "ApeChain":
         return apeChainTokens;
+      case "Abstract":
+        return abstractTokens;
+      case "Unichain":
+        return unichainTokens;
+      case "BeraChain":
+        return beraChainTokens;
       default:
         return [];
     }
@@ -64,13 +66,11 @@ const PreOrderGroup: React.FC = () => {
         const provider = new ethers.JsonRpcProvider(chain.rpc);
         const tokens = getTokensForChain(chain.name);
 
-        // Fetch data for all tokens in the chain in parallel
         const tokenPromises = tokens.map(async (token) => {
           let totalSupply = 0;
           let dexPriceUsd = 0;
           let onChainPricePerToken = 0;
 
-          // Fetch totalSupply (sold units)
           if (token.gposale) {
             try {
               const saleContract = new ethers.Contract(
@@ -85,7 +85,6 @@ const PreOrderGroup: React.FC = () => {
             }
           }
 
-          // Fetch Dex price
           if (token.dexpool) {
             try {
               const res = await axios.get<DexscreenerResponse>(
@@ -97,7 +96,6 @@ const PreOrderGroup: React.FC = () => {
             }
           }
 
-          // Fetch on-chain price per token
           if (token.gposale) {
             try {
               const gpoContract = new ethers.Contract(token.gposale, GpoSaleABI, provider);
@@ -116,7 +114,6 @@ const PreOrderGroup: React.FC = () => {
             }
           }
 
-          // Calculate final price
           const finalPrice = dexPriceUsd * onChainPricePerToken;
 
           return {
@@ -127,7 +124,6 @@ const PreOrderGroup: React.FC = () => {
 
         const tokenData = await Promise.all(tokenPromises);
 
-        // Aggregate data for the chain
         const totalSold = tokenData.reduce((acc, data) => acc + data.totalSupply, 0);
         const prices = tokenData.map((data) => data.finalPrice).filter((price) => price > 0);
         const bestPrice = prices.length ? Math.min(...prices) : 0;
@@ -148,7 +144,7 @@ const PreOrderGroup: React.FC = () => {
     } catch (error) {
       console.error("Error fetching progress data:", error);
     } finally {
-      setLoading(false); // Hide loading state after data is fetched
+      setLoading(false);
     }
   };
 
@@ -159,12 +155,8 @@ const PreOrderGroup: React.FC = () => {
   return (
     <div className="flex flex-wrap justify-center gap-4 p-0 bg-black min-h-screen">
       {loading ? (
-        // Skeleton loading UI
         Array.from({ length: 6 }).map((_, index) => (
-          <div
-            key={index}
-            className="w-60 h-80 bg-gray-800 animate-pulse rounded-lg"
-          ></div>
+          <div key={index} className="w-60 h-80 bg-gray-800 animate-pulse rounded-lg"></div>
         ))
       ) : (
         progressData.map((chainProgress) => (
