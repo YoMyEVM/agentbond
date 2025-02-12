@@ -36,7 +36,7 @@ const AnimatedPreOrderButton: React.FC<AnimatedPreOrderButtonProps> = ({ smallTe
             right: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(to right, #171618, #3bff3b);
+            background: linear-gradient(to right, #171618, #01fcfc);
             animation: animate1 2s linear infinite;
           }
           @keyframes animate1 {
@@ -53,7 +53,7 @@ const AnimatedPreOrderButton: React.FC<AnimatedPreOrderButtonProps> = ({ smallTe
             right: 0;
             height: 100%;
             width: 3px;
-            background: linear-gradient(to bottom, #171618, #3bff3b);
+            background: linear-gradient(to bottom, #171618, #01fcfc);
             animation: animate2 2s linear infinite;
             animation-delay: 1s;
           }
@@ -71,7 +71,7 @@ const AnimatedPreOrderButton: React.FC<AnimatedPreOrderButtonProps> = ({ smallTe
             right: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(to left, #171618, #3bff3b);
+            background: linear-gradient(to left, #171618, #01fcfc);
             animation: animate3 2s linear infinite;
           }
           @keyframes animate3 {
@@ -88,7 +88,7 @@ const AnimatedPreOrderButton: React.FC<AnimatedPreOrderButtonProps> = ({ smallTe
             left: 0;
             height: 100%;
             width: 3px;
-            background: linear-gradient(to top, #171618, rgb(10, 199, 32));
+            background: linear-gradient(to top, #171618, #01fcfc);
             animation: animate4 2s linear infinite;
             animation-delay: 1s;
           }
